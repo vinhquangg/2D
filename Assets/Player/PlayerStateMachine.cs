@@ -1,0 +1,47 @@
+﻿using UnityEngine;
+
+public class PlayerStateMachine : MonoBehaviour
+{
+    public PlayerData playerData;
+    public IPlayerState currentState { get; private set; }
+    public Rigidbody2D rb { get; private set; }
+    public Animator anim { get; private set; }
+    // Start is called before the first frame update
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        SwitchState(new IdleState(this));
+    }
+
+    // Update is called once per frame
+    public void SwitchState(IPlayerState newState)
+    {
+        if (currentState != null && currentState.GetType() == newState.GetType())
+            return;
+
+        if (currentState != null)
+        {
+            currentState.ExitState();
+        }
+        
+        currentState = newState;
+        currentState.EnterState();
+    }
+
+    void Update()
+    {
+        currentState?.UpdateState();
+    }
+
+    void FixedUpdate()
+    {
+        currentState?.PhysicsUpdate();
+    }
+
+}
