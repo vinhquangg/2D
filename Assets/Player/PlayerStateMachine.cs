@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerStateMachine : MonoBehaviour
 {
@@ -42,6 +43,18 @@ public class PlayerStateMachine : MonoBehaviour
     void FixedUpdate()
     {
         currentState?.PhysicsUpdate();
+    }
+
+    public void PlayAnimation(string animName)
+    {
+        if (anim == null) return;
+
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        if (stateInfo.fullPathHash != 0 && !stateInfo.IsName(animName))
+        {
+            anim.Play(animName);
+        }
     }
 
 }

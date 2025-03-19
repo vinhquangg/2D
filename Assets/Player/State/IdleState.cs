@@ -12,7 +12,7 @@ public class IdleState : MoveState
         if (playerState.rb.velocity == Vector2.zero)
         {
             playerState.anim.SetBool("isMove", false);
-            PlayAnimation("Idle");
+            playerState.PlayAnimation("Idle");
         }
     }
 
@@ -23,8 +23,13 @@ public class IdleState : MoveState
         {
             playerState.SwitchState(new MoveState(playerState));
             playerState.anim.SetBool("isMove", true);
-            PlayAnimation("Run");
+            playerState.PlayAnimation("Run");
         }
+    }
+
+    protected override void CanAttack()
+    {
+        base.CanAttack();
     }
 
     public override void HandleInput()

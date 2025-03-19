@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   maxHealth: 100
-  moveSpeed: 5
+  moveSpeed: 1
   dashSpeed: 10
   dashDuration: 0.3
   attackCooldown: 0.25
   attackDamage: 10
   attackRange: 0.5
+  comboResetTime: 0.5
   GameObject: {fileID: 0}

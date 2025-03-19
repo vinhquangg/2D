@@ -8,6 +8,7 @@ public class MoveState : IPlayerState
 {
     protected PlayerStateMachine playerState;
     protected Vector2 movementInput;
+    
 
     public MoveState(PlayerStateMachine playerState)
     {
@@ -42,20 +43,29 @@ public class MoveState : IPlayerState
     {
         Flip();
         Move();
+        CanAttack();
     }
     public virtual void ExitState()
     {
         playerState.anim.SetBool("isMove", false);
-        playerState.anim.Play("Idle");
+        playerState.PlayAnimation("Idle");
     }
 
     private void ReadMoveInput()
     {
         movementInput = PlayerInputHandler.instance.playerAction.Move.ReadValue<Vector2>();
     }
-    private void Move()
+    public void Move()
     {
-        playerState.rb.velocity = (movementInput*playerState.playerData.moveSpeed).normalized;
+        playerState.rb.velocity = (movementInput.normalized*playerState.playerData.moveSpeed);
+    }
+
+    protected virtual void CanAttack()
+    {
+        if (PlayerInputHandler.instance.playerAction.Attack.WasPressedThisFrame())
+        {
+            playerState.SwitchState(new AttackState(playerState));
+        }
     }
 
     private void Flip()
@@ -69,17 +79,5 @@ public class MoveState : IPlayerState
         }
     }
 
-
-    protected void PlayAnimation(string animName)
-    {
-        if (playerState.anim == null) return;
-     
-        AnimatorStateInfo stateInfo = playerState.anim.GetCurrentAnimatorStateInfo(0);
-        
-        if (stateInfo.fullPathHash != 0 && !stateInfo.IsName(animName))
-        {
-            playerState.anim.Play(animName);
-        }
-    }
 
 }

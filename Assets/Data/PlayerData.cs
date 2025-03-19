@@ -13,5 +13,6 @@ public class PlayerData : ScriptableObject
     [Header("Attack Settings")]
     public int attackDamage = 10;
     public float attackRange = 0.5f;
+    public float comboResetTime = 0.5f;
     public GameObject GameObject;
 }
