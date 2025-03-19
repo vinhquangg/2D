@@ -25,6 +25,20 @@ public class IdleState : MoveState
             playerState.anim.SetBool("isMove", true);
             playerState.PlayAnimation("Run");
         }
+        if (PlayerInputHandler.instance.playerAction.Attack.WasPressedThisFrame())
+        {
+            playerState.SwitchState(new AttackState(playerState));
+        }
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+        if(movementInput != Vector2.zero)
+        {
+            playerState.anim.SetBool("isMove", true);
+            playerState.PlayAnimation("Run");
+        }
     }
 
     protected override void CanAttack()
