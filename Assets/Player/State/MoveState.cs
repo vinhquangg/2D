@@ -17,22 +17,20 @@ public class MoveState : IPlayerState
     public virtual void EnterState()
     {
         playerState.anim.enabled = true;
+        if (playerState.anim.GetBool("isAttack1")) return;
         Debug.Log("State: " + GetType().Name); 
     }
 
     public virtual void UpdateState()
     {
         HandleInput();
-        if (movementInput == Vector2.zero)
-        {
-            if (playerState.currentState is IdleState)
-            {
-                return;
-            }
-            playerState.SwitchState(new IdleState(playerState));
 
+        if (playerState.rb.velocity.magnitude < 0.1f && !(playerState.currentState is IdleState))
+        {
+            playerState.SwitchState(new IdleState(playerState));
         }
     }
+
 
     public virtual void HandleInput()
     {
@@ -48,7 +46,7 @@ public class MoveState : IPlayerState
     public virtual void ExitState()
     {
         playerState.anim.SetBool("isMove", false);
-        playerState.PlayAnimation("Idle");
+        //playerState.PlayAnimation("Idle");
     }
 
     private void ReadMoveInput()
@@ -62,10 +60,7 @@ public class MoveState : IPlayerState
 
     protected virtual void CanAttack()
     {
-        if (PlayerInputHandler.instance.playerAction.Attack.WasPressedThisFrame())
-        {
-            playerState.SwitchState(new AttackState(playerState));
-        }
+        playerState.TryAttack();
     }
 
     private void Flip()

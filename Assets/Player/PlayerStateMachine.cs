@@ -7,6 +7,9 @@ public class PlayerStateMachine : MonoBehaviour
     public IPlayerState currentState { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
+
+
+    public bool isAttackPressed;
     // Start is called before the first frame update
 
     void Awake()
@@ -37,7 +40,13 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Update()
     {
-        currentState?.UpdateState();
+        isAttackPressed = PlayerInputHandler.instance.playerAction.Attack.WasPressedThisFrame();
+        TryAttack();
+
+        if (currentState != null)
+        {
+            currentState.UpdateState();
+        }
     }
 
     void FixedUpdate()
@@ -57,4 +66,18 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
+    public void TryAttack()
+    {
+        if (isAttackPressed)
+        {
+            if (currentState is AttackState attackState)
+            {
+                attackState.PlayNextAttack();
+            }
+            else
+            {
+                SwitchState(new AttackState(this));
+            }
+        }
+    }
 }
