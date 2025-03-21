@@ -6,7 +6,7 @@ public class AttackState : IPlayerState
     private PlayerStateMachine playerState;
     private int attackIndex = 0;
     private string[] attackAnimations = { "Attack_Spear", "Attack_Sword" };
-    private float comboResetTime = 1f;
+    private float comboResetTime = 0.2f;
     private float lastAttackTime;
     private bool isAttacking = false;
 
@@ -17,15 +17,14 @@ public class AttackState : IPlayerState
 
     public void EnterState()
     {
-        attackIndex = playerState.anim.GetInteger("AttackIndex"); // Lấy giá trị từ Animator
         playerState.anim.enabled = true;
+        attackIndex = playerState.anim.GetInteger("AttackIndex");
         isAttacking = true;
-        lastAttackTime = Time.time;
-
-        PlayNextAttack();
         playerState.rb.velocity = Vector2.zero;
         playerState.rb.isKinematic = true;
-
+        playerState.PlayAnimation("Attack_Spear");
+        //PlayNextAttack();
+        lastAttackTime = Time.time;
         playerState.StartCoroutine(AttackRoutine());
     }
 
@@ -33,7 +32,7 @@ public class AttackState : IPlayerState
     {
         playerState.rb.isKinematic = false;
         isAttacking = false;
-        playerState.anim.SetInteger("AttackIndex", 0); // Reset khi thoát
+        playerState.anim.SetInteger("AttackIndex", 0);
     }
 
     public void HandleInput()
@@ -44,14 +43,16 @@ public class AttackState : IPlayerState
 
             if (attackIndex < attackAnimations.Length - 1)
             {
-                attackIndex++; // Tăng lên 1 để chuyển qua Sword
+                attackIndex++;
                 playerState.anim.SetInteger("AttackIndex", attackIndex);
-                PlayNextAttack();
+                //PlayNextAttack();
             }
         }
     }
 
-    public void PhysicsUpdate() { }
+    public void PhysicsUpdate() 
+    {
+    }
 
     public void UpdateState()
     {
@@ -68,24 +69,25 @@ public class AttackState : IPlayerState
 
     private IEnumerator AttackRoutine()
     {
-        while (playerState.anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        while (playerState.anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.7f)
         {
             yield return null;
         }
 
         if (attackIndex == 1 && Time.time - lastAttackTime < comboResetTime)
         {
-            attackIndex = 0; // Reset về Spear
+            yield return new WaitForSeconds(0.2f);
+            attackIndex = 0;
             playerState.anim.SetInteger("AttackIndex", attackIndex);
-            yield return new WaitForSeconds(0.1f);
-            playerState.SwitchState(new IdleState(playerState));
+            PlayNextAttack();
+            //playerState.SwitchState(new IdleState(playerState));
         }
         else
         {
-            attackIndex = 0;
             isAttacking = false;
+            attackIndex = 0;
             playerState.anim.SetInteger("AttackIndex", attackIndex);
-            playerState.SwitchState(new IdleState(playerState));
         }
+        playerState.SwitchState(new IdleState(playerState));
     }
 }

@@ -17,7 +17,7 @@ public class MoveState : IPlayerState
     public virtual void EnterState()
     {
         playerState.anim.enabled = true;
-        if (playerState.anim.GetBool("isAttack1")) return;
+        if (playerState.anim.GetBool("Attack")) return;
         Debug.Log("State: " + GetType().Name); 
     }
 

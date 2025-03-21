@@ -13,14 +13,8 @@ public class PlayerController : MonoBehaviour
     {
         playerState.SwitchState(new IdleState(playerState));
     }
-
-    // Update is called once per frame
     void Update()
     {
         playerState.currentState.UpdateState();
-    }
-    void FixedUpdate()
-    {
-        playerState.currentState.PhysicsUpdate();
     }
 }

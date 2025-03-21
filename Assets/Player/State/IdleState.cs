@@ -16,7 +16,7 @@ public class IdleState : MoveState
             playerState.PlayAnimation("Idle");
         }
 
-        if (playerState.anim.GetBool("isAttack1")) return;
+        if (playerState.anim.GetBool("Attack")) return;
     }
 
     public override void UpdateState()
@@ -34,7 +34,7 @@ public class IdleState : MoveState
         base.ExitState();
         if(movementInput != Vector2.zero)
         {
-            playerState.anim.SetBool("isIdle", false);
+            //playerState.anim.SetBool("isIdle", false);
             playerState.anim.SetBool("isMove", true);
             playerState.PlayAnimation("Run");
         }

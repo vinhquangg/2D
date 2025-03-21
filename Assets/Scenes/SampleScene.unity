@@ -386,6 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 9e4ae7e56d7815b44b18438a0452a0f1, type: 2}
+  isAttackPressed: 0
 --- !u!114 &596461734
 MonoBehaviour:
   m_ObjectHideFlags: 0

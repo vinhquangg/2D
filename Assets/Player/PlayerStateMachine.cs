@@ -8,8 +8,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
 
-
-    public bool isAttackPressed;
+    public bool isAttackPressed { get; private set; }
     // Start is called before the first frame update
 
     void Awake()
@@ -70,14 +69,15 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (isAttackPressed)
         {
-            if (currentState is AttackState attackState)
-            {
-                attackState.PlayNextAttack();
-            }
-            else
-            {
-                SwitchState(new AttackState(this));
-            }
+            //if (currentState is AttackState attackState)
+            //{
+            //    attackState.PlayNextAttack();
+            //}
+            //else
+            //{
+            //    SwitchState(new AttackState(this));
+            //}
+            SwitchState(new AttackState(this));
         }
     }
 }
