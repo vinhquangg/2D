@@ -4,6 +4,7 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
     public int health = 50;
+    public int damageToPlayer = 10; // Sát thương quái gây ra khi chạm Player
     public SpriteRenderer spriteRenderer;
     private Color originalColor;
     public float hitDuration = 0.2f;
@@ -53,5 +54,18 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("☠ " + gameObject.name + " đã chết!");
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerCombat player = other.GetComponent<PlayerCombat>();
+            if (player != null)
+            {
+                Debug.Log($"⚔ Quái {gameObject.name} gây {damageToPlayer} sát thương lên {other.name}");
+                player.TakeDamage(damageToPlayer);
+            }
+        }
     }
 }
