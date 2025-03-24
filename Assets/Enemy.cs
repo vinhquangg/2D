@@ -3,11 +3,12 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 50;
-    public int damageToPlayer = 10; // Sát thương quái gây ra khi chạm Player
+   
     public SpriteRenderer spriteRenderer;
     private Color originalColor;
     public float hitDuration = 0.2f;
+    public GameObject floatingDamge;
+    public MonsterData monsterData;
 
     void Start()
     {
@@ -24,30 +25,41 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        Debug.Log($"💔 Quái {gameObject.name} bị đánh, máu còn: {health}");
+        monsterData.maxHealth -= damage;
+        Debug.Log($"💔 Quái {gameObject.name} bị đánh, máu còn: {monsterData.maxHealth}");
 
         if (spriteRenderer != null)
         {
-            StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration));
+            StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration,damage));
+
         }
+        //if (floatingDamge != null)
+        //{
+        //    GameObject damageText = Instantiate(floatingDamge, transform.position, Quaternion.identity);
+        //    damageText.GetComponent<DamgeFloat>().SetFloat(damage, Color.red);
+        //}
         else
         {
             Debug.LogError("❌ Không tìm thấy SpriteRenderer để đổi màu!");
         }
 
-        if (health <= 0)
+        if (monsterData.maxHealth <= 0)
         {
             Die();
         }
     }
 
-    private IEnumerator ChangeColorTemporarily(Color newColor, float duration)
+    private IEnumerator ChangeColorTemporarily(Color newColor, float duration,int damage)
     {
         Debug.Log($"🎨 Đổi màu quái {gameObject.name} thành {newColor}");
         spriteRenderer.color = newColor;
         yield return new WaitForSeconds(duration);
         spriteRenderer.color = originalColor;
+        if (floatingDamge != null)
+        {
+            GameObject damageText = Instantiate(floatingDamge, transform.position, Quaternion.identity);
+            damageText.GetComponent<DamgeFloat>().SetFloat(damage, transform);
+        }
     }
 
     private void Die()
@@ -63,8 +75,8 @@ public class Enemy : MonoBehaviour
             PlayerCombat player = other.GetComponent<PlayerCombat>();
             if (player != null)
             {
-                Debug.Log($"⚔ Quái {gameObject.name} gây {damageToPlayer} sát thương lên {other.name}");
-                player.TakeDamage(damageToPlayer);
+
+                player.TakeDamage(monsterData.attackDamageToPlayer);
             }
         }
     }

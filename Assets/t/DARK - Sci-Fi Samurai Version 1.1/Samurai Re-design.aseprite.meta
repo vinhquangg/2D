@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Samurai Re-design_Frame_0
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -143,7 +143,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 44}
   - name: Samurai Re-design_Frame_1
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 84}
   - name: Samurai Re-design_Frame_2
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 124}
   - name: Samurai Re-design_Frame_3
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 164}
   - name: Samurai Re-design_Frame_4
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 204}
   - name: Samurai Re-design_Frame_5
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 244}
   - name: Samurai Re-design_Frame_6
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -263,7 +263,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 284}
   - name: Samurai Re-design_Frame_7
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -283,7 +283,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 324}
   - name: Samurai Re-design_Frame_8
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -303,7 +303,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 364}
   - name: Samurai Re-design_Frame_9
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -323,7 +323,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 404}
   - name: Samurai Re-design_Frame_10
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -343,7 +343,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 444}
   - name: Samurai Re-design_Frame_11
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -363,7 +363,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 484}
   - name: Samurai Re-design_Frame_12
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -383,7 +383,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 524}
   - name: Samurai Re-design_Frame_13
     originalName: 
-    pivot: {x: 1.1445783, y: 0}
+    pivot: {x: 0.7590362, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -403,7 +403,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 604}
   - name: Samurai Re-design_Frame_14
     originalName: 
-    pivot: {x: 1.1445783, y: 0}
+    pivot: {x: 0.7590362, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -423,7 +423,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 644}
   - name: Samurai Re-design_Frame_15
     originalName: 
-    pivot: {x: 1.1445783, y: -0.06451613}
+    pivot: {x: 0.7590362, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -443,7 +443,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 122}
   - name: Samurai Re-design_Frame_16
     originalName: 
-    pivot: {x: 1.1445783, y: 0}
+    pivot: {x: 0.7590362, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -463,7 +463,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 684}
   - name: Samurai Re-design_Frame_17
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -483,7 +483,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 844}
   - name: Samurai Re-design_Frame_18
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -503,7 +503,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 884}
   - name: Samurai Re-design_Frame_19
     originalName: 
-    pivot: {x: 1.117647, y: -0.06451613}
+    pivot: {x: 0.7411765, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -523,7 +523,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 884}
   - name: Samurai Re-design_Frame_20
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -543,7 +543,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 924}
   - name: Samurai Re-design_Frame_21
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -563,7 +563,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 964}
   - name: Samurai Re-design_Frame_22
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -583,7 +583,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 4}
   - name: Samurai Re-design_Frame_23
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -603,7 +603,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 44}
   - name: Samurai Re-design_Frame_24
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -623,7 +623,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 84}
   - name: Samurai Re-design_Frame_25
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -643,7 +643,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 124}
   - name: Samurai Re-design_Frame_26
     originalName: 
-    pivot: {x: 1.1309524, y: -0.032258064}
+    pivot: {x: 0.75, y: -0.032258064}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -663,7 +663,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 83}
   - name: Samurai Re-design_Frame_27
     originalName: 
-    pivot: {x: 1.1445783, y: -0.032258064}
+    pivot: {x: 0.7590362, y: -0.032258064}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -683,7 +683,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 161}
   - name: Samurai Re-design_Frame_28
     originalName: 
-    pivot: {x: 1.1445783, y: -0.032258064}
+    pivot: {x: 0.7590362, y: -0.032258064}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -703,7 +703,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 200}
   - name: Samurai Re-design_Frame_29
     originalName: 
-    pivot: {x: 1.1445783, y: 0}
+    pivot: {x: 0.7590362, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -723,7 +723,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 724}
   - name: Samurai Re-design_Frame_30
     originalName: 
-    pivot: {x: 1.1445783, y: 0}
+    pivot: {x: 0.7590362, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -743,7 +743,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 764}
   - name: Samurai Re-design_Frame_31
     originalName: 
-    pivot: {x: 1.1445783, y: 0}
+    pivot: {x: 0.7590362, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -763,7 +763,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 804}
   - name: Samurai Re-design_Frame_32
     originalName: 
-    pivot: {x: 1.1445783, y: 0}
+    pivot: {x: 0.7590362, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -783,7 +783,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 844}
   - name: Samurai Re-design_Frame_33
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -803,7 +803,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 239}
   - name: Samurai Re-design_Frame_34
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -823,7 +823,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 923}
   - name: Samurai Re-design_Frame_35
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -843,7 +843,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 962}
   - name: Samurai Re-design_Frame_36
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -863,7 +863,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 4}
   - name: Samurai Re-design_Frame_37
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -883,7 +883,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 564}
   - name: Samurai Re-design_Frame_38
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -903,7 +903,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 604}
   - name: Samurai Re-design_Frame_63
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -923,7 +923,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 644}
   - name: Samurai Re-design_Frame_64
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -943,7 +943,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 684}
   - name: Samurai Re-design_Frame_65
     originalName: 
-    pivot: {x: 1.117647, y: 0}
+    pivot: {x: 0.7411765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -963,7 +963,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 164}
   - name: Samurai Re-design_Frame_66
     originalName: 
-    pivot: {x: 1.1309524, y: 0}
+    pivot: {x: 0.75, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -983,7 +983,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 564}
   - name: Samurai Re-design_Frame_67
     originalName: 
-    pivot: {x: 1.1585366, y: 0}
+    pivot: {x: 0.7682927, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1003,7 +1003,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 43}
   - name: Samurai Re-design_Frame_68
     originalName: 
-    pivot: {x: 0.6814814, y: 0}
+    pivot: {x: 0.44444445, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1023,7 +1023,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 226}
   - name: Samurai Re-design_Frame_69
     originalName: 
-    pivot: {x: 0.6571428, y: 0}
+    pivot: {x: 0.42857146, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1043,7 +1043,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 118}
   - name: Samurai Re-design_Frame_70
     originalName: 
-    pivot: {x: 0.6524823, y: 0}
+    pivot: {x: 0.42553195, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1063,7 +1063,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 174}
   - name: Samurai Re-design_Frame_71
     originalName: 
-    pivot: {x: 0.6478873, y: 0}
+    pivot: {x: 0.42253524, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1083,7 +1083,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 61}
   - name: Samurai Re-design_Frame_72
     originalName: 
-    pivot: {x: 0.6433566, y: 0}
+    pivot: {x: 0.41958043, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1103,7 +1103,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Samurai Re-design_Frame_73
     originalName: 
-    pivot: {x: 0.6865671, y: 0}
+    pivot: {x: 0.4477612, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1123,7 +1123,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 279}
   - name: Samurai Re-design_Frame_74
     originalName: 
-    pivot: {x: 0.79999995, y: 0}
+    pivot: {x: 0.5217391, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1143,7 +1143,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 658}
   - name: Samurai Re-design_Frame_75
     originalName: 
-    pivot: {x: 0.91999996, y: 0}
+    pivot: {x: 0.6, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1163,7 +1163,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 938}
   - name: Samurai Re-design_Frame_76
     originalName: 
-    pivot: {x: 0.91089106, y: 0}
+    pivot: {x: 0.5940594, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1183,7 +1183,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 818}
   - name: Samurai Re-design_Frame_77
     originalName: 
-    pivot: {x: 0.91089106, y: 0}
+    pivot: {x: 0.5940594, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1203,7 +1203,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 858}
   - name: Samurai Re-design_Frame_78
     originalName: 
-    pivot: {x: 0.91089106, y: 0}
+    pivot: {x: 0.5940594, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1223,7 +1223,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 898}
   - name: Samurai Re-design_Frame_79
     originalName: 
-    pivot: {x: 0.9223301, y: 0}
+    pivot: {x: 0.61165047, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1243,7 +1243,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 738}
   - name: Samurai Re-design_Frame_80
     originalName: 
-    pivot: {x: 0.9223301, y: 0}
+    pivot: {x: 0.61165047, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1263,7 +1263,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 778}
   - name: Samurai Re-design_Frame_81
     originalName: 
-    pivot: {x: 1.0795454, y: 0}
+    pivot: {x: 0.71590906, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1283,7 +1283,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 4}
   - name: Samurai Re-design_Frame_82
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1303,7 +1303,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 724}
   - name: Samurai Re-design_Frame_83
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1323,7 +1323,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 764}
   - name: Samurai Re-design_Frame_84
     originalName: 
-    pivot: {x: 1.1046511, y: 0}
+    pivot: {x: 0.73255813, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1343,7 +1343,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 804}
   - name: Samurai Re-design_Frame_85
     originalName: 
-    pivot: {x: 1.0823529, y: 0}
+    pivot: {x: 0.70588243, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1363,7 +1363,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 204}
   - name: Samurai Re-design_Frame_86
     originalName: 
-    pivot: {x: 1.0823529, y: 0}
+    pivot: {x: 0.70588243, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1383,7 +1383,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 244}
   - name: Samurai Re-design_Frame_87
     originalName: 
-    pivot: {x: 1.0823529, y: 0}
+    pivot: {x: 0.70588243, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1403,7 +1403,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 284}
   - name: Samurai Re-design_Frame_88
     originalName: 
-    pivot: {x: 1.0823529, y: 0}
+    pivot: {x: 0.70588243, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1423,7 +1423,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 324}
   - name: Samurai Re-design_Frame_89
     originalName: 
-    pivot: {x: 1.0823529, y: 0}
+    pivot: {x: 0.70588243, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1443,7 +1443,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 364}
   - name: Samurai Re-design_Frame_90
     originalName: 
-    pivot: {x: 1.0823529, y: 0}
+    pivot: {x: 0.70588243, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1463,7 +1463,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 404}
   - name: Samurai Re-design_Frame_91
     originalName: 
-    pivot: {x: 1.0823529, y: 0}
+    pivot: {x: 0.70588243, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1483,7 +1483,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 444}
   - name: Samurai Re-design_Frame_92
     originalName: 
-    pivot: {x: 1.0823529, y: 0}
+    pivot: {x: 0.70588243, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1503,7 +1503,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 484}
   - name: Samurai Re-design_Frame_93
     originalName: 
-    pivot: {x: 1.0823529, y: 0}
+    pivot: {x: 0.70588243, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1523,7 +1523,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 524}
   - name: Samurai Re-design_Frame_94
     originalName: 
-    pivot: {x: 1.1666666, y: 0}
+    pivot: {x: 0.40476188, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1543,7 +1543,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 905}
   - name: Samurai Re-design_Frame_95
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1563,7 +1563,7 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 1001}
   - name: Samurai Re-design_Frame_96
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1583,7 +1583,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 877}
   - name: Samurai Re-design_Frame_97
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1603,7 +1603,7 @@ ScriptedImporter:
     uvTransform: {x: 435, y: 200}
   - name: Samurai Re-design_Frame_98
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1623,7 +1623,7 @@ ScriptedImporter:
     uvTransform: {x: 435, y: 161}
   - name: Samurai Re-design_Frame_99
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1643,7 +1643,7 @@ ScriptedImporter:
     uvTransform: {x: 436, y: 83}
   - name: Samurai Re-design_Frame_100
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1663,7 +1663,7 @@ ScriptedImporter:
     uvTransform: {x: 435, y: 122}
   - name: Samurai Re-design_Frame_101
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1683,7 +1683,7 @@ ScriptedImporter:
     uvTransform: {x: 437, y: 239}
   - name: Samurai Re-design_Frame_102
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1703,7 +1703,7 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 978}
   - name: Samurai Re-design_Frame_103
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1723,7 +1723,7 @@ ScriptedImporter:
     uvTransform: {x: 437, y: 4}
   - name: Samurai Re-design_Frame_104
     originalName: 
-    pivot: {x: 1.1395348, y: 0}
+    pivot: {x: 0.3953488, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1743,7 +1743,7 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 1011}
   - name: Samurai Re-design_Frame_39
     originalName: 
-    pivot: {x: 1.3194444, y: 0}
+    pivot: {x: 0.87499994, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1763,7 +1763,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 757}
   - name: Samurai Re-design_Frame_40
     originalName: 
-    pivot: {x: 1.3013699, y: 0}
+    pivot: {x: 0.8630137, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1783,7 +1783,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 517}
   - name: Samurai Re-design_Frame_41
     originalName: 
-    pivot: {x: 1.3013699, y: 0}
+    pivot: {x: 0.8630137, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1803,7 +1803,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 557}
   - name: Samurai Re-design_Frame_42
     originalName: 
-    pivot: {x: 1.3013699, y: 0}
+    pivot: {x: 0.8630137, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1823,7 +1823,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 597}
   - name: Samurai Re-design_Frame_43
     originalName: 
-    pivot: {x: 1.3013699, y: 0}
+    pivot: {x: 0.8630137, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1843,7 +1843,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 637}
   - name: Samurai Re-design_Frame_44
     originalName: 
-    pivot: {x: 0.68478256, y: 0}
+    pivot: {x: 0.33695653, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1863,7 +1863,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 978}
   - name: Samurai Re-design_Frame_45
     originalName: 
-    pivot: {x: 0.6233766, y: 0}
+    pivot: {x: 0.20779221, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1883,7 +1883,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 277}
   - name: Samurai Re-design_Frame_46
     originalName: 
-    pivot: {x: 0.61333334, y: 0}
+    pivot: {x: 0.18666665, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1903,7 +1903,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 397}
   - name: Samurai Re-design_Frame_47
     originalName: 
-    pivot: {x: 0.6081081, y: 0}
+    pivot: {x: 0.17567568, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1923,7 +1923,7 @@ ScriptedImporter:
     uvTransform: {x: 434, y: 43}
   - name: Samurai Re-design_Frame_48
     originalName: 
-    pivot: {x: 0.6081081, y: 0}
+    pivot: {x: 0.17567568, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1943,7 +1943,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 477}
   - name: Samurai Re-design_Frame_49
     originalName: 
-    pivot: {x: 0.8761904, y: 0}
+    pivot: {x: 0.5714286, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1963,7 +1963,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 605}
   - name: Samurai Re-design_Frame_50
     originalName: 
-    pivot: {x: 0.85981303, y: 0}
+    pivot: {x: 0.5607477, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1983,7 +1983,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 445}
   - name: Samurai Re-design_Frame_51
     originalName: 
-    pivot: {x: 0.8363636, y: 0}
+    pivot: {x: 0.54545456, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2003,7 +2003,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 553}
   - name: Samurai Re-design_Frame_52
     originalName: 
-    pivot: {x: 0.82142854, y: 0}
+    pivot: {x: 0.5357143, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2023,7 +2023,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 388}
   - name: Samurai Re-design_Frame_53
     originalName: 
-    pivot: {x: 0.8141593, y: 0}
+    pivot: {x: 0.5309735, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2043,7 +2043,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 331}
   - name: Samurai Re-design_Frame_54
     originalName: 
-    pivot: {x: 0.8070175, y: 0}
+    pivot: {x: 0.5263158, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2063,7 +2063,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 501}
   - name: Samurai Re-design_Frame_55
     originalName: 
-    pivot: {x: 0.79999995, y: 0}
+    pivot: {x: 0.5217391, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2083,7 +2083,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 698}
   - name: Samurai Re-design_Frame_56
     originalName: 
-    pivot: {x: 1.2105262, y: 0}
+    pivot: {x: 0.7894737, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2103,7 +2103,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 317}
   - name: Samurai Re-design_Frame_57
     originalName: 
-    pivot: {x: 1.2105262, y: 0}
+    pivot: {x: 0.7894737, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2123,7 +2123,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 357}
   - name: Samurai Re-design_Frame_58
     originalName: 
-    pivot: {x: 1.2266667, y: 0}
+    pivot: {x: 0.8000001, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2143,7 +2143,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 437}
   - name: Samurai Re-design_Frame_59
     originalName: 
-    pivot: {x: 1.2602739, y: 0}
+    pivot: {x: 0.82191783, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2163,7 +2163,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 677}
   - name: Samurai Re-design_Frame_60
     originalName: 
-    pivot: {x: 1.3013699, y: 0}
+    pivot: {x: 0.8630137, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2183,7 +2183,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 717}
   - name: Samurai Re-design_Frame_61
     originalName: 
-    pivot: {x: 1.3194444, y: 0}
+    pivot: {x: 0.87499994, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2203,7 +2203,7 @@ ScriptedImporter:
     uvTransform: {x: 344, y: 797}
   - name: Samurai Re-design_Frame_62
     originalName: 
-    pivot: {x: 1.3194444, y: 0}
+    pivot: {x: 0.87499994, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2234,7 +2234,7 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2243,7 +2243,7 @@ ScriptedImporter:
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2252,7 +2252,7 @@ ScriptedImporter:
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2261,7 +2261,7 @@ ScriptedImporter:
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2270,7 +2270,7 @@ ScriptedImporter:
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2279,7 +2279,7 @@ ScriptedImporter:
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2288,7 +2288,7 @@ ScriptedImporter:
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2297,7 +2297,7 @@ ScriptedImporter:
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2306,7 +2306,7 @@ ScriptedImporter:
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2315,7 +2315,7 @@ ScriptedImporter:
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2324,7 +2324,7 @@ ScriptedImporter:
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2333,7 +2333,7 @@ ScriptedImporter:
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2342,7 +2342,7 @@ ScriptedImporter:
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2351,7 +2351,7 @@ ScriptedImporter:
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 83
         height: 32
@@ -2360,7 +2360,7 @@ ScriptedImporter:
       frameIndex: 14
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 83
         height: 32
@@ -2369,7 +2369,7 @@ ScriptedImporter:
       frameIndex: 15
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 2
         width: 83
         height: 31
@@ -2378,7 +2378,7 @@ ScriptedImporter:
       frameIndex: 16
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 83
         height: 32
@@ -2387,7 +2387,7 @@ ScriptedImporter:
       frameIndex: 17
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 32
@@ -2396,7 +2396,7 @@ ScriptedImporter:
       frameIndex: 18
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 32
@@ -2405,7 +2405,7 @@ ScriptedImporter:
       frameIndex: 19
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 2
         width: 85
         height: 31
@@ -2414,7 +2414,7 @@ ScriptedImporter:
       frameIndex: 20
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 32
@@ -2423,7 +2423,7 @@ ScriptedImporter:
       frameIndex: 21
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 32
@@ -2432,7 +2432,7 @@ ScriptedImporter:
       frameIndex: 22
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 32
@@ -2441,7 +2441,7 @@ ScriptedImporter:
       frameIndex: 23
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 32
@@ -2450,7 +2450,7 @@ ScriptedImporter:
       frameIndex: 24
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 32
@@ -2459,7 +2459,7 @@ ScriptedImporter:
       frameIndex: 25
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 32
@@ -2468,7 +2468,7 @@ ScriptedImporter:
       frameIndex: 26
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 1
         width: 84
         height: 31
@@ -2477,7 +2477,7 @@ ScriptedImporter:
       frameIndex: 27
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 1
         width: 83
         height: 31
@@ -2486,7 +2486,7 @@ ScriptedImporter:
       frameIndex: 28
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 1
         width: 83
         height: 31
@@ -2495,7 +2495,7 @@ ScriptedImporter:
       frameIndex: 29
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 83
         height: 32
@@ -2504,7 +2504,7 @@ ScriptedImporter:
       frameIndex: 30
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 83
         height: 32
@@ -2513,7 +2513,7 @@ ScriptedImporter:
       frameIndex: 31
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 83
         height: 32
@@ -2522,7 +2522,7 @@ ScriptedImporter:
       frameIndex: 32
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 83
         height: 32
@@ -2531,7 +2531,7 @@ ScriptedImporter:
       frameIndex: 33
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 30
@@ -2540,7 +2540,7 @@ ScriptedImporter:
       frameIndex: 34
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 31
@@ -2549,7 +2549,7 @@ ScriptedImporter:
       frameIndex: 35
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 31
@@ -2558,7 +2558,7 @@ ScriptedImporter:
       frameIndex: 36
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 31
@@ -2567,7 +2567,7 @@ ScriptedImporter:
       frameIndex: 37
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2576,7 +2576,7 @@ ScriptedImporter:
       frameIndex: 38
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2585,7 +2585,7 @@ ScriptedImporter:
       frameIndex: 63
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2594,7 +2594,7 @@ ScriptedImporter:
       frameIndex: 64
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2603,7 +2603,7 @@ ScriptedImporter:
       frameIndex: 65
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 85
         height: 32
@@ -2612,7 +2612,7 @@ ScriptedImporter:
       frameIndex: 66
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 84
         height: 32
@@ -2621,7 +2621,7 @@ ScriptedImporter:
       frameIndex: 67
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 82
         height: 32
@@ -2630,7 +2630,7 @@ ScriptedImporter:
       frameIndex: 68
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 135
         height: 45
@@ -2639,7 +2639,7 @@ ScriptedImporter:
       frameIndex: 69
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 140
         height: 48
@@ -2648,7 +2648,7 @@ ScriptedImporter:
       frameIndex: 70
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 141
         height: 44
@@ -2657,7 +2657,7 @@ ScriptedImporter:
       frameIndex: 71
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 142
         height: 49
@@ -2666,7 +2666,7 @@ ScriptedImporter:
       frameIndex: 72
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 143
         height: 49
@@ -2675,7 +2675,7 @@ ScriptedImporter:
       frameIndex: 73
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 134
         height: 44
@@ -2684,7 +2684,7 @@ ScriptedImporter:
       frameIndex: 74
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 115
         height: 32
@@ -2693,7 +2693,7 @@ ScriptedImporter:
       frameIndex: 75
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 100
         height: 32
@@ -2702,7 +2702,7 @@ ScriptedImporter:
       frameIndex: 76
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 101
         height: 32
@@ -2711,7 +2711,7 @@ ScriptedImporter:
       frameIndex: 77
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 101
         height: 32
@@ -2720,7 +2720,7 @@ ScriptedImporter:
       frameIndex: 78
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 101
         height: 32
@@ -2729,7 +2729,7 @@ ScriptedImporter:
       frameIndex: 79
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 103
         height: 32
@@ -2738,7 +2738,7 @@ ScriptedImporter:
       frameIndex: 80
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 103
         height: 32
@@ -2747,7 +2747,7 @@ ScriptedImporter:
       frameIndex: 81
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 88
         height: 32
@@ -2756,7 +2756,7 @@ ScriptedImporter:
       frameIndex: 82
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2765,7 +2765,7 @@ ScriptedImporter:
       frameIndex: 83
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2774,7 +2774,7 @@ ScriptedImporter:
       frameIndex: 84
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 86
         height: 32
@@ -2783,7 +2783,7 @@ ScriptedImporter:
       frameIndex: 85
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 85
         height: 32
@@ -2792,7 +2792,7 @@ ScriptedImporter:
       frameIndex: 86
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 85
         height: 32
@@ -2801,7 +2801,7 @@ ScriptedImporter:
       frameIndex: 87
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 85
         height: 32
@@ -2810,7 +2810,7 @@ ScriptedImporter:
       frameIndex: 88
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 85
         height: 32
@@ -2819,7 +2819,7 @@ ScriptedImporter:
       frameIndex: 89
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 85
         height: 32
@@ -2828,7 +2828,7 @@ ScriptedImporter:
       frameIndex: 90
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 85
         height: 32
@@ -2837,7 +2837,7 @@ ScriptedImporter:
       frameIndex: 91
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 85
         height: 32
@@ -2846,7 +2846,7 @@ ScriptedImporter:
       frameIndex: 92
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 85
         height: 32
@@ -2855,7 +2855,7 @@ ScriptedImporter:
       frameIndex: 93
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 85
         height: 32
@@ -2864,7 +2864,7 @@ ScriptedImporter:
       frameIndex: 94
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 42
         height: 18
@@ -2873,7 +2873,7 @@ ScriptedImporter:
       frameIndex: 95
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 19
@@ -2882,7 +2882,7 @@ ScriptedImporter:
       frameIndex: 96
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 20
@@ -2891,7 +2891,7 @@ ScriptedImporter:
       frameIndex: 97
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 21
@@ -2900,7 +2900,7 @@ ScriptedImporter:
       frameIndex: 98
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 22
@@ -2909,7 +2909,7 @@ ScriptedImporter:
       frameIndex: 99
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 23
@@ -2918,7 +2918,7 @@ ScriptedImporter:
       frameIndex: 100
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 23
@@ -2927,7 +2927,7 @@ ScriptedImporter:
       frameIndex: 101
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 24
@@ -2936,7 +2936,7 @@ ScriptedImporter:
       frameIndex: 102
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 25
@@ -2945,7 +2945,7 @@ ScriptedImporter:
       frameIndex: 103
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 24
@@ -2954,7 +2954,7 @@ ScriptedImporter:
       frameIndex: 104
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 33
         y: 0
         width: 43
         height: 4
@@ -2963,7 +2963,7 @@ ScriptedImporter:
       frameIndex: 39
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 72
         height: 32
@@ -2972,7 +2972,7 @@ ScriptedImporter:
       frameIndex: 40
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 73
         height: 32
@@ -2981,7 +2981,7 @@ ScriptedImporter:
       frameIndex: 41
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 73
         height: 32
@@ -2990,7 +2990,7 @@ ScriptedImporter:
       frameIndex: 42
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 73
         height: 32
@@ -2999,7 +2999,7 @@ ScriptedImporter:
       frameIndex: 43
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 73
         height: 32
@@ -3008,7 +3008,7 @@ ScriptedImporter:
       frameIndex: 44
       additiveSortOrder: 0
       cellRect:
-        x: -13
+        x: 19
         y: 0
         width: 92
         height: 32
@@ -3017,7 +3017,7 @@ ScriptedImporter:
       frameIndex: 45
       additiveSortOrder: 0
       cellRect:
-        x: 2
+        x: 34
         y: 0
         width: 77
         height: 32
@@ -3026,7 +3026,7 @@ ScriptedImporter:
       frameIndex: 46
       additiveSortOrder: 0
       cellRect:
-        x: 4
+        x: 36
         y: 0
         width: 75
         height: 32
@@ -3035,7 +3035,7 @@ ScriptedImporter:
       frameIndex: 47
       additiveSortOrder: 0
       cellRect:
-        x: 5
+        x: 37
         y: 0
         width: 74
         height: 32
@@ -3044,7 +3044,7 @@ ScriptedImporter:
       frameIndex: 48
       additiveSortOrder: 0
       cellRect:
-        x: 5
+        x: 37
         y: 0
         width: 74
         height: 32
@@ -3053,7 +3053,7 @@ ScriptedImporter:
       frameIndex: 49
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 105
         height: 45
@@ -3062,7 +3062,7 @@ ScriptedImporter:
       frameIndex: 50
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 107
         height: 48
@@ -3071,7 +3071,7 @@ ScriptedImporter:
       frameIndex: 51
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 110
         height: 44
@@ -3080,7 +3080,7 @@ ScriptedImporter:
       frameIndex: 52
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 112
         height: 49
@@ -3089,7 +3089,7 @@ ScriptedImporter:
       frameIndex: 53
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 113
         height: 49
@@ -3098,7 +3098,7 @@ ScriptedImporter:
       frameIndex: 54
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 114
         height: 44
@@ -3107,7 +3107,7 @@ ScriptedImporter:
       frameIndex: 55
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 115
         height: 32
@@ -3116,7 +3116,7 @@ ScriptedImporter:
       frameIndex: 56
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 76
         height: 32
@@ -3125,7 +3125,7 @@ ScriptedImporter:
       frameIndex: 57
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 76
         height: 32
@@ -3134,7 +3134,7 @@ ScriptedImporter:
       frameIndex: 58
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 75
         height: 32
@@ -3143,7 +3143,7 @@ ScriptedImporter:
       frameIndex: 59
       additiveSortOrder: 0
       cellRect:
-        x: -42
+        x: -10
         y: 0
         width: 73
         height: 32
@@ -3152,7 +3152,7 @@ ScriptedImporter:
       frameIndex: 60
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 73
         height: 32
@@ -3161,7 +3161,7 @@ ScriptedImporter:
       frameIndex: 61
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 72
         height: 32
@@ -3170,7 +3170,7 @@ ScriptedImporter:
       frameIndex: 62
       additiveSortOrder: 0
       cellRect:
-        x: -45
+        x: -13
         y: 0
         width: 72
         height: 32
