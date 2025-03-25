@@ -9,6 +9,12 @@ public class PlayerCombat : MonoBehaviour
     public float hitDuration = 0.2f; // Thời gian đổi màu khi trúng đòn
     public float invincibleTime = 0.5f; // Khoảng thời gian không thể nhận damage sau khi bị đánh
     private bool isInvincible = false; // Tránh nhận damage liên tục
+    private int currentHealth;
+
+    private void Start()
+    {
+        currentHealth = playerData.maxHealth;
+    }
 
     public void OnAttackHit(float attackRange) // Nhận phạm vi từ Animation Event
     {
@@ -23,7 +29,7 @@ public class PlayerCombat : MonoBehaviour
         {
             Debug.Log($"💥 Trúng quái: {enemy.name}");
 
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
             if (enemyScript != null)
             {
                 enemyScript.TakeDamage(playerData.attackDamage);
@@ -35,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (isInvincible) return; // Nếu đang trong thời gian bất tử, bỏ qua
 
-        playerData.maxHealth -= damage; // Trừ máu
+        currentHealth -= damage; // Trừ máu
         Debug.Log($"💔 {gameObject.name} bị đánh, máu còn: {playerData.maxHealth}");
 
         StartCoroutine(BecomeInvincible());

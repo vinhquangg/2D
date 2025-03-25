@@ -132,11 +132,11 @@ GameObject:
   m_Component:
   - component: {fileID: 156267441}
   - component: {fileID: 156267440}
-  - component: {fileID: 156267438}
   - component: {fileID: 156267442}
   - component: {fileID: 156267443}
-  - component: {fileID: 156267445}
   - component: {fileID: 156267446}
+  - component: {fileID: 156267447}
+  - component: {fileID: 156267448}
   m_Layer: 7
   m_Name: Monster
   m_TagString: Untagged
@@ -144,22 +144,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &156267438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156267437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac6d01821ede9c44889765d5a07f704b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 156267440}
-  hitDuration: 0.2
-  floatingDamge: {fileID: 685590843}
-  monsterData: {fileID: 11400000, guid: 6b45843a60dfe3c4bbe4301f1ce330aa, type: 2}
 --- !u!212 &156267440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -284,7 +268,7 @@ Animator:
   m_GameObject: {fileID: 156267437}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 922868433087922225, guid: f3f292291afec824ab24a5565b1e8667, type: 3}
+  m_Controller: {fileID: 9100000, guid: c2a9f893d8a21e94e9009c6dbb43c35b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -295,19 +279,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &156267445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156267437}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8727e3d70e0b85d42a6eda86b7d7de31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterData: {fileID: 11400000, guid: 6b45843a60dfe3c4bbe4301f1ce330aa, type: 2}
 --- !u!114 &156267446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,12 +291,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d29047d74179b4a9223ad7ff686735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectRange: 1.5
-  chaseRange: 1
-  attackRange: 0.8
-  moveSpeed: 2
-  heal: 50
+  monsterData: {fileID: 11400000, guid: 6b45843a60dfe3c4bbe4301f1ce330aa, type: 2}
   player: {fileID: 596461732}
+  spriteRenderer: {fileID: 156267440}
+  hitDuration: 0.2
+  detectRange: 2
+  attackRange: 1.2
+  moveSpeed: 1
+  floatingDamage: {fileID: 685590843}
+--- !u!114 &156267447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156267437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8727e3d70e0b85d42a6eda86b7d7de31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 11400000, guid: 6b45843a60dfe3c4bbe4301f1ce330aa, type: 2}
+--- !u!50 &156267448
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156267437}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 4
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &516739298
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +538,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &596461731
 SpriteRenderer:
   m_ObjectHideFlags: 0

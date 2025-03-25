@@ -5,20 +5,20 @@ using UnityEngine;
 public class MonstersStateMachine : MonoBehaviour
 {
     public MonsterData monsterData;
-    public IMonsterState monterCurrentState { set; private get; }
-    public Rigidbody2D rbMonster { set; private get; }
-    public Animator animMonster { set; private get; }
+    public IMonsterState monterCurrentState { get; private set; }
+    public Animator animMonster {get; private set; }
+    public BaseEnemy enemy { get; private set; }
 
 
     void Awake()
     {
-        rbMonster = GetComponent<Rigidbody2D>();
         animMonster = GetComponent<Animator>();
+        enemy = GetComponent<BaseEnemy>();
     }
 
     void Start()
     {
-        //SwitchState(new IdleState(this));
+        SwitchState(new MonsterIdleState(this));
     }
 
     // Update is called once per frame

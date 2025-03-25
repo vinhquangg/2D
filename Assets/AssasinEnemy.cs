@@ -7,10 +7,12 @@ public class AssasinEnemy : BaseEnemy
     protected override void Start()
     {
         base.Start();
-        moveSpeed = 4f;
+        moveSpeed = 1f;
+        attackRange = 1.5f;
+        detectRange = 2.5f;
     }
     public override void Attack()
     {
-        Debug.Log("Attack");
+        stateMachine.SwitchState(new MonsterChaseState(stateMachine));
     }
 }

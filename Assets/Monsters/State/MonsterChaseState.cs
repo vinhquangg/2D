@@ -1,23 +1,31 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterChaseState : IMonsterState
 {
-    private BaseEnemy enemy;
+    private MonstersStateMachine enemy;
+    private float chaseSpeed;
 
-    public MonsterChaseState(BaseEnemy enemy)
+    public MonsterChaseState(MonstersStateMachine enemy)
     {
         this.enemy = enemy;
+        chaseSpeed = enemy.enemy.moveSpeed;
     }
 
     public void EnterState()
     {
+        enemy.animMonster.SetBool("isChase", true);
+        enemy.PlayAnimation("Chase");
+        enemy.enemy.rb.isKinematic = true;
         Debug.Log("Chasing");
     }
 
     public void ExitState()
     {
+        enemy.animMonster.SetBool("isChase", false);
+        enemy.enemy.rb.isKinematic = false;
+        enemy.enemy.rb.velocity = Vector2.zero;
         Debug.Log($" Enemy stop chase.");
     }
 
@@ -25,30 +33,53 @@ public class MonsterChaseState : IMonsterState
     {
 
     }
-       
+
     public void UpdateState()
     {
-        float distance = Vector2.Distance(enemy.transform.position, enemy.player.position);
+        float distance = Vector2.Distance(enemy.transform.position, enemy.enemy.player.position);
 
-        if(distance > enemy.detectRange)
+        if (distance > enemy.enemy.detectRange)
         {
-            Debug.Log("Can't find Player");
-            //enemy.SwitchState(new MonsterAttackState(enemy));
+            enemy.SwitchState(new MonsterIdleState(enemy));
         }
-        else if ( distance < enemy.detectRange)
+        else if (distance < enemy.enemy.attackRange) // Đổi thành attackRange
         {
             Debug.Log("Attack Player");
             //enemy.SwitchState(new MonsterAttackState(enemy));
         }
-        else
-        {
-            ChasePlayer();
-        }
+
+        ChasePlayer();
     }
 
     private void ChasePlayer()
     {
-        Vector2 direction = (enemy.player.position - enemy.transform.position).normalized;
-        enemy.transform.position += (Vector3)direction * enemy.moveSpeed * Time.deltaTime;
+        if (enemy.enemy.player == null) return;
+
+        FlipToPlayer();
+        Vector2 direction = (enemy.enemy.player.position - enemy.transform.position).normalized;
+
+        enemy.enemy.rb.MovePosition((Vector2)enemy.enemy.transform.position + direction * enemy.enemy.moveSpeed * Time.fixedDeltaTime);
     }
+
+
+    private void FlipToPlayer()
+    {
+        if (enemy.enemy.player == null) return;
+
+        Vector3 scale = enemy.enemy.transform.localScale;
+
+        if (enemy.enemy.player.position.x < enemy.enemy.transform.position.x)
+        {
+            scale.x = Mathf.Abs(scale.x) * -1; 
+        }
+
+        else
+        {
+            scale.x = Mathf.Abs(scale.x); 
+        }
+
+        enemy.enemy.transform.localScale = scale; 
+    }
+
+
 }

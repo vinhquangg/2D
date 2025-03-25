@@ -8,6 +8,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
 
+    public PlayerCombat playerCombat { get; private set; }
     public bool isAttackPressed { get; private set; }
     // Start is called before the first frame update
 
@@ -15,6 +16,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        playerCombat = GetComponent<PlayerCombat>();
     }
 
     void Start()
