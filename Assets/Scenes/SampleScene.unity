@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 156267442}
   - component: {fileID: 156267443}
   - component: {fileID: 156267445}
+  - component: {fileID: 156267446}
   m_Layer: 7
   m_Name: Monster
   m_TagString: Untagged
@@ -263,8 +264,8 @@ BoxCollider2D:
   m_Offset: {x: -0.000045888126, y: 0.09}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.20454544, y: 0.05}
-    oldSize: {x: 0.22, y: 0.2}
+    pivot: {x: 0.5208333, y: 0.05}
+    oldSize: {x: 0.24, y: 0.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -301,12 +302,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156267437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8727e3d70e0b85d42a6eda86b7d7de31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 11400000, guid: 6b45843a60dfe3c4bbe4301f1ce330aa, type: 2}
+--- !u!114 &156267446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156267437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d29047d74179b4a9223ad7ff686735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectRange: 1.5
+  chaseRange: 1
+  attackRange: 0.8
+  moveSpeed: 2
+  heal: 50
+  player: {fileID: 596461732}
 --- !u!1 &516739298
 GameObject:
   m_ObjectHideFlags: 0

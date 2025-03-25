@@ -1,11 +1,11 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MonstersStateMachine : MonoBehaviour
 {
     public MonsterData monsterData;
-    public IMonterState monterCurrentState { set; private get; }
+    public IMonsterState monterCurrentState { set; private get; }
     public Rigidbody2D rbMonster { set; private get; }
     public Animator animMonster { set; private get; }
 
@@ -22,7 +22,7 @@ public class MonstersStateMachine : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void SwitchState(IMonterState newState)
+    public void SwitchState(IMonsterState newState)
     {
         if (monterCurrentState != null && monterCurrentState.GetType() == newState.GetType())
             return;

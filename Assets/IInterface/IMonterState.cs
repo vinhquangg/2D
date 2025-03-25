@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMonterState 
+public interface IMonsterState 
 {
     void EnterState();
-    void HandleInput();
     void UpdateState();
     void PhysicsUpdate();
     void ExitState();
