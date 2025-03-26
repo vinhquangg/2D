@@ -3,12 +3,12 @@ using System.Collections;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public PlayerData playerData; // Chứa damage nhân vật
+    public PlayerData playerData;
     public LayerMask enemyLayers;
     public SpriteRenderer spriteRenderer;
-    public float hitDuration = 0.2f; // Thời gian đổi màu khi trúng đòn
-    public float invincibleTime = 0.5f; // Khoảng thời gian không thể nhận damage sau khi bị đánh
-    private bool isInvincible = false; // Tránh nhận damage liên tục
+    public float hitDuration = 0.2f;
+    public float invincibleTime = 0.5f;
+    private bool isInvincible = false;
     private int currentHealth;
 
     private void Start()
@@ -16,38 +16,36 @@ public class PlayerCombat : MonoBehaviour
         currentHealth = playerData.maxHealth;
     }
 
-    public void OnAttackHit(float attackRange) // Nhận phạm vi từ Animation Event
+    public void OnAttackHit(float attackRange)
     {
         Vector2 attackPosition = (Vector2)transform.position + new Vector2(transform.localScale.x * attackRange, 0);
+        AttackHit(attackPosition, attackRange);
+    }
 
+    public void AttackHit(Vector2 attackPosition, float attackRange)
+    {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPosition, attackRange, enemyLayers);
-
-        Debug.Log($"🗡 Tấn công tại {attackPosition}, phạm vi {attackRange}");
-        Debug.Log($"🔍 Số lượng quái trúng: {hitEnemies.Length}");
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log($"💥 Trúng quái: {enemy.name}");
-
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
             if (enemyScript != null)
             {
-                enemyScript.TakeDamage(playerData.attackDamage);
+                enemyScript.TakeDamage(playerData.attackDamage, transform.position);
             }
         }
     }
 
+
     public void TakeDamage(int damage)
     {
-        if (isInvincible) return; // Nếu đang trong thời gian bất tử, bỏ qua
+        if (isInvincible) return;
 
-        currentHealth -= damage; // Trừ máu
-        Debug.Log($"💔 {gameObject.name} bị đánh, máu còn: {playerData.maxHealth}");
-
+        currentHealth -= damage;
         StartCoroutine(BecomeInvincible());
         StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration));
 
-        CheckHealth(); // Kiểm tra máu để xử lý nếu chết
+        CheckHealth();
     }
 
     private IEnumerator BecomeInvincible()
@@ -66,15 +64,11 @@ public class PlayerCombat : MonoBehaviour
             yield return new WaitForSeconds(duration);
             spriteRenderer.color = originalColor;
         }
-        else
-        {
-            Debug.LogError("❌ Không tìm thấy SpriteRenderer để đổi màu!");
-        }
     }
 
     private void CheckHealth()
     {
-        if (playerData.maxHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -82,8 +76,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log($"☠️ {gameObject.name} đã chết!");
-        // Gọi animation chết hoặc xử lý respawn ở đây
         gameObject.SetActive(false);
     }
+
 }
