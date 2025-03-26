@@ -21,9 +21,9 @@ public class AttackState : IPlayerState
     {
         playerState.anim.speed = 1.6f;
         playerState.anim.enabled = true;
+        playerState.rb.velocity = Vector2.zero;
         attackCount = 0;
         isComboActive = false;
-        playerState.rb.velocity = Vector2.zero;
         playerState.rb.isKinematic = true;
 
         PlayNextAttack();
@@ -101,7 +101,7 @@ public class AttackState : IPlayerState
         playerState.anim.SetInteger("AttackIndex", attackIndex);
         playerState.anim.Play(attackAnimations[attackIndex], 0);
 
-        Vector2 attackPosition = (Vector2)playerState.transform.position + new Vector2(playerState.transform.localScale.x * 1.2f, 0);
-        playerCombat.AttackHit(attackPosition, 1.2f);
+        //Vector2 attackPosition = (Vector2)playerState.transform.position + new Vector2(playerState.transform.localScale.x * 1.2f, 0);
+        //playerCombat.AttackHit(attackPosition, 1.2f);
     }
 }

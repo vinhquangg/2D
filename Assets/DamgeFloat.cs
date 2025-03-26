@@ -8,7 +8,7 @@ public class DamageFloat : MonoBehaviour
     private float duration = 1f; // Thời gian tồn tại của text
     private Color[] colors = new Color[]
     {
-        Color.red, Color.green, Color.blue, Color.yellow, Color.cyan, Color.magenta, Color.white
+        Color.red, Color.magenta, Color.white
     };
 
     private Vector3 originalPosition;

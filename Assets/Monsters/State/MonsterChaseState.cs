@@ -17,15 +17,13 @@ public class MonsterChaseState : IMonsterState
     {
         enemy.animMonster.SetBool("isChase", true);
         enemy.PlayAnimation("Chase");
-        enemy.enemy.rb.isKinematic = true;
         Debug.Log("Chasing");
     }
 
     public void ExitState()
     {
         enemy.animMonster.SetBool("isChase", false);
-        enemy.enemy.rb.isKinematic = false;
-        enemy.enemy.rb.velocity = Vector2.zero;
+        //enemy.enemy.rb.velocity = Vector2.zero;
         Debug.Log($" Enemy stop chase.");
     }
 
