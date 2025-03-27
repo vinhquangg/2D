@@ -44,8 +44,8 @@ public class MonsterChaseState : IMonsterState
         }
         else if (distance < enemy.enemy.attackRange)
         {
-            Debug.Log("Attack Player");
-            //enemy.SwitchState(new MonsterAttackState(enemy));
+            //Debug.Log("Attack Player");
+            enemy.SwitchState(new MonsterAttackState(enemy));
         }
 
         ChasePlayer();
