@@ -10,12 +10,12 @@ public abstract class BaseEnemy : MonoBehaviour
     public Transform player;
     public Transform textPoint;
     public SpriteRenderer spriteRenderer;
-    private Color originalColor;
+    public Color originalColor { get; private set; }
     public float hitDuration = 0.2f;
     public float detectRange = 20f;
     public float attackRange = 10f;
     public float moveSpeed = 2f;
-    private int currentHealth;
+    public int currentHealth { get; private set; }
     public GameObject floatingDamage;
     public float knockbackForce = 5f;
     public bool isKnockback = false;

@@ -184,7 +184,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -765591976369390875, guid: f3f292291afec824ab24a5565b1e8667, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 291884388}
   - component: {fileID: 291884390}
   - component: {fileID: 291884389}
+  - component: {fileID: 291884391}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -1740,6 +1741,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &291884391
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291884387}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &409448270
 GameObject:
   m_ObjectHideFlags: 0
@@ -7880,6 +7917,7 @@ GameObject:
   - component: {fileID: 596461735}
   - component: {fileID: 596461737}
   - component: {fileID: 596461736}
+  - component: {fileID: 596461738}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8091,6 +8129,19 @@ MonoBehaviour:
   spriteRenderer: {fileID: 596461731}
   hitDuration: 0.2
   invincibleTime: 0.5
+--- !u!114 &596461738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596461728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1277961af9f1e1445aab23e6cf9e13b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blastWavePrefab: {fileID: 2833538996015863414, guid: f1538ee152127464eae4ef9de7c86e9a, type: 3}
 --- !u!1 &910455985
 GameObject:
   m_ObjectHideFlags: 0

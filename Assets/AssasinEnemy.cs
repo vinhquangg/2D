@@ -10,6 +10,6 @@ public class AssasinEnemy : BaseEnemy
     }
     public override void Attack()
     {
-        stateMachine.SwitchState(new MonsterChaseState(stateMachine));
+        stateMachine.SwitchState(new MonsterAttackState(stateMachine));
     }
 }
