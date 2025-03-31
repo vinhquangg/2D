@@ -16,6 +16,4 @@ public class MonsterData : ScriptableObject
     public int attackDamageToPlayer = 10;
     public float attackRange = 0.5f;
     public float attackMonsterRange = 0.5f;
-
-
 }

@@ -18,40 +18,18 @@ public class MonstersStateMachine : MonoBehaviour
         rbMonter = GetComponent<Rigidbody2D>();
         animMonster = GetComponent<Animator>();
         enemy = GetComponent<BaseEnemy>();
-
-        //states = new Dictionary<string, IMonsterState>();
-
-        //if (enemy.enemyType == EnemyType.Melee)
-        //{
-        //    states["Idle"] = new MonsterIdleState(this);
-        //    states["Chase"] = new MonsterChaseState(this);
-        //    states["Attack"] = new MeleeAttackState(this);
-        //}
-        //else if (enemy.enemyType == EnemyType.Ranged)
-        //{
-        //    states["Idle"] = new MonsterIdleState(this);
-        //    states["Chase"] = new MonsterChaseState(this);
-        //    states["Attack"] = new RangedAttackState(this);
-        //}
-        //else if (enemy.enemyType == EnemyType.Assassin)
-        //{
-        //    states["Idle"] = new MonsterIdleState(this);
-        //    states["Chase"] = new MonsterChaseState(this);
-        //    states["Attack"] = new AssassinAttackState(this);
-        //}
-
-        //currentState = states["Idle"];
-        //currentState.EnterState();
-
-
     }
 
     void Start()
     {
+        //switch (enemy.enemyType)
+        //{
+        //    case EnemyType.Assassin:
+        //        SwitchState(new Mon)
+        //}
+
         SwitchState(new MonsterIdleState(this));
     }
-
-    // Update is called once per frame
     public void SwitchState(IMonsterState newState)
     {
         if (monsterCurrentState != null && monsterCurrentState.GetType() == newState.GetType())
@@ -68,9 +46,6 @@ public class MonstersStateMachine : MonoBehaviour
 
     void Update()
     {
-        //isAttackPressed = PlayerInputHandler.instance.playerAction.Attack.WasPressedThisFrame();
-        //TryAttack();
-
         if (monsterCurrentState != null)
         {
             monsterCurrentState.UpdateState();
@@ -94,19 +69,4 @@ public class MonstersStateMachine : MonoBehaviour
         }
     }
 
-    //public void TryAttack()
-    //{
-    //    if (isAttackPressed)
-    //    {
-    //        //if (currentState is AttackState attackState)
-    //        //{
-    //        //    attackState.PlayNextAttack();
-    //        //}
-    //        //else
-    //        //{
-    //        //    SwitchState(new AttackState(this));
-    //        //}
-    //        SwitchState(new AttackState(this));
-    //    }
-    //}
 }

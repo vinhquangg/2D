@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 57396038}
   - component: {fileID: 57396037}
   - component: {fileID: 57396036}
-  - component: {fileID: 57396035}
   m_Layer: 7
   m_Name: Monster (1)
   m_TagString: Untagged
@@ -146,30 +145,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &57396035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57396034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5998175e0d1e0a46a4a9c1dc7441c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterData: {fileID: 11400000, guid: 6b45843a60dfe3c4bbe4301f1ce330aa, type: 2}
-  player: {fileID: 596461732}
-  textPoint: {fileID: 853021330}
-  spriteRenderer: {fileID: 57396042}
-  enemyType: 1
-  hitDuration: 0.2
-  detectRange: 10
-  attackRange: 10
-  moveSpeed: 1
-  floatingDamage: {fileID: 5864257040299190316, guid: 0d822561e54228b44b6d5f3e26b9b4b1, type: 3}
-  knockbackForce: 5
-  isKnockback: 0
 --- !u!114 &57396036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,9 +177,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 57396042}
   enemyType: 2
   hitDuration: 0.2
-  detectRange: 3
-  attackRange: 1
-  moveSpeed: 2.5
+  detectRange: 6
+  attackRange: 4
+  moveSpeed: 1.5
   floatingDamage: {fileID: 5864257040299190316, guid: 0d822561e54228b44b6d5f3e26b9b4b1, type: 3}
   knockbackForce: 2
   isKnockback: 0
