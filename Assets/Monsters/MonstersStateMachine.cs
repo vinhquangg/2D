@@ -1,19 +1,49 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.VersionControl.Asset;
 
 public class MonstersStateMachine : MonoBehaviour
 {
+    public IMonsterState monsterCurrentState { get; private set; }
+
     public MonsterData monsterData;
-    public IMonsterState monterCurrentState { get; private set; }
     public Animator animMonster {get; private set; }
+    public Rigidbody2D rbMonter { get; private set; }
     public BaseEnemy enemy { get; private set; }
 
 
     void Awake()
     {
+        rbMonter = GetComponent<Rigidbody2D>();
         animMonster = GetComponent<Animator>();
         enemy = GetComponent<BaseEnemy>();
+
+        //states = new Dictionary<string, IMonsterState>();
+
+        //if (enemy.enemyType == EnemyType.Melee)
+        //{
+        //    states["Idle"] = new MonsterIdleState(this);
+        //    states["Chase"] = new MonsterChaseState(this);
+        //    states["Attack"] = new MeleeAttackState(this);
+        //}
+        //else if (enemy.enemyType == EnemyType.Ranged)
+        //{
+        //    states["Idle"] = new MonsterIdleState(this);
+        //    states["Chase"] = new MonsterChaseState(this);
+        //    states["Attack"] = new RangedAttackState(this);
+        //}
+        //else if (enemy.enemyType == EnemyType.Assassin)
+        //{
+        //    states["Idle"] = new MonsterIdleState(this);
+        //    states["Chase"] = new MonsterChaseState(this);
+        //    states["Attack"] = new AssassinAttackState(this);
+        //}
+
+        //currentState = states["Idle"];
+        //currentState.EnterState();
+
+
     }
 
     void Start()
@@ -24,16 +54,16 @@ public class MonstersStateMachine : MonoBehaviour
     // Update is called once per frame
     public void SwitchState(IMonsterState newState)
     {
-        if (monterCurrentState != null && monterCurrentState.GetType() == newState.GetType())
+        if (monsterCurrentState != null && monsterCurrentState.GetType() == newState.GetType())
             return;
 
-        if (monterCurrentState != null)
+        if (monsterCurrentState != null)
         {
-            monterCurrentState.ExitState();
+            monsterCurrentState.ExitState();
         }
 
-        monterCurrentState = newState;
-        monterCurrentState.EnterState();
+        monsterCurrentState = newState;
+        monsterCurrentState.EnterState();
     }
 
     void Update()
@@ -41,15 +71,15 @@ public class MonstersStateMachine : MonoBehaviour
         //isAttackPressed = PlayerInputHandler.instance.playerAction.Attack.WasPressedThisFrame();
         //TryAttack();
 
-        if (monterCurrentState != null)
+        if (monsterCurrentState != null)
         {
-            monterCurrentState.UpdateState();
+            monsterCurrentState.UpdateState();
         }
     }
 
     void FixedUpdate()
     {
-        monterCurrentState?.PhysicsUpdate();
+        monsterCurrentState?.PhysicsUpdate();
     }
 
     public void PlayAnimation(string animName)

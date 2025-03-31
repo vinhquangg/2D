@@ -90,12 +90,10 @@ public class AttackState : IPlayerState
         int attackIndex = attackCount % 2;
         if (attackCount < 5)
         {
-            // Nếu dưới 5 lần, dùng thứ tự bình thường
             attackIndex = attackCount % 2;
         }
         else
         {
-            // Nếu từ 5 lần trở lên, random giữa 0 và 1
             attackIndex = Random.Range(0, 2);
         }
         playerState.anim.SetInteger("AttackIndex", attackIndex);

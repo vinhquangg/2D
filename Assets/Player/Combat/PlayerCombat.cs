@@ -7,7 +7,7 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayers;
     public SpriteRenderer spriteRenderer;
     public float hitDuration = 0.2f;
-    public float invincibleTime = 0.5f;
+    public float invincibleTime = 0.25f;
     private bool isInvincible = false;
     private int currentHealth;
 

@@ -34,7 +34,7 @@ public class MonsterChaseState : IMonsterState
 
     public void UpdateState()
     {
-        if (enemy.enemy.isKnockback) return; // Không di chuyển nếu đang knockback
+        if (enemy.enemy.isKnockback) return;
 
         float distance = Vector2.Distance(enemy.transform.position, enemy.enemy.player.position);
 
@@ -44,7 +44,6 @@ public class MonsterChaseState : IMonsterState
         }
         else if (distance < enemy.enemy.attackRange)
         {
-            //Debug.Log("Attack Player");
             enemy.SwitchState(new MonsterAttackState(enemy));
         }
 
@@ -53,7 +52,7 @@ public class MonsterChaseState : IMonsterState
 
     private void ChasePlayer()
     {
-        if (enemy.enemy.player == null || enemy.enemy.isKnockback) return; // Không đuổi nếu bị knockback
+        if (enemy.enemy.player == null || enemy.enemy.isKnockback) return;
 
         FlipToPlayer();
         Vector2 direction = (enemy.enemy.player.position - enemy.transform.position).normalized;
