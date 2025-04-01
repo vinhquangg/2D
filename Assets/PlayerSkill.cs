@@ -2,18 +2,27 @@
 
 public class PlayerSkill : MonoBehaviour
 {
-    public GameObject blastWavePrefab; // Prefab của sóng xung kích
+    public GameObject blastWavePrefab; 
+    private float delayBeforeNextCast = 1f;
+    private bool nextCastTime = true;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && nextCastTime)
         {
-            CastBlastWave();
+            CastBlastWave(); 
         }
     }
 
     void CastBlastWave()
     {
+        nextCastTime = false; 
+        Invoke(nameof(EnableSkill), delayBeforeNextCast); 
         Instantiate(blastWavePrefab, transform.position, Quaternion.identity);
+    }
+
+    void EnableSkill()
+    {
+        nextCastTime = true; 
     }
 }

@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +95,931 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Mage__0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 336
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed57e8082bf917942a14e7ae2b018552
+      internalID: 2074306748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__1
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 336
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98dc342dd825b574c8dac6cc0158786f
+      internalID: -107098092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__2
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 336
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2316d24caeb04714292c89e0f1dd26f4
+      internalID: 1740323541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__3
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 336
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 924476f95f1de1c43a9e6d9cbbb39442
+      internalID: 1728387420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__4
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 336
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88123542e8f90724c87b7bdaf7ae8486
+      internalID: 192961093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__5
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 336
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d41a7e5e10e83644b07d48fcbc5b513
+      internalID: -1402677443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__6
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 336
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3884ae1e07a68b4980a8f81400285d6
+      internalID: 942947872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__7
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 272
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3328905a4f820f499682141dbb18d9a
+      internalID: -488872395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__8
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 272
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd7b5f47f7f82a8439181a7fdc4cfbda
+      internalID: 575010073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__9
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 272
+        width: 25
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f02112d601b0b014090d8aa61317e8e6
+      internalID: -1852729526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__10
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 272
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 712b235f6ae4913489e88d785424e41b
+      internalID: -1491869384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__11
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 272
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55d5708d2051ebb49b684b2c4ef1e14a
+      internalID: -934219310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__12
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 272
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddc4cc3ff79f4164fa51793370364820
+      internalID: -1763653718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__13
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 208
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1068ee5548c15da4c912366b1b5c01de
+      internalID: -411990428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__14
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 208
+        width: 23
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e360a90c8818c4eb2bf97fd1c0311a
+      internalID: 566670791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__15
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 208
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ed607552d995de4cace19026c86924d
+      internalID: -139762008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__16
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 208
+        width: 28
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b6a42e767058e546b1abefd2d9921b0
+      internalID: -1260436197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__17
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 208
+        width: 28
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e245bcb9a33f4c47b74805327e55382
+      internalID: -1199178254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__18
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 208
+        width: 29
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63db02b8b2d614e4295626a9d2f3da91
+      internalID: -1066264822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__19
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 214
+        width: 73
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c3bc88b7c69ba44a9903f12b6ac4ad
+      internalID: -1983527674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__20
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 208
+        width: 53
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b15b82fe699424c9084c42f9f32abb
+      internalID: 172753833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__21
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 208
+        width: 94
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb71d9723ed92d499e752d03f7ea973
+      internalID: -14493209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__22
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 208
+        width: 104
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c0b9d15b5957a4992c61cfffe180b0
+      internalID: -217421681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__23
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 144
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebb63400c62e85d4a9e12442bf27c909
+      internalID: -1117482493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__24
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 144
+        width: 22
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ac862f2228c5e44be3f2f6bd614d4a
+      internalID: -1270897489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__25
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 144
+        width: 18
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889c2f2cb162e3343af61dc8810b7f2e
+      internalID: 1277609468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__26
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 144
+        width: 19
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64fab8f1da64d0d4ca033509977630de
+      internalID: 732605462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__27
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 144
+        width: 24
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7142003e62f16344b8f3715f79a93a9c
+      internalID: 47068973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__28
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 144
+        width: 24
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: facae7f57ab2c7f47a6b09fe3df846be
+      internalID: -242390428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__29
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 144
+        width: 24
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa8cd8a2c2a37b34ea4239dd40215b9e
+      internalID: -1929858355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__30
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 144
+        width: 23
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 528a80b00806ed74fa692be9e3aa8cba
+      internalID: 352932708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__31
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 144
+        width: 22
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f502fc53439c5e47b5795d57cbef9b8
+      internalID: -59848793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__32
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 144
+        width: 22
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6632ea5fc7ea5d44a224d32e4e80de9
+      internalID: -667184413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__33
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 80
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29d61d5fa980f3740bdbcb55c740a6be
+      internalID: 2018496764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__34
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 16
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cc5970c9240b724f9cbf16b7cf13e3c
+      internalID: -466477680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__35
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 16
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51ccaae99b76ac94aaf47e36aa5fc7ee
+      internalID: -750137200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__36
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 16
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d84a29f13a073a4d897104f99bb98e1
+      internalID: 1270333397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__37
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 17
+        width: 8
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c78184d99e4b7ee4c8c887f4ad9619b2
+      internalID: -1871249965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__38
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 16
+        width: 20
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bbe20aef89393e4bbac5c72181b7a69
+      internalID: 1035463311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__39
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 16
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8faab74dabfa0a4a8b8c675145bc444
+      internalID: -1183656428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__40
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 20
+        width: 5
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e6d96d6c22d1d342a916ba7836f2338
+      internalID: -2089356339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__41
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 16
+        width: 24
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07bc02a16551d3949a2928a6c125f9d7
+      internalID: 1778805703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__42
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 16
+        width: 25
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3025ad0c4f39154b8e90e2a580ecc82
+      internalID: -1321368803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mage__43
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 16
+        width: 25
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d028273541b554984c8674cc27e854
+      internalID: -1615440752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +1030,51 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mage__0: 2074306748
+      Mage__1: -107098092
+      Mage__10: -1491869384
+      Mage__11: -934219310
+      Mage__12: -1763653718
+      Mage__13: -411990428
+      Mage__14: 566670791
+      Mage__15: -139762008
+      Mage__16: -1260436197
+      Mage__17: -1199178254
+      Mage__18: -1066264822
+      Mage__19: -1983527674
+      Mage__2: 1740323541
+      Mage__20: 172753833
+      Mage__21: -14493209
+      Mage__22: -217421681
+      Mage__23: -1117482493
+      Mage__24: -1270897489
+      Mage__25: 1277609468
+      Mage__26: 732605462
+      Mage__27: 47068973
+      Mage__28: -242390428
+      Mage__29: -1929858355
+      Mage__3: 1728387420
+      Mage__30: 352932708
+      Mage__31: -59848793
+      Mage__32: -667184413
+      Mage__33: 2018496764
+      Mage__34: -466477680
+      Mage__35: -750137200
+      Mage__36: 1270333397
+      Mage__37: -1871249965
+      Mage__38: 1035463311
+      Mage__39: -1183656428
+      Mage__4: 192961093
+      Mage__40: -2089356339
+      Mage__41: 1778805703
+      Mage__42: -1321368803
+      Mage__43: -1615440752
+      Mage__5: -1402677443
+      Mage__6: 942947872
+      Mage__7: -488872395
+      Mage__8: 575010073
+      Mage__9: -1852729526
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

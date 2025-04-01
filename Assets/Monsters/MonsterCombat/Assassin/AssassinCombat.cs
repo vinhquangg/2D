@@ -35,19 +35,16 @@ public class AssassinCombat : MonsterCombat
         if (isAttacking || !playerInRange) return;
 
         isAttacking = true;
-        Debug.Log("Assassin bắt đầu tấn công!");
         monsterState.SwitchState(new MonsterAttackState(monsterState));
     }
 
     public override void StopAttack()
     {
         isAttacking = false;
-        Debug.Log("Assassin dừng tấn công!");
     }
 
     protected override void Die()
     {
-        Debug.Log("Assassin đã chết!");
         base.Die();
     }
     public void PerformAttack()

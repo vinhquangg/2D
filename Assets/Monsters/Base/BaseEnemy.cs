@@ -22,14 +22,16 @@ public abstract class BaseEnemy : MonoBehaviour
     public GameObject floatingDamage;
     public float knockbackForce = 5f;
     public bool isKnockback = false;
-
+    public MonsterSideHealthBar healthBar;
     protected virtual void Start()
     {
         monsterState = GetComponent<MonstersStateMachine>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        healthBar= GetComponentInChildren<MonsterSideHealthBar>();
         currentHealth = monsterData.maxHealth;
+        healthBar.UpdateHealBar(currentHealth, monsterData.maxHealth);
         currentDamage = monsterData.attackDamageToPlayer;
         currentAttackMonsterRange = monsterData.attackMonsterRange;
 
@@ -37,32 +39,7 @@ public abstract class BaseEnemy : MonoBehaviour
         {
             originalColor = spriteRenderer.color;
         }
-        //if (spriteRenderer == null)
-        //{
-        //    if (spriteRenderer == null)
-        //    {
-        //        Debug.LogError($"❌ {name} không có SpriteRenderer! Hãy kiểm tra trong Inspector.");
-        //    }
-        //}
 
-        //if (stateMachine == null)
-        //{
-        //    Debug.LogError($"❌ {name} không có MonstersStateMachine! Hãy gán đúng component.");
-        //}
-
-        //if (monsterData == null)
-        //{
-        //    Debug.LogError($"❌ {name} không có MonsterData! Hãy kiểm tra prefab.");
-        //}
-
-        //if (player == null)
-        //{
-        //    player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        //    if (player == null)
-        //    {
-        //        Debug.LogError($"❌ Không tìm thấy Player! Hãy chắc chắn có đối tượng Player trong scene.");
-        //    }
-        //}
     }
 
 
@@ -76,6 +53,7 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         currentHealth -= damage;
         Debug.Log($"{name} bị đánh, máu còn: {currentHealth}");
+        healthBar.UpdateHealBar(currentHealth, monsterData.maxHealth);
 
         StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration, damage));
 
@@ -87,7 +65,10 @@ public abstract class BaseEnemy : MonoBehaviour
         }
         else
         {
-            monsterState.SwitchState(new MonsterHurtState(monsterState));
+            if (monsterState.monsterCurrentState is MonsterAttackState || monsterState.monsterCurrentState is MonsterChaseState || monsterState.monsterCurrentState is MonsterIdleState)
+            {
+                monsterState.SwitchState(new MonsterHurtState(monsterState));
+            }
         }
     }
 

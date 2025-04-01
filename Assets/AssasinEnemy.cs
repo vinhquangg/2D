@@ -18,7 +18,7 @@ public class AssasinEnemy : BaseEnemy
 
     public override void TakeDamage(int damage, Vector2 attackerPosition)
     {
-        StartCoroutine(ChangeColorTemporarily(Color.blue, hitDuration, damage));
+        base.TakeDamage(damage, attackerPosition);
     }
 
     public override IEnumerator Knockback(Vector2 attackerPosition, float knockbackForce)

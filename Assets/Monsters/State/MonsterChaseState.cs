@@ -23,13 +23,12 @@ public class MonsterChaseState : IMonsterState
     public void ExitState()
     {
         enemy.animMonster.SetBool("isChase", false);
-        //enemy.enemy.rb.velocity = Vector2.zero;
         Debug.Log($" Enemy stop chase.");
     }
 
     public void PhysicsUpdate()
     {
-
+        
     }
 
     public void UpdateState()
