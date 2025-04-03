@@ -18,8 +18,8 @@ public class MonsterDeadState : IMonsterState
         {
             enemy.animMonster.SetBool("isDead", true);
             enemy.PlayAnimation("Dead");
-            //hasMonsterDeadAnimation = true;
-            //enemy.animMonster.SetBool("isDead", false);
+            hasMonsterDeadAnimation = true;
+            enemy.animMonster.SetBool("isDead", false);
         }
         
     }

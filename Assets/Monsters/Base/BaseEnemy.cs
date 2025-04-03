@@ -88,7 +88,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //monsterState.SwitchState(new MonsterDeadState(monsterState));
+            monsterState.SwitchState(new MonsterDeadState(monsterState));
             Destroy(gameObject, 0.5f);
         }
         else
