@@ -55,11 +55,6 @@ public class AssassinCombat : MonsterCombat
 
             AttackHit(attackPosition, baseEnemy.currentAttackMonsterRange);
         }
-        //if (playerInRange && playerCombat != null)
-        //{
-        //    playerCombat.TakeDamage(baseEnemy.currentDamage); 
-        //    Debug.Log("Assassin gây sát thương lên Player!");
-        //}
     }
 
 }

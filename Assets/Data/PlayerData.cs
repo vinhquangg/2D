@@ -8,6 +8,7 @@ public class PlayerData : ScriptableObject
     public float dashSpeed = 10f;
     public float dashDuration = 0.3f;
     public float attackCooldown = 0.25f;
+    public float energyPerHit = 2f;
     [Space(10)]
 
     [Header("Attack Settings")]

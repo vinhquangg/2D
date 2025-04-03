@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.VersionControl.Asset;
@@ -8,7 +8,7 @@ public class MonstersStateMachine : MonoBehaviour
     public IMonsterState monsterCurrentState { get; private set; }
 
     public MonsterData monsterData;
-    public Animator animMonster {get; private set; }
+    public Animator animMonster { get; private set; }
     public Rigidbody2D rbMonter { get; private set; }
     public BaseEnemy enemy { get; private set; }
 

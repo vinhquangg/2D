@@ -2,15 +2,20 @@
 
 public class PlayerSkill : MonoBehaviour
 {
-    public GameObject skillImage;  // Tham chiếu tới đối tượng Skill Image chứa Animator
-    public GameObject blastWavePrefab;  // Prefab của kỹ năng
-    private Animator skillAnimator;  // Animator của Skill Image
+
+    public GameObject skillImage;  
+    public GameObject blastWavePrefab;  
+    public float skillEnergyCost=10f;
+    private Animator skillAnimator;  
+    private PlayerEnergy playerEnergy; 
+
     private float delayBeforeNextCast = 1f;
     private bool nextCastTime = true;
 
     private void Awake()
     {
         skillAnimator = skillImage.GetComponent<Animator>();
+        playerEnergy = GetComponent<PlayerEnergy>();
     }
 
     void Start()
@@ -30,16 +35,22 @@ public class PlayerSkill : MonoBehaviour
 
     void ActivateSkill()
     {
-        nextCastTime = false;
-
-        if (skillAnimator != null)
+        if (playerEnergy.HasEnoughEnergy(skillEnergyCost))
         {
-            skillAnimator.SetTrigger("PlayPopup");
+            nextCastTime = false;
+
+            if (skillAnimator != null)
+            {
+                skillAnimator.SetTrigger("PlayPopup");
+            }
+
+            Instantiate(blastWavePrefab, transform.position, Quaternion.identity);
+
+            Invoke(nameof(EnableSkill), delayBeforeNextCast);
+            playerEnergy.UseEnergy(skillEnergyCost);
+            playerEnergy.UpdateEnergySlider();
         }
 
-        Instantiate(blastWavePrefab, transform.position, Quaternion.identity);
-
-        Invoke(nameof(EnableSkill), delayBeforeNextCast);
     }
 
     void EnableSkill()

@@ -41,13 +41,16 @@ public class BlastWave : MonoBehaviour
             Transform target = selectedEnemies[index];
 
 
-            BaseEnemy enemyScript = target.GetComponent<BaseEnemy>();
-            if (enemyScript != null && enemyScript.currentHealth > 0) 
+            if(target !=null)
             {
-                Instantiate(lightningPrefab, target.position, Quaternion.identity);
+                BaseEnemy enemyScript = target.GetComponent<BaseEnemy>();
+                if (enemyScript != null && !enemyScript.isDead && enemyScript.currentHealth > 0)
+                {
+                    Instantiate(lightningPrefab, target.position, Quaternion.identity);
+                }
             }
-
-            selectedEnemies.RemoveAt(index); 
+            selectedEnemies.RemoveAt(index);
+            
         }
     }
 

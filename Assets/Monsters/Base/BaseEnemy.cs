@@ -5,11 +5,15 @@ public abstract class BaseEnemy : MonoBehaviour
 {
     protected MonstersStateMachine monsterState;
     protected Animator anim;
-    public MonsterData monsterData;
+    //public MonsterData monsterData;
     public Rigidbody2D rb { get; private set; } 
     public Transform player;
     public Transform textPoint;
     public SpriteRenderer spriteRenderer;
+    public GameObject floatingDamage;
+    public MonsterSideHealthBar healthBar;
+    public GameObject pointA;
+    public GameObject pointB;
     public EnemyType enemyType;
     public Color originalColor { get; private set; }
     public float hitDuration ;
@@ -19,10 +23,11 @@ public abstract class BaseEnemy : MonoBehaviour
     public int currentDamage { get; set; }
     public float currentAttackMonsterRange { get; set; }
     public int currentHealth { get;  set; }
-    public GameObject floatingDamage;
     public float knockbackForce = 5f;
+    public float patrolSpeed = 1f;
     public bool isKnockback = false;
-    public MonsterSideHealthBar healthBar;
+    public bool isDead = false;
+    public Transform currentPoint { get; set; }
     protected virtual void Start()
     {
         monsterState = GetComponent<MonstersStateMachine>();
@@ -30,10 +35,11 @@ public abstract class BaseEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         healthBar= GetComponentInChildren<MonsterSideHealthBar>();
-        currentHealth = monsterData.maxHealth;
-        healthBar.UpdateHealBar(currentHealth, monsterData.maxHealth);
-        currentDamage = monsterData.attackDamageToPlayer;
-        currentAttackMonsterRange = monsterData.attackMonsterRange;
+        currentPoint = pointA.transform;
+        currentHealth = monsterState.monsterData.maxHealth;
+        healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+        currentDamage = monsterState.monsterData.attackDamageToPlayer;
+        currentAttackMonsterRange = monsterState.monsterData.attackMonsterRange;
 
         if (spriteRenderer != null)
         {
@@ -49,11 +55,32 @@ public abstract class BaseEnemy : MonoBehaviour
         return Vector2.Distance(transform.position, player.position) < detectRange;
     }
 
+    public virtual void Flip(Transform targetPoint)
+    {
+        if (targetPoint == null) return;
+
+        Vector3 scale = transform.localScale;
+
+        if (targetPoint.position.x < transform.position.x)
+        {
+            scale.x = Mathf.Abs(scale.x) * -1; // Quay mặt qua trái
+        }
+        else
+        {
+            scale.x = Mathf.Abs(scale.x); // Quay mặt qua phải
+        }
+
+        transform.localScale = scale;
+    }
+
+
+
     public virtual void TakeDamage(int damage, Vector2 attackerPosition)
     {
+        if (isDead) return;
+
         currentHealth -= damage;
-        Debug.Log($"{name} bị đánh, máu còn: {currentHealth}");
-        healthBar.UpdateHealBar(currentHealth, monsterData.maxHealth);
+        healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
 
         StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration, damage));
 
@@ -61,11 +88,15 @@ public abstract class BaseEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            //monsterState.SwitchState(new MonsterDeadState(monsterState));
+            Destroy(gameObject, 0.5f);
         }
         else
         {
-            if (monsterState.monsterCurrentState is MonsterAttackState || monsterState.monsterCurrentState is MonsterChaseState || monsterState.monsterCurrentState is MonsterIdleState)
+            if (monsterState.monsterCurrentState is MonsterAttackState || 
+                monsterState.monsterCurrentState is MonsterChaseState || 
+                monsterState.monsterCurrentState is MonsterIdleState||
+                monsterState.monsterCurrentState is MonsterPatrolState)
             {
                 monsterState.SwitchState(new MonsterHurtState(monsterState));
             }
@@ -99,17 +130,4 @@ public abstract class BaseEnemy : MonoBehaviour
             floatingText.GetComponent<DamageFloat>().DestroyAfter(1.5f);
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        PlayerCombat player = other.GetComponent<PlayerCombat>();
-    //        if (player != null)
-    //        {
-
-    //            player.TakeDamage(monsterData.attackDamageToPlayer);
-    //        }
-    //    }
-    //}
 }

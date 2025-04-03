@@ -17,6 +17,7 @@ MonoBehaviour:
   dashSpeed: 10
   dashDuration: 0.3
   attackCooldown: 0.25
+  energyPerHit: 0.1
   attackDamage: 10
   attackRange: 0.5
   comboResetTime: 0.5

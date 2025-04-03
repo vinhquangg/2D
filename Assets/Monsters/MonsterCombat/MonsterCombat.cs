@@ -21,18 +21,41 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    //protected void AttackHit(Vector2 attackPosition, float attackRange)
+    //{
+    //    Collider2D[] hitTargets = Physics2D.OverlapCircleAll(attackPosition, attackRange);
+    //    Debug.Log("Tìm thấy " + hitTargets.Length + " đối tượng trong phạm vi tấn công.");
+
+    //    foreach (Collider2D target in hitTargets)
+    //    {
+    //        Debug.Log("Tìm thấy đối tượng: " + target.name);
+
+    //        if (target.CompareTag(playerTag))
+    //        {
+    //            Debug.Log("Đã phát hiện Player!");
+
+    //            PlayerCombat playerCombat = target.GetComponent<PlayerCombat>();
+    //            if (playerCombat != null)
+    //            {
+    //                playerCombat.TakeDamage(baseEnemy.currentDamage);
+    //            }
+    //        }
+    //    }
+    //}
+
+
     protected void AttackHit(Vector2 attackPosition, float attackRange)
     {
+        // Kiểm tra tất cả các đối tượng trong phạm vi va chạm
         Collider2D[] hitTargets = Physics2D.OverlapCircleAll(attackPosition, attackRange);
-        Debug.Log("Tìm thấy " + hitTargets.Length + " đối tượng trong phạm vi tấn công.");
 
+        // Duyệt qua tất cả các đối tượng trong phạm vi
         foreach (Collider2D target in hitTargets)
         {
-            Debug.Log("Tìm thấy đối tượng: " + target.name);
-
+            // Kiểm tra nếu đối tượng là Player
             if (target.CompareTag(playerTag))
             {
-                Debug.Log("Đã phát hiện Player!");
+                Debug.Log("Tìm thấy đối tượng Player: " + target.name);
 
                 PlayerCombat playerCombat = target.GetComponent<PlayerCombat>();
                 if (playerCombat != null)

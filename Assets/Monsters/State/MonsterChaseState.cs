@@ -59,26 +59,8 @@ public class MonsterChaseState : IMonsterState
         enemy.enemy.rb.MovePosition((Vector2)enemy.enemy.transform.position + direction * enemy.enemy.moveSpeed * Time.fixedDeltaTime);
     }
 
-
-
     private void FlipToPlayer()
     {
-        if (enemy.enemy.player == null) return;
-
-        Vector3 scale = enemy.enemy.transform.localScale;
-
-        if (enemy.enemy.player.position.x < enemy.enemy.transform.position.x)
-        {
-            scale.x = Mathf.Abs(scale.x) * -1; 
-        }
-
-        else
-        {
-            scale.x = Mathf.Abs(scale.x); 
-        }
-
-        enemy.enemy.transform.localScale = scale; 
+        enemy.enemy.Flip(enemy.enemy.player);
     }
-
-
 }

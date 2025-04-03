@@ -3,17 +3,24 @@ using System.Collections;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public PlayerData playerData;
     public LayerMask enemyLayers;
     public SpriteRenderer spriteRenderer;
     public float hitDuration = 0.2f;
     public float invincibleTime = 0.25f;
+    private PlayerHealth playerHealth;
+    private PlayerEnergy playerEnergy;
+    private PlayerStateMachine playerState;
     private bool isInvincible = false;
     private int currentHealth;
 
     private void Start()
     {
-        currentHealth = playerData.maxHealth;
+        playerState = GetComponent<PlayerStateMachine>();
+        playerHealth = GetComponent<PlayerHealth>();
+        playerEnergy = GetComponent<PlayerEnergy>();
+        currentHealth = playerState.playerData.maxHealth;
+        playerHealth.UpdateHealthBarPlayer(currentHealth, playerState.playerData.maxHealth);
+        playerEnergy.UpdateEnergySlider();
     }
 
     public void OnAttackHit(float attackRange)
@@ -31,17 +38,19 @@ public class PlayerCombat : MonoBehaviour
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
             if (enemyScript != null)
             {
-                enemyScript.TakeDamage(playerData.attackDamage, transform.position);
+                enemyScript.TakeDamage(playerState.playerData.attackDamage, transform.position);
+                playerEnergy.AddEnergy(playerState.playerData.energyPerHit);
             }
         }
     }
-
 
     public void TakeDamage(int damage)
     {
         if (isInvincible) return;
 
         currentHealth -= damage;
+        playerHealth.UpdateHealthBarPlayer(currentHealth, playerState.playerData.maxHealth);
+
         StartCoroutine(BecomeInvincible());
         StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration));
 
