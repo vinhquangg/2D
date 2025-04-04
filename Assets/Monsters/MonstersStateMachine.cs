@@ -25,10 +25,14 @@ public class MonstersStateMachine : MonoBehaviour
         //switch (enemy.enemyType)
         //{
         //    case EnemyType.Assassin:
-        //        SwitchState(new Mon)
+        //        SwitchState(new MonsterIdleState(this));
+        //        break;
+        //    case EnemyType.Ranged:
+        //        SwitchState(new MonsterIdleState(this));
+        //        break;
         //}
 
-        SwitchState(new MonsterIdleState(this));
+        SwitchState(new MonsterPatrolState(this));
     }
     public void SwitchState(IMonsterState newState)
     {

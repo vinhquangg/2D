@@ -20,7 +20,7 @@ public class PlayerCombat : MonoBehaviour
         playerEnergy = GetComponent<PlayerEnergy>();
         currentHealth = playerState.playerData.maxHealth;
         playerHealth.UpdateHealthBarPlayer(currentHealth, playerState.playerData.maxHealth);
-        playerEnergy.UpdateEnergySlider();
+        //playerEnergy.UpdateEnergySlider();
     }
 
     public void OnAttackHit(float attackRange)
@@ -40,6 +40,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 enemyScript.TakeDamage(playerState.playerData.attackDamage, transform.position);
                 playerEnergy.AddEnergy(playerState.playerData.energyPerHit);
+                playerEnergy.UpdateEnergySlider();
             }
         }
     }

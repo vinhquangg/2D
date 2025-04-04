@@ -130,4 +130,5 @@ public abstract class BaseEnemy : MonoBehaviour
             floatingText.GetComponent<DamageFloat>().DestroyAfter(1.5f);
         }
     }
+
 }

@@ -480,8 +480,8 @@ TextureImporter:
         serializedVersion: 2
         x: 664
         y: 208
-        width: 29
-        height: 22
+        width: 105
+        height: 23
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,30 +499,9 @@ TextureImporter:
       name: Mage__19
       rect:
         serializedVersion: 2
-        x: 695
-        y: 214
-        width: 73
-        height: 5
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 70c3bc88b7c69ba44a9903f12b6ac4ad
-      internalID: -1983527674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mage__20
-      rect:
-        serializedVersion: 2
         x: 792
         y: 208
-        width: 53
+        width: 106
         height: 22
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -538,12 +517,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__21
+      name: Mage__20
       rect:
         serializedVersion: 2
-        x: 855
+        x: 916
         y: 208
-        width: 94
+        width: 111
         height: 22
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -559,12 +538,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__22
+      name: Mage__21
       rect:
         serializedVersion: 2
-        x: 973
+        x: 1047
         y: 208
-        width: 104
+        width: 30
         height: 22
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -580,7 +559,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__23
+      name: Mage__22
       rect:
         serializedVersion: 2
         x: 27
@@ -601,7 +580,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__24
+      name: Mage__23
       rect:
         serializedVersion: 2
         x: 155
@@ -622,7 +601,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__25
+      name: Mage__24
       rect:
         serializedVersion: 2
         x: 283
@@ -643,7 +622,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__26
+      name: Mage__25
       rect:
         serializedVersion: 2
         x: 411
@@ -664,7 +643,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__27
+      name: Mage__26
       rect:
         serializedVersion: 2
         x: 537
@@ -685,7 +664,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__28
+      name: Mage__27
       rect:
         serializedVersion: 2
         x: 665
@@ -706,7 +685,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__29
+      name: Mage__28
       rect:
         serializedVersion: 2
         x: 793
@@ -727,7 +706,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__30
+      name: Mage__29
       rect:
         serializedVersion: 2
         x: 922
@@ -748,7 +727,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__31
+      name: Mage__30
       rect:
         serializedVersion: 2
         x: 1051
@@ -769,7 +748,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__32
+      name: Mage__31
       rect:
         serializedVersion: 2
         x: 1179
@@ -790,7 +769,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__33
+      name: Mage__32
       rect:
         serializedVersion: 2
         x: 27
@@ -811,7 +790,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__34
+      name: Mage__33
       rect:
         serializedVersion: 2
         x: 27
@@ -832,7 +811,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__35
+      name: Mage__34
       rect:
         serializedVersion: 2
         x: 154
@@ -853,7 +832,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__36
+      name: Mage__35
       rect:
         serializedVersion: 2
         x: 282
@@ -874,33 +853,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__37
+      name: Mage__36
       rect:
         serializedVersion: 2
         x: 410
-        y: 17
-        width: 8
-        height: 13
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c78184d99e4b7ee4c8c887f4ad9619b2
-      internalID: -1871249965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mage__38
-      rect:
-        serializedVersion: 2
-        x: 414
         y: 16
-        width: 20
+        width: 24
         height: 28
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -916,7 +874,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__39
+      name: Mage__37
       rect:
         serializedVersion: 2
         x: 538
@@ -937,28 +895,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__40
-      rect:
-        serializedVersion: 2
-        x: 540
-        y: 20
-        width: 5
-        height: 6
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e6d96d6c22d1d342a916ba7836f2338
-      internalID: -2089356339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mage__41
+      name: Mage__38
       rect:
         serializedVersion: 2
         x: 666
@@ -979,7 +916,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__42
+      name: Mage__39
       rect:
         serializedVersion: 2
         x: 793
@@ -1000,7 +937,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mage__43
+      name: Mage__40
       rect:
         serializedVersion: 2
         x: 921
@@ -1042,34 +979,31 @@ TextureImporter:
       Mage__16: -1260436197
       Mage__17: -1199178254
       Mage__18: -1066264822
-      Mage__19: -1983527674
+      Mage__19: 172753833
       Mage__2: 1740323541
-      Mage__20: 172753833
-      Mage__21: -14493209
-      Mage__22: -217421681
-      Mage__23: -1117482493
-      Mage__24: -1270897489
-      Mage__25: 1277609468
-      Mage__26: 732605462
-      Mage__27: 47068973
-      Mage__28: -242390428
-      Mage__29: -1929858355
+      Mage__20: -14493209
+      Mage__21: -217421681
+      Mage__22: -1117482493
+      Mage__23: -1270897489
+      Mage__24: 1277609468
+      Mage__25: 732605462
+      Mage__26: 47068973
+      Mage__27: -242390428
+      Mage__28: -1929858355
+      Mage__29: 352932708
       Mage__3: 1728387420
-      Mage__30: 352932708
-      Mage__31: -59848793
-      Mage__32: -667184413
-      Mage__33: 2018496764
-      Mage__34: -466477680
-      Mage__35: -750137200
-      Mage__36: 1270333397
-      Mage__37: -1871249965
-      Mage__38: 1035463311
-      Mage__39: -1183656428
+      Mage__30: -59848793
+      Mage__31: -667184413
+      Mage__32: 2018496764
+      Mage__33: -466477680
+      Mage__34: -750137200
+      Mage__35: 1270333397
+      Mage__36: 1035463311
+      Mage__37: -1183656428
+      Mage__38: 1778805703
+      Mage__39: -1321368803
       Mage__4: 192961093
-      Mage__40: -2089356339
-      Mage__41: 1778805703
-      Mage__42: -1321368803
-      Mage__43: -1615440752
+      Mage__40: -1615440752
       Mage__5: -1402677443
       Mage__6: 942947872
       Mage__7: -488872395

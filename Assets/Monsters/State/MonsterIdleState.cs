@@ -15,8 +15,8 @@ public class MonsterIdleState : IMonsterState
 
     public void EnterState()
     {
-        enemy.animMonster.SetBool("isChase", false);
-        enemy.enemy.rb.velocity = Vector2.zero;
+        //enemy.animMonster.SetBool("isChase", false);
+        //enemy.enemy.rb.velocity = Vector2.zero;
         enemy.PlayAnimation("Idle");
         idleTimer = 0f;
     }
@@ -25,8 +25,19 @@ public class MonsterIdleState : IMonsterState
     {
         if (enemy.enemy.CanSeePlayer())
         {
-            enemy.SwitchState(new MonsterChaseState(enemy));
+            switch (enemy.enemy.enemyType)
+            {
+                case EnemyType.Assassin:
+                    enemy.SwitchState(new MonsterChaseState(enemy));
+                    break;
+
+                case EnemyType.Ranged:
+                    enemy.SwitchState(new MonsterAttackState(enemy));
+                    break;
+            }
         }
+
+
         idleTimer += Time.deltaTime;
         if (idleTimer >= idleDuration)
         {

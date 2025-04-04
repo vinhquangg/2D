@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerSkill : MonoBehaviour
 {
-
+    public TextMeshProUGUI cooldownText;
     public GameObject skillImage;  
     public GameObject blastWavePrefab;  
     public float skillEnergyCost=10f;
-    private Animator skillAnimator;  
-    private PlayerEnergy playerEnergy; 
-
-    private float delayBeforeNextCast = 1f;
+    private PlayerEnergy playerEnergy;
+    public Image cooldownImage;
+    private float cooldownTimer = 0f;
+    private float skillCooldown = 5f;
+    private bool isCooldownActive = false;
     private bool nextCastTime = true;
 
     private void Awake()
     {
-        skillAnimator = skillImage.GetComponent<Animator>();
         playerEnergy = GetComponent<PlayerEnergy>();
+        cooldownText.gameObject.SetActive(false);
+        cooldownImage.fillAmount = 1f;
     }
 
     void Start()
@@ -27,9 +31,23 @@ public class PlayerSkill : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && nextCastTime)
+        if (Input.GetKeyDown(KeyCode.Q) && !isCooldownActive)
         {
             ActivateSkill();
+        }
+        if (isCooldownActive)
+        {
+            cooldownTimer += Time.deltaTime;
+            float fillAmount = cooldownTimer / skillCooldown;
+            float remainingTime = Mathf.Clamp(cooldownTimer, 0, skillCooldown);
+
+            cooldownText.text = $"{remainingTime:F2}";
+            cooldownImage.fillAmount = fillAmount;
+
+            if (cooldownTimer >= skillCooldown)
+            {
+                EnableSkill();
+            }
         }
     }
 
@@ -38,15 +56,15 @@ public class PlayerSkill : MonoBehaviour
         if (playerEnergy.HasEnoughEnergy(skillEnergyCost))
         {
             nextCastTime = false;
+            isCooldownActive = true;
+            cooldownTimer = 0f;
+            cooldownText.gameObject.SetActive(true);
+            cooldownImage.fillAmount = 0f;
 
-            if (skillAnimator != null)
-            {
-                skillAnimator.SetTrigger("PlayPopup");
-            }
 
             Instantiate(blastWavePrefab, transform.position, Quaternion.identity);
 
-            Invoke(nameof(EnableSkill), delayBeforeNextCast);
+            Invoke(nameof(EnableSkill), skillCooldown);
             playerEnergy.UseEnergy(skillEnergyCost);
             playerEnergy.UpdateEnergySlider();
         }
@@ -56,5 +74,8 @@ public class PlayerSkill : MonoBehaviour
     void EnableSkill()
     {
         nextCastTime = true;
+        isCooldownActive = false;
+        cooldownText.gameObject.SetActive(false);
+        cooldownImage.fillAmount = 1f;
     }
 }

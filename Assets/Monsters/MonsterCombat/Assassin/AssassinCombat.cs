@@ -26,7 +26,8 @@ public class AssassinCombat : MonsterCombat
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = false; 
+            playerInRange = false;
+            StopAttack();
         }
     }
 
@@ -43,17 +44,14 @@ public class AssassinCombat : MonsterCombat
         isAttacking = false;
     }
 
-    protected override void Die()
-    {
-        base.Die();
-    }
     public void PerformAttack()
     {
         if (playerInRange)
         {
-            Vector2 attackPosition = playerCombat.transform.position; 
-
+            Vector2 attackPosition = playerCombat.transform.position;
             AttackHit(attackPosition, baseEnemy.currentAttackMonsterRange);
+
+            StartCoroutine(InvincibleCooldown());
         }
     }
 

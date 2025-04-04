@@ -44,11 +44,31 @@ public class MonsterAttackState : IMonsterState
 
         if (distance > enemy.enemy.detectRange)
         {
-            enemy.SwitchState(new MonsterIdleState(enemy));
+            switch (enemy.enemy.enemyType)
+            {
+                case EnemyType.Assassin:
+                    enemy.SwitchState(new MonsterIdleState(enemy));
+                    break;
+                case EnemyType.Ranged:
+                    enemy.SwitchState(new MonsterIdleState(enemy));
+                    break;
+
+            }
+            
         }
         else if (distance > enemy.enemy.attackRange)
         {
-            enemy.SwitchState(new MonsterChaseState(enemy));
+            switch (enemy.enemy.enemyType)
+            {
+                case EnemyType.Assassin:
+                    enemy.SwitchState(new MonsterChaseState(enemy));
+                    break;
+                case EnemyType.Ranged:
+                    enemy.SwitchState(new MonsterAttackState(enemy));
+                    break;
+
+            }
+            //enemy.SwitchState(new MonsterChaseState(enemy));
         }
         else
         {
@@ -61,6 +81,7 @@ public class MonsterAttackState : IMonsterState
                 PlayNextAttack();
             }
         }
+        
     }
 
     private void PlayNextAttack()
