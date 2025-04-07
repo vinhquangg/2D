@@ -52,7 +52,13 @@ public abstract class BaseEnemy : MonoBehaviour
     public virtual bool CanSeePlayer() // chỉ dùng khi làm quái đánh xa hoặc dùng gậy
     {
         if (player == null) return false;
-        return Vector2.Distance(transform.position, player.position) < detectRange;
+
+        if (player.gameObject.activeInHierarchy && Vector2.Distance(transform.position, player.position) < detectRange)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public virtual void Flip(Transform targetPoint)

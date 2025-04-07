@@ -29,31 +29,28 @@ public class MageCombat : MonsterCombat
     }
 
 
-    public void ShootProjectile() 
+    public void ShootProjectile()
     {
-
-
-
+        if (monsterState.enemy.player == null || !monsterState.enemy.player.gameObject.activeInHierarchy)
+        {
+            monsterState.SwitchState(new MonsterIdleState(monsterState));
+        }
+        
 
         if (firePoint == null || rangedEnemy.projectilePrefab == null) return;
 
-
-
         for (int i = 0; i < maxShots; i++)
         {
-
             Vector2 direction = (monsterState.enemy.player.position - firePoint.position).normalized;
-
-            Vector2 rotatedDirection = Quaternion.Euler(0, 0, 0) * direction;
-
             GameObject projectile = Instantiate(rangedEnemy.projectilePrefab, firePoint.position, Quaternion.identity);
-            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
+            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.velocity = rotatedDirection * projectileSpeed;
+                rb.velocity = direction * projectileSpeed;
             }
         }
     }
+
 
 }

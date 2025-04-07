@@ -51,7 +51,7 @@ public class MonsterChaseState : IMonsterState
 
     private void ChasePlayer()
     {
-        if (enemy.enemy.player == null || enemy.enemy.isKnockback) return;
+        if (enemy.enemy.player == null || enemy.enemy.isKnockback ) return;
 
         FlipToPlayer();
         Vector2 direction = (enemy.enemy.player.position - enemy.transform.position).normalized;

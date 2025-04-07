@@ -45,11 +45,18 @@ public class AssassinCombat : MonsterCombat
 
     public void PerformAttack()
     {
+
+        if (playerCombat == null || !playerCombat.gameObject.activeInHierarchy)
+        {
+            StopAttack(); 
+            monsterState.SwitchState(new MonsterIdleState(monsterState));
+            return;
+        }
+
         if (playerInRange)
         {
             Vector2 attackPosition = playerCombat.transform.position;
             AttackHit(attackPosition, baseEnemy.currentAttackMonsterRange);
-
             StartCoroutine(InvincibleCooldown());
         }
     }

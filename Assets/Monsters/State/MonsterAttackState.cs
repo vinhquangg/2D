@@ -42,7 +42,7 @@ public class MonsterAttackState : IMonsterState
 
         float distance = Vector2.Distance(enemy.transform.position, enemy.enemy.player.position);
 
-        if (distance > enemy.enemy.detectRange)
+        if (distance > enemy.enemy.detectRange && enemy.enemy.player.gameObject.activeInHierarchy)
         {
             switch (enemy.enemy.enemyType)
             {
@@ -56,7 +56,7 @@ public class MonsterAttackState : IMonsterState
             }
 
         }
-        else if (distance > enemy.enemy.attackRange)
+        else if (distance > enemy.enemy.attackRange && enemy.enemy.player.gameObject.activeInHierarchy)
         {
             switch (enemy.enemy.enemyType)
             {
@@ -76,8 +76,8 @@ public class MonsterAttackState : IMonsterState
             //if (Time.time - lastAttackTime >= comboResetTime)
             //{
             //    attackCount = 0;
-            //}
-            if (Time.time - lastAttackTime >= 0.25f)
+            AnimatorStateInfo animState = enemy.animMonster.GetCurrentAnimatorStateInfo(0);
+            if (animState.normalizedTime >= 1f && !enemy.animMonster.IsInTransition(0))
             {
                 PlayNextAttack();
             }
