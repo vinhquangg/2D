@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AssassinCombat : MonsterCombat
 {
-
     public bool playerInRange = false;
     private PlayerCombat playerCombat;
 

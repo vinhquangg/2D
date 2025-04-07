@@ -10,6 +10,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     public PlayerCombat playerCombat { get; private set; }
     public bool isAttackPressed { get; private set; }
+
+    public string currentStateName => currentState?.GetType().Name;  
     // Start is called before the first frame update
 
     void Awake()

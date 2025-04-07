@@ -16,7 +16,18 @@ public class MonsterPatrolState : IMonsterState
     public void EnterState()
     {
         enemy.animMonster.SetBool("isRun", true);
-        enemy.PlayAnimation("Run");
+
+        switch (enemy.enemy.enemyType)
+        {
+            case EnemyType.Assassin:
+                    enemy.animMonster.Play("Run");
+                break;
+            case EnemyType.Ranged:
+                enemy.animMonster.Play("Walk_Mage");
+                break;
+
+        }
+        //enemy.PlayAnimation("Run");
     }
 
     public void ExitState()
@@ -47,6 +58,7 @@ public class MonsterPatrolState : IMonsterState
             enemy.SwitchState(new MonsterIdleState(enemy));
         }
         enemy.enemy.Flip(enemy.enemy.currentPoint);
+
         if (enemy.enemy.CanSeePlayer())
         {
             enemy.SwitchState(new MonsterAttackState(enemy));

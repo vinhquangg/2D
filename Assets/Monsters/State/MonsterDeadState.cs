@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterDeadState : IMonsterState
 {
     private MonstersStateMachine enemy;
-    private bool hasMonsterDeadAnimation = false;
+    //private bool hasMonsterDeadAnimation = false;
 
     public MonsterDeadState(MonstersStateMachine enemy)
     {
@@ -14,13 +14,23 @@ public class MonsterDeadState : IMonsterState
 
     public void EnterState()
     {
-        if(!hasMonsterDeadAnimation)
+        
+        switch (enemy.enemy.enemyType)
         {
-            enemy.animMonster.SetBool("isDead", true);
-            enemy.PlayAnimation("Dead");
-            hasMonsterDeadAnimation = true;
-            enemy.animMonster.SetBool("isDead", false);
+            case EnemyType.Assassin:
+               // enemy.animMonster.SetBool("isDead", true);
+                enemy.animMonster.Play("Dead");
+                //hasMonsterDeadAnimation = true;
+                break;
+            case EnemyType.Ranged:
+                //enemy.animMonster.SetBool("isDead", true);
+                //enemy.animMonster.SetBool("isDead", true);
+                enemy.animMonster.Play("Dead_Mage");
+                break;
         }
+        //hasMonsterDeadAnimation = true;
+
+        
         
     }
 

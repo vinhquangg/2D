@@ -22,17 +22,17 @@ public class MonstersStateMachine : MonoBehaviour
 
     void Start()
     {
-        //switch (enemy.enemyType)
-        //{
-        //    case EnemyType.Assassin:
-        //        SwitchState(new MonsterIdleState(this));
-        //        break;
-        //    case EnemyType.Ranged:
-        //        SwitchState(new MonsterIdleState(this));
-        //        break;
-        //}
+        switch (enemy.enemyType)
+        {
+            case EnemyType.Assassin:
+                SwitchState(new MonsterPatrolState(this));
+                break;
+            case EnemyType.Ranged:
+                SwitchState(new MonsterPatrolState(this));
+                break;
+        }
 
-        SwitchState(new MonsterPatrolState(this));
+        //SwitchState(new MonsterPatrolState(this));
     }
     public void SwitchState(IMonsterState newState)
     {
@@ -61,16 +61,16 @@ public class MonstersStateMachine : MonoBehaviour
         monsterCurrentState?.PhysicsUpdate();
     }
 
-    public void PlayAnimation(string animName)
-    {
-        if (animMonster == null) return;
+    //public void PlayAnimation(string animName)
+    //{
+    //    if (animMonster == null) return;
 
-        AnimatorStateInfo stateInfo = animMonster.GetCurrentAnimatorStateInfo(0);
+    //    AnimatorStateInfo stateInfo = animMonster.GetCurrentAnimatorStateInfo(0);
 
-        if (stateInfo.fullPathHash != 0 && !stateInfo.IsName(animName))
-        {
-            animMonster.Play(animName);
-        }
-    }
+    //    if (stateInfo.fullPathHash != 0 && !stateInfo.IsName(animName))
+    //    {
+    //        animMonster.Play(animName);
+    //    }
+    //}
 
 }

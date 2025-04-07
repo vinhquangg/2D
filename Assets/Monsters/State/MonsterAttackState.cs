@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 public class MonsterAttackState : IMonsterState
 {
     private MonstersStateMachine enemy;
-    private string[] attackAnimation = { "Attack1" };
+    //private string[] attackAnimation = { "Attack1" };
     //private int attackCount = 0;
     //private float comboResetTime = 0.5f;
     private float lastAttackTime;
@@ -34,7 +34,7 @@ public class MonsterAttackState : IMonsterState
 
     public void PhysicsUpdate()
     {
-        
+
     }
 
     public void UpdateState()
@@ -54,7 +54,7 @@ public class MonsterAttackState : IMonsterState
                     break;
 
             }
-            
+
         }
         else if (distance > enemy.enemy.attackRange)
         {
@@ -65,6 +65,7 @@ public class MonsterAttackState : IMonsterState
                     break;
                 case EnemyType.Ranged:
                     enemy.SwitchState(new MonsterAttackState(enemy));
+
                     break;
 
             }
@@ -81,13 +82,34 @@ public class MonsterAttackState : IMonsterState
                 PlayNextAttack();
             }
         }
-        
+
     }
 
     private void PlayNextAttack()
     {
-        int animationIndex = /*attackCount %*/ attackAnimation.Length;
-        enemy.PlayAnimation("Attack1");
+        //int animationIndex = /*attackCount %*/ attackAnimation.Length;
+        FlipToPlayer();
+        switch (enemy.enemy.enemyType)
+        {
+            case EnemyType.Assassin:
+                enemy.animMonster.Play("Attack1");
+                break;
+            case EnemyType.Ranged:
+                enemy.animMonster.Play("Attack_Mage");
+                break;
+
+        }
         lastAttackTime = Time.time;
-    }  
+    }
+
+
+    private void FlipToPlayer()
+    {
+        switch (enemy.enemy.enemyType)
+        {
+            case EnemyType.Ranged:
+                enemy.enemy.Flip(enemy.enemy.player);
+                break;
+        }
+    }
 }

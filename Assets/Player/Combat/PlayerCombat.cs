@@ -7,11 +7,12 @@ public class PlayerCombat : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public float hitDuration = 0.2f;
     public float invincibleTime = 0.25f;
+    public float currentHealth { get; set; }
+    public float currentEnergy { get; set; }
     private PlayerHealth playerHealth;
     private PlayerEnergy playerEnergy;
     private PlayerStateMachine playerState;
     private bool isInvincible = false;
-    private int currentHealth;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class PlayerCombat : MonoBehaviour
         playerEnergy = GetComponent<PlayerEnergy>();
         currentHealth = playerState.playerData.maxHealth;
         playerHealth.UpdateHealthBarPlayer(currentHealth, playerState.playerData.maxHealth);
+        currentEnergy = playerEnergy.GetMaxEnergy();
         //playerEnergy.UpdateEnergySlider();
     }
 
@@ -86,7 +88,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void Die()
     {
-        gameObject.SetActive(false);
+        playerState.SwitchState(new DeadState(playerState));
+        //gameObject.SetActive(false);
     }
 
 }

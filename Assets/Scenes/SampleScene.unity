@@ -107102,7 +107102,7 @@ GameObject:
   - component: {fileID: 596461738}
   - component: {fileID: 596461739}
   - component: {fileID: 596461740}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -108185,6 +108185,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1691553341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1597854270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1597854272}
+  - component: {fileID: 1597854271}
+  m_Layer: 0
+  m_Name: SaveLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1597854271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597854270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31b1429b81eb2c4996a90a9c37b6038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStateMachine: {fileID: 596461733}
+  playerCombat: {fileID: 596461737}
+--- !u!4 &1597854272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597854270}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -42.548653, y: 15.114222, z: 0.85277534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691553337
 GameObject:
   m_ObjectHideFlags: 0
@@ -108341,10 +108387,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibleTime: 2
-  projectilePrefab: {fileID: 6228043162981573845, guid: f87f7869b23adfd4c98b90b9bb684b6b, type: 3}
   firePoint: {fileID: 1578004419}
   projectileSpeed: 5
-  attackCooldown: 1
+  shootCooldown: 5
+  maxShots: 3
 --- !u!114 &1691553343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108379,13 +108425,14 @@ MonoBehaviour:
   pointB: {fileID: 100544186}
   enemyType: 1
   hitDuration: 1
-  detectRange: 5
+  detectRange: 8
   attackRange: 10
-  moveSpeed: 1
+  moveSpeed: 2
   knockbackForce: 5
   patrolSpeed: 1
   isKnockback: 0
   isDead: 0
+  projectilePrefab: {fileID: 6228043162981573845, guid: f87f7869b23adfd4c98b90b9bb684b6b, type: 3}
 --- !u!114 &1691553345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115469,3 +115516,4 @@ SceneRoots:
   - {fileID: 22531375}
   - {fileID: 48246414}
   - {fileID: 2071975168}
+  - {fileID: 1597854272}

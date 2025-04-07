@@ -17,7 +17,18 @@ public class MonsterIdleState : IMonsterState
     {
         //enemy.animMonster.SetBool("isChase", false);
         //enemy.enemy.rb.velocity = Vector2.zero;
-        enemy.PlayAnimation("Idle");
+        //enemy.PlayAnimation("Idle");
+
+        switch (enemy.enemy.enemyType)
+        {
+            case EnemyType.Assassin:
+                enemy.animMonster.Play("Idle");
+                break;
+            case EnemyType.Ranged:
+                enemy.animMonster.Play("Idle_Mage");
+                break;
+
+        }
         idleTimer = 0f;
     }
 

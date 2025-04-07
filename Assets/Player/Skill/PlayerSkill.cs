@@ -13,7 +13,7 @@ public class PlayerSkill : MonoBehaviour
     private float cooldownTimer = 0f;
     private float skillCooldown = 5f;
     private bool isCooldownActive = false;
-    private bool nextCastTime = true;
+    private bool nextCastTime = false;
 
     private void Awake()
     {
