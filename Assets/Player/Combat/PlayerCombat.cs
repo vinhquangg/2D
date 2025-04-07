@@ -27,25 +27,30 @@ public class PlayerCombat : MonoBehaviour
 
     public void OnAttackHit(float attackRange)
     {
-        Vector2 attackPosition = (Vector2)transform.position + new Vector2(transform.localScale.x * attackRange, 0);
+
+        Vector2 attackPosition = (Vector2)transform.position + new Vector2(transform.localScale.x * attackRange, transform.localScale.y * attackRange);
         AttackHit(attackPosition, attackRange);
     }
 
     public void AttackHit(Vector2 attackPosition, float attackRange)
     {
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPosition, attackRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
         {
+
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
             if (enemyScript != null)
             {
+                // Gọi phương thức nhận sát thương
                 enemyScript.TakeDamage(playerState.playerData.attackDamage, transform.position);
                 playerEnergy.AddEnergy(playerState.playerData.energyPerHit);
                 playerEnergy.UpdateEnergySlider();
             }
         }
     }
+
 
     public void TakeDamage(int damage)
     {
@@ -80,7 +85,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void CheckHealth()
     {
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             Die();
         }

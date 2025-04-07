@@ -7,6 +7,7 @@ public class PlayerStateMachine : MonoBehaviour
     public IPlayerState currentState { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
+    //public Vector2 LastMoveDirection { get; set; } = Vector2.right;
 
     public PlayerCombat playerCombat { get; private set; }
     public bool isAttackPressed { get; private set; }
