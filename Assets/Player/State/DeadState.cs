@@ -15,7 +15,7 @@ public class DeadState : IPlayerState
     public void EnterState()
     {
         // Phát animation Dead
-        player.anim.SetTrigger("Dead");
+        player.anim.SetTrigger("isDead");
         player.PlayAnimation("Dead");
 
         player.rb.velocity = Vector2.zero; 
@@ -49,7 +49,7 @@ public class DeadState : IPlayerState
         AnimatorStateInfo stateInfo = player.anim.GetCurrentAnimatorStateInfo(0);
 
         
-        if (stateInfo.IsName("Dead") && stateInfo.normalizedTime >= 0.8f)
+        if (stateInfo.IsName("Dead") && stateInfo.normalizedTime >= 0.7f)
         {
 
             hasDisappeared = true;

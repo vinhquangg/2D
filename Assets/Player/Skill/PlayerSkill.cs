@@ -13,7 +13,7 @@ public class PlayerSkill : MonoBehaviour
     private float cooldownTimer = 0f;
     private float skillCooldown = 5f;
     private bool isCooldownActive = false;
-    private bool nextCastTime = false;
+    //private bool nextCastTime = false;
 
     private void Awake()
     {
@@ -55,7 +55,7 @@ public class PlayerSkill : MonoBehaviour
     {
         if (playerEnergy.HasEnoughEnergy(skillEnergyCost))
         {
-            nextCastTime = false;
+            //nextCastTime = false;
             isCooldownActive = true;
             cooldownTimer = 0f;
             cooldownText.gameObject.SetActive(true);
@@ -73,7 +73,7 @@ public class PlayerSkill : MonoBehaviour
 
     void EnableSkill()
     {
-        nextCastTime = true;
+        //nextCastTime = true;
         isCooldownActive = false;
         cooldownText.gameObject.SetActive(false);
         cooldownImage.fillAmount = 1f;

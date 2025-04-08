@@ -72,16 +72,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void TryAttack()
     {
+
+        if (currentState is DeadState) return;
         if (isAttackPressed)
         {
-            //if (currentState is AttackState attackState)
-            //{
-            //    attackState.PlayNextAttack();
-            //}
-            //else
-            //{
-            //    SwitchState(new AttackState(this));
-            //}
             SwitchState(new AttackState(this));
         }
     }

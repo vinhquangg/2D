@@ -10,7 +10,7 @@ public class MageCombat : MonsterCombat
     private PlayerCombat playerCombat;
     private RangedEnemy rangedEnemy;
     //private float lastShootTime = 0f;
-    private int currentShots = 0;
+    //private int currentShots = 0;
     private void Start()
     {
         rangedEnemy = GetComponent<RangedEnemy>();
@@ -19,7 +19,7 @@ public class MageCombat : MonsterCombat
     public override void Attack()
     {
         isAttacking = true;
-        currentShots = 0;
+        //currentShots = 0;
 
     }
 

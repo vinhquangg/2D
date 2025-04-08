@@ -454,7 +454,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005728811, y: 0.09}
+  m_Offset: {x: -0.0062805414, y: 0.09}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5208333, y: 0.05}
@@ -465,7 +465,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24239677, y: 0.19999999}
+  m_Size: {x: 0.2415222, y: 0.19999999}
   m_EdgeRadius: 0
 --- !u!95 &156267443
 Animator:
@@ -542,7 +542,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -106909,7 +106909,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.03, y: 13.38, z: -10}
+  m_LocalPosition: {x: -40.03, y: 2.66, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -107197,7 +107197,7 @@ Transform:
   m_GameObject: {fileID: 596461728}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.03, y: 13.38, z: 0}
+  m_LocalPosition: {x: -40.03, y: 2.66, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -107421,7 +107421,7 @@ Transform:
   m_GameObject: {fileID: 647353014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.03, y: 13.38, z: -10}
+  m_LocalPosition: {x: -40.03, y: 2.66, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -107563,7 +107563,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759616193}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -108244,9 +108244,9 @@ GameObject:
   - component: {fileID: 1691553339}
   - component: {fileID: 1691553338}
   - component: {fileID: 1691553346}
-  - component: {fileID: 1691553342}
   - component: {fileID: 1691553343}
   - component: {fileID: 1691553344}
+  - component: {fileID: 1691553342}
   - component: {fileID: 1691553345}
   m_Layer: 7
   m_Name: Mage
@@ -108268,7 +108268,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -108428,7 +108428,7 @@ MonoBehaviour:
   detectRange: 8
   attackRange: 10
   moveSpeed: 2
-  knockbackForce: 5
+  knockbackForce: 2.5
   patrolSpeed: 1
   isKnockback: 0
   isDead: 0
@@ -108475,7 +108475,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.055, y: 0.14}
@@ -108708,7 +108708,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000046174973, y: 0.09}
+  m_Offset: {x: 0.0017020963, y: 0.09}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5208333, y: 0.05}
@@ -108719,7 +108719,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.12887037, y: 0.19999999}
+  m_Size: {x: 0.12734526, y: 0.19999999}
   m_EdgeRadius: 0
 --- !u!1 &1908874626
 GameObject:
@@ -115511,9 +115511,9 @@ SceneRoots:
   - {fileID: 596461732}
   - {fileID: 1691553341}
   - {fileID: 156267441}
-  - {fileID: 516739300}
   - {fileID: 2059503257}
   - {fileID: 22531375}
   - {fileID: 48246414}
   - {fileID: 2071975168}
   - {fileID: 1597854272}
+  - {fileID: 516739300}

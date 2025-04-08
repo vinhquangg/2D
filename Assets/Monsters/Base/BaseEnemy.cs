@@ -49,7 +49,7 @@ public abstract class BaseEnemy : MonoBehaviour
     }
 
 
-    public virtual bool CanSeePlayer() // chỉ dùng khi làm quái đánh xa hoặc dùng gậy
+    public virtual bool CanSeePlayer() 
     {
         if (player == null) return false;
 
@@ -69,11 +69,11 @@ public abstract class BaseEnemy : MonoBehaviour
 
         if (targetPoint.position.x < transform.position.x)
         {
-            scale.x = Mathf.Abs(scale.x) * -1; // Quay mặt qua trái
+            scale.x = Mathf.Abs(scale.x) * -1;
         }
         else
         {
-            scale.x = Mathf.Abs(scale.x); // Quay mặt qua phải
+            scale.x = Mathf.Abs(scale.x);
         }
 
         transform.localScale = scale;
