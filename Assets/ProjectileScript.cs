@@ -3,28 +3,13 @@
 public class ProjectileScript : MonoBehaviour
 {
     public int damage = 10;
-    private float lifeTime = 5f;
+    private float lifeTime = 3f;
 
     private void Start()
     {
         
         Destroy(gameObject, lifeTime);
     }
-
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        PlayerCombat playerCombat = collision.gameObject.GetComponent<PlayerCombat>();
-    //        if (playerCombat != null)
-    //        {
-    //            playerCombat.TakeDamage(damage);
-    //            Destroy(gameObject);
-    //        }
-    //    }
-
-    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -38,9 +23,4 @@ public class ProjectileScript : MonoBehaviour
         }
     }
 
-
-    //private void OntriggerEnter2D(Collider2D collision)
-    //{
-        
-    //}
 }

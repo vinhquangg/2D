@@ -106909,7 +106909,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.03, y: 2.66, z: -10}
+  m_LocalPosition: {x: -19.7, y: 31.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -107197,7 +107197,7 @@ Transform:
   m_GameObject: {fileID: 596461728}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.03, y: 2.66, z: 0}
+  m_LocalPosition: {x: -19.7, y: 31.2, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -107311,7 +107311,7 @@ MonoBehaviour:
     m_Bits: 128
   spriteRenderer: {fileID: 596461731}
   hitDuration: 0.2
-  invincibleTime: 0.5
+  invincibleTime: 0.2
 --- !u!114 &596461738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107421,7 +107421,7 @@ Transform:
   m_GameObject: {fileID: 647353014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.03, y: 2.66, z: -10}
+  m_LocalPosition: {x: -19.7, y: 31.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -108215,7 +108215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStateMachine: {fileID: 596461733}
-  playerCombat: {fileID: 596461737}
 --- !u!4 &1597854272
 Transform:
   m_ObjectHideFlags: 0
@@ -108386,11 +108385,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66522b3cb7ab75459ef4d8e392a02b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibleTime: 2
+  invincibleTime: 5
   firePoint: {fileID: 1578004419}
   projectileSpeed: 5
   shootCooldown: 5
-  maxShots: 3
+  maxShots: 2
+  projectilePrefab: {fileID: 5281918326050025416, guid: 6267a33cd62d5b4449589f64151ca112, type: 3}
 --- !u!114 &1691553343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108432,7 +108432,6 @@ MonoBehaviour:
   patrolSpeed: 1
   isKnockback: 0
   isDead: 0
-  projectilePrefab: {fileID: 6228043162981573845, guid: f87f7869b23adfd4c98b90b9bb684b6b, type: 3}
 --- !u!114 &1691553345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108475,7 +108474,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.055, y: 0.14}

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class RangedEnemy : BaseEnemy
 {
-    public GameObject projectilePrefab;
     protected override void Start()
     {
         base.Start();
