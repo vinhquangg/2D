@@ -43,7 +43,6 @@ public class PlayerCombat : MonoBehaviour
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
             if (enemyScript != null)
             {
-                // Gọi phương thức nhận sát thương
                 enemyScript.TakeDamage(playerState.playerData.attackDamage, transform.position);
                 playerEnergy.AddEnergy(playerState.playerData.energyPerHit);
                 playerEnergy.UpdateEnergySlider();

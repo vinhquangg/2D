@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MenuController : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
+    private SaveData saveData;
+    public void LoadGame()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(saveData == null)
+        {
+            Debug.Log("No save data found");
+        }
     }
 
     public void ChangeScence()

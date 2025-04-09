@@ -34,6 +34,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         monsterState = GetComponent<MonstersStateMachine>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         healthBar= GetComponentInChildren<MonsterSideHealthBar>();
         currentPoint = pointA.transform;
@@ -41,7 +42,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
         currentDamage = monsterState.monsterData.attackDamageToPlayer;
         currentAttackMonsterRange = monsterState.monsterData.attackMonsterRange;
-
         if (spriteRenderer != null)
         {
             originalColor = spriteRenderer.color;

@@ -5,7 +5,7 @@ public class MageCombat : MonsterCombat
 {
     public Transform firePoint;
     public float projectileSpeed = 5f;
-    public float shootCooldown = 5f;  
+    //public float shootCooldown = 5f;  
     public int maxShots = 3;
     private PlayerCombat playerCombat;
     private RangedEnemy rangedEnemy;
@@ -72,10 +72,6 @@ public class MageCombat : MonsterCombat
             }
         }
     }
-
-
-
-
 
     private void FlipOrRotateProjectile(GameObject projectile, Vector2 direction)
     {
