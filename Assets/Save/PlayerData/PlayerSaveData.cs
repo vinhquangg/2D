@@ -1,7 +1,7 @@
 using UnityEngine; 
 
 [System.Serializable]
-public class Player
+public class PlayerSaveData
 {
     public Vector3 position;  
     public float health;
@@ -9,7 +9,7 @@ public class Player
     public float energy;
 
    
-    public Player(Vector3 position, float health, string currentState, float energy)
+    public PlayerSaveData(Vector3 position, float health, string currentState, float energy)
     {
         this.position = position;  
         this.health = health;

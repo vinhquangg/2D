@@ -9,7 +9,6 @@ public class PlayerEnergy : MonoBehaviour
     private PlayerCombat playerCombat;
     private float maxEnergy = 100f;
     //public float currentEnergy { get; private set; }
-    //
     private void Awake()
     {
         playerCombat = GetComponent<PlayerCombat>();

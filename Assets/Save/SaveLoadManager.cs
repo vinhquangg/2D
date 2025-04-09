@@ -1,17 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveLoadManager : MonoBehaviour
 {
-    public PlayerStateMachine playerStateMachine;
-    public PlayerCombat playerCombat;
-    private Player playerData;
-    //public PlayerHealth playerHealth;
-    //public PlayerEnergy playerEnergy;
+    [SerializeField] private PlayerStateMachine playerStateMachine;
+    private PlayerSaveData playerData;
 
     public static SaveLoadManager instance { get;private set; }
-
-    private Dictionary<string, System.Func<IPlayerState>> stateFactory;
 
     private void Awake()
     {
@@ -23,19 +19,13 @@ public class SaveLoadManager : MonoBehaviour
     }
     void Start()
     {
-        stateFactory = new Dictionary<string, System.Func<IPlayerState>>()
-        {
-            { "Idle", () => new IdleState(playerStateMachine) },
-            { "MoveState", () => new MoveState(playerStateMachine) },
-            { "Attack", () => new AttackState(playerStateMachine) },
-        };
         NewGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             SaveGame();
         }
@@ -48,68 +38,103 @@ public class SaveLoadManager : MonoBehaviour
     private void NewGame()
     {
         Vector3 startPos = Vector3.zero;
-        //string stateName = playerStateMachine.currentStateName;
         float health = playerStateMachine.playerData.maxHealth;
-        float energy = playerStateMachine.playerCombat.currentEnergy;
-        string State = "Idle";
-        this.playerData = new Player(startPos,health,State,energy);
+        float energy = playerStateMachine.playerCombat.playerEnergy.GetMaxEnergy();
+        string State = "IdleState";
+        playerData = new PlayerSaveData(startPos,health,State,energy);
 
         playerStateMachine.transform.position = playerData.position;
-        playerCombat.currentHealth = playerData.health;
-        playerCombat.currentEnergy = playerData.energy;
+        playerStateMachine.playerCombat.currentHealth = playerData.health;
+        playerStateMachine.playerCombat.currentEnergy = playerData.energy;
 
-        playerCombat.GetComponent<PlayerHealth>()?.UpdateHealthBarPlayer(playerData.health, playerStateMachine.playerData.maxHealth);
-        playerCombat.GetComponent<PlayerEnergy>()?.UpdateEnergySlider();
+        ApplyPlayerData(playerData);
 
         playerStateMachine.SwitchState(new IdleState(playerStateMachine));
     }
 
     private void SaveGame()
     {
+        //Save Player
         Vector3 pos = playerStateMachine.transform.position;
         string stateName = playerStateMachine.currentStateName;
-        float health = playerCombat.currentHealth;
-        float energy = playerCombat.currentEnergy;
+        float health = playerStateMachine.playerCombat.currentHealth;
+        float energy = playerStateMachine.playerCombat.currentEnergy;
+        PlayerSaveData playerData = new PlayerSaveData(pos, health , stateName, energy);
+       
+        //Save Enemy
+        List<EnemySaveData> enemyList = new();
+        var allEnemies = FindObjectsOfType<BaseEnemy>();
+        foreach( var enemy in allEnemies )
+        {
+            if(enemy is ISaveable saveable)
+            {
+                var monsterData = saveable.SaveData();
 
-        Player data = new Player(pos, health , stateName, energy);
-        string json = JsonUtility.ToJson(data);
-        PlayerPrefs.SetString("player_save", json);
-        Debug.Log("Saved: " + json);
+                if(monsterData is EnemySaveData e)
+                {
+                    enemyList.Add(e);
+                }
+            }
+        }
+
+        SaveData saveData = new SaveData
+        {
+            player = playerData,
+            enemies = enemyList
+        };
+
+        string json = JsonUtility.ToJson(saveData);
+        PlayerPrefs.SetString("saveData_save", json);
+        Debug.Log("Saved All: " + json);
     }
 
     private void LoadGame()
     {
-        if (!PlayerPrefs.HasKey("player_save"))
+        if (!PlayerPrefs.HasKey("saveData_save"))
         {
             Debug.Log("No save data found. Starting new game.");
             NewGame(); 
             return;
         }
-        string json = PlayerPrefs.GetString("player_save");
-        PlayerPrefs.DeleteKey("player_save");
+        string json = PlayerPrefs.GetString("saveData_save");
+        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+        //PlayerPrefs.DeleteKey("player_save");
 
-        Player data = JsonUtility.FromJson<Player>(json);
+        //Load Player
+        ApplyPlayerData(saveData.player);
 
+
+        //Load Monster
+        var enemies = FindObjectsOfType<BaseEnemy>();
+        foreach( var enemy in enemies )
+        {
+            var found = saveData.enemies.Find(e => e.type == enemy.enemyType);
+            if(found != null && enemy is ISaveable saveable )
+            {
+                saveable.LoadData(found);
+            }
+        }
+        Debug.Log("Loaded All: " + json);
+        //Debug.Log("Loaded: " + json);
+    }
+
+    private void ApplyPlayerData(PlayerSaveData data)
+    {
         playerStateMachine.transform.position = data.position;
-        playerCombat.currentHealth = data.health;
-        playerCombat.currentEnergy = data.energy;
+        playerStateMachine.playerCombat.currentHealth = data.health;
+        playerStateMachine.playerCombat.currentEnergy = data.energy;
 
-        playerCombat.GetComponent<PlayerHealth>()?.UpdateHealthBarPlayer(data.health, playerStateMachine.playerData.maxHealth);
-        playerCombat.GetComponent<PlayerEnergy>()?.UpdateEnergySlider();
+        playerStateMachine.playerCombat.GetComponent<PlayerHealth>()?.UpdateHealthBarPlayer(data.health, playerStateMachine.playerData.maxHealth);
+        playerStateMachine.playerCombat.GetComponent<PlayerEnergy>()?.UpdateEnergySlider();
 
-        if (stateFactory.TryGetValue(data.currentState, out var createState))
+        if (playerStateMachine.stateFactory.TryGetValue(data.currentState, out var createState))
         {
             playerStateMachine.SwitchState(createState());
         }
         else
         {
-            //Debug.LogWarning("Unknown state: " + data.currentState + ". Switching to Idle.");
             playerStateMachine.SwitchState(new IdleState(playerStateMachine));
         }
-
-        Debug.Log("Loaded: " + json);
     }
-
-
 }
 

@@ -10,7 +10,7 @@ public class PlayerCombat : MonoBehaviour
     public float currentHealth { get; set; }
     public float currentEnergy { get; set; }
     private PlayerHealth playerHealth;
-    private PlayerEnergy playerEnergy;
+    public PlayerEnergy playerEnergy { get; private set; }
     private PlayerStateMachine playerState;
     private bool isInvincible = false;
 

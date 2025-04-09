@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Playables;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerStateMachine : MonoBehaviour
 {
@@ -7,11 +7,10 @@ public class PlayerStateMachine : MonoBehaviour
     public IPlayerState currentState { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
-    //public Vector2 LastMoveDirection { get; set; } = Vector2.right;
-
     public PlayerCombat playerCombat { get; private set; }
     public bool isAttackPressed { get; private set; }
 
+    public Dictionary<string,System.Func<IPlayerState>> stateFactory { get; private set; }
     public string currentStateName => currentState?.GetType().Name;  
     // Start is called before the first frame update
 
@@ -24,6 +23,14 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Start()
     {
+        stateFactory = new Dictionary<string, System.Func<IPlayerState>>()
+        {
+            { "IdleState", () => new IdleState(this) },
+            { "MoveState", () => new MoveState(this) },
+            { "AttackState", () => new AttackState(this) },
+            //{ "DeadState", () => new DeadState(this) } 
+        };
+
         SwitchState(new IdleState(this));
     }
 

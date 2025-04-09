@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.VersionControl.Asset;
@@ -12,6 +12,10 @@ public class MonstersStateMachine : MonoBehaviour
     public Rigidbody2D rbMonter { get; private set; }
     public BaseEnemy enemy { get; private set; }
 
+    public Dictionary<string, System.Func<IMonsterState>> stateFactory;
+    public string monsterCurrentStateName => monsterCurrentState?.GetType().Name;
+
+
 
     void Awake()
     {
@@ -22,6 +26,17 @@ public class MonstersStateMachine : MonoBehaviour
 
     void Start()
     {
+        stateFactory = new Dictionary<string, System.Func<IMonsterState>>()
+        {
+            { "MonsterIdleState", () => new MonsterIdleState(this) },
+            { "MonsterChaseState", () => new MonsterChaseState(this) },
+            { "MonsterAttackState", () => new MonsterAttackState(this) },
+            { "MonsterHurtState", () => new MonsterHurtState(this) },
+            { "MonsterDeadState", () => new MonsterDeadState(this) },
+            { "MonsterPatrolState", () => new MonsterPatrolState(this) }, 
+        };
+
+
         switch (enemy.enemyType)
         {
             case EnemyType.Assassin:

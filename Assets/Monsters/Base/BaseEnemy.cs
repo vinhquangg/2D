@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public abstract class BaseEnemy : MonoBehaviour
+public abstract class BaseEnemy : MonoBehaviour,ISaveable
 {
     protected MonstersStateMachine monsterState;
     protected Animator anim;
@@ -22,7 +23,7 @@ public abstract class BaseEnemy : MonoBehaviour
     public float moveSpeed;
     public int currentDamage { get; set; }
     public float currentAttackMonsterRange { get; set; }
-    public int currentHealth { get;  set; }
+    public float currentHealth { get;  set; }
     public float knockbackForce = 5f;
     public float patrolSpeed = 1f;
     public bool isKnockback = false;
@@ -137,4 +138,32 @@ public abstract class BaseEnemy : MonoBehaviour
         }
     }
 
+    public virtual object SaveData()
+    {
+        return new EnemySaveData(
+            enemyType,
+            transform.position,
+            currentHealth,
+            monsterState.monsterCurrentStateName
+            );
+    }
+
+    public virtual void LoadData(object data)
+    {
+        EnemySaveData save = data as EnemySaveData;
+        if (save == null) return;
+
+        transform.position = save.position;
+        currentHealth = save.health;
+        healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+
+        if (monsterState.stateFactory.TryGetValue(save.currentState, out var createState))
+        {
+            monsterState.SwitchState(createState());
+        }
+        else
+        {
+            monsterState.SwitchState(new MonsterPatrolState(monsterState));
+        }
+    }
 }
