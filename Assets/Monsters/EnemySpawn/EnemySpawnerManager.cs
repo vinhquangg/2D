@@ -5,25 +5,28 @@ using UnityEngine;
 public class EnemySpawnerManager : MonoBehaviour
 {
     public static EnemySpawnerManager Instance { get; private set; }
-    public List<SpawnZone> spawnZones = new List<SpawnZone>();
+    private Dictionary<GameObject, SpawnZone> spawnZones = new Dictionary<GameObject, SpawnZone>();
 
     private void Awake()
     {
         Instance = this;
     }
 
-    public void AddZone(SpawnZone zone)
+    public void AddZone(GameObject enemy, SpawnZone zone)
     {
-        if (!spawnZones.Contains(zone))
+        if (!spawnZones.ContainsKey(enemy))
         {
-            spawnZones.Add(zone);
+            spawnZones.Add(enemy, zone);
         }
     }
-    //public void SpawnEnemiesInAllZones()
-    //{
-    //    foreach (var zone in spawnZones)
-    //    {
-    //        zone.SpawnEnemies();
-    //    }
-    //}
+
+    public void EnemyDied(GameObject enemy)
+    {
+        if (spawnZones.TryGetValue(enemy, out SpawnZone zone))
+        {
+            zone.OnEnemyDied(enemy);
+            spawnZones.Remove(enemy);
+        }
+    }
+
 }

@@ -5,89 +5,128 @@ using UnityEngine.Tilemaps;
 
 public class SpawnZone : MonoBehaviour
 {
-    public List<Tilemap> obstacleTilemaps;
-    public GameObject patrolPointPrefab;
     [System.Serializable]
     public class SpawnInfo
     {
         public GameObject enemyPrefab;
-        public int spawnCount;
+        public int maxSpawnCount;
+        public int initialSpawn;
+        [HideInInspector] public int currentAlive;
+        [HideInInspector] public int spawnedCount;
+        [HideInInspector] public int deadCount;
     }
 
     public List<SpawnInfo> spawnInfos;
-
-    private void Start()
-    {
-        if(EnemySpawnerManager.Instance != null)
-            EnemySpawnerManager.Instance.AddZone(this);
-    }
+    public List<Tilemap> obstacleTilemaps;
+    public GameObject patrolPointPrefab;
+    //private bool readyToAutoSpawn = false;
+    private bool hasSpawned = false;
+    private bool playerInsideZone = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.CompareTag("Player")) return;
+
+        if (!hasSpawned)
+        {
+            SpawnInitialEnemies();
+            hasSpawned = true;
+            //StartCoroutine(EnableAutoSpawnAfterDelay(1f)); // chờ 1 giây rồi mới spawn bù
+        }
+
+        playerInsideZone = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
         if (collision.CompareTag("Player"))
         {
-            SpawnEnemies();
+            playerInsideZone = false;
         }
     }
-    public void SpawnEnemies()
+    private void Update()
     {
-        foreach (var spawnInfo in spawnInfos)
+        if (!playerInsideZone) return;
+
+        foreach (var info in spawnInfos)
         {
-
-            //Vector3 spawnPosition;
-            //int attempts = 0;
-            //do
-            //{
-            //    spawnPosition = GetRandomPositionInZone();
-            //    attempts++;
-            //} while (!IsTileWalkable(spawnPosition) && attempts < 10);
-
-            //if (attempts >= 10)
-            //{
-            //    Debug.LogWarning("SpawnZone: Không tìm được vị trí hợp lệ để spawn enemy.");
-            //    continue;
-            //}
-
-            //GameObject enemyGO = Instantiate(spawnInfo.enemyPrefab, spawnPosition, Quaternion.identity);
-
-            for (int i = 0; i < spawnInfo.spawnCount; i++)
+            if (info.deadCount > 0 && info.spawnedCount < info.maxSpawnCount)
             {
-                //Vector3 spawnPosition = GetRandomPositionInZone()/*transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0)*/;
-                //GameObject enemyGO = Instantiate(spawnInfo.enemyPrefab, spawnPosition, Quaternion.identity);
-                ////GameObject enemyGO = Instantiate(spawnInfo.enemyPrefab, spawnPosition)
-                ///
-                Vector3 spawnPosition;
-                int attempts = 0;
-                do
-                {
-                    spawnPosition = GetRandomPositionInZone();
-                    attempts++;
-                } while (!IsTileWalkable(spawnPosition) && attempts < 10);
-
-                if (attempts >= 10)
-                {
-                    Debug.LogWarning("SpawnZone: Không tìm được vị trí hợp lệ để spawn enemy.");
-                    continue;
-                }
-
-                GameObject enemyGO = Instantiate(spawnInfo.enemyPrefab, spawnPosition, Quaternion.identity);
-
-                Transform patrolA = Instantiate(patrolPointPrefab, spawnPosition + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
-                Transform patrolB = Instantiate(patrolPointPrefab, spawnPosition + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
-
-                BaseEnemy enemy = enemyGO.GetComponent<BaseEnemy>();
-                if (enemy != null)
-                {
-                    enemy.pointA = patrolA.gameObject;
-                    enemy.pointB = patrolB.gameObject;
-                    enemy.currentPoint = patrolA;
-                }
-
-
+                SpawnEnemy(info);
+                info.deadCount--;
             }
         }
     }
-    Vector3 GetRandomPositionInZone()
+
+    private void SpawnInitialEnemies()
+    {
+        foreach (var info in spawnInfos)
+        {
+            int toSpawn = Mathf.Min(info.initialSpawn, info.maxSpawnCount - info.spawnedCount);
+            for (int i = 0; i < toSpawn; i++)
+            {
+                SpawnEnemy(info);
+            }
+        }
+    }
+
+
+    private void SpawnEnemy(SpawnInfo spawnInfo)
+    {
+        if (spawnInfo.spawnedCount >= spawnInfo.maxSpawnCount)
+            return;
+
+        Vector3 spawnPosition;
+        int attempts = 0;
+        do
+        {
+            spawnPosition = GetRandomPositionInZone();
+            attempts++;
+        } while (!IsTileWalkable(spawnPosition) && attempts < 10);
+
+        if (attempts >= 10)
+        {
+            Debug.LogWarning("SpawnZone: Không tìm được vị trí hợp lệ để spawn enemy.");
+            return;
+        }
+
+        GameObject enemyGO = Instantiate(spawnInfo.enemyPrefab, spawnPosition, Quaternion.identity);
+        if (EnemySpawnerManager.Instance != null)
+        {
+            EnemySpawnerManager.Instance.AddZone(enemyGO, this);
+        }
+
+        Transform patrolA = Instantiate(patrolPointPrefab, spawnPosition + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
+        Transform patrolB = Instantiate(patrolPointPrefab, spawnPosition + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
+
+        BaseEnemy enemy = enemyGO.GetComponent<BaseEnemy>();
+        if (enemy != null)
+        {
+            enemy.pointA = patrolA.gameObject;
+            enemy.pointB = patrolB.gameObject;
+            enemy.currentPoint = patrolA;
+        }
+
+        spawnInfo.spawnedCount++;
+        spawnInfo.currentAlive++;
+    }
+
+
+    public void OnEnemyDied(GameObject enemy)
+    {
+        foreach (var info in spawnInfos)
+        {
+            if (enemy.CompareTag(info.enemyPrefab.tag))
+            {
+                info.currentAlive--;
+                info.deadCount++;
+                break;
+            }
+        }
+    }
+
+
+    private Vector3 GetRandomPositionInZone()
     {
         BoxCollider2D box = GetComponent<BoxCollider2D>();
         Vector2 center = (Vector2)transform.position + box.offset;
@@ -97,17 +136,31 @@ public class SpawnZone : MonoBehaviour
         float y = Random.Range(center.y - size.y / 2, center.y + size.y / 2);
         return new Vector2(x, y);
     }
-    bool IsTileWalkable(Vector3 worldPosition)
+
+    private bool IsTileWalkable(Vector3 worldPosition)
     {
         foreach (Tilemap tilemap in obstacleTilemaps)
         {
             Vector3Int cellPos = tilemap.WorldToCell(worldPosition);
             if (tilemap.HasTile(cellPos))
             {
-                return false; 
+                return false;
             }
         }
 
         return true;
     }
+
+    public bool IsZoneCleared()
+    {
+        foreach (var info in spawnInfos)
+        {
+            if (info.spawnedCount < info.maxSpawnCount || info.currentAlive > 0)
+                return false;
+        }
+
+        return true;
+    }
+
+
 }

@@ -96,6 +96,14 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         if (currentHealth <= 0)
         {
             monsterState.SwitchState(new MonsterDeadState(monsterState));
+
+            if (pointA != null) Destroy(pointA);
+            if (pointB != null) Destroy(pointB);
+
+            if (EnemySpawnerManager.Instance != null)
+            {
+                EnemySpawnerManager.Instance.EnemyDied(this.gameObject);
+            }
             Destroy(gameObject, 0.5f);
         }
         else
