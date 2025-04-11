@@ -1,23 +1,76 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class MenuController : MonoBehaviour
 {
-    private SaveData saveData;
     public void LoadGame()
     {
-        if(saveData == null)
+        if (!PlayerPrefs.HasKey("saveData_save"))
         {
-            Debug.Log("No save data found");
+            return;
+        }
+
+        string json = PlayerPrefs.GetString("saveData_save");
+        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+
+        PlayerPrefs.SetString("pending_save_data", json);
+        PlayerPrefs.Save();
+       
+        SceneManager.sceneLoaded += OnSceneLoadedAfterLoadGame;
+        SceneManager.LoadScene(saveData.player.currentSceneName);
+        Time.timeScale = 1;
+    }
+
+
+    private void OnSceneLoadedAfterLoadGame(Scene scene, LoadSceneMode mode)
+    {
+        
+        SceneManager.sceneLoaded -= OnSceneLoadedAfterLoadGame;
+
+        
+        if (SaveLoadManager.instance != null)
+        {
+            SaveLoadManager.instance.LoadAfterSceneLoaded(); 
+        }
+        else
+        {
+            Debug.LogError("SaveLoadManager is null in loaded scene");
         }
     }
 
-    public void ChangeScence()
+    private IEnumerator WaitAndLoadDataAfterSceneLoad()
     {
-       SceneManager.LoadScene("SampleScene");
+        yield return null; 
+
+        if (SaveLoadManager.instance != null)
+        {
+            SaveLoadManager.instance.LoadGameFromPendingData();
+        }
+        else
+        {
+            Debug.LogError("SaveLoadManager instance is null!");
+        }
+    }
+
+    public void SaveGame()
+    {
+        SaveLoadManager.instance.SaveGame();
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu"); 
+    }
+
+    public void NewGame()
+    {
+        if (PlayerPrefs.HasKey("saveData_save"))
+        {
+            PlayerPrefs.DeleteKey("saveData_save");
+        }
+
+        SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1;
     }
 }

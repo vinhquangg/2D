@@ -18,4 +18,6 @@ public class EnemySaveData
         this.health = health;
         this.currentState = state;
     }
+
+    public EnemySaveData() { }
 }

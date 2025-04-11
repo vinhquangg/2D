@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,51 +17,36 @@ public class SaveLoadManager : MonoBehaviour
             Debug.Log("found more than one SaveLoadManager in the scene");
         }
         instance = this;
+
+        if (playerStateMachine == null)
+        {
+            playerStateMachine = FindObjectOfType<PlayerStateMachine>();
+        }
     }
     void Start()
     {
-        NewGame();
+        if (!PlayerPrefs.HasKey("pending_save_data"))
+        {
+            if(PlayerPrefs.HasKey("player_save"))
+                PlayerPrefs.DeleteKey("player_save");
+            NewGame();
+        }
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void NewGame()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SaveGame();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadGame();
-        }
-    }
+        PlayerSaveData playerData = playerStateMachine.GetDefaultPlayerData();
 
-    private void NewGame()
-    {
-        Vector3 startPos = Vector3.zero;
-        float health = playerStateMachine.playerData.maxHealth;
-        float energy = playerStateMachine.playerCombat.playerEnergy.GetMaxEnergy();
-        string State = "IdleState";
-        playerData = new PlayerSaveData(startPos,health,State,energy);
-
-        playerStateMachine.transform.position = playerData.position;
-        playerStateMachine.playerCombat.currentHealth = playerData.health;
-        playerStateMachine.playerCombat.currentEnergy = playerData.energy;
-
-        ApplyPlayerData(playerData);
+        playerStateMachine.LoadFromData(playerData);
 
         playerStateMachine.SwitchState(new IdleState(playerStateMachine));
     }
 
-    private void SaveGame()
+
+    public void SaveGame()
     {
-        //Save Player
-        Vector3 pos = playerStateMachine.transform.position;
-        string stateName = playerStateMachine.currentStateName;
-        float health = playerStateMachine.playerCombat.currentHealth;
-        float energy = playerStateMachine.playerCombat.currentEnergy;
-        PlayerSaveData playerData = new PlayerSaveData(pos, health , stateName, energy);
-       
+        PlayerSaveData playerData = playerStateMachine.GetPlayerSaveData();
         //Save Enemy
         List<EnemySaveData> enemyList = new();
         var allEnemies = FindObjectsOfType<BaseEnemy>();
@@ -85,56 +71,79 @@ public class SaveLoadManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(saveData);
         PlayerPrefs.SetString("saveData_save", json);
-        Debug.Log("Saved All: " + json);
+
     }
 
-    private void LoadGame()
+    public void LoadGame()
     {
         if (!PlayerPrefs.HasKey("saveData_save"))
         {
-            Debug.Log("No save data found. Starting new game.");
-            NewGame(); 
+            NewGame();
             return;
         }
         string json = PlayerPrefs.GetString("saveData_save");
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
-        //PlayerPrefs.DeleteKey("player_save");
+
 
         //Load Player
-        ApplyPlayerData(saveData.player);
+        playerStateMachine.LoadFromData(saveData.player);
 
 
         //Load Monster
         var enemies = FindObjectsOfType<BaseEnemy>();
-        foreach( var enemy in enemies )
+        foreach (var enemy in enemies)
         {
             var found = saveData.enemies.Find(e => e.type == enemy.enemyType);
-            if(found != null && enemy is ISaveable saveable )
+            if (found != null && enemy is ISaveable saveable)
             {
                 saveable.LoadData(found);
             }
         }
-        Debug.Log("Loaded All: " + json);
-        //Debug.Log("Loaded: " + json);
+
     }
 
-    private void ApplyPlayerData(PlayerSaveData data)
+    public void LoadAfterSceneLoaded()
     {
-        playerStateMachine.transform.position = data.position;
-        playerStateMachine.playerCombat.currentHealth = data.health;
-        playerStateMachine.playerCombat.currentEnergy = data.energy;
+        StartCoroutine(DelayThenLoadData());
+    }
 
-        playerStateMachine.playerCombat.GetComponent<PlayerHealth>()?.UpdateHealthBarPlayer(data.health, playerStateMachine.playerData.maxHealth);
-        playerStateMachine.playerCombat.GetComponent<PlayerEnergy>()?.UpdateEnergySlider();
+    private IEnumerator DelayThenLoadData()
+    {
+        yield return null; 
+        LoadGameFromPendingData();
+    }
 
-        if (playerStateMachine.stateFactory.TryGetValue(data.currentState, out var createState))
+    public void LoadGameFromPendingData()
+    {
+
+        if (!PlayerPrefs.HasKey("pending_save_data"))
         {
-            playerStateMachine.SwitchState(createState());
+            return;
         }
-        else
+
+        string json = PlayerPrefs.GetString("pending_save_data");
+        PlayerPrefs.DeleteKey("pending_save_data");
+        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+        ApplyLoadedData(saveData);
+    }
+
+
+    private void ApplyLoadedData(SaveData saveData)
+    {
+        playerStateMachine.LoadFromData(saveData.player);
+
+        var enemies = FindObjectsOfType<BaseEnemy>();
+        foreach (var enemy in enemies)
         {
-            playerStateMachine.SwitchState(new IdleState(playerStateMachine));
+            var found = saveData.enemies.Find(e => e.type == enemy.enemyType);
+            if (found != null && enemy is ISaveable saveable)
+            {
+                saveable.LoadData(found);
+            }
         }
     }
+
+
+    
 }
 

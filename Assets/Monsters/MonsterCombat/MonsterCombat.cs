@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
 {
     protected MonstersStateMachine monsterState;
-    protected BaseEnemy baseEnemy;
+    public BaseEnemy baseEnemy { get; private set; }
     protected SpriteRenderer spriteRenderer;
     public float invincibleTime;
     protected bool isInvincible = false;
@@ -31,8 +31,6 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
 
             if (target.CompareTag(playerTag))
             {
-                //Debug.Log("Tìm thấy đối tượng Player: " + target.name);
-
                 PlayerCombat playerCombat = target.GetComponent<PlayerCombat>();
                 if (playerCombat != null)
                 {
