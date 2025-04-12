@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a964aff255b3264f8ff402af3545f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoneID: AssassinSpawner
   spawnInfos:
   - enemyPrefab: {fileID: 2534295144362671392, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
     maxSpawnCount: 4
@@ -73247,6 +73248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a964aff255b3264f8ff402af3545f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoneID: MageSpawner
   spawnInfos:
   - enemyPrefab: {fileID: 7613442247315998512, guid: efb94b513571334409f568d40920f252, type: 3}
     maxSpawnCount: 2
@@ -83485,9 +83487,9 @@ SceneRoots:
   - {fileID: 437183354}
   - {fileID: 2059503257}
   - {fileID: 2071975168}
+  - {fileID: 1472750793}
   - {fileID: 1597854272}
   - {fileID: 516739300}
-  - {fileID: 1472750793}
   - {fileID: 331154478}
   - {fileID: 2084867229}
   - {fileID: 1215092495}

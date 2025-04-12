@@ -15,11 +15,10 @@ public class SpawnZone : MonoBehaviour
         [HideInInspector] public int spawnedCount;
         [HideInInspector] public int deadCount;
     }
-
+    public string zoneID;
     public List<SpawnInfo> spawnInfos;
     public List<Tilemap> obstacleTilemaps;
     public GameObject patrolPointPrefab;
-    //private bool readyToAutoSpawn = false;
     private bool hasSpawned = false;
     private bool playerInsideZone = false;
 
@@ -31,7 +30,6 @@ public class SpawnZone : MonoBehaviour
         {
             SpawnInitialEnemies();
             hasSpawned = true;
-            //StartCoroutine(EnableAutoSpawnAfterDelay(1f)); // chờ 1 giây rồi mới spawn bù
         }
 
         playerInsideZone = true;
@@ -105,6 +103,7 @@ public class SpawnZone : MonoBehaviour
             enemy.pointA = patrolA.gameObject;
             enemy.pointB = patrolB.gameObject;
             enemy.currentPoint = patrolA;
+            enemy.assignedZone = this;
         }
 
         spawnInfo.spawnedCount++;
@@ -162,5 +161,49 @@ public class SpawnZone : MonoBehaviour
         return true;
     }
 
+    public void OnEnemySpawnedManually(BaseEnemy enemy)
+    {
+        foreach (var info in spawnInfos)
+        {
+            if (enemy.CompareTag(info.enemyPrefab.tag))
+            {
+                info.spawnedCount++;
+                info.currentAlive++;
+                break;
+            }
+        }
+    }
 
+
+    public SpawnZoneSaveData SaveData()
+    {
+        SpawnZoneSaveData data = new SpawnZoneSaveData();
+        data.zoneID = this.zoneID;
+
+        foreach (var info in spawnInfos)
+        {
+            SpawnInfoZoneData infoData = new SpawnInfoZoneData();
+            infoData.spawnedCount = info.spawnedCount;
+            infoData.deadCount = info.deadCount;
+            infoData.currentAlive = info.currentAlive;
+            data.spawnInfos.Add(infoData);
+        }
+
+        return data;
+    }
+    public void LoadData(SpawnZoneSaveData data)
+    {
+        this.zoneID = data.zoneID;
+
+        for (int i = 0; i < spawnInfos.Count; i++)
+        {
+            if (i < data.spawnInfos.Count)
+            {
+                spawnInfos[i].spawnedCount = data.spawnInfos[i].spawnedCount;
+                spawnInfos[i].deadCount = data.spawnInfos[i].deadCount;
+                spawnInfos[i].currentAlive = data.spawnInfos[i].currentAlive;
+            }
+        }
+        hasSpawned = true;
+    }
 }

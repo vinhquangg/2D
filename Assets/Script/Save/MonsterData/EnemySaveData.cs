@@ -10,13 +10,18 @@ public class EnemySaveData
     public Vector3 position;
     public float health;
     public string currentState;
-
-    public EnemySaveData(EnemyType type, Vector3 position, float health, string state)
+    public Vector3 patrolA;
+    public Vector3 patrolB;
+    public string zoneID;
+    public EnemySaveData(EnemyType type, Vector3 position, float health, string state, Vector3 patrolA,Vector3 patrolB,string zoneID)
     {
         this.type = type;
         this.position = position;
         this.health = health;
         this.currentState = state;
+        this.patrolA = patrolA;
+        this.patrolB = patrolB;
+        this.zoneID = zoneID;
     }
 
     public EnemySaveData() { }

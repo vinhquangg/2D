@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,5 +28,23 @@ public class EnemySpawnerManager : MonoBehaviour
             spawnZones.Remove(enemy);
         }
     }
+
+    public SpawnZone GetZoneByID(string id)
+    {
+        foreach (var zone in FindObjectsOfType<SpawnZone>())
+        {
+            if (zone.zoneID == id)
+                return zone;
+        }
+        return null;
+    }
+
+    public GameObject GetPrefab(EnemyType type)
+    {
+        // Tùy bạn tổ chức theo type → prefab
+        // Có thể dùng Dictionary<EnemyType, GameObject> map trước
+        return null;
+    }
+
 
 }

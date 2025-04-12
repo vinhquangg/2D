@@ -21,6 +21,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public float detectRange;
     public float attackRange;
     public float moveSpeed;
+    public SpawnZone assignedZone;
     public int currentDamage { get; set; }
     public float currentAttackMonsterRange { get; set; }
     public float currentHealth { get;  set; }
@@ -148,12 +149,16 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
 
     public virtual object SaveData()
     {
-        return new EnemySaveData(
-            enemyType,
-            transform.position,
-            currentHealth,
-            monsterState.monsterCurrentStateName
-            );
+        return new EnemySaveData
+        {
+            type = enemyType,
+            position = transform.position,
+            health = currentHealth,
+            currentState = monsterState?.monsterCurrentStateName,
+            patrolA = pointA?.transform.position ?? Vector3.zero,
+            patrolB = pointB?.transform.position ?? Vector3.zero,
+            zoneID = assignedZone?.zoneID 
+        };
     }
 
     public virtual void LoadData(object data)
