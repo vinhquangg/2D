@@ -4,6 +4,6 @@ using System.Collections.Generic;
 public class SaveData
 {
     public PlayerSaveData player;
-    public List<EnemySaveData> enemies;
+    public List<EnemySaveData> enemies = new();
     public List<SpawnZoneSaveData> spawnZones;
 }

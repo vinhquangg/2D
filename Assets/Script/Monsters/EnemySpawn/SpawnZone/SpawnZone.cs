@@ -17,14 +17,13 @@ public class SpawnZone : MonoBehaviour
         public int deadCount;
         public int pendingSpawn;
     }
-
     public string zoneID;
     public List<SpawnInfo> spawnInfos;
     public List<Tilemap> obstacleTilemaps;
     public GameObject patrolPointPrefab;
     private bool hasSpawned = false;
     private bool playerInsideZone = false;
-    private bool isLoadedFromSave = false;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
@@ -47,13 +46,6 @@ public class SpawnZone : MonoBehaviour
     }
     private void Update()
     {
-        if (isLoadedFromSave)
-        {
-            isLoadedFromSave = false;
-            return;
-        }
-
-
         CheckSpawn();
     }
 
@@ -94,6 +86,9 @@ public class SpawnZone : MonoBehaviour
 
         }
     }
+
+
+
     private void SpawnEnemy(SpawnInfo spawnInfo)
     {
         if (spawnInfo.spawnedCount >= spawnInfo.maxSpawnCount)
@@ -194,10 +189,13 @@ public class SpawnZone : MonoBehaviour
 
     public void UpdateZoneInfo(BaseEnemy enemy)
     {
+        // Cập nhật thông tin cho tất cả các SpawnInfo trong zone
         foreach (var info in spawnInfos)
         {
+            // Kiểm tra xem loại enemy có khớp với enemy hiện tại không
             if (enemy.enemyType == info.enemyType)
             {
+                // Cập nhật thông tin sống/chết của enemy
                 if (enemy.currentHealth <= 0)
                 {
                     info.currentAlive--;
@@ -208,7 +206,11 @@ public class SpawnZone : MonoBehaviour
                     info.currentAlive++;
                 }
 
+                // Kiểm tra và cập nhật các thông tin khác nếu cần thiết
+                // Ví dụ: Cập nhật số lượng đã spawn
                 info.spawnedCount = Mathf.Min(info.spawnedCount, info.maxSpawnCount);
+
+                // Debug thông tin để chắc chắn rằng chúng được cập nhật đúng cách
                 Debug.Log($"Updated SpawnZone Info for EnemyType={info.enemyType}, " +
                           $"SpawnedCount={info.spawnedCount}, AliveCount={info.currentAlive}, DeadCount={info.deadCount}");
             }
@@ -221,7 +223,8 @@ public class SpawnZone : MonoBehaviour
     {
         SpawnZoneSaveData data = new SpawnZoneSaveData();
         data.zoneID = this.zoneID;
-        data.hasSpawned = this.hasSpawned;
+
+        // Kiểm tra spawnInfos trước khi thêm vào
         foreach (var info in this.spawnInfos)
         {
             SpawnInfoZoneData infoData = new SpawnInfoZoneData
@@ -236,7 +239,7 @@ public class SpawnZone : MonoBehaviour
             };
             data.spawnInfos.Add(infoData);
 
-           
+            // Debug thông tin để chắc chắn rằng chúng được thêm vào đúng cách
             Debug.Log($"Saving SpawnZone {data.zoneID}: EnemyType={info.enemyType}, SpawnedCount={info.spawnedCount}, DeadCount={info.deadCount}");
         }
 
@@ -247,12 +250,11 @@ public class SpawnZone : MonoBehaviour
     {
         this.zoneID = data.zoneID;
         this.spawnInfos = new List<SpawnInfo>();
-        this.hasSpawned = data.hasSpawned;
+
         foreach (var infoData in data.spawnInfos)
         {
-
+            // Khôi phục thông tin SpawnInfo từ dữ liệu
             SpawnInfo newInfo = new SpawnInfo();
-            newInfo.enemyPrefab = EnemySpawnerManager.Instance.GetPrefab(infoData.enemyType);
             newInfo.enemyType = infoData.enemyType;
             newInfo.maxSpawnCount = infoData.maxSpawnCount;
             newInfo.initialSpawn = infoData.initialSpawn;
@@ -263,11 +265,17 @@ public class SpawnZone : MonoBehaviour
 
             this.spawnInfos.Add(newInfo);
 
-            
+            // Debug thông tin để chắc chắn dữ liệu đã được tải đúng
             Debug.Log($"Loaded SpawnInfo for EnemyType={newInfo.enemyType}, SpawnedCount={newInfo.spawnedCount}, DeadCount={newInfo.deadCount}");
         }
 
-        isLoadedFromSave = true;
-        //SpawnInitialEnemies();
+        // Sau khi load, có thể gọi phương thức Spawn lại enemy hoặc các hoạt động khác nếu cần
+        SpawnInitialEnemies();
     }
+
+
+
+
+
+
 }

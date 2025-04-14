@@ -174,12 +174,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         transform.position = save.position;
         currentHealth = save.health;
         healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
-        if (assignedZone != null && save.zoneID != null)
-        {
-            assignedZone = EnemySpawnerManager.Instance.GetZoneByID(save.zoneID); 
-        }
-        pointA.transform.position = save.patrolA;
-        pointB.transform.position = save.patrolB;
 
         if (monsterState.stateFactory.TryGetValue(save.currentState, out var createState))
         {
@@ -189,11 +183,5 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         {
             monsterState.SwitchState(new MonsterPatrolState(monsterState));
         }
-
-        if (currentHealth <= 0)
-    {
-        isDead = true;
-        monsterState.SwitchState(new MonsterDeadState(monsterState));
-    }
     }
 }
