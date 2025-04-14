@@ -11,9 +11,11 @@ public class SpawnZone : MonoBehaviour
         public GameObject enemyPrefab;
         public int maxSpawnCount;
         public int initialSpawn;
-        [HideInInspector] public int currentAlive;
-        [HideInInspector] public int spawnedCount;
-        [HideInInspector] public int deadCount;
+        public EnemyType enemyType;
+        public int currentAlive;
+        public int spawnedCount;
+        public int deadCount;
+        public int pendingSpawn;
     }
     public string zoneID;
     public List<SpawnInfo> spawnInfos;
@@ -44,14 +46,27 @@ public class SpawnZone : MonoBehaviour
     }
     private void Update()
     {
+        CheckSpawn();
+    }
+
+    private void CheckSpawn()
+    {
         if (!playerInsideZone) return;
 
         foreach (var info in spawnInfos)
         {
-            if (info.deadCount > 0 && info.spawnedCount < info.maxSpawnCount)
+            int canSpawn = info.maxSpawnCount - info.spawnedCount;
+            int toSpawn = Mathf.Min(info.deadCount - info.pendingSpawn, canSpawn);
+            
+            if (canSpawn > 0)
             {
-                SpawnEnemy(info);
-                info.deadCount--;
+
+                for (int i = 0; i< toSpawn; i++)
+                {
+                    SpawnEnemy(info);
+                    info.pendingSpawn++;
+                }   
+                
             }
         }
     }
@@ -60,13 +75,18 @@ public class SpawnZone : MonoBehaviour
     {
         foreach (var info in spawnInfos)
         {
-            int toSpawn = Mathf.Min(info.initialSpawn, info.maxSpawnCount - info.spawnedCount);
+           
+            int toSpawn = Mathf.Min(info.initialSpawn - info.spawnedCount,
+                                    info.maxSpawnCount - info.spawnedCount);
             for (int i = 0; i < toSpawn; i++)
             {
                 SpawnEnemy(info);
             }
+            Debug.Log($"[SpawnZone] Spawning {toSpawn} enemy(s) in zone {zoneID}");
+
         }
     }
+
 
 
     private void SpawnEnemy(SpawnInfo spawnInfo)
@@ -88,16 +108,21 @@ public class SpawnZone : MonoBehaviour
             return;
         }
 
-        GameObject enemyGO = Instantiate(spawnInfo.enemyPrefab, spawnPosition, Quaternion.identity);
+        BaseEnemy enemy = Instantiate(spawnInfo.enemyPrefab, spawnPosition, Quaternion.identity).GetComponent<BaseEnemy>();
+        if (enemy != null)
+        {
+            spawnInfo.enemyType = enemy.enemyType;  
+        }
+
         if (EnemySpawnerManager.Instance != null)
         {
-            EnemySpawnerManager.Instance.AddZone(enemyGO, this);
+            EnemySpawnerManager.Instance.AddZone(enemy, this);
         }
 
         Transform patrolA = Instantiate(patrolPointPrefab, spawnPosition + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
         Transform patrolB = Instantiate(patrolPointPrefab, spawnPosition + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
 
-        BaseEnemy enemy = enemyGO.GetComponent<BaseEnemy>();
+        //BaseEnemy enemy = enemyGO.GetComponent<BaseEnemy>();
         if (enemy != null)
         {
             enemy.pointA = patrolA.gameObject;
@@ -108,10 +133,11 @@ public class SpawnZone : MonoBehaviour
 
         spawnInfo.spawnedCount++;
         spawnInfo.currentAlive++;
+
     }
 
 
-    public void OnEnemyDied(GameObject enemy)
+    public void OnEnemyDied(BaseEnemy enemy)
     {
         foreach (var info in spawnInfos)
         {
@@ -160,50 +186,58 @@ public class SpawnZone : MonoBehaviour
 
         return true;
     }
-
-    public void OnEnemySpawnedManually(BaseEnemy enemy)
-    {
-        foreach (var info in spawnInfos)
-        {
-            if (enemy.CompareTag(info.enemyPrefab.tag))
-            {
-                info.spawnedCount++;
-                info.currentAlive++;
-                break;
-            }
-        }
-    }
-
-
     public SpawnZoneSaveData SaveData()
     {
         SpawnZoneSaveData data = new SpawnZoneSaveData();
         data.zoneID = this.zoneID;
 
-        foreach (var info in spawnInfos)
+        foreach (var infoData in data.spawnInfos)
         {
-            SpawnInfoZoneData infoData = new SpawnInfoZoneData();
-            infoData.spawnedCount = info.spawnedCount;
-            infoData.deadCount = info.deadCount;
-            infoData.currentAlive = info.currentAlive;
-            data.spawnInfos.Add(infoData);
+            Debug.Log($"Loading enemyType: {infoData.enemyType}");
+
+            var spawnInfo = spawnInfos.Find(info => info.enemyType == infoData.enemyType);
+
+            if (spawnInfo != null)
+            {
+                Debug.Log($"Found match for {infoData.enemyType}");
+                spawnInfo.maxSpawnCount = infoData.maxSpawnCount;
+                spawnInfo.initialSpawn = infoData.initialSpawn;
+                spawnInfo.spawnedCount = infoData.spawnedCount;
+                spawnInfo.deadCount = infoData.deadCount;
+                spawnInfo.currentAlive = infoData.currentAlive;
+                spawnInfo.pendingSpawn = infoData.pendingSpawn;
+            }
+            else
+            {
+                Debug.LogWarning($"No match found in spawnInfos for enemyType: {infoData.enemyType}");
+            }
         }
+
 
         return data;
     }
+
     public void LoadData(SpawnZoneSaveData data)
     {
         this.zoneID = data.zoneID;
+        this.spawnInfos = new List<SpawnInfo>(); 
 
-        for (int i = 0; i < spawnInfos.Count; i++)
+        foreach (var infoData in data.spawnInfos)
         {
-            if (i < data.spawnInfos.Count)
-            {
-                spawnInfos[i].spawnedCount = data.spawnInfos[i].spawnedCount;
-                spawnInfos[i].deadCount = data.spawnInfos[i].deadCount;
-                spawnInfos[i].currentAlive = data.spawnInfos[i].currentAlive;
-            }
+            SpawnInfo newInfo = new SpawnInfo();
+            newInfo.enemyType = infoData.enemyType;
+            newInfo.maxSpawnCount = infoData.maxSpawnCount;
+            newInfo.initialSpawn = infoData.initialSpawn;
+            newInfo.spawnedCount = infoData.spawnedCount;
+            newInfo.deadCount = infoData.deadCount;
+            newInfo.currentAlive = infoData.currentAlive;
+            newInfo.pendingSpawn = infoData.pendingSpawn;
+
+            this.spawnInfos.Add(newInfo);
         }
-        hasSpawned = true;
     }
+
+
+
+
 }

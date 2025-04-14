@@ -58,6 +58,12 @@ public class MenuController : MonoBehaviour
         SaveLoadManager.instance.SaveGame();
     }
 
+    public void Resume()
+    {
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
+
     public void BackToMenu()
     {
         SceneManager.LoadScene("Menu"); 

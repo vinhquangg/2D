@@ -76,23 +76,7 @@ public class SaveLoadManager : MonoBehaviour
         var spawnZones = FindObjectsOfType<SpawnZone>();
         foreach (var zone in spawnZones)
         {
-            SpawnZoneSaveData zoneData = new SpawnZoneSaveData
-            {
-                zoneID = zone.zoneID,
-                spawnInfos = new List<SpawnInfoZoneData>()
-            };
-
-            foreach (var info in zone.spawnInfos)
-            {
-                zoneData.spawnInfos.Add(new SpawnInfoZoneData
-                {
-                    enemyType = info.enemyPrefab.GetComponent<BaseEnemy>().enemyType, 
-                    spawnedCount = info.spawnedCount,
-                    deadCount = info.deadCount,
-                    currentAlive = info.currentAlive
-                });
-            }
-
+            SpawnZoneSaveData zoneData = zone.SaveData(); 
             zoneSaveDataList.Add(zoneData);
         }
 
@@ -152,16 +136,7 @@ public class SaveLoadManager : MonoBehaviour
         {
             if (zoneDataDictionary.TryGetValue(zone.zoneID, out var zoneData))
             {
-                foreach (var spawnInfo in zoneData.spawnInfos)
-                {
-                    var zoneSpawnInfo = zone.spawnInfos.Find(info => info.enemyPrefab.GetComponent<BaseEnemy>().enemyType == spawnInfo.enemyType);
-                    if (zoneSpawnInfo != null)
-                    {
-                        zoneSpawnInfo.spawnedCount = spawnInfo.spawnedCount;
-                        zoneSpawnInfo.deadCount = spawnInfo.deadCount;
-                        zoneSpawnInfo.currentAlive = spawnInfo.currentAlive;
-                    }
-                }
+                zone.LoadData(zoneData);  
             }
         }
     }
@@ -215,9 +190,9 @@ public class SaveLoadManager : MonoBehaviour
                     enemy.pointB = Instantiate(zone.patrolPointPrefab, enemyData.patrolB, Quaternion.identity);
                     enemy.currentPoint = enemy.pointA.transform;
 
-                    zone.OnEnemySpawnedManually(enemy);
+                    zone.OnEnemyDied(enemy);
                     enemy.assignedZone = zone;
-                    EnemySpawnerManager.Instance.AddZone(enemyGO, zone); 
+                    EnemySpawnerManager.Instance.AddZone(enemy, zone); 
                 }
             }
         }

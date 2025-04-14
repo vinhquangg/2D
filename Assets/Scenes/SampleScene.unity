@@ -470,9 +470,11 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 2534295144362671392, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
     maxSpawnCount: 4
     initialSpawn: 2
+    enemyType: 0
     currentAlive: 0
     spawnedCount: 0
     deadCount: 0
+    pendingSpawn: 0
   obstacleTilemaps:
   - {fileID: 1945052813}
   - {fileID: 291884390}
@@ -509,7 +511,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -11.686684, y: 0.24674416}
+  m_Offset: {x: -11.441963, y: 0.24674416}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -520,7 +522,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30.026047, y: 11.363241}
+  m_Size: {x: 31.212517, y: 11.363241}
   m_EdgeRadius: 0
 --- !u!1 &200919131
 GameObject:
@@ -6188,6 +6190,37 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &373045575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 373045576}
+  m_Layer: 0
+  m_Name: ====SYSTEM====
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &373045576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373045575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &409448270
 GameObject:
   m_ObjectHideFlags: 0
@@ -72755,7 +72788,7 @@ Transform:
   m_GameObject: {fileID: 1128817458}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 234.37038, y: 428.98145, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73223,7 +73256,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -11.686684, y: 0.24674416}
+  m_Offset: {x: -11.338165, y: 0.3992195}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -73234,7 +73267,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 30.026047, y: 11.363241}
+  m_Size: {x: 30.897339, y: 12.800873}
   m_EdgeRadius: 0
 --- !u!114 &1603501782
 MonoBehaviour:
@@ -73253,9 +73286,11 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 7613442247315998512, guid: efb94b513571334409f568d40920f252, type: 3}
     maxSpawnCount: 2
     initialSpawn: 1
+    enemyType: 0
     currentAlive: 0
     spawnedCount: 0
     deadCount: 0
+    pendingSpawn: 0
   obstacleTilemaps:
   - {fileID: 291884390}
   - {fileID: 1945052813}
@@ -73285,7 +73320,7 @@ Transform:
   m_GameObject: {fileID: 1695022186}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 234.37038, y: 428.98145, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79508,7 +79543,7 @@ Transform:
   m_GameObject: {fileID: 2084867228}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 234.37038, y: 428.98145, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -82829,10 +82864,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8201589484169775077}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 8201589484169775078}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -83477,19 +83512,20 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1695022187}
   - {fileID: 519420032}
   - {fileID: 647353016}
-  - {fileID: 1695022187}
-  - {fileID: 596461732}
-  - {fileID: 22531375}
   - {fileID: 1128817459}
-  - {fileID: 4424140727519134511}
+  - {fileID: 596461732}
   - {fileID: 437183354}
+  - {fileID: 4424140727519134511}
+  - {fileID: 2084867229}
+  - {fileID: 22531375}
   - {fileID: 2059503257}
   - {fileID: 2071975168}
   - {fileID: 1472750793}
   - {fileID: 1597854272}
+  - {fileID: 373045576}
   - {fileID: 516739300}
   - {fileID: 331154478}
-  - {fileID: 2084867229}
   - {fileID: 1215092495}

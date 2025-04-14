@@ -5,14 +5,14 @@ using UnityEngine;
 public class EnemySpawnerManager : MonoBehaviour
 {
     public static EnemySpawnerManager Instance { get; private set; }
-    private Dictionary<GameObject, SpawnZone> spawnZones = new Dictionary<GameObject, SpawnZone>();
+    private Dictionary<BaseEnemy, SpawnZone> spawnZones = new Dictionary<BaseEnemy, SpawnZone>();
 
     private void Awake()
     {
         Instance = this;
     }
 
-    public void AddZone(GameObject enemy, SpawnZone zone)
+    public void AddZone(BaseEnemy enemy, SpawnZone zone)
     {
         if (!spawnZones.ContainsKey(enemy))
         {
@@ -20,7 +20,7 @@ public class EnemySpawnerManager : MonoBehaviour
         }
     }
 
-    public void EnemyDied(GameObject enemy)
+    public void EnemyDied(BaseEnemy enemy)
     {
         if (spawnZones.TryGetValue(enemy, out SpawnZone zone))
         {
@@ -41,8 +41,6 @@ public class EnemySpawnerManager : MonoBehaviour
 
     public GameObject GetPrefab(EnemyType type)
     {
-        // Tùy bạn tổ chức theo type → prefab
-        // Có thể dùng Dictionary<EnemyType, GameObject> map trước
         return null;
     }
 

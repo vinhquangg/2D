@@ -91,11 +91,13 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
 
         StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration, damage));
-
         StartCoroutine(Knockback(attackerPosition, knockbackForce));
 
         if (currentHealth <= 0)
         {
+            isDead = true; 
+
+
             monsterState.SwitchState(new MonsterDeadState(monsterState));
 
             if (pointA != null) Destroy(pointA);
@@ -103,21 +105,24 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
 
             if (EnemySpawnerManager.Instance != null)
             {
-                EnemySpawnerManager.Instance.EnemyDied(this.gameObject);
+                EnemySpawnerManager.Instance.EnemyDied(this);
             }
+
             Destroy(gameObject, 0.5f);
         }
         else
         {
-            if (monsterState.monsterCurrentState is MonsterAttackState || 
-                monsterState.monsterCurrentState is MonsterChaseState || 
-                monsterState.monsterCurrentState is MonsterIdleState||
+
+            if (monsterState.monsterCurrentState is MonsterAttackState ||
+                monsterState.monsterCurrentState is MonsterChaseState ||
+                monsterState.monsterCurrentState is MonsterIdleState ||
                 monsterState.monsterCurrentState is MonsterPatrolState)
             {
                 monsterState.SwitchState(new MonsterHurtState(monsterState));
             }
         }
     }
+
 
     public virtual IEnumerator Knockback(Vector2 attackerPosition, float knockbackForce)
     {
