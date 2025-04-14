@@ -23,6 +23,4 @@ public class EnemySaveData
         this.patrolB = patrolB;
         this.zoneID = zoneID;
     }
-
-    public EnemySaveData() { }
 }

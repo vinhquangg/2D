@@ -1,46 +1,24 @@
-﻿using System.Collections;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MenuController : MonoBehaviour
 {
+    private SaveData saveData;
     public void LoadGame()
     {
-        if (!PlayerPrefs.HasKey("saveData_save"))
+        if(saveData == null)
         {
-            return;
-        }
-
-        string json = PlayerPrefs.GetString("saveData_save");
-        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
-
-        PlayerPrefs.SetString("pending_save_data", json);
-        PlayerPrefs.Save();
-       
-        SceneManager.sceneLoaded += OnSceneLoadedAfterLoadGame;
-        SceneManager.LoadScene(saveData.player.currentSceneName);
-        Time.timeScale = 1;
-    }
-
-
-    private void OnSceneLoadedAfterLoadGame(Scene scene, LoadSceneMode mode)
-    {
-        
-        SceneManager.sceneLoaded -= OnSceneLoadedAfterLoadGame;
-
-        
-        if (SaveLoadManager.instance != null)
-        {
-            SaveLoadManager.instance.LoadAfterSceneLoaded(); 
-        }
-        else
-        {
-            Debug.LogError("SaveLoadManager is null in loaded scene");
+            Debug.Log("No save data found");
         }
     }
 
-    private IEnumerator WaitAndLoadDataAfterSceneLoad()
+    public void ChangeScence()
     {
+<<<<<<< HEAD
         yield return null; 
 
         if (SaveLoadManager.instance != null)
@@ -78,5 +56,8 @@ public class MenuController : MonoBehaviour
 
         SceneManager.LoadScene("SampleScene");
         Time.timeScale = 1;
+=======
+       SceneManager.LoadScene("SampleScene");
+>>>>>>> parent of d29f92e (SaveGame)
     }
 }

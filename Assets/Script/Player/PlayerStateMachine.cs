@@ -86,45 +86,4 @@ public class PlayerStateMachine : MonoBehaviour
             SwitchState(new AttackState(this));
         }
     }
-
-    public PlayerSaveData GetDefaultPlayerData()
-    {
-        return new PlayerSaveData(
-            Vector3.zero, // startPos
-            playerData.maxHealth,
-            "IdleState",
-            playerCombat.playerEnergy.GetMaxEnergy(),
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-        );
-    }
-
-    public PlayerSaveData GetPlayerSaveData()
-    {
-        return new PlayerSaveData(
-            transform.position,
-            playerCombat.currentHealth,
-            currentStateName,
-            playerCombat.currentEnergy,
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-        );
-    }
-
-    public void LoadFromData(PlayerSaveData data)
-    {
-        transform.position = data.position;
-        playerCombat.currentHealth = data.health;
-        playerCombat.currentEnergy = data.energy;
-
-        playerCombat.GetComponent<PlayerHealth>()?.UpdateHealthBarPlayer(data.health, playerData.maxHealth);
-        playerCombat.GetComponent<PlayerEnergy>()?.UpdateEnergySlider();
-
-        if (stateFactory.TryGetValue(data.currentState, out var createState))
-        {
-            SwitchState(createState());
-        }
-        else
-        {
-            SwitchState(new IdleState(this));
-        }
-    }
 }

@@ -4,7 +4,6 @@ public class PlayerInputHandler : MonoBehaviour
 {
     public PlayerInput InputActions { get; private set; }
     public PlayerInput.PlayerActions playerAction { get; private set; }
-    public PlayerInput.UIActions uiAction { get; private set; }
 
     public static PlayerInputHandler instance { get; private set; }
     private void Awake()
@@ -20,7 +19,6 @@ public class PlayerInputHandler : MonoBehaviour
         }
         InputActions = new PlayerInput();
         playerAction = InputActions.Player;
-        uiAction = InputActions.UI;
     }
     
     private void OnEnable()
