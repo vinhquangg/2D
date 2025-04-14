@@ -19,7 +19,6 @@ public class SpawnInfoZoneData
     public int spawnedCount; 
     public int deadCount;
     public int currentAlive;
-    public int pendingSpawn; 
-
+    public int pendingSpawn;
 }
 

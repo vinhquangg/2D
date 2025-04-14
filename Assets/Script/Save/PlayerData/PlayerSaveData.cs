@@ -18,5 +18,5 @@ public class PlayerSaveData
         this.currentSceneName = sceneName;
     }
 
-    public PlayerSaveData() { }
+    //public PlayerSaveData() { }
 }

@@ -186,33 +186,62 @@ public class SpawnZone : MonoBehaviour
 
         return true;
     }
+
+    public void UpdateZoneInfo(BaseEnemy enemy)
+    {
+        // Cập nhật thông tin cho tất cả các SpawnInfo trong zone
+        foreach (var info in spawnInfos)
+        {
+            // Kiểm tra xem loại enemy có khớp với enemy hiện tại không
+            if (enemy.enemyType == info.enemyType)
+            {
+                // Cập nhật thông tin sống/chết của enemy
+                if (enemy.currentHealth <= 0)
+                {
+                    info.currentAlive--;
+                    info.deadCount++;
+                }
+                else
+                {
+                    info.currentAlive++;
+                }
+
+                // Kiểm tra và cập nhật các thông tin khác nếu cần thiết
+                // Ví dụ: Cập nhật số lượng đã spawn
+                info.spawnedCount = Mathf.Min(info.spawnedCount, info.maxSpawnCount);
+
+                // Debug thông tin để chắc chắn rằng chúng được cập nhật đúng cách
+                Debug.Log($"Updated SpawnZone Info for EnemyType={info.enemyType}, " +
+                          $"SpawnedCount={info.spawnedCount}, AliveCount={info.currentAlive}, DeadCount={info.deadCount}");
+            }
+        }
+    }
+
+
+
     public SpawnZoneSaveData SaveData()
     {
         SpawnZoneSaveData data = new SpawnZoneSaveData();
         data.zoneID = this.zoneID;
 
-        foreach (var infoData in data.spawnInfos)
+        // Kiểm tra spawnInfos trước khi thêm vào
+        foreach (var info in this.spawnInfos)
         {
-            Debug.Log($"Loading enemyType: {infoData.enemyType}");
-
-            var spawnInfo = spawnInfos.Find(info => info.enemyType == infoData.enemyType);
-
-            if (spawnInfo != null)
+            SpawnInfoZoneData infoData = new SpawnInfoZoneData
             {
-                Debug.Log($"Found match for {infoData.enemyType}");
-                spawnInfo.maxSpawnCount = infoData.maxSpawnCount;
-                spawnInfo.initialSpawn = infoData.initialSpawn;
-                spawnInfo.spawnedCount = infoData.spawnedCount;
-                spawnInfo.deadCount = infoData.deadCount;
-                spawnInfo.currentAlive = infoData.currentAlive;
-                spawnInfo.pendingSpawn = infoData.pendingSpawn;
-            }
-            else
-            {
-                Debug.LogWarning($"No match found in spawnInfos for enemyType: {infoData.enemyType}");
-            }
+                enemyType = info.enemyType,
+                maxSpawnCount = info.maxSpawnCount,
+                initialSpawn = info.initialSpawn,
+                spawnedCount = info.spawnedCount,
+                deadCount = info.deadCount,
+                currentAlive = info.currentAlive,
+                pendingSpawn = info.pendingSpawn
+            };
+            data.spawnInfos.Add(infoData);
+
+            // Debug thông tin để chắc chắn rằng chúng được thêm vào đúng cách
+            Debug.Log($"Saving SpawnZone {data.zoneID}: EnemyType={info.enemyType}, SpawnedCount={info.spawnedCount}, DeadCount={info.deadCount}");
         }
-
 
         return data;
     }
@@ -220,10 +249,11 @@ public class SpawnZone : MonoBehaviour
     public void LoadData(SpawnZoneSaveData data)
     {
         this.zoneID = data.zoneID;
-        this.spawnInfos = new List<SpawnInfo>(); 
+        this.spawnInfos = new List<SpawnInfo>();
 
         foreach (var infoData in data.spawnInfos)
         {
+            // Khôi phục thông tin SpawnInfo từ dữ liệu
             SpawnInfo newInfo = new SpawnInfo();
             newInfo.enemyType = infoData.enemyType;
             newInfo.maxSpawnCount = infoData.maxSpawnCount;
@@ -234,8 +264,16 @@ public class SpawnZone : MonoBehaviour
             newInfo.pendingSpawn = infoData.pendingSpawn;
 
             this.spawnInfos.Add(newInfo);
+
+            // Debug thông tin để chắc chắn dữ liệu đã được tải đúng
+            Debug.Log($"Loaded SpawnInfo for EnemyType={newInfo.enemyType}, SpawnedCount={newInfo.spawnedCount}, DeadCount={newInfo.deadCount}");
         }
+
+        // Sau khi load, có thể gọi phương thức Spawn lại enemy hoặc các hoạt động khác nếu cần
+        SpawnInitialEnemies();
     }
+
+
 
 
 
