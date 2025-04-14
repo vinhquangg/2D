@@ -6,6 +6,7 @@ using UnityEngine;
 public class SaveLoadManager : MonoBehaviour
 {
     [SerializeField] private PlayerStateMachine playerStateMachine;
+    [SerializeField] private List<BaseEnemy> allEnemies = new List<BaseEnemy>();
     private PlayerSaveData playerData;
     //private SpawnZone SpawnZone;
 
@@ -24,6 +25,8 @@ public class SaveLoadManager : MonoBehaviour
             playerStateMachine = FindObjectOfType<PlayerStateMachine>();
         }
 
+        allEnemies = new List<BaseEnemy>(FindObjectsOfType<BaseEnemy>());
+
         //if (SpawnZone == null)
         //{
         //    SpawnZone = FindObjectOfType<SpawnZone>();
@@ -38,6 +41,14 @@ public class SaveLoadManager : MonoBehaviour
             NewGame();
         }
         
+    }
+
+    public void AddEnemyToList(BaseEnemy enemy)
+    {
+        if (!allEnemies.Contains(enemy))
+        {
+            allEnemies.Add(enemy);
+        }
     }
 
     public void NewGame()
@@ -167,51 +178,58 @@ public class SaveLoadManager : MonoBehaviour
     {
         playerStateMachine.LoadFromData(saveData.player);
 
-        foreach (var enemyData in saveData.enemies)
+        var enemies = FindObjectsOfType<BaseEnemy>();
+        foreach (var enemy in enemies)
         {
-            // Lấy prefab của enemy từ type đã lưu
-            GameObject prefab = EnemySpawnerManager.Instance.GetPrefab(enemyData.type);
-
-            if (prefab != null)
+            playerStateMachine.SwitchState(new IdleState(playerStateMachine));
+            var found = saveData.enemies.Find(e => e.type == enemy.enemyType);
+            if (found != null && enemy is ISaveable saveable)
             {
-                // Spawn enemy tại vị trí đã lưu
-                var enemyGO = Instantiate(prefab, enemyData.position, Quaternion.identity);
-                var enemy = enemyGO.GetComponent<BaseEnemy>();
-
-                // Cập nhật các thông tin của enemy từ dữ liệu đã lưu
-                enemy.currentHealth = enemyData.health;
-
-                // Tìm zone dựa trên zoneID đã lưu
-                var zone = EnemySpawnerManager.Instance.GetZoneByID(enemyData.zoneID);
-
-                if (zone != null)
-                {
-                    // Khôi phục lại patrol points
-                    enemy.pointA = Instantiate(zone.patrolPointPrefab, enemyData.patrolA, Quaternion.identity);
-                    enemy.pointB = Instantiate(zone.patrolPointPrefab, enemyData.patrolB, Quaternion.identity);
-
-                    // Gán currentPoint của enemy
-                    enemy.currentPoint = enemy.pointA.transform;
-
-                    // Gọi phương thức OnEnemyDied để cập nhật lại thông tin số lượng quái sống trong zone
-                    zone.OnEnemyDied(enemy);
-
-                    // Gán zone cho enemy
-                    enemy.assignedZone = zone;
-
-                    // Thêm enemy vào zone thông qua EnemySpawnerManager
-                    EnemySpawnerManager.Instance.AddZone(enemy, zone);
-
-                    // Cập nhật thông tin khác liên quan đến zone (ví dụ: spawn lại enemy nếu cần)
-                    zone.UpdateZoneInfo(enemy); // Phương thức này cần được bạn viết trong `Zone` để cập nhật thông tin zone
-                }
-                else
-                {
-                    Debug.LogError($"Zone with ID {enemyData.zoneID} not found.");
-                }
+                saveable.LoadData(found);
             }
         }
+
+
+        //foreach (var enemyData in saveData.enemies)
+        //{
+        //    GameObject prefab = EnemySpawnerManager.Instance.GetPrefab(enemyData.type);
+
+        //    if (prefab != null)
+        //    {
+        //        var enemyGO = Instantiate(prefab, enemyData.position, Quaternion.identity);
+        //        var enemy = enemyGO.GetComponent<BaseEnemy>();
+
+        //        enemy.currentHealth = enemyData.health;
+        //        enemy.healthBar.UpdateHealBar(enemy.currentHealth, enemy.monsterState.monsterData.maxHealth); // Cập nhật thanh máu
+
+        //        var zone = EnemySpawnerManager.Instance.GetZoneByID(enemyData.zoneID);
+
+        //        if (zone != null)
+        //        {
+        //            enemy.pointA = Instantiate(zone.patrolPointPrefab, enemyData.patrolA, Quaternion.identity);
+        //            enemy.pointB = Instantiate(zone.patrolPointPrefab, enemyData.patrolB, Quaternion.identity);
+
+        //            enemy.currentPoint = enemy.pointA.transform;
+        //            enemy.assignedZone = zone;
+
+        //            // Thêm zone vào EnemySpawnerManager
+        //            EnemySpawnerManager.Instance.AddZone(enemy, zone);
+        //            zone.UpdateZoneInfo(enemy);
+
+        //            // Nếu quái đã chết (health <= 0), gọi TakeDamage để xử lý trạng thái chết
+        //            if (enemyData.health <= 0)
+        //            {
+        //                enemy.TakeDamage(9999, Vector2.zero); // Quái chết ngay lập tức khi load lại
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Debug.LogError($"Zone with ID {enemyData.zoneID} not found.");
+        //        }
+        //    }
+        //}
     }
+
 
 }
 

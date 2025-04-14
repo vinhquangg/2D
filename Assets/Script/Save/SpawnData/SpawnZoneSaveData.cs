@@ -8,6 +8,7 @@ using UnityEngine;
 public class SpawnZoneSaveData
 {
     public string zoneID;
+    public bool hasSpawned;
     public List<SpawnInfoZoneData> spawnInfos = new List<SpawnInfoZoneData>();
 }
 [System.Serializable]
