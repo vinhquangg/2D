@@ -21,7 +21,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public float detectRange;
     public float attackRange;
     public float moveSpeed;
-    public SpawnZone assignedZone;
+    //public SpawnZone assignedZone;
     public int currentDamage { get; set; }
     public float currentAttackMonsterRange { get; set; }
     public float currentHealth { get;  set; }
@@ -103,10 +103,10 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
             if (pointA != null) Destroy(pointA);
             if (pointB != null) Destroy(pointB);
 
-            if (EnemySpawnerManager.Instance != null)
-            {
-                EnemySpawnerManager.Instance.EnemyDied(this);
-            }
+            //if (EnemySpawnerManager.Instance != null)
+            //{
+            //    EnemySpawnerManager.Instance.EnemyDied(this);
+            //}
 
             Destroy(gameObject, 0.5f);
         }
@@ -162,7 +162,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
             currentState = monsterState?.monsterCurrentStateName,
             patrolA = pointA?.transform.position ?? Vector3.zero,
             patrolB = pointB?.transform.position ?? Vector3.zero,
-            zoneID = assignedZone?.zoneID 
+            //zoneID = assignedZone?.zoneID 
         };
     }
 
@@ -175,10 +175,11 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         currentHealth = save.health;
         healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
 
-        if (assignedZone != null && save.zoneID != null)
-        {
-            assignedZone = EnemySpawnerManager.Instance.GetZoneByID(save.zoneID);
-        }
+        //if (assignedZone != null && save.zoneID != null)
+        //{
+        //    assignedZone = EnemySpawnerManager.Instance.GetZoneByID(save.zoneID);
+        //}
+
         pointA.transform.position = save.patrolA;
         pointB.transform.position = save.patrolB;
 

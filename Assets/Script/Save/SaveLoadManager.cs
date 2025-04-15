@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class SaveLoadManager : MonoBehaviour
 {
     [SerializeField] private PlayerStateMachine playerStateMachine;
-    private PlayerSaveData playerData;
-    //private SpawnZone SpawnZone;
+    private string saveFileName = "save_game.json";
 
-    public static SaveLoadManager instance { get;private set; }
+    public static SaveLoadManager instance { get; private set; }
 
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
-            Debug.Log("found more than one SaveLoadManager in the scene");
+            Debug.Log("Found more than one SaveLoadManager in the scene");
         }
         instance = this;
 
@@ -23,32 +23,27 @@ public class SaveLoadManager : MonoBehaviour
         {
             playerStateMachine = FindObjectOfType<PlayerStateMachine>();
         }
-
-        //if (SpawnZone == null)
-        //{
-        //    SpawnZone = FindObjectOfType<SpawnZone>();
-        //}
     }
-    void Start()
+
+    private void Start()
     {
-        if (!PlayerPrefs.HasKey("pending_save_data"))
+        string path = GetSavePath();
+        if (!File.Exists(path))
         {
-            if(PlayerPrefs.HasKey("player_save"))
-                PlayerPrefs.DeleteKey("player_save");
             NewGame();
         }
-        
+        else
+        {
+            LoadGame();
+        }
     }
 
     public void NewGame()
     {
         PlayerSaveData playerData = playerStateMachine.GetDefaultPlayerData();
-
         playerStateMachine.LoadFromData(playerData);
-
         playerStateMachine.SwitchState(new IdleState(playerStateMachine));
     }
-
 
     public void SaveGame()
     {
@@ -71,71 +66,43 @@ public class SaveLoadManager : MonoBehaviour
         }
 
         // Lưu SpawnZone
-        List<SpawnZoneSaveData> zoneSaveDataList = new();
-        var spawnZones = FindObjectsOfType<SpawnZone>();
-        foreach (var zone in spawnZones)
-        {
-            SpawnZoneSaveData zoneData = zone.SaveData();  // Gọi phương thức SaveData từ SpawnZone
-            zoneSaveDataList.Add(zoneData);
+        //List<SpawnZoneSaveData> zoneSaveDataList = new();
+        //var spawnZones = FindObjectsOfType<SpawnZone>();
+        //foreach (var zone in spawnZones)
+        //{
+        //    SpawnZoneSaveData zoneData = zone.SaveData();
+        //    zoneSaveDataList.Add(zoneData);
+        //    Debug.Log($"Saving SpawnZone: {zoneData.zoneID}, SpawnInfos Count: {zoneData.spawnInfos.Count}");
+        //}
 
-            // Debug để chắc chắn rằng SpawnZone được lưu
-            Debug.Log($"Saving SpawnZone: {zoneData.zoneID}, SpawnInfos Count: {zoneData.spawnInfos.Count}");
-        }
-
-        // Tạo và lưu toàn bộ dữ liệu
         SaveData saveData = new SaveData
         {
             player = playerData,
             enemies = enemyList,
-            spawnZones = zoneSaveDataList
+            //spawnZones = zoneSaveDataList
         };
 
-        string json = JsonUtility.ToJson(saveData);
-        PlayerPrefs.SetString("saveData_save", json);
-        Debug.Log("Game Saved: " + json);  // Debug log để kiểm tra toàn bộ dữ liệu
+        string json = JsonUtility.ToJson(saveData, true);
+        File.WriteAllText(GetSavePath(), json);
+        Debug.Log("Game saved to file: " + GetSavePath());
     }
-
-
-
 
     public void LoadGame()
     {
-        if (!PlayerPrefs.HasKey("saveData_save"))
+        string path = GetSavePath();
+        if (!File.Exists(path))
         {
+            Debug.LogWarning("Save file not found. Starting new game.");
             NewGame();
             return;
         }
 
-        string json = PlayerPrefs.GetString("saveData_save");
+        string json = File.ReadAllText(path);
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+        ApplyLoadedData(saveData);
 
-        // Tải Player
-        playerStateMachine.LoadFromData(saveData.player);
-
-        // Tải Enemy
-        Dictionary<EnemyType, EnemySaveData> enemyDataDictionary = new();
-        foreach (var enemyData in saveData.enemies)
-        {
-            enemyDataDictionary[enemyData.type] = enemyData;
-        }
-
-        // Tải SpawnZone
-        foreach (var zoneData in saveData.spawnZones)
-        {
-            var zone = FindObjectOfType<SpawnZone>();  // Tìm SpawnZone để tải dữ liệu
-            if (zone != null)
-            {
-                zone.LoadData(zoneData);  // Gọi phương thức LoadData để khôi phục dữ liệu
-            }
-        }
-
-        // Debug toàn bộ dữ liệu sau khi tải
-        Debug.Log("Game Loaded: " + json);  // Log dữ liệu đã tải
+        Debug.Log("Game loaded from file: " + path);
     }
-
-
-
-
 
     public void LoadAfterSceneLoaded()
     {
@@ -144,74 +111,56 @@ public class SaveLoadManager : MonoBehaviour
 
     private IEnumerator DelayThenLoadData()
     {
-        yield return null; 
-        LoadGameFromPendingData();
+        yield return null;
+        LoadGame(); // Vì chỉ còn dùng file nên gọi lại hàm LoadGame
     }
-
-    public void LoadGameFromPendingData()
-    {
-
-        if (!PlayerPrefs.HasKey("pending_save_data"))
-        {
-            return;
-        }
-
-        string json = PlayerPrefs.GetString("pending_save_data");
-        PlayerPrefs.DeleteKey("pending_save_data");
-        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
-        ApplyLoadedData(saveData);
-    }
-
 
     private void ApplyLoadedData(SaveData saveData)
     {
         playerStateMachine.LoadFromData(saveData.player);
 
-        foreach (var enemyData in saveData.enemies)
-        {
-            // Lấy prefab của enemy từ type đã lưu
-            GameObject prefab = EnemySpawnerManager.Instance.GetPrefab(enemyData.type);
+        //foreach (var enemyData in saveData.enemies)
+        //{
+        //    GameObject prefab = EnemySpawnerManager.Instance.GetPrefab(enemyData.type);
 
-            if (prefab != null)
-            {
-                // Spawn enemy tại vị trí đã lưu
-                var enemyGO = Instantiate(prefab, enemyData.position, Quaternion.identity);
-                var enemy = enemyGO.GetComponent<BaseEnemy>();
+        //    if (prefab != null)
+        //    {
+        //        var enemyGO = Instantiate(prefab, enemyData.position, Quaternion.identity);
+        //        var enemy = enemyGO.GetComponent<BaseEnemy>();
+        //        enemy.currentHealth = enemyData.health;
 
-                // Cập nhật các thông tin của enemy từ dữ liệu đã lưu
-                enemy.currentHealth = enemyData.health;
+        //        var zone = EnemySpawnerManager.Instance.GetZoneByID(enemyData.zoneID);
 
-                // Tìm zone dựa trên zoneID đã lưu
-                var zone = EnemySpawnerManager.Instance.GetZoneByID(enemyData.zoneID);
+        //        if (zone != null)
+        //        {
+        //            enemy.pointA = Instantiate(zone.patrolPointPrefab, enemyData.patrolA, Quaternion.identity);
+        //            enemy.pointB = Instantiate(zone.patrolPointPrefab, enemyData.patrolB, Quaternion.identity);
+        //            enemy.currentPoint = enemy.pointA.transform;
 
-                if (zone != null)
-                {
-                    // Khôi phục lại patrol points
-                    enemy.pointA = Instantiate(zone.patrolPointPrefab, enemyData.patrolA, Quaternion.identity);
-                    enemy.pointB = Instantiate(zone.patrolPointPrefab, enemyData.patrolB, Quaternion.identity);
+        //            zone.OnEnemyDied(enemy);
+        //            enemy.assignedZone = zone;
+        //            EnemySpawnerManager.Instance.AddZone(enemy, zone);
+        //            zone.UpdateZoneInfo(enemy);
+        //        }
+        //        else
+        //        {
+        //            Debug.LogError($"Zone with ID {enemyData.zoneID} not found.");
+        //        }
+        //    }
+        //}
 
-                    // Gán currentPoint của enemy
-                    enemy.currentPoint = enemy.pointA.transform;
-
-                    // Gọi phương thức OnEnemyDied để cập nhật lại thông tin số lượng quái sống trong zone
-                    zone.OnEnemyDied(enemy);
-
-                    // Gán zone cho enemy
-                    enemy.assignedZone = zone;
-
-                    // Thêm enemy vào zone thông qua EnemySpawnerManager
-                    EnemySpawnerManager.Instance.AddZone(enemy, zone);
-
-                    // Cập nhật thông tin khác liên quan đến zone (ví dụ: spawn lại enemy nếu cần)
-                    zone.UpdateZoneInfo(enemy); // Phương thức này cần được bạn viết trong `Zone` để cập nhật thông tin zone
-                }
-                else
-                {
-                    Debug.LogError($"Zone with ID {enemyData.zoneID} not found.");
-                }
-            }
-        }
+        //foreach (var zoneData in saveData.spawnZones)
+        //{
+        //    var zone = FindObjectOfType<SpawnZone>();
+        //    if (zone != null)
+        //    {
+        //        zone.LoadData(zoneData);
+        //    }
+        //}
     }
 
+    private string GetSavePath()
+    {
+        return Path.Combine(Application.persistentDataPath, saveFileName);
+    }
 }
-

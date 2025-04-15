@@ -14,6 +14,7 @@ public class SpawnZoneSaveData
 public class SpawnInfoZoneData
 {
     public EnemyType enemyType;
+    public string enemyID;
     public int maxSpawnCount; 
     public int initialSpawn; 
     public int spawnedCount; 

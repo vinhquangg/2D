@@ -1,55 +1,42 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class MenuController : MonoBehaviour
 {
+    private string saveFileName = "save_game.json";
+
     public void LoadGame()
     {
-        if (!PlayerPrefs.HasKey("saveData_save"))
+        string path = GetSavePath();
+
+        if (!File.Exists(path))
         {
+            Debug.LogWarning("No save file found.");
             return;
         }
 
-        string json = PlayerPrefs.GetString("saveData_save");
+        string json = File.ReadAllText(path);
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
-        PlayerPrefs.SetString("pending_save_data", json);
-        PlayerPrefs.Save();
-       
+        // Load đúng scene lưu trong SaveData
         SceneManager.sceneLoaded += OnSceneLoadedAfterLoadGame;
         SceneManager.LoadScene(saveData.player.currentSceneName);
         Time.timeScale = 1;
     }
 
-
     private void OnSceneLoadedAfterLoadGame(Scene scene, LoadSceneMode mode)
     {
-        
         SceneManager.sceneLoaded -= OnSceneLoadedAfterLoadGame;
 
-        
         if (SaveLoadManager.instance != null)
         {
-            SaveLoadManager.instance.LoadAfterSceneLoaded(); 
+            SaveLoadManager.instance.LoadAfterSceneLoaded();
         }
         else
         {
             Debug.LogError("SaveLoadManager is null in loaded scene");
-        }
-    }
-
-    private IEnumerator WaitAndLoadDataAfterSceneLoad()
-    {
-        yield return null; 
-
-        if (SaveLoadManager.instance != null)
-        {
-            SaveLoadManager.instance.LoadGameFromPendingData();
-        }
-        else
-        {
-            Debug.LogError("SaveLoadManager instance is null!");
         }
     }
 
@@ -66,17 +53,25 @@ public class MenuController : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Menu"); 
+        SceneManager.LoadScene("Menu");
     }
 
     public void NewGame()
     {
-        if (PlayerPrefs.HasKey("saveData_save"))
+        string path = GetSavePath();
+
+        if (File.Exists(path))
         {
-            PlayerPrefs.DeleteKey("saveData_save");
+            File.Delete(path);
+            Debug.Log("Deleted old save file: " + path);
         }
 
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SampleScene"); // Hoặc tên scene đầu game bạn chọn
         Time.timeScale = 1;
+    }
+
+    private string GetSavePath()
+    {
+        return Path.Combine(Application.persistentDataPath, saveFileName);
     }
 }
