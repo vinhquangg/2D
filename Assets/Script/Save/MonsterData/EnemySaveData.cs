@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 
 [System.Serializable]
 public class EnemySaveData 
 {
-
+    public string enemyID;
     public EnemyType type;
     public Vector3 position;
     public float health;
@@ -13,8 +13,9 @@ public class EnemySaveData
     public Vector3 patrolA;
     public Vector3 patrolB;
     public string zoneID;
-    public EnemySaveData(EnemyType type, Vector3 position, float health, string state, Vector3 patrolA,Vector3 patrolB,string zoneID)
+    public EnemySaveData(string enemyID, EnemyType type, Vector3 position, float health, string state, Vector3 patrolA,Vector3 patrolB,string zoneID)
     {
+        this.enemyID = enemyID;
         this.type = type;
         this.position = position;
         this.health = health;
@@ -24,5 +25,5 @@ public class EnemySaveData
         this.zoneID = zoneID;
     }
 
-    public EnemySaveData() { }
+    //public EnemySaveData() { }
 }
