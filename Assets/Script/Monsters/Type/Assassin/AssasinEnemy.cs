@@ -7,8 +7,11 @@ public class AssasinEnemy : BaseEnemy
     protected override void Start()
     {
         base.Start();
-        currentDamage = 10;
-        currentAttackMonsterRange = 0.5f;
+        if (!isLoad)
+        {
+            currentDamage = 10;
+            currentAttackMonsterRange = 0.5f;
+        }
     }
 
     public override bool CanSeePlayer()
@@ -49,4 +52,15 @@ public class AssasinEnemy : BaseEnemy
         transform.localScale = scale;
     }
 
+    public override object SaveData()
+    {
+        var baseData = base.SaveData() as EnemySaveData;
+        return baseData;
+    }
+
+    public override void LoadData(object data)
+    {
+        base.LoadData(data);
+        var enemyData = data as EnemySaveData;
+    }
 }

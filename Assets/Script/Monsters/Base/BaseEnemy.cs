@@ -4,8 +4,8 @@ using System;
 
 public abstract class BaseEnemy : MonoBehaviour,ISaveable
 {
-    protected MonstersStateMachine monsterState;
     protected Animator anim;
+    public MonstersStateMachine monsterState { get; private set; }
     //public MonsterData monsterData;
     public Rigidbody2D rb { get; private set; } 
     public Transform player;
@@ -16,13 +16,15 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public GameObject pointA;
     public GameObject pointB;
     public EnemyType enemyType;
-    public string enemyID;
+    public GameObject patrolPointPrefab;
+    public int enemyID;
+    public string zoneID;
     public Color originalColor { get; private set; }
     public float hitDuration ;
     public float detectRange;
     public float attackRange;
     public float moveSpeed;
-    //public SpawnZone assignedZone;
+    public SpawnZone assignedZone;
     public int currentDamage { get; set; }
     public float currentAttackMonsterRange { get; set; }
     public float currentHealth { get;  set; }
@@ -30,33 +32,42 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public float patrolSpeed = 1f;
     public bool isKnockback = false;
     public bool isDead = false;
-    private bool isLoaded = false;
+    public bool isLoad = false;
     public Transform currentPoint { get; set; }
     protected virtual void Start()
-    { 
-        
+    {
         monsterState = GetComponent<MonstersStateMachine>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        healthBar= GetComponentInChildren<MonsterSideHealthBar>();
+        healthBar = GetComponentInChildren<MonsterSideHealthBar>();
         currentPoint = pointA.transform;
-        if(!isLoaded)
+
+        InitEnemy();
+
+    }
+
+    private void InitEnemy()
+    {
+        if (!isLoad)
         {
             currentHealth = monsterState.monsterData.maxHealth;
         }
-        healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+
+        if (healthBar != null)
+        {
+            healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+        }
+
         currentDamage = monsterState.monsterData.attackDamageToPlayer;
         currentAttackMonsterRange = monsterState.monsterData.attackMonsterRange;
+
         if (spriteRenderer != null)
         {
             originalColor = spriteRenderer.color;
         }
-
     }
-
-
     public virtual bool CanSeePlayer() 
     {
         if (player == null) return false;
@@ -109,10 +120,10 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
             if (pointA != null) Destroy(pointA);
             if (pointB != null) Destroy(pointB);
 
-            //if (EnemySpawnerManager.Instance != null)
-            //{
-            //    EnemySpawnerManager.Instance.EnemyDied(this);
-            //}
+            if (EnemySpawnerManager.Instance != null)
+            {
+                EnemySpawnerManager.Instance.EnemyDied(this);
+            }
 
             Destroy(gameObject, 0.5f);
         }
@@ -162,66 +173,55 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     {
         return new EnemySaveData(
             enemyID,
-            enemyType,
+            enemyType, 
             transform.position,
             currentHealth,
             monsterState?.monsterCurrentStateName,
             pointA?.transform.position ?? Vector3.zero,
             pointB?.transform.position ?? Vector3.zero,
-            "" // Nếu có zoneID, bạn có thể thêm vào đây
+            zoneID
         );
     }
 
-public virtual void LoadData(object data)
-{
-    EnemySaveData save = data as EnemySaveData;
-    if (save == null) return;
-
-    this.enemyID = save.enemyID;
-
-    // Debug load data
-    Debug.Log("Loaded Data:");
-    Debug.Log("Health: " + save.health);
-    Debug.Log("Max Health: " + monsterState.monsterData.maxHealth);
-
-    transform.position = save.position;
-    currentHealth = save.health;
-    isLoaded = true;
-
-    // Kiểm tra lại giá trị health sau khi load
-    Debug.Log("Current Health after Load: " + currentHealth);
-
-    // Update healthBar if necessary
-    if (healthBar != null)
+    public virtual void LoadData(object data)
     {
-        healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+        EnemySaveData save = data as EnemySaveData;
+        if (save == null) return;
+        this.enemyID = save.enemyID;
+        this.enemyType = save.type;
+        zoneID = save.zoneID;
+        transform.position = save.position;
+        currentHealth = save.health;
+        isLoad = true;
+
+        if (healthBar != null)
+        {
+            healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+        }
+        assignedZone = EnemySpawnerManager.Instance.GetZoneByID(zoneID);
+
+        if (pointA != null) pointA.transform.position = save.patrolA;
+        if (pointB != null) pointB.transform.position = save.patrolB;
+
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+            monsterState.SwitchState(new MonsterDeadState(monsterState));
+            if (pointA != null) Destroy(pointA);
+            if (pointB != null) Destroy(pointB);
+            Destroy(gameObject, 0.5f);
+            return;
+        }
+
+        if (monsterState.stateFactory.TryGetValue(save.currentState, out var createState))
+        {
+            monsterState.SwitchState(createState());
+        }
+        else
+        {
+            monsterState.SwitchState(new MonsterPatrolState(monsterState));
+        }
+
+        InitEnemy(); 
     }
-
-    pointA.transform.position = save.patrolA;
-    pointB.transform.position = save.patrolB;
-
-    if (monsterState.stateFactory.TryGetValue(save.currentState, out var createState))
-    {
-        monsterState.SwitchState(createState());
-    }
-    else
-    {
-        monsterState.SwitchState(new MonsterPatrolState(monsterState));
-    }
-
-    // Kiểm tra xem quái có chết không
-    if (currentHealth <= 0)
-    {
-        isDead = true;
-        monsterState.SwitchState(new MonsterDeadState(monsterState));
-
-        if (pointA != null) Destroy(pointA);
-        if (pointB != null) Destroy(pointB);
-
-        Destroy(gameObject, 0.5f);
-    }
-}
-
-
-
 }

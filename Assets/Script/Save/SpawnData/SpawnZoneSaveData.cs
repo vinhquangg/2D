@@ -13,8 +13,8 @@ public class SpawnZoneSaveData
 [System.Serializable]
 public class SpawnInfoZoneData
 {
-    public EnemyType enemyType;
     public string enemyID;
+    public EnemyType enemyType;
     public int maxSpawnCount; 
     public int initialSpawn; 
     public int spawnedCount; 

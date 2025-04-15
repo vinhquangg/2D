@@ -23,6 +23,8 @@ public class SaveLoadManager : MonoBehaviour
         {
             playerStateMachine = FindObjectOfType<PlayerStateMachine>();
         }
+
+
     }
 
     private void Start()
@@ -60,32 +62,34 @@ public class SaveLoadManager : MonoBehaviour
                 var monsterData = saveable.SaveData();
                 if (monsterData is EnemySaveData e)
                 {
+                    e.currentState = enemy.monsterState.monsterCurrentStateName;
                     enemyList.Add(e);
                 }
             }
         }
 
-        // Lưu SpawnZone
-        //List<SpawnZoneSaveData> zoneSaveDataList = new();
-        //var spawnZones = FindObjectsOfType<SpawnZone>();
-        //foreach (var zone in spawnZones)
-        //{
-        //    SpawnZoneSaveData zoneData = zone.SaveData();
-        //    zoneSaveDataList.Add(zoneData);
-        //    Debug.Log($"Saving SpawnZone: {zoneData.zoneID}, SpawnInfos Count: {zoneData.spawnInfos.Count}");
-        //}
+        //Lưu SpawnZone
+        List<SpawnZoneSaveData> zoneSaveDataList = new();
+        var spawnZones = FindObjectsOfType<SpawnZone>();
+        foreach (var zone in spawnZones)
+        {
+            SpawnZoneSaveData zoneData = zone.SaveData();
+            zoneSaveDataList.Add(zoneData);
+            Debug.Log($"Saving SpawnZone: {zoneData.zoneID}, SpawnInfos Count: {zoneData.spawnInfos.Count}");
+        }
 
         SaveData saveData = new SaveData
         {
             player = playerData,
             enemies = enemyList,
-            //spawnZones = zoneSaveDataList
+            spawnZones = zoneSaveDataList
         };
 
         string json = JsonUtility.ToJson(saveData, true);
         File.WriteAllText(GetSavePath(), json);
         Debug.Log("Game saved to file: " + GetSavePath());
     }
+
 
     public void LoadGame()
     {
@@ -117,47 +121,30 @@ public class SaveLoadManager : MonoBehaviour
 
     private void ApplyLoadedData(SaveData saveData)
     {
+        // Load Player
         playerStateMachine.LoadFromData(saveData.player);
 
-        //foreach (var enemyData in saveData.enemies)
-        //{
-        //    GameObject prefab = EnemySpawnerManager.Instance.GetPrefab(enemyData.type);
-
-        //    if (prefab != null)
-        //    {
-        //        var enemyGO = Instantiate(prefab, enemyData.position, Quaternion.identity);
-        //        var enemy = enemyGO.GetComponent<BaseEnemy>();
-        //        enemy.currentHealth = enemyData.health;
-
-        //        var zone = EnemySpawnerManager.Instance.GetZoneByID(enemyData.zoneID);
-
-        //        if (zone != null)
-        //        {
-        //            enemy.pointA = Instantiate(zone.patrolPointPrefab, enemyData.patrolA, Quaternion.identity);
-        //            enemy.pointB = Instantiate(zone.patrolPointPrefab, enemyData.patrolB, Quaternion.identity);
-        //            enemy.currentPoint = enemy.pointA.transform;
-
-        //            zone.OnEnemyDied(enemy);
-        //            enemy.assignedZone = zone;
-        //            EnemySpawnerManager.Instance.AddZone(enemy, zone);
-        //            zone.UpdateZoneInfo(enemy);
-        //        }
-        //        else
-        //        {
-        //            Debug.LogError($"Zone with ID {enemyData.zoneID} not found.");
-        //        }
-        //    }
-        //}
-
-        //foreach (var zoneData in saveData.spawnZones)
-        //{
-        //    var zone = FindObjectOfType<SpawnZone>();
-        //    if (zone != null)
-        //    {
-        //        zone.LoadData(zoneData);
-        //    }
-        //}
+        // Load Enemy
+        var allEnemies = FindObjectsOfType<BaseEnemy>();
+        foreach (var enemy in allEnemies)
+        {
+            // Tìm data tương ứng với enemyID
+            EnemySaveData data = saveData.enemies.Find(e => e.enemyID == enemy.enemyID);
+            if (data != null)
+            {
+                if (enemy is ISaveable saveable)
+                {
+                    saveable.LoadData(data);
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Không tìm thấy dữ liệu cho enemy ID: {enemy.enemyID}");
+            }
+        }
     }
+
+
 
     private string GetSavePath()
     {

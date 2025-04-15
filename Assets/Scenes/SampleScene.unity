@@ -496,15 +496,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a964aff255b3264f8ff402af3545f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneID: AssassinSpawner
+  zoneID: Assassin
   spawnInfos:
-  - {enemyPrefab: {fileID: 2534295144362671392, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}, enemyID: Assassin, enemyType: 0, maxSpawnCount: 4, initialSpawn: 2, currentAlive: 0, spawnedCount: 0, deadCount: 0, pendingSpawn: 0}
+  - enemyPrefab: {fileID: 2534295144362671392, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
+    enemyID: 
+    enemyType: 0
+    maxSpawnCount: 4
+    initialSpawn: 2
+    currentAlive: 0
+    spawnedCount: 0
+    deadCount: 0
+    pendingSpawn: 0
   obstacleTilemaps:
   - {fileID: 1945052813}
   - {fileID: 291884390}
   patrolPointPrefab: {fileID: 4684223294616517440, guid: d81141e572101bb4489eb0371fc5cb68, type: 3}
-  hasSpawned: 0
-  playerInsideZone: 0
 --- !u!61 &198014216
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72820,87 +72826,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0, y: 1}
---- !u!1001 &1086587777
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1547354837072439254, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 596461732}
-    - target: {fileID: 1547354837072439254, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: pointA
-      value: 
-      objectReference: {fileID: 148432242}
-    - target: {fileID: 1547354837072439254, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: pointB
-      value: 
-      objectReference: {fileID: 435062314}
-    - target: {fileID: 1547354837072439254, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: enemyID
-      value: Assassin
-      objectReference: {fileID: 0}
-    - target: {fileID: 2356517356472461766, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2356517356472461766, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2534295144362671392, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_Name
-      value: Assassin
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -46.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684281991637258756, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
 --- !u!1 &1128817458
 GameObject:
   m_ObjectHideFlags: 0
@@ -73187,11 +73112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9136b05b54bcda341b40c8f605b80857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyIDCount: 0
   enemyPrefabList:
   - enemyType: 2
     prefab: {fileID: 2534295144362671392, guid: 490ad95bd0c3e8b46a19ec7b61b19a7b, type: 3}
-  - enemyType: 1
-    prefab: {fileID: 7613442247315998512, guid: efb94b513571334409f568d40920f252, type: 3}
 --- !u!1 &1538508206
 GameObject:
   m_ObjectHideFlags: 0
@@ -73424,15 +73348,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a964aff255b3264f8ff402af3545f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneID: MageSpawner
-  spawnInfos:
-  - {enemyPrefab: {fileID: 7613442247315998512, guid: efb94b513571334409f568d40920f252, type: 3}, enemyID: Mage, enemyType: 0, maxSpawnCount: 2, initialSpawn: 1, currentAlive: 0, spawnedCount: 0, deadCount: 0, pendingSpawn: 0}
-  obstacleTilemaps:
-  - {fileID: 291884390}
-  - {fileID: 1945052813}
-  patrolPointPrefab: {fileID: 4684223294616517440, guid: d81141e572101bb4489eb0371fc5cb68, type: 3}
-  hasSpawned: 0
-  playerInsideZone: 0
+  zoneID: 
+  spawnInfos: []
+  obstacleTilemaps: []
+  patrolPointPrefab: {fileID: 0}
 --- !u!1 &1695022186
 GameObject:
   m_ObjectHideFlags: 0
@@ -83667,6 +83586,5 @@ SceneRoots:
   - {fileID: 516739300}
   - {fileID: 331154478}
   - {fileID: 1215092495}
-  - {fileID: 1086587777}
   - {fileID: 148432243}
   - {fileID: 435062315}
