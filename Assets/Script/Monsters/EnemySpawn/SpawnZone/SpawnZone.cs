@@ -32,7 +32,7 @@ public class SpawnZone : MonoBehaviour
 
         if (!hasSpawned && !isZoneCleared && TotalSpawnedCount() < TotalMaxCount())
         {
-            SpawnInitialEnemies();
+            //SpawnInitialEnemies();
             hasSpawned = true;
         }
 
@@ -100,37 +100,37 @@ public class SpawnZone : MonoBehaviour
 
 
 
-    private void SpawnInitialEnemies()
-    {
-        foreach (var info in spawnInfos)
-        {
-            // Nếu đã spawn đủ tổng số lượng thì không cần spawn nữa
-            if (info.spawnedCount >= info.maxSpawnCount)
-            {
-                Debug.Log($"[SpawnInitialEnemies] Đã spawn đủ {info.spawnedCount}/{info.maxSpawnCount}, bỏ qua");
-                continue;
-            }
+    //private void SpawnInitialEnemies()
+    //{
+    //    foreach (var info in spawnInfos)
+    //    {
+    //        // Nếu đã spawn đủ tổng số lượng thì không cần spawn nữa
+    //        if (info.spawnedCount >= info.maxSpawnCount)
+    //        {
+    //            Debug.Log($"[SpawnInitialEnemies] Đã spawn đủ {info.spawnedCount}/{info.maxSpawnCount}, bỏ qua");
+    //            continue;
+    //        }
 
-            // Nếu số quái còn sống đã đủ ban đầu thì không cần spawn nữa
-            if (info.currentAlive >= info.initialSpawn)
-            {
-                Debug.Log($"[SpawnInitialEnemies] currentAlive đã đủ {info.currentAlive}/{info.initialSpawn}, bỏ qua");
-                continue;
-            }
+    //        // Nếu số quái còn sống đã đủ ban đầu thì không cần spawn nữa
+    //        if (info.currentAlive >= info.initialSpawn)
+    //        {
+    //            Debug.Log($"[SpawnInitialEnemies] currentAlive đã đủ {info.currentAlive}/{info.initialSpawn}, bỏ qua");
+    //            continue;
+    //        }
 
-            int availableSpawn = info.maxSpawnCount - info.spawnedCount;
-            int neededSpawn = info.initialSpawn - info.currentAlive;
+    //        int availableSpawn = info.maxSpawnCount - info.spawnedCount;
+    //        int neededSpawn = info.initialSpawn - info.currentAlive;
 
-            int toSpawn = Mathf.Min(availableSpawn, neededSpawn);
+    //        int toSpawn = Mathf.Min(availableSpawn, neededSpawn);
 
-            for (int i = 0; i < toSpawn; i++)
-            {
-                SpawnEnemy(info);
-            }
+    //        for (int i = 0; i < toSpawn; i++)
+    //        {
+    //            SpawnEnemy(info);
+    //        }
 
-            Debug.Log($"[SpawnInitialEnemies] Đã spawn thêm {toSpawn} con cho {info.enemyType}");
-        }
-    }
+    //        Debug.Log($"[SpawnInitialEnemies] Đã spawn thêm {toSpawn} con cho {info.enemyType}");
+    //    }
+    //}
 
 
 
