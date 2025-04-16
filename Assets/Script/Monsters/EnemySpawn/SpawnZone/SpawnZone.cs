@@ -17,6 +17,7 @@ public class SpawnZone : MonoBehaviour
         public int deadCount;
         //public int pendingSpawn;
     }
+    private bool allowSpawnCheck = true;
     public string zoneID;
     public List<SpawnInfo> spawnInfos;
     public List<Tilemap> obstacleTilemaps;
@@ -29,11 +30,12 @@ public class SpawnZone : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
 
-        if (!hasSpawned)
+        if (!hasSpawned && !isZoneCleared && TotalSpawnedCount() < TotalMaxCount())
         {
             SpawnInitialEnemies();
             hasSpawned = true;
         }
+
 
         playerInsideZone = true;
     }
@@ -50,18 +52,33 @@ public class SpawnZone : MonoBehaviour
         if (isZoneCleared) return; 
         CheckSpawn();
     }
+    private int TotalSpawnedCount()
+    {
+        int total = 0;
+        foreach (var info in spawnInfos)
+        {
+            total += info.spawnedCount;
+        }
+        return total;
+    }
+
+    private int TotalMaxCount()
+    {
+        int total = 0;
+        foreach (var info in spawnInfos)
+        {
+            total += info.maxSpawnCount;
+        }
+        return total;
+    }
 
     private void CheckSpawn()
     {
-        if (!playerInsideZone) return;
+        if (!playerInsideZone || !allowSpawnCheck) return; // ✅ thêm chặn check
 
         foreach (var info in spawnInfos)
         {
-            // Nếu currentAlive là 1 thì không spawn thêm nữa
-            if (info.currentAlive == 1)
-                continue;
-
-            if (info.spawnedCount >= info.maxSpawnCount) continue;
+            if (info.deadCount + info.currentAlive >= info.maxSpawnCount) continue;
             if (info.currentAlive >= info.initialSpawn) continue;
 
             int availableSpawn = info.maxSpawnCount - info.spawnedCount;
@@ -87,19 +104,34 @@ public class SpawnZone : MonoBehaviour
     {
         foreach (var info in spawnInfos)
         {
-            // Nếu currentAlive là 1 thì không spawn thêm nữa
-            if (info.currentAlive == 1)
+            // Nếu đã spawn đủ tổng số lượng thì không cần spawn nữa
+            if (info.spawnedCount >= info.maxSpawnCount)
+            {
+                Debug.Log($"[SpawnInitialEnemies] Đã spawn đủ {info.spawnedCount}/{info.maxSpawnCount}, bỏ qua");
                 continue;
+            }
 
-            int toSpawn = Mathf.Min(info.initialSpawn - info.spawnedCount,
-                                    info.maxSpawnCount - info.spawnedCount);
+            // Nếu số quái còn sống đã đủ ban đầu thì không cần spawn nữa
+            if (info.currentAlive >= info.initialSpawn)
+            {
+                Debug.Log($"[SpawnInitialEnemies] currentAlive đã đủ {info.currentAlive}/{info.initialSpawn}, bỏ qua");
+                continue;
+            }
+
+            int availableSpawn = info.maxSpawnCount - info.spawnedCount;
+            int neededSpawn = info.initialSpawn - info.currentAlive;
+
+            int toSpawn = Mathf.Min(availableSpawn, neededSpawn);
+
             for (int i = 0; i < toSpawn; i++)
             {
                 SpawnEnemy(info);
             }
-            Debug.Log($"[SpawnZone] Spawning {toSpawn} enemy(s) in zone {zoneID}");
+
+            Debug.Log($"[SpawnInitialEnemies] Đã spawn thêm {toSpawn} con cho {info.enemyType}");
         }
     }
+
 
 
 
@@ -221,34 +253,29 @@ public class SpawnZone : MonoBehaviour
     {
         foreach (var info in spawnInfos)
         {
-            // Nếu đã có 1 con quái sống thì không spawn thêm
-            if (info.currentAlive == 1)
-            {
-                continue; // Không spawn thêm khi còn 1 con sống
-            }
+            // Nếu đã spawn đủ thì không spawn nữa
+            if (info.spawnedCount >= info.maxSpawnCount)
+                continue;
 
-            // Kiểm tra nếu số lượng quái sống đã đủ (>= initialSpawn)
+            // Nếu đang có đủ số lượng ban đầu sống thì không cần spawn
             if (info.currentAlive >= info.initialSpawn)
+                continue;
+
+            int availableSpawn = info.maxSpawnCount - info.spawnedCount;
+            int neededSpawn = info.initialSpawn - info.currentAlive;
+
+            int toSpawn = Mathf.Min(availableSpawn, neededSpawn);
+
+            for (int i = 0; i < toSpawn; i++)
             {
-                continue; // Không cần spawn thêm
+                SpawnEnemy(info);
             }
 
-            // Tính số lượng quái cần spawn
-            int remainingToSpawn = Mathf.Min(info.initialSpawn - info.currentAlive, info.maxSpawnCount - info.spawnedCount);
-
-            // Kiểm tra xem có cần phải spawn nữa không
-            if (remainingToSpawn > 0)
-            {
-                // Spawn số lượng quái còn thiếu
-                for (int i = 0; i < remainingToSpawn; i++)
-                {
-                    SpawnEnemy(info); // Thực hiện spawn quái
-                }
-
-                Debug.Log($"[SpawnZone] remainingToSpawn: {remainingToSpawn}, currentAlive: {info.currentAlive}, spawnedCount: {info.spawnedCount}, deadCount: {info.deadCount}");
-            }
+            Debug.Log($"[SpawnZone] SpawnRemainingEnemies: {toSpawn}, currentAlive: {info.currentAlive}, deadCount: {info.deadCount}, spawnedCount: {info.spawnedCount}");
         }
     }
+
+
 
     public SpawnZoneSaveData SaveData()
     {
@@ -303,6 +330,7 @@ public class SpawnZone : MonoBehaviour
         if (!isZoneCleared)
         {
             SpawnRemainingEnemies();
+            allowSpawnCheck = false;
         }
         hasSpawned = true;
     }
