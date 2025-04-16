@@ -9,23 +9,22 @@ public class SpawnZone : MonoBehaviour
     public class SpawnInfo
     {
         public GameObject enemyPrefab;
-        public string enemyID;
-
         public EnemyType enemyType;
         public int maxSpawnCount;
         public int initialSpawn;
         public int currentAlive;
         public int spawnedCount;
         public int deadCount;
-        public int pendingSpawn;
+        //public int pendingSpawn;
     }
     public string zoneID;
     public List<SpawnInfo> spawnInfos;
     public List<Tilemap> obstacleTilemaps;
     public GameObject patrolPointPrefab;
+    private int enemyIDCount = 0;
     private bool hasSpawned = false;
     private bool playerInsideZone = false;
-
+    private bool isZoneCleared = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
@@ -48,6 +47,7 @@ public class SpawnZone : MonoBehaviour
     }
     private void Update()
     {
+        if (isZoneCleared) return; 
         CheckSpawn();
     }
 
@@ -57,26 +57,39 @@ public class SpawnZone : MonoBehaviour
 
         foreach (var info in spawnInfos)
         {
-            int canSpawn = info.maxSpawnCount - info.spawnedCount;
-            int toSpawn = Mathf.Min(info.deadCount - info.pendingSpawn, canSpawn);
+            // Nếu currentAlive là 1 thì không spawn thêm nữa
+            if (info.currentAlive == 1)
+                continue;
 
-            if (canSpawn > 0)
+            if (info.spawnedCount >= info.maxSpawnCount) continue;
+            if (info.currentAlive >= info.initialSpawn) continue;
+
+            int availableSpawn = info.maxSpawnCount - info.spawnedCount;
+            int neededSpawn = info.initialSpawn - info.currentAlive;
+            int toSpawn = Mathf.Min(availableSpawn, neededSpawn);
+
+            for (int i = 0; i < toSpawn; i++)
             {
-
-                for (int i = 0; i < toSpawn; i++)
-                {
-                    SpawnEnemy(info);
-                    info.pendingSpawn++;
-                }
-                //info.pendingSpawn -= toSpawn;
+                SpawnEnemy(info);
             }
         }
+
+        if (IsZoneCleared())
+        {
+            isZoneCleared = true;
+            Debug.Log($"[SpawnZone] Zone {zoneID} has been cleared. No more spawns.");
+        }
     }
+
+
 
     private void SpawnInitialEnemies()
     {
         foreach (var info in spawnInfos)
         {
+            // Nếu currentAlive là 1 thì không spawn thêm nữa
+            if (info.currentAlive == 1)
+                continue;
 
             int toSpawn = Mathf.Min(info.initialSpawn - info.spawnedCount,
                                     info.maxSpawnCount - info.spawnedCount);
@@ -85,14 +98,15 @@ public class SpawnZone : MonoBehaviour
                 SpawnEnemy(info);
             }
             Debug.Log($"[SpawnZone] Spawning {toSpawn} enemy(s) in zone {zoneID}");
-
         }
     }
 
 
 
+
     private void SpawnEnemy(SpawnInfo spawnInfo)
     {
+        if (isZoneCleared) return;
         if (spawnInfo.spawnedCount >= spawnInfo.maxSpawnCount)
             return;
 
@@ -114,6 +128,9 @@ public class SpawnZone : MonoBehaviour
         if (enemy != null)
         {
             spawnInfo.enemyType = enemy.enemyType;
+            enemy.enemyID = enemyIDCount;
+            enemy.zoneID = this.zoneID;
+            enemyIDCount++;
         }
 
         if (EnemySpawnerManager.Instance != null)
@@ -138,19 +155,30 @@ public class SpawnZone : MonoBehaviour
 
     }
 
-
     public void OnEnemyDied(BaseEnemy enemy)
     {
+        Debug.Log($"[OnEnemyDied] Enemy {enemy.name} died in zone {zoneID}");
+
         foreach (var info in spawnInfos)
         {
-            if (enemy.CompareTag(info.enemyPrefab.tag))
+            if (enemy.enemyType == info.enemyType)
             {
                 info.currentAlive--;
                 info.deadCount++;
+
+                Debug.Log($"[OnEnemyDied] Update: currentAlive={info.currentAlive}, deadCount={info.deadCount}");
                 break;
             }
         }
+
+        if (IsZoneCleared())
+        {
+            isZoneCleared = true;
+            Debug.Log($"[SpawnZone] Zone {zoneID} has been cleared due to all enemies dead.");
+        }
     }
+
+
 
 
     private Vector3 GetRandomPositionInZone()
@@ -189,56 +217,56 @@ public class SpawnZone : MonoBehaviour
         return true;
     }
 
-    public void UpdateZoneInfo(BaseEnemy enemy)
+    private void SpawnRemainingEnemies()
     {
-        // Cập nhật thông tin cho tất cả các SpawnInfo trong zone
         foreach (var info in spawnInfos)
         {
-            // Kiểm tra xem loại enemy có khớp với enemy hiện tại không
-            if (enemy.enemyType == info.enemyType)
+            // Nếu đã có 1 con quái sống thì không spawn thêm
+            if (info.currentAlive == 1)
             {
-                // Cập nhật thông tin sống/chết của enemy
-                if (enemy.currentHealth <= 0)
+                continue; // Không spawn thêm khi còn 1 con sống
+            }
+
+            // Kiểm tra nếu số lượng quái sống đã đủ (>= initialSpawn)
+            if (info.currentAlive >= info.initialSpawn)
+            {
+                continue; // Không cần spawn thêm
+            }
+
+            // Tính số lượng quái cần spawn
+            int remainingToSpawn = Mathf.Min(info.initialSpawn - info.currentAlive, info.maxSpawnCount - info.spawnedCount);
+
+            // Kiểm tra xem có cần phải spawn nữa không
+            if (remainingToSpawn > 0)
+            {
+                // Spawn số lượng quái còn thiếu
+                for (int i = 0; i < remainingToSpawn; i++)
                 {
-                    info.currentAlive--;
-                    info.deadCount++;
-                }
-                else
-                {
-                    info.currentAlive++;
+                    SpawnEnemy(info); // Thực hiện spawn quái
                 }
 
-                // Kiểm tra và cập nhật các thông tin khác nếu cần thiết
-                // Ví dụ: Cập nhật số lượng đã spawn
-                info.spawnedCount = Mathf.Min(info.spawnedCount, info.maxSpawnCount);
-
-                // Debug thông tin để chắc chắn rằng chúng được cập nhật đúng cách
-                Debug.Log($"Updated SpawnZone Info for EnemyType={info.enemyType}, " +
-                          $"SpawnedCount={info.spawnedCount}, AliveCount={info.currentAlive}, DeadCount={info.deadCount}");
+                Debug.Log($"[SpawnZone] remainingToSpawn: {remainingToSpawn}, currentAlive: {info.currentAlive}, spawnedCount: {info.spawnedCount}, deadCount: {info.deadCount}");
             }
         }
     }
-
-
 
     public SpawnZoneSaveData SaveData()
     {
         SpawnZoneSaveData data = new SpawnZoneSaveData();
         data.zoneID = this.zoneID;
-
+        data.isZoneCleared = isZoneCleared;
         // Kiểm tra spawnInfos trước khi thêm vào
         foreach (var info in this.spawnInfos)
         {
             SpawnInfoZoneData infoData = new SpawnInfoZoneData
             {
-                enemyID = info.enemyID,
                 enemyType = info.enemyType,
                 maxSpawnCount = info.maxSpawnCount,
                 initialSpawn = info.initialSpawn,
                 spawnedCount = info.spawnedCount,
                 deadCount = info.deadCount,
                 currentAlive = info.currentAlive,
-                pendingSpawn = info.pendingSpawn
+                //pendingSpawn = info.pendingSpawn
             };
             data.spawnInfos.Add(infoData);
 
@@ -252,19 +280,18 @@ public class SpawnZone : MonoBehaviour
     public void LoadData(SpawnZoneSaveData data)
     {
         this.zoneID = data.zoneID;
-
+        this.isZoneCleared = data.isZoneCleared;
         foreach (var infoData in data.spawnInfos)
         {
             var matchingInfo = spawnInfos.Find(i => i.enemyType == infoData.enemyType);
             if (matchingInfo != null)
             {
-                matchingInfo.enemyID = infoData.enemyID;
                 matchingInfo.maxSpawnCount = infoData.maxSpawnCount;
                 matchingInfo.initialSpawn = infoData.initialSpawn;
                 matchingInfo.spawnedCount = infoData.spawnedCount;
                 matchingInfo.deadCount = infoData.deadCount;
                 matchingInfo.currentAlive = infoData.currentAlive;
-                matchingInfo.pendingSpawn = infoData.pendingSpawn;
+                //matchingInfo.pendingSpawn = infoData.pendingSpawn;
 
                 Debug.Log($"[LoadData] Restored info for {infoData.enemyType}: {infoData.spawnedCount} spawned, {infoData.deadCount} dead");
             }
@@ -273,10 +300,10 @@ public class SpawnZone : MonoBehaviour
                 Debug.LogWarning($"[LoadData] Không tìm thấy SpawnInfo tương ứng với EnemyType {infoData.enemyType} trong zone {zoneID}");
             }
         }
-        if (!hasSpawned)
+        if (!isZoneCleared)
         {
-            SpawnInitialEnemies();
-            hasSpawned = true;
+            SpawnRemainingEnemies();
         }
+        hasSpawned = true;
     }
 }

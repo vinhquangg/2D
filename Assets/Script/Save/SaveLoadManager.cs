@@ -142,6 +142,28 @@ public class SaveLoadManager : MonoBehaviour
                 Debug.LogWarning($"Không tìm thấy dữ liệu cho enemy ID: {enemy.enemyID}");
             }
         }
+
+       var allZones = FindObjectsOfType<SpawnZone>();
+        foreach (var zone in allZones)
+        {
+            // Tìm data tương ứng với zoneID
+            SpawnZoneSaveData zoneData = saveData.spawnZones.Find(z => z.zoneID == zone.zoneID);
+            if (zoneData != null)
+            {
+                foreach (var zoneInfo in zone.spawnInfos)
+                {
+                    // Tìm SpawnInfo tương ứng với enemyType
+                    zone.LoadData(zoneData);
+                    Debug.Log($"[LOAD] Zone {zone.zoneID} - EnemyType {zoneInfo.enemyType}: " +
+                                    $"Spawned: {zoneInfo.spawnedCount}, Dead: {zoneInfo.deadCount}, Alive: {zoneInfo.currentAlive}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Không tìm thấy dữ liệu cho zone ID: {zone.zoneID}");
+            }
+        }
+
     }
 
 

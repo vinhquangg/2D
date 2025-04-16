@@ -6,7 +6,6 @@ public class EnemySpawnerManager : MonoBehaviour
 {
     public static EnemySpawnerManager Instance { get; private set; }
     private Dictionary<BaseEnemy, SpawnZone> spawnZones = new Dictionary<BaseEnemy, SpawnZone>();
-    public int enemyIDCount = 0;
     public List<EnemyTypePrefabPair> enemyPrefabList;
     private void Awake()
     {
