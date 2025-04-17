@@ -329,14 +329,19 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   enemyType: 1
+  patrolPointPrefab: {fileID: 4684223294616517440, guid: d81141e572101bb4489eb0371fc5cb68, type: 3}
+  enemyID: 0
+  zoneID: 
   hitDuration: 1
   detectRange: 4
   attackRange: 6
   moveSpeed: 2
+  assignedZone: {fileID: 0}
   knockbackForce: 2.5
   patrolSpeed: 1
   isKnockback: 0
   isDead: 0
+  isLoad: 0
 --- !u!114 &5902827139954001604
 MonoBehaviour:
   m_ObjectHideFlags: 0

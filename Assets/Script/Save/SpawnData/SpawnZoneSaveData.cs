@@ -1,26 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
-[System.Serializable]
-
+﻿[System.Serializable]
 public class SpawnZoneSaveData
 {
     public string zoneID;
     public bool isZoneCleared;
-    public List<SpawnInfoZoneData> spawnInfos = new List<SpawnInfoZoneData>();
-}
-[System.Serializable]
-public class SpawnInfoZoneData
-{
-    public string enemyID;
-    public EnemyType enemyType;
-    public int maxSpawnCount; 
-    public int initialSpawn; 
-    public int spawnedCount; 
+    public EnemyType zoneEnemyType;
+
+    public int maxSpawnCount;
+    public int initialSpawn;
+    public int spawnedCount;
     public int deadCount;
     public int currentAlive;
-    public int pendingSpawn;
-}
 
+    public int enemyIDCount;
+}

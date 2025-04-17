@@ -75,7 +75,7 @@ public class SaveLoadManager : MonoBehaviour
         {
             SpawnZoneSaveData zoneData = zone.SaveData();
             zoneSaveDataList.Add(zoneData);
-            Debug.Log($"Saving SpawnZone: {zoneData.zoneID}, SpawnInfos Count: {zoneData.spawnInfos.Count}");
+            //Debug.Log($"Saving SpawnZone: {zoneData.zoneID}, SpawnInfos Count: {zoneData.spawnInfos.Count}");
         }
 
         SaveData saveData = new SaveData
@@ -116,7 +116,7 @@ public class SaveLoadManager : MonoBehaviour
     private IEnumerator DelayThenLoadData()
     {
         yield return null;
-        LoadGame(); // Vì chỉ còn dùng file nên gọi lại hàm LoadGame
+        LoadGame();
     }
 
     private void ApplyLoadedData(SaveData saveData)
@@ -128,7 +128,6 @@ public class SaveLoadManager : MonoBehaviour
         var allEnemies = FindObjectsOfType<BaseEnemy>();
         foreach (var enemy in allEnemies)
         {
-            // Tìm data tương ứng với enemyID
             EnemySaveData data = saveData.enemies.Find(e => e.enemyID == enemy.enemyID);
             if (data != null)
             {
@@ -143,20 +142,16 @@ public class SaveLoadManager : MonoBehaviour
             }
         }
 
-       var allZones = FindObjectsOfType<SpawnZone>();
+        var allZones = FindObjectsOfType<SpawnZone>();
         foreach (var zone in allZones)
         {
-            // Tìm data tương ứng với zoneID
             SpawnZoneSaveData zoneData = saveData.spawnZones.Find(z => z.zoneID == zone.zoneID);
             if (zoneData != null)
             {
-                foreach (var zoneInfo in zone.spawnInfos)
-                {
-                    // Tìm SpawnInfo tương ứng với enemyType
-                    zone.LoadData(zoneData);
-                    Debug.Log($"[LOAD] Zone {zone.zoneID} - EnemyType {zoneInfo.enemyType}: " +
-                                    $"Spawned: {zoneInfo.spawnedCount}, Dead: {zoneInfo.deadCount}, Alive: {zoneInfo.currentAlive}");
-                }
+                // Thay thế load dữ liệu từ spawnInfos bằng các giá trị trực tiếp từ zoneData
+                zone.LoadData(zoneData);
+                Debug.Log($"[LOAD] Zone {zone.zoneID} - EnemyType {zoneData.zoneEnemyType}: " +
+                            $"Spawned: {zoneData.spawnedCount}, Dead: {zoneData.deadCount}, Alive: {zoneData.currentAlive}");
             }
             else
             {
@@ -164,10 +159,33 @@ public class SaveLoadManager : MonoBehaviour
             }
         }
 
+        // Xác định vị trí Player cần load về
+        SpawnZone currentZone = null;
+        Vector3 playerSavedPos = saveData.player.position;
+        foreach (var zone in allZones)
+        {
+            BoxCollider2D box = zone.GetComponent<BoxCollider2D>();
+            if (box != null && box.OverlapPoint(playerSavedPos))
+            {
+                currentZone = zone;
+                break;
+            }
+        }
+
+        if (currentZone != null && currentZone.IsZoneUncleared())
+        {
+            // Zone chưa clear → đưa player ra cửa zone
+            playerStateMachine.transform.position = currentZone.GetEntryPointOutsideZone();
+            Debug.Log($"[LOAD] Player được đưa ra entry point của zone chưa clear: {currentZone.zoneID}");
+        }
+        else
+        {
+            // Zone đã clear → đưa player về đúng vị trí khi save
+            playerStateMachine.transform.position = saveData.player.position;
+            Debug.Log($"[LOAD] Player trở về đúng vị trí đã lưu");
+        }
+
     }
-
-
-
     private string GetSavePath()
     {
         return Path.Combine(Application.persistentDataPath, saveFileName);
