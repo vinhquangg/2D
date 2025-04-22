@@ -12,6 +12,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {

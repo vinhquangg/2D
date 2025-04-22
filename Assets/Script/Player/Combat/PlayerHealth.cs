@@ -1,16 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
+    private Slider slider;
     private float currentHealth;
+
+    private void Awake()
+    {
+        GameObject playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
+
+        if (playerUI != null)
+        {
+            Transform sliderTransform = playerUI.transform.Find("HealthContainer/Slider");
+
+            if (sliderTransform != null)
+            {
+                slider = sliderTransform.GetComponent<Slider>();
+            }
+            else
+            {
+                Debug.LogError("Không tìm thấy Slider trong HealContainer.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Không tìm thấy PlayerUI có tag PlayerUI.");
+        }
+    }
 
     public void UpdateHealthBarPlayer(float currentHealth, float maxHealth)
     {
-        slider.value = currentHealth / maxHealth;
+        if (slider != null)
+            slider.value = currentHealth / maxHealth;
     }
 
     public void SetCurrentHealth(float currentHealth)

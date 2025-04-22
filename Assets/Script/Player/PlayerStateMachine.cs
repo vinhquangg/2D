@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+//using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStateMachine : MonoBehaviour
@@ -11,14 +12,24 @@ public class PlayerStateMachine : MonoBehaviour
     public bool isAttackPressed { get; private set; }
 
     public Dictionary<string,System.Func<IPlayerState>> stateFactory { get; private set; }
-    public string currentStateName => currentState?.GetType().Name;  
+    public string currentStateName => currentState?.GetType().Name;
     // Start is called before the first frame update
 
     void Awake()
     {
+
         rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
+            Debug.LogError($"[PlayerStateMachine] Rigidbody2D is missing on {gameObject.name}");
+
         anim = GetComponent<Animator>();
+        if (anim == null)
+            Debug.LogWarning("Animator is missing");
         playerCombat = GetComponent<PlayerCombat>();
+        if (playerCombat == null)
+            Debug.LogError("PlayerCombat is missing");
+
+
     }
 
     void Start()

@@ -18,7 +18,7 @@ public class MoveState : IPlayerState
     {
         playerState.anim.enabled = true;
         if (playerState.anim.GetBool("Attack")) return;
-        Debug.Log("State: " + GetType().Name); 
+        //Debug.Log("State: " + GetType().Name); 
     }
 
     public virtual void UpdateState()
@@ -73,6 +73,4 @@ public class MoveState : IPlayerState
             playerState.transform.localScale = localScale;
         }
     }
-
-
 }
