@@ -11,29 +11,15 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerCombat playerCombat { get; private set; }
     public bool isAttackPressed { get; private set; }
 
-    public Dictionary<string,System.Func<IPlayerState>> stateFactory { get; private set; }
+    public Dictionary<string, System.Func<IPlayerState>> stateFactory { get; private set; }
     public string currentStateName => currentState?.GetType().Name;
     // Start is called before the first frame update
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        if (rb == null)
-            Debug.LogError($"[PlayerStateMachine] Rigidbody2D is missing on {gameObject.name}");
-
-        anim = GetComponent<Animator>();
-        if (anim == null)
-            Debug.LogWarning("Animator is missing");
-
-        playerCombat = GetComponent<PlayerCombat>();
-        if (playerCombat == null)
-            Debug.LogError("PlayerCombat is missing");
-
-        // Kiểm tra và khởi tạo playerEnergy nếu chưa có
-        if (playerCombat != null && playerCombat.playerEnergy == null)
-        {
-            Debug.LogError("PlayerEnergy is missing in PlayerCombat!");
-        }
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        if (anim == null) anim = GetComponent<Animator>();
+        if (playerCombat == null) playerCombat = GetComponent<PlayerCombat>();
     }
 
 
@@ -60,7 +46,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             currentState.ExitState();
         }
-        
+
         currentState = newState;
         currentState.EnterState();
     }

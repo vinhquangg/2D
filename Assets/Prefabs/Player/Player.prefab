@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1277961af9f1e1445aab23e6cf9e13b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUIPrefab: {fileID: 0}
+  playerUIPrefab: {fileID: 7661101873203996843, guid: 84d30eca7d85704479ebb2c1412fe02b, type: 3}
   blastWavePrefab: {fileID: 2833538996015863414, guid: f1538ee152127464eae4ef9de7c86e9a, type: 3}
   skillEnergyCost: 20
 --- !u!114 &4227877050755013167

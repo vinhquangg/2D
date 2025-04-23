@@ -13,7 +13,6 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        // Đảm bảo chỉ có một instance của PlayerManager
         if (Instance == null)
         {
             Instance = this;
@@ -25,30 +24,41 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+
     // Hàm này được gọi để instantiate player
     public void SpawnPlayer(Vector3 spawnPos)
     {
-        if (playerObj != null)
+        if (playerObj == null)
         {
-            Destroy(playerObj);  // Nếu player đã tồn tại, hủy nó trước khi tạo mới
+            playerObj = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
+            DontDestroyOnLoad(playerObj);
+
+            playerHealth = playerObj.GetComponent<PlayerHealth>();
+            playerEnergy = playerObj.GetComponent<PlayerEnergy>();
         }
-
-        // Instantiate player tại vị trí spawn
-        playerObj = Instantiate(playerPrefab, spawnPos, Quaternion.identity);
-
-        // Khôi phục các thuộc tính của player
-        playerHealth = playerObj.GetComponent<PlayerHealth>();
-        playerEnergy = playerObj.GetComponent<PlayerEnergy>();
-
-        // Bạn có thể khôi phục các thông tin khác từ SaveData nếu cần
-        // Ví dụ: playerHealth.SetHealth(savedHealth);
-        // Ví dụ: playerEnergy.SetEnergy(savedEnergy);
+        else
+        {
+            playerObj.transform.position = spawnPos;
+        }
     }
+
+    public GameObject GetCurrentPlayer()
+    {
+        return playerObj;
+    }
+
+    public PlayerSaveData GetPlayerSaveData()
+    {
+        return playerObj.GetComponent<PlayerStateMachine>()?.GetPlayerSaveData();
+    }
+
 
     // Hàm này được gọi từ SaveLoadManager để load dữ liệu player
     public void LoadPlayerData(PlayerSaveData saveData)
     {
-        Vector3 spawnPos = saveData.position;  // Lấy vị trí từ dữ liệu lưu trữ
-        SpawnPlayer(spawnPos);  // Tạo player tại vị trí đã lưu
+        SpawnPlayer(saveData.position); // Tạo nếu chưa có
+        var stateMachine = playerObj.GetComponent<PlayerStateMachine>();
+        stateMachine?.LoadFromData(saveData);
     }
+
 }

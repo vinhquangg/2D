@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SaveLoadManager : MonoBehaviour
 {
-    [SerializeField] private PlayerStateMachine playerStateMachine;
+    //[SerializeField] private PlayerStateMachine playerStateMachine;
     private string saveFileName = "save_game.json";
 
     public static SaveLoadManager instance { get; private set; }
@@ -20,29 +20,18 @@ public class SaveLoadManager : MonoBehaviour
         }
         instance = this;
 
-        if (playerStateMachine == null)
-        {
-            // Lấy PlayerStateMachine từ prefab player đã được instantiate trong scene
-            GameObject playerObj = PlayerManager.Instance.playerPrefab; 
+        GameObject playerObj = PlayerManager.Instance.GetCurrentPlayer();
 
-            if (playerObj != null)
-            {
-                // Nếu prefab player đã được instantiate, lấy PlayerStateMachine từ đối tượng này
-                playerStateMachine = playerObj.GetComponent<PlayerStateMachine>();
-
-                // Nếu chưa instantiate player, bạn có thể thử instantiate player để lấy lại state machine
-                if (playerStateMachine == null)
-                {
-                    playerObj = Instantiate(playerObj, Vector3.zero, Quaternion.identity);
-                    playerStateMachine = playerObj.GetComponent<PlayerStateMachine>();
-                }
-            }
-            else
-            {
-                Debug.LogError("Player prefab not found!");
-            }
-        }
+        //if (playerObj != null)
+        //{
+        //    //playerStateMachine = playerObj.GetComponent<PlayerStateMachine>();
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("Không tìm thấy Player trong scene!");
+        //}
     }
+
 
 
     private void Start()
@@ -60,14 +49,23 @@ public class SaveLoadManager : MonoBehaviour
 
     public void NewGame()
     {
-        PlayerSaveData playerData = playerStateMachine.GetDefaultPlayerData();
+        PlayerSaveData playerData = new PlayerSaveData(); // hoặc dùng default
+        PlayerManager.Instance.SpawnPlayer(playerData.position); // Gọi spawn
+
+        //PlayerManager.Instance.LoadPlayerData(playerData);
+        //GameObject playerObj = PlayerManager.Instance.GetCurrentPlayer();
+        //playerStateMachine = playerObj.GetComponent<PlayerStateMachine>();
         //playerStateMachine.LoadFromData(playerData);
+        //playerStateMachine.SwitchState(new IdleState(playerStateMachine));
 
+
+        //PlayerSaveData playerData = playerStateMachine.GetDefaultPlayerData();
+        //PlayerManager.Instance.SpawnPlayer(playerData.position); // Tạo player tại vị trí mặc định
+        //playerStateMachine.SwitchState(new IdleState(playerStateMachine));
+
+        //playerStateMachine.LoadFromData(playerData);
         // Tạo player tại vị trí khởi tạo (spawn position, ví dụ là vị trí ban đầu)
-        PlayerManager.Instance.SpawnPlayer(playerData.position); // Tạo player tại vị trí mặc định
-
         // Chuyển trạng thái của player về IdleState (hoặc trạng thái ban đầu của bạn)
-        playerStateMachine.SwitchState(new IdleState(playerStateMachine));
         //PlayerSaveData playerData = playerStateMachine.GetDefaultPlayerData();
         //playerStateMachine.LoadFromData(playerData);
         //playerStateMachine.SwitchState(new IdleState(playerStateMachine));
@@ -76,7 +74,9 @@ public class SaveLoadManager : MonoBehaviour
     public void SaveGame()
     {
         // Lưu Player
-        PlayerSaveData playerData = playerStateMachine.GetPlayerSaveData();
+        //PlayerSaveData playerData = playerStateMachine.GetPlayerSaveData();
+
+        PlayerSaveData playerData = PlayerManager.Instance.GetPlayerSaveData();
 
         // Lưu Enemy
         List<EnemySaveData> enemyList = new();
@@ -148,7 +148,13 @@ public class SaveLoadManager : MonoBehaviour
     private void ApplyLoadedData(SaveData saveData)
     {
         // Load Player
-        playerStateMachine.LoadFromData(saveData.player);
+        //playerStateMachine.LoadFromData(saveData.player);
+
+        PlayerManager.Instance.SpawnPlayer(saveData.player.position);
+
+        GameObject playerObj = PlayerManager.Instance.GetCurrentPlayer();
+        //playerStateMachine = playerObj.GetComponent<PlayerStateMachine>();
+        //playerStateMachine.LoadFromData(saveData.player);
 
         // Load Enemy
         var allEnemies = FindObjectsOfType<BaseEnemy>();
@@ -201,13 +207,13 @@ public class SaveLoadManager : MonoBehaviour
         if (currentZone != null && currentZone.IsZoneUncleared())
         {
             // Zone chưa clear → đưa player ra cửa zone
-            playerStateMachine.transform.position = currentZone.GetEntryPointOutsideZone();
+            //playerStateMachine.transform.position = currentZone.GetEntryPointOutsideZone();
             Debug.Log($"[LOAD] Player được đưa ra entry point của zone chưa clear: {currentZone.zoneID}");
         }
         else
         {
             // Zone đã clear → đưa player về đúng vị trí khi save
-            playerStateMachine.transform.position = saveData.player.position;
+            //playerStateMachine.transform.position = saveData.player.position;
             Debug.Log($"[LOAD] Player trở về đúng vị trí đã lưu");
         }
 
