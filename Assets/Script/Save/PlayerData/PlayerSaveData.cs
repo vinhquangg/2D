@@ -1,4 +1,4 @@
-using UnityEngine; 
+﻿using UnityEngine; 
 
 [System.Serializable]
 public class PlayerSaveData
@@ -18,5 +18,12 @@ public class PlayerSaveData
         this.currentSceneName = sceneName;
     }
 
-    //public PlayerSaveData() { }
+    public PlayerSaveData() 
+    {
+        position = Vector3.zero;
+        health = 100f; // Giá trị mặc định cho máu
+        currentState = "IdleState"; // Trạng thái mặc định
+        energy = 100f; // Giá trị mặc định cho năng lượng
+        currentSceneName = "SampleScene"; // Tên cảnh mặc định
+    }
 }

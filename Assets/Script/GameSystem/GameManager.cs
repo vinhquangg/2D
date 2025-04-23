@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerInputPrefab;
     public GameObject pauseGamePrefab;
     public GameObject playerUI;
-
+    public GameObject player { get; private set; }
+    public PlayerController PlayerController => player?.GetComponent<PlayerController>();
     private GameObject pauseGameInstance;
     private bool isPaused;
 
@@ -77,5 +78,10 @@ public class GameManager : MonoBehaviour
             pauseGameInstance.SetActive(isPaused);
 
         Time.timeScale = isPaused ? 0 : 1;
+    }
+
+    public void SetPlayer(GameObject newPlayer)
+    {
+        player= newPlayer;
     }
 }

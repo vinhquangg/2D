@@ -3,20 +3,19 @@
 
 public class PlayerController : MonoBehaviour
 {
-    private static PlayerController instance;
+    public static PlayerController instance;
     private PlayerStateMachine playerState;
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
             return;
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        //playerState = GetComponent<PlayerStateMachine>();
         playerState = GetComponent<PlayerStateMachine>();
     }
     void Start()

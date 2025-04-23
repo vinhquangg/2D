@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 8046837243532607771}
   - component: {fileID: 4227877050755013167}
   - component: {fileID: 845132854180800111}
+  - component: {fileID: -4418162832482799502}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -35,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 1980675432936059014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.7, y: 32.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -241,11 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1277961af9f1e1445aab23e6cf9e13b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownText: {fileID: 0}
-  skillImage: {fileID: 0}
+  playerUIPrefab: {fileID: 0}
   blastWavePrefab: {fileID: 2833538996015863414, guid: f1538ee152127464eae4ef9de7c86e9a, type: 3}
   skillEnergyCost: 20
-  cooldownImage: {fileID: 0}
 --- !u!114 &4227877050755013167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b79073b727804c4db64ce48eafac46a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
 --- !u!114 &845132854180800111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,4 +269,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56257e95d79080d42b99d9160d7a1c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energySlider: {fileID: 0}
+--- !u!114 &-4418162832482799502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980675432936059014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0459a4de9a48149ac64d3d5c349e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

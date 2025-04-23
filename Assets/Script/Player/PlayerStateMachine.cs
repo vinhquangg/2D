@@ -17,7 +17,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Awake()
     {
-
         rb = GetComponent<Rigidbody2D>();
         if (rb == null)
             Debug.LogError($"[PlayerStateMachine] Rigidbody2D is missing on {gameObject.name}");
@@ -25,12 +24,18 @@ public class PlayerStateMachine : MonoBehaviour
         anim = GetComponent<Animator>();
         if (anim == null)
             Debug.LogWarning("Animator is missing");
+
         playerCombat = GetComponent<PlayerCombat>();
         if (playerCombat == null)
             Debug.LogError("PlayerCombat is missing");
 
-
+        // Kiểm tra và khởi tạo playerEnergy nếu chưa có
+        if (playerCombat != null && playerCombat.playerEnergy == null)
+        {
+            Debug.LogError("PlayerEnergy is missing in PlayerCombat!");
+        }
     }
+
 
     void Start()
     {
@@ -100,14 +105,17 @@ public class PlayerStateMachine : MonoBehaviour
 
     public PlayerSaveData GetDefaultPlayerData()
     {
-        return new PlayerSaveData(
-            Vector3.zero, // startPos
-            playerData.maxHealth,
-            "IdleState",
-            playerCombat.playerEnergy.GetMaxEnergy(),
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-        );
+        // Đảm bảo sử dụng vị trí khởi tạo chính xác
+        Vector3 startPos = Vector3.zero; // Hoặc bạn có thể sử dụng một vị trí cụ thể ở đây.
+        return new PlayerSaveData();
+        //    startPos, // startPos
+        //    playerData.maxHealth,
+        //    "IdleState", // Trạng thái khởi tạo
+        //    playerCombat.playerEnergy.GetMaxEnergy(),
+        //    UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+        //);
     }
+
 
     public PlayerSaveData GetPlayerSaveData()
     {

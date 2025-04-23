@@ -16,16 +16,34 @@ public class SaveLoadManager : MonoBehaviour
         if (instance != null)
         {
             Debug.Log("Found more than one SaveLoadManager in the scene");
+            return;
         }
         instance = this;
 
         if (playerStateMachine == null)
         {
-            playerStateMachine = FindObjectOfType<PlayerStateMachine>();
+            // Lấy PlayerStateMachine từ prefab player đã được instantiate trong scene
+            GameObject playerObj = PlayerManager.Instance.playerPrefab; 
+
+            if (playerObj != null)
+            {
+                // Nếu prefab player đã được instantiate, lấy PlayerStateMachine từ đối tượng này
+                playerStateMachine = playerObj.GetComponent<PlayerStateMachine>();
+
+                // Nếu chưa instantiate player, bạn có thể thử instantiate player để lấy lại state machine
+                if (playerStateMachine == null)
+                {
+                    playerObj = Instantiate(playerObj, Vector3.zero, Quaternion.identity);
+                    playerStateMachine = playerObj.GetComponent<PlayerStateMachine>();
+                }
+            }
+            else
+            {
+                Debug.LogError("Player prefab not found!");
+            }
         }
-
-
     }
+
 
     private void Start()
     {
@@ -43,8 +61,16 @@ public class SaveLoadManager : MonoBehaviour
     public void NewGame()
     {
         PlayerSaveData playerData = playerStateMachine.GetDefaultPlayerData();
-        playerStateMachine.LoadFromData(playerData);
+        //playerStateMachine.LoadFromData(playerData);
+
+        // Tạo player tại vị trí khởi tạo (spawn position, ví dụ là vị trí ban đầu)
+        PlayerManager.Instance.SpawnPlayer(playerData.position); // Tạo player tại vị trí mặc định
+
+        // Chuyển trạng thái của player về IdleState (hoặc trạng thái ban đầu của bạn)
         playerStateMachine.SwitchState(new IdleState(playerStateMachine));
+        //PlayerSaveData playerData = playerStateMachine.GetDefaultPlayerData();
+        //playerStateMachine.LoadFromData(playerData);
+        //playerStateMachine.SwitchState(new IdleState(playerStateMachine));
     }
 
     public void SaveGame()
