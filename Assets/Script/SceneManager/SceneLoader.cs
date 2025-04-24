@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance { get; private set; }
 
     private SceneName currentSceneName;
+
     private void Awake()
     {
         if (instance == null)
@@ -18,23 +19,76 @@ public class SceneLoader : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
-    public void loadScene(SceneName sceneName)
+    public void LoadScene(SceneName sceneName)
     {
         currentSceneName = sceneName;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName.ToString());
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        StartCoroutine(LoadSceneRoutine(sceneName));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadSceneFromSave(PlayerSaveData playerData)
     {
+        currentSceneName = (SceneName)System.Enum.Parse(typeof(SceneName), playerData.currentSceneName);
+        StartCoroutine(LoadSceneFromSaveRoutine(currentSceneName, playerData));
+    }
+
+    private IEnumerator LoadSceneRoutine(SceneName sceneName)
+    {
+        if (sceneName != SceneName.Menu && PlayerManager.Instance.GetCurrentPlayer() != null)
+        {
+            var stateMachine = PlayerManager.Instance.GetCurrentPlayer().GetComponent<PlayerStateMachine>();
+            PlayerSaveTemp.tempData = stateMachine.GetPlayerSaveData();
+        }
+
+        Debug.Log($"[SceneLoader] Loading scene: {sceneName}");
+        if (sceneName == SceneName.Menu)
+        {
+            Debug.Log("[SceneLoader] MainMenu detected - hiding UI and pausing game.");
+            GameManager.instance?.HidePlayerUI();
+            GameManager.instance?.TogglePause();
+        }
         
+        yield return SceneManager.LoadSceneAsync(sceneName.ToString());
+
+        if (sceneName != SceneName.Menu)
+        {
+            PlayerManager.Instance.SpawnPlayer(Vector3.zero);
+            GameManager.instance.ShowPlayerUI();
+
+            if (PlayerSaveTemp.tempData != null)
+            {
+                var newStateMachine = PlayerManager.Instance.GetCurrentPlayer().GetComponent<PlayerStateMachine>();
+                newStateMachine.LoadFromData(PlayerSaveTemp.tempData);
+            }
+        }
+
+        if (sceneName == SceneName.ShopScene)
+        {
+            GameObject entry = GameObject.Find("PlayerChangeSpawn");
+            if (entry != null)
+            {
+                PlayerManager.Instance.SpawnPlayer(entry.transform.position);
+            }
+        }
+    }
+
+    private IEnumerator LoadSceneFromSaveRoutine(SceneName sceneName, PlayerSaveData playerData)
+    {
+        yield return SceneManager.LoadSceneAsync(sceneName.ToString());
+        yield return null;
+
+        GameManager.instance?.TogglePause();
+
+        PlayerManager.Instance.SpawnPlayer(playerData.position);
+        PlayerManager.Instance.LoadPlayerData(playerData);
+
+        
+        SaveLoadManager.instance?.LoadAfterSceneLoaded();
+    }
+
+    public SceneName GetCurrentScene()
+    {
+        return currentSceneName;
     }
 }

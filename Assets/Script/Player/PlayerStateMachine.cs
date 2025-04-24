@@ -17,11 +17,18 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Awake()
     {
+        InitializeNull();
+        //if (rb == null) rb = GetComponent<Rigidbody2D>();
+        //if (anim == null) anim = GetComponent<Animator>();
+        //if (playerCombat == null) playerCombat = GetComponent<PlayerCombat>();
+    }
+
+    private void InitializeNull()
+    {
         if (rb == null) rb = GetComponent<Rigidbody2D>();
         if (anim == null) anim = GetComponent<Animator>();
         if (playerCombat == null) playerCombat = GetComponent<PlayerCombat>();
     }
-
 
     void Start()
     {
@@ -91,15 +98,15 @@ public class PlayerStateMachine : MonoBehaviour
 
     public PlayerSaveData GetDefaultPlayerData()
     {
-        // Đảm bảo sử dụng vị trí khởi tạo chính xác
-        Vector3 startPos = Vector3.zero; // Hoặc bạn có thể sử dụng một vị trí cụ thể ở đây.
-        return new PlayerSaveData();
-        //    startPos, // startPos
-        //    playerData.maxHealth,
-        //    "IdleState", // Trạng thái khởi tạo
-        //    playerCombat.playerEnergy.GetMaxEnergy(),
-        //    UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-        //);
+        //Đảm bảo sử dụng vị trí khởi tạo chính xác
+        Vector3 startPos = Vector3.zero;
+        return new PlayerSaveData(
+            startPos, 
+            playerData.maxHealth,
+            "IdleState",
+            playerCombat.playerEnergy.GetMaxEnergy(),
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+        );
     }
 
 
@@ -116,14 +123,23 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void LoadFromData(PlayerSaveData data)
     {
+        InitializeNull();
+
         transform.position = data.position;
-        playerCombat.currentHealth = data.health;
-        playerCombat.currentEnergy = data.energy;
 
-        playerCombat.GetComponent<PlayerHealth>()?.UpdateHealthBarPlayer(data.health, playerData.maxHealth);
-        playerCombat.GetComponent<PlayerEnergy>()?.UpdateEnergySlider();
+        if(playerCombat != null)
+        {
+            playerCombat.currentHealth = data.health;
+            playerCombat.currentEnergy = data.energy;
 
-        if (stateFactory.TryGetValue(data.currentState, out var createState))
+            var health = playerCombat.GetComponent<PlayerHealth>();
+            var energy = playerCombat.GetComponent<PlayerEnergy>();
+
+            health?.UpdateHealthBarPlayer(data.health, playerData.maxHealth);
+            energy?.UpdateEnergySlider();
+        }
+
+        if (stateFactory != null && stateFactory.TryGetValue(data.currentState, out var createState))
         {
             SwitchState(createState());
         }

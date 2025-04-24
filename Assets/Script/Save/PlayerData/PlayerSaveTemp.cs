@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum SceneName
+
+public static class PlayerSaveTemp 
 {
-    Menu,
-    SampleScene,
-    ShopScene
+    public static PlayerSaveData tempData;
 }

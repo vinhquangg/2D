@@ -7,10 +7,6 @@ public class PlayerSpawn : MonoBehaviour
 {
     private void Awake()
     {
-        if(GameManager.instance !=null)
-        {
-            GameManager.instance.SetPlayer(this.gameObject);
-        }
         var vcam = FindObjectOfType<CinemachineVirtualCamera>();
         if (vcam != null)
         {

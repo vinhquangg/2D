@@ -19,11 +19,5 @@ public class PlayerSaveData
     }
 
     public PlayerSaveData() 
-    {
-        position = Vector3.zero;
-        health = 100f; // Giá trị mặc định cho máu
-        currentState = "IdleState"; // Trạng thái mặc định
-        energy = 100f; // Giá trị mặc định cho năng lượng
-        currentSceneName = "SampleScene"; // Tên cảnh mặc định
-    }
+    {}
 }

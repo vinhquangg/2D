@@ -148,11 +148,11 @@ public class SaveLoadManager : MonoBehaviour
     private void ApplyLoadedData(SaveData saveData)
     {
         // Load Player
-        //playerStateMachine.LoadFromData(saveData.player);
+        PlayerManager.Instance.LoadPlayerData(saveData.player);
 
-        PlayerManager.Instance.SpawnPlayer(saveData.player.position);
+        //PlayerManager.Instance.SpawnPlayer(saveData.player.position);
 
-        GameObject playerObj = PlayerManager.Instance.GetCurrentPlayer();
+        //GameObject playerObj = PlayerManager.Instance.GetCurrentPlayer();
         //playerStateMachine = playerObj.GetComponent<PlayerStateMachine>();
         //playerStateMachine.LoadFromData(saveData.player);
 
@@ -207,13 +207,13 @@ public class SaveLoadManager : MonoBehaviour
         if (currentZone != null && currentZone.IsZoneUncleared())
         {
             // Zone chưa clear → đưa player ra cửa zone
-            //playerStateMachine.transform.position = currentZone.GetEntryPointOutsideZone();
+            PlayerManager.Instance.GetCurrentPlayer().transform.position = currentZone.GetEntryPointOutsideZone();
             Debug.Log($"[LOAD] Player được đưa ra entry point của zone chưa clear: {currentZone.zoneID}");
         }
         else
         {
             // Zone đã clear → đưa player về đúng vị trí khi save
-            //playerStateMachine.transform.position = saveData.player.position;
+            PlayerManager.Instance.GetCurrentPlayer().transform.position = saveData.player.position;
             Debug.Log($"[LOAD] Player trở về đúng vị trí đã lưu");
         }
 

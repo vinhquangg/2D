@@ -53,7 +53,7 @@ public class MenuController : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneLoader.instance.LoadScene(SceneName.Menu);
     }
 
     public void NewGame()
@@ -65,8 +65,8 @@ public class MenuController : MonoBehaviour
             File.Delete(path);
             Debug.Log("Deleted old save file: " + path);
         }
-
-        SceneManager.LoadScene("SampleScene"); // Hoặc tên scene đầu game bạn chọn
+        SceneLoader.instance.LoadScene(SceneName.SampleScene); // Hoặc tên scene đầu game bạn chọn
+        //SceneManager.LoadScene("SampleScene"); // Hoặc tên scene đầu game bạn chọn
         Time.timeScale = 1;
     }
 

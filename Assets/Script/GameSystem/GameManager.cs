@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
@@ -8,9 +7,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerInputPrefab;
     public GameObject pauseGamePrefab;
     public GameObject playerUI;
-    public GameObject player { get; private set; }
-    public PlayerController PlayerController => player?.GetComponent<PlayerController>();
     private GameObject pauseGameInstance;
+    private GameObject playerUIInstance;
     private bool isPaused;
 
     private void Awake()
@@ -23,24 +21,21 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // Khởi tạo PlayerInput nếu chưa có
         if (FindObjectOfType<PlayerInputHandler>() == null)
         {
             var input = Instantiate(playerInputPrefab);
             DontDestroyOnLoad(input);
         }
 
-        // Khởi tạo PauseMenu nếu chưa có
         if (FindObjectOfType<MenuController>() == null)
         {
             pauseGameInstance = Instantiate(pauseGamePrefab);
             DontDestroyOnLoad(pauseGameInstance);
         }
 
-        // Khởi tạo PlayerUI nếu chưa có
         if (GameObject.FindGameObjectWithTag("PlayerUI") == null)
         {
-            var playerUIInstance = Instantiate(playerUI);
+            playerUIInstance = Instantiate(playerUI);
             DontDestroyOnLoad(playerUIInstance);
         }
         else
@@ -80,8 +75,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = isPaused ? 0 : 1;
     }
 
-    public void SetPlayer(GameObject newPlayer)
+    public void HidePlayerUI()
     {
-        player= newPlayer;
+        if (playerUIInstance != null)
+        {
+            playerUIInstance.SetActive(false);
+        }
+    }
+
+    public void ShowPlayerUI()
+    {
+        if (playerUIInstance != null)
+        {
+            playerUIInstance.SetActive(true);
+        }
     }
 }

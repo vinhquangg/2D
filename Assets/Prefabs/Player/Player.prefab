@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5637551142532480758}
   - component: {fileID: 6381905456997655975}
   - component: {fileID: 6969801733264555536}
-  - component: {fileID: 7118535055883016649}
   - component: {fileID: 4804177355454953890}
   - component: {fileID: 6325672632950610527}
+  - component: {fileID: 7118535055883016649}
   - component: {fileID: 3474279854003729299}
   - component: {fileID: 4109884403045050314}
   - component: {fileID: 8046837243532607771}
@@ -115,19 +115,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7118535055883016649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980675432936059014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf683011114478044a82644d397277d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 9e4ae7e56d7815b44b18438a0452a0f1, type: 2}
 --- !u!50 &4804177355454953890
 Rigidbody2D:
   serializedVersion: 4
@@ -200,6 +187,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18449125, y: 0.2228523}
   m_EdgeRadius: 0
+--- !u!114 &7118535055883016649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980675432936059014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf683011114478044a82644d397277d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 9e4ae7e56d7815b44b18438a0452a0f1, type: 2}
 --- !u!114 &3474279854003729299
 MonoBehaviour:
   m_ObjectHideFlags: 0

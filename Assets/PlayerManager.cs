@@ -4,12 +4,11 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
-    [Header("Player Prefab")]
-    public GameObject playerPrefab;  // Prefab của player
+    public GameObject playerPrefab;  
 
-    private GameObject playerObj;  // Đối tượng player trong scene
-    private PlayerHealth playerHealth;  // Script quản lý máu của player
-    private PlayerEnergy playerEnergy;  // Script quản lý năng lượng của player
+    private GameObject playerObj;  
+    private PlayerHealth playerHealth;  
+    private PlayerEnergy playerEnergy;  
 
     private void Awake()
     {
@@ -27,6 +26,18 @@ public class PlayerManager : MonoBehaviour
 
     // Hàm này được gọi để instantiate player
     public void SpawnPlayer(Vector3 spawnPos)
+    {
+        if (playerObj == null)
+        {
+            InitializePlayer(spawnPos);
+        }
+        else
+        {
+            playerObj.transform.position = spawnPos;
+        }
+    }
+
+    public void InitializePlayer(Vector3 spawnPos)
     {
         if (playerObj == null)
         {
