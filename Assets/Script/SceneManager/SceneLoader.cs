@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance { get; private set; }
+    public static string nextSpawnID = "Default";
 
     private SceneName currentSceneName;
 
@@ -53,7 +54,12 @@ public class SceneLoader : MonoBehaviour
 
         if (sceneName != SceneName.Menu)
         {
-            PlayerManager.Instance.SpawnPlayer(Vector3.zero);
+            Vector3 spawnPos = Vector3.zero;
+            if (PlayerSaveTemp.tempData != null)
+            {
+                spawnPos = PlayerSaveTemp.tempData.position;
+            }
+            PlayerManager.Instance.SpawnPlayer(spawnPos);
             GameManager.instance.ShowPlayerUI();
 
             if (PlayerSaveTemp.tempData != null)
@@ -61,6 +67,7 @@ public class SceneLoader : MonoBehaviour
                 var newStateMachine = PlayerManager.Instance.GetCurrentPlayer().GetComponent<PlayerStateMachine>();
                 newStateMachine.LoadFromData(PlayerSaveTemp.tempData);
             }
+            GameManager.instance?.ShowPlayerUI();
         }
 
         if (sceneName == SceneName.ShopScene)
