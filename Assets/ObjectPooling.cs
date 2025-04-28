@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPooling : MonoBehaviour
@@ -13,7 +14,6 @@ public class ObjectPooling : MonoBehaviour
         public int initialSize;  
     }
 
-    [Header("Thiết lập Pool cho mỗi EnemyType")]
     public PoolConfig[] poolConfigs;
 
     private Dictionary<EnemyType, Queue<GameObject>> pools;
@@ -52,7 +52,7 @@ public class ObjectPooling : MonoBehaviour
     {
         if (!pools.ContainsKey(type))
         {
-            Debug.LogError($"[ObjectPooling] No pool for {type}");
+            //Debug.LogError($"[ObjectPooling] No pool for {type}");
             return null;
         }
 
@@ -72,16 +72,27 @@ public class ObjectPooling : MonoBehaviour
             Destroy(enemy);
             return;
         }
+        StartCoroutine(ReturnToPoolWithDelay(enemy));
+    }
+
+    private IEnumerator ReturnToPoolWithDelay(GameObject enemy)
+    {
+        var animator = enemy.GetComponent<Animator>();
+        if (animator != null)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
 
         enemy.SetActive(false);
-        pools[type].Enqueue(enemy);
+        pools[enemy.GetComponent<BaseEnemy>().enemyType].Enqueue(enemy);
     }
+
 
     private GameObject GetPrefab(EnemyType type)
     {
         foreach (var cfg in poolConfigs)
             if (cfg.type == type) return cfg.prefab;
-        Debug.LogError($"[ObjectPooling] Prefab for {type} not found");
+        //Debug.LogError($"[ObjectPooling] Prefab for {type} not found");
         return null;
     }
 }

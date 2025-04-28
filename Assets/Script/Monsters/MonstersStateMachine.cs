@@ -75,17 +75,4 @@ public class MonstersStateMachine : MonoBehaviour
     {
         monsterCurrentState?.PhysicsUpdate();
     }
-
-    //public void PlayAnimation(string animName)
-    //{
-    //    if (animMonster == null) return;
-
-    //    AnimatorStateInfo stateInfo = animMonster.GetCurrentAnimatorStateInfo(0);
-
-    //    if (stateInfo.fullPathHash != 0 && !stateInfo.IsName(animName))
-    //    {
-    //        animMonster.Play(animName);
-    //    }
-    //}
-
 }

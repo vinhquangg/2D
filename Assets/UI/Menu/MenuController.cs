@@ -70,6 +70,7 @@ public class MenuController : MonoBehaviour
         SceneLoader.instance.LoadScene(SceneName.SampleScene); // Hoặc tên scene đầu game bạn chọn
         //SceneManager.LoadScene("SampleScene"); // Hoặc tên scene đầu game bạn chọn
         Time.timeScale = 1;
+        GameManager.instance.ShowPlayerUI();
     }
 
     private string GetSavePath()

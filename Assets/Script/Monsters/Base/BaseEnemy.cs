@@ -125,7 +125,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
                 EnemySpawnerManager.Instance.EnemyDied(this);
             }
 
-            Destroy(gameObject, 0.5f);
+            //Destroy(gameObject, 0.5f);
         }
         else
         {

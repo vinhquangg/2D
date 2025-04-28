@@ -79,14 +79,12 @@ public class SpawnZone : MonoBehaviour
     {
         if (isZoneCleared || spawnedCount >= maxSpawnCount) return;
 
-        // 1) Tìm vị trí hợp lệ
         Vector3 pos;
         int attempts = 0;
         do { pos = GetRandomPositionInZone(); attempts++; }
         while (!IsTileWalkable(pos) && attempts < 10);
         if (attempts >= 10) { Debug.LogWarning("No valid spawn pos."); return; }
 
-        // 2) Spawn từ pool
         GameObject go = ObjectPooling.Instance.Spawn(zoneEnemyType, pos, Quaternion.identity);
         var enemy = go.GetComponent<BaseEnemy>();
         enemy.zoneID = zoneID;
@@ -94,7 +92,6 @@ public class SpawnZone : MonoBehaviour
         enemy.assignedZone = this;
         EnemySpawnerManager.Instance.AddZone(enemy, this);
 
-        // 3) Tạo patrol points bình thường
         Transform a = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
         Transform b = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
         enemy.pointA = a.gameObject; enemy.pointB = b.gameObject; enemy.currentPoint = a;
@@ -107,9 +104,12 @@ public class SpawnZone : MonoBehaviour
     public void OnEnemyDied(BaseEnemy enemy)
     {
         if (enemy.enemyType != zoneEnemyType) return;
-
         currentAlive--;
         deadCount++;
+        //if (enemy.gameObject.activeSelf) 
+        //{
+        //    StartCoroutine(WaitAndReturnToPool(enemy));
+        //}
 
         if (IsZoneCleared())
         {
@@ -117,6 +117,17 @@ public class SpawnZone : MonoBehaviour
             Debug.Log($"[SpawnZone] Zone {zoneID} has been cleared (enemy dead).");
         }
     }
+    //private IEnumerator WaitAndReturnToPool(BaseEnemy enemy)
+    //{
+    //    Animator animator = enemy.GetComponent<Animator>();
+    //    if (animator != null)
+    //    {
+
+    //        yield return new WaitForSeconds(0.5f);
+    //    }
+    //    ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
+    //}
+
 
     private Vector3 GetRandomPositionInZone()
     {
