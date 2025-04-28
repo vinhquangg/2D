@@ -24,6 +24,7 @@ public class MenuController : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoadedAfterLoadGame;
         SceneManager.LoadScene(saveData.player.currentSceneName);
         Time.timeScale = 1;
+        GameManager.instance.ShowPlayerUI();
     }
 
     private void OnSceneLoadedAfterLoadGame(Scene scene, LoadSceneMode mode)
@@ -53,6 +54,7 @@ public class MenuController : MonoBehaviour
 
     public void BackToMenu()
     {
+        GameManager.instance.HidePlayerUI();
         SceneLoader.instance.LoadScene(SceneName.Menu);
     }
 

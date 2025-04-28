@@ -77,61 +77,32 @@ public class SpawnZone : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (isZoneCleared) return;
-        if (spawnedCount >= maxSpawnCount)
-            return;
+        if (isZoneCleared || spawnedCount >= maxSpawnCount) return;
 
-        Vector3 spawnPosition;
+        // 1) Tìm vị trí hợp lệ
+        Vector3 pos;
         int attempts = 0;
-        do
-        {
-            spawnPosition = GetRandomPositionInZone();
-            attempts++;
-        } while (!IsTileWalkable(spawnPosition) && attempts < 10);
+        do { pos = GetRandomPositionInZone(); attempts++; }
+        while (!IsTileWalkable(pos) && attempts < 10);
+        if (attempts >= 10) { Debug.LogWarning("No valid spawn pos."); return; }
 
-        if (attempts >= 10)
-        {
-            Debug.LogWarning("SpawnZone: Không tìm được vị trí hợp lệ để spawn enemy.");
-            return;
-        }
+        // 2) Spawn từ pool
+        GameObject go = ObjectPooling.Instance.Spawn(zoneEnemyType, pos, Quaternion.identity);
+        var enemy = go.GetComponent<BaseEnemy>();
+        enemy.zoneID = zoneID;
+        enemy.enemyID = enemyIDCount++;
+        enemy.assignedZone = this;
+        EnemySpawnerManager.Instance.AddZone(enemy, this);
 
-        GameObject prefab = EnemySpawnerManager.Instance.GetPrefab(zoneEnemyType);
-        if (prefab == null)
-        {
-            Debug.LogError($"Không tìm thấy prefab cho {zoneEnemyType}.");
-            return;
-        }
+        // 3) Tạo patrol points bình thường
+        Transform a = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
+        Transform b = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
+        enemy.pointA = a.gameObject; enemy.pointB = b.gameObject; enemy.currentPoint = a;
 
-        BaseEnemy enemy = Instantiate(prefab, spawnPosition, Quaternion.identity).GetComponent<BaseEnemy>();
-        if (enemy != null)
-        {
-            //spawnInfo.enemyType = enemy.enemyType;
-            enemy.zoneID = zoneID;
-            enemy.enemyID = enemyIDCount++;
-            enemy.assignedZone = this;
-        }
-
-        if (EnemySpawnerManager.Instance != null)
-        {
-            EnemySpawnerManager.Instance.AddZone(enemy, this);
-        }
-
-        Transform patrolA = Instantiate(patrolPointPrefab, spawnPosition + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
-        Transform patrolB = Instantiate(patrolPointPrefab, spawnPosition + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
-
-        //BaseEnemy enemy = enemyGO.GetComponent<BaseEnemy>();
-        if (enemy != null)
-        {
-            enemy.pointA = patrolA.gameObject;
-            enemy.pointB = patrolB.gameObject;
-            enemy.currentPoint = patrolA;
-            enemy.assignedZone = this;
-        }
-
-        spawnedCount++;
+        spawnedCount++; 
         currentAlive++;
-
     }
+
 
     public void OnEnemyDied(BaseEnemy enemy)
     {

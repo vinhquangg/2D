@@ -39,47 +39,38 @@ public class SceneLoader : MonoBehaviour
         if (sceneName != SceneName.Menu && PlayerManager.Instance.GetCurrentPlayer() != null)
         {
             var stateMachine = PlayerManager.Instance.GetCurrentPlayer().GetComponent<PlayerStateMachine>();
-            PlayerSaveTemp.tempData = stateMachine.GetPlayerSaveData();
+            PlayerSaveTemp.tempData = stateMachine.GetPlayerSaveData(); 
         }
 
         Debug.Log($"[SceneLoader] Loading scene: {sceneName}");
+
         if (sceneName == SceneName.Menu)
         {
             Debug.Log("[SceneLoader] MainMenu detected - hiding UI and pausing game.");
-            GameManager.instance?.HidePlayerUI();
-            GameManager.instance?.TogglePause();
+            GameManager.instance.TogglePause();   
         }
-        
+
         yield return SceneManager.LoadSceneAsync(sceneName.ToString());
 
         if (sceneName != SceneName.Menu)
         {
-            GameManager.instance.ShowPlayerUI();
+
             Vector3 spawnPos = Vector3.zero;
             if (PlayerSaveTemp.tempData != null)
             {
                 spawnPos = PlayerSaveTemp.tempData.position;
             }
             PlayerManager.Instance.SpawnPlayer(spawnPos);
-            //GameManager.instance.ShowPlayerUI();
 
             if (PlayerSaveTemp.tempData != null)
             {
                 var newStateMachine = PlayerManager.Instance.GetCurrentPlayer().GetComponent<PlayerStateMachine>();
                 newStateMachine.LoadFromData(PlayerSaveTemp.tempData);
             }
-            
-        }
-
-        if (sceneName == SceneName.ShopScene)
-        {
-            GameObject entry = GameObject.Find("PlayerChangeSpawn");
-            if (entry != null)
-            {
-                PlayerManager.Instance.SpawnPlayer(entry.transform.position);
-            }
         }
     }
+
+
 
     private IEnumerator LoadSceneFromSaveRoutine(SceneName sceneName, PlayerSaveData playerData)
     {
