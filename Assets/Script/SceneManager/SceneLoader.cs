@@ -54,20 +54,21 @@ public class SceneLoader : MonoBehaviour
 
         if (sceneName != SceneName.Menu)
         {
+            GameManager.instance.ShowPlayerUI();
             Vector3 spawnPos = Vector3.zero;
             if (PlayerSaveTemp.tempData != null)
             {
                 spawnPos = PlayerSaveTemp.tempData.position;
             }
             PlayerManager.Instance.SpawnPlayer(spawnPos);
-            GameManager.instance.ShowPlayerUI();
+            //GameManager.instance.ShowPlayerUI();
 
             if (PlayerSaveTemp.tempData != null)
             {
                 var newStateMachine = PlayerManager.Instance.GetCurrentPlayer().GetComponent<PlayerStateMachine>();
                 newStateMachine.LoadFromData(PlayerSaveTemp.tempData);
             }
-            GameManager.instance?.ShowPlayerUI();
+            
         }
 
         if (sceneName == SceneName.ShopScene)

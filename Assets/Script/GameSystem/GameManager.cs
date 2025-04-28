@@ -52,7 +52,9 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerInputHandler.instance.uiAction.Pause.performed += OnPausePerformed;
+
     }
+
 
     private void OnDestroy()
     {
@@ -90,4 +92,6 @@ public class GameManager : MonoBehaviour
             playerUIInstance.SetActive(true);
         }
     }
+
+
 }
