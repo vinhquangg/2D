@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    private static SoundManager instance;
+    public static SoundManager instance;
     private static AudioSource audioSource;
     private SoundEffectLibrary soundEffectLibrary;
     [SerializeField] private Slider sfxSlider;
@@ -30,18 +30,23 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public static void Stop()
     {
-        sfxSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
+        audioSource.Stop(); 
     }
 
-    public static void SetVolume(float volume)
-    {
-        audioSource.volume = volume;
-    }
+    //private void Start()
+    //{
+    //    sfxSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
+    //}
 
-    public void OnValueChanged()
-    {
-        SetVolume(sfxSlider.value);
-    }
+    //public static void SetVolume(float volume)
+    //{
+    //    audioSource.volume = volume;
+    //}
+
+    //public void OnValueChanged()
+    //{
+    //    SetVolume(sfxSlider.value);
+    //}
 }

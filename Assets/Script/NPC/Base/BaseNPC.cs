@@ -127,8 +127,10 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         portraitImage.sprite = dialogueData.npcPortrait;  
 
         dialoguePanel.SetActive(true);
-        StartCoroutine(TypeLine());  
+        StartCoroutine(TypeLine());
+        SoundManager.Play("Dialogue");
         Time.timeScale = 0f;
+        npcStateMachine.SwitchState(new NPCIdleState(npcStateMachine));
     }
 
     void NextLine()
@@ -171,9 +173,11 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         }
         else
         {
-
-            ShowYesText();
-            
+            if (dialogueIndex < dialogueData.dialogueLines.Length)
+            {
+                ShowYesText();
+                SoundManager.Stop();
+            }
         }
     }
 
@@ -200,7 +204,8 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         isDialogueActive = false;  
         dialogueText.SetText("");  
         dialoguePanel.SetActive(false);  
-        npcStateMachine.SwitchState(new NPCIdleState(npcStateMachine));  
+        //npcStateMachine.SwitchState(new NPCIdleState(npcStateMachine));
+        SoundManager.Stop();
         Time.timeScale = 1f;
     }
 

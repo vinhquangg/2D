@@ -10,7 +10,7 @@ public class SoundEffectLibrary : MonoBehaviour
 
     private void Awake()
     {
-        
+        InitializeDictionary();
     }
 
     private void InitializeDictionary()
