@@ -45,7 +45,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         currentPoint = pointA.transform;
 
         InitEnemy();
-
     }
 
     private void InitEnemy()

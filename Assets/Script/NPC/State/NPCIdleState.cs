@@ -1,18 +1,26 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCIdleState : MonoBehaviour
+public class NPCIdleState : INPCState
 {
-    // Start is called before the first frame update
-    void Start()
+    public NPCStateMachine npcStateMachine;
+    public NPCIdleState(NPCStateMachine npcStateMachine)
     {
-        
+        this.npcStateMachine = npcStateMachine;
+    }
+    public void EnterState()
+    {
+        npcStateMachine.animNPC.Play("Idle");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ExitState()
     {
-        
+        npcStateMachine.animNPC.StopPlayback();
+    }
+
+    public void UpdateState()
+    {
+
     }
 }

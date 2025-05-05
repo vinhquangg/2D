@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,7 +9,7 @@ public class ShopUIController : MonoBehaviour
     public GameObject slotPrefab;
     public Transform gridContainer;
     private int maxSlots = 10;
-
+    public static ShopUIController instance { get; private set; }
     //[System.Serializable]
     //public class ShopItem
     //{
@@ -18,6 +18,19 @@ public class ShopUIController : MonoBehaviour
     //}
     [Tooltip("List of item will apear in shop")]
     public List<ItemData> shopItems;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         InitializedSlot();
@@ -39,5 +52,17 @@ public class ShopUIController : MonoBehaviour
             slot.transform.Find("ItemIcon").GetComponent<UnityEngine.UI.Image>().sprite = item.itemIcon;
             slot.transform.Find("ItemPrice").GetComponent<TextMeshProUGUI>().text = item.itemPrice.ToString() + " Coins";
         }   
+    }
+
+    public void OpenShopUI()
+    {
+        GameManager.instance.OpenShopUI();
+        Time.timeScale = 0;
+    }
+
+    public void CloseShopUI()
+    {
+        GameManager.instance.CloseShopUI();
+        Time.timeScale = 1;
     }
 }

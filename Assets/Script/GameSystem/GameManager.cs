@@ -7,8 +7,11 @@ public class GameManager : MonoBehaviour
     public GameObject playerInputPrefab;
     public GameObject pauseGamePrefab;
     public GameObject playerUI;
+    public GameObject shopUI;  
+
     private GameObject pauseGameInstance;
     private GameObject playerUIInstance;
+    private GameObject shopInstance;  
     private bool isPaused;
 
     private void Awake()
@@ -38,6 +41,12 @@ public class GameManager : MonoBehaviour
             playerUIInstance = Instantiate(playerUI);
             DontDestroyOnLoad(playerUIInstance);
         }
+
+        if(GameObject.FindGameObjectWithTag("ShopUI") == null)
+        {
+            shopInstance = Instantiate(shopUI);
+            DontDestroyOnLoad(shopInstance);
+        }
         else
         {
             pauseGameInstance = FindObjectOfType<MenuController>().gameObject;
@@ -49,6 +58,10 @@ public class GameManager : MonoBehaviour
         if (pauseGameInstance != null)
         {
             pauseGameInstance.SetActive(false);
+        }
+        if (shopInstance != null)
+        {
+            shopInstance.SetActive(false);
         }
 
         PlayerInputHandler.instance.uiAction.Pause.performed += OnPausePerformed;
@@ -93,5 +106,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OpenShopUI()
+    {
+        if (shopInstance == null)
+        {
+            shopInstance = Instantiate(shopUI);
+            DontDestroyOnLoad(shopInstance);
+        }
+
+        shopInstance.SetActive(true); 
+    }
+
+    public void CloseShopUI()
+    {
+        if (shopInstance != null)
+        {
+            shopInstance.SetActive(false);
+        }
+    }
 
 }

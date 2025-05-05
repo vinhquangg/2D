@@ -57,6 +57,7 @@ public class MonsterPatrolState : IMonsterState
             
             enemy.SwitchState(new MonsterIdleState(enemy));
         }
+
         enemy.enemy.Flip(enemy.enemy.currentPoint);
 
         if (enemy.enemy.CanSeePlayer())
