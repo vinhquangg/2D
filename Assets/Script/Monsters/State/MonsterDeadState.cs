@@ -22,7 +22,7 @@ public class MonsterDeadState : IMonsterState
                 enemy.animMonster.Play("Dead");
                 //hasMonsterDeadAnimation = true;
                 break;
-            case EnemyType.Ranged:
+            case EnemyType.Mage:
                 //enemy.animMonster.SetBool("isDead", true);
                 //enemy.animMonster.SetBool("isDead", true);
                 enemy.animMonster.Play("Dead_Mage");

@@ -22,7 +22,7 @@ public class MonsterPatrolState : IMonsterState
             case EnemyType.Assassin:
                 enemy.animMonster.Play("Run");
                 break;
-            case EnemyType.Ranged:
+            case EnemyType.Mage:
                 enemy.animMonster.Play("Walk_Mage");
                 break;
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerEnergy : MonoBehaviour
@@ -7,15 +8,28 @@ public class PlayerEnergy : MonoBehaviour
     private PlayerCombat playerCombat;
     private float maxEnergy = 100f;
 
-    private void Awake()
+    private void Start()
     {
         playerCombat = GetComponent<PlayerCombat>();
+        StartCoroutine(WaitForPlayerUI());
+    }
 
-        GameObject playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
+    private IEnumerator WaitForPlayerUI()
+    {
+        GameObject playerUI = null;
+
+        float timeout = 1f;
+        float timer = 0f;
+
+        while (playerUI == null && timer < timeout)
+        {
+            playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
+            timer += Time.deltaTime;
+            yield return null;
+        }
 
         if (playerUI != null)
         {
-
             Transform energySliderTransform = playerUI.transform.Find("EnergyContainer/Slider");
 
             if (energySliderTransform != null)
@@ -29,15 +43,13 @@ public class PlayerEnergy : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Không tìm thấy PlayerUI (tag PlayerUI).");
+            Debug.LogError("PlayerUI không xuất hiện sau 1 giây.");
         }
-    }
 
-    private void Start()
-    {
         playerCombat.currentEnergy = maxEnergy;
         UpdateEnergySlider();
     }
+
 
     public void AddEnergy(float energy)
     {

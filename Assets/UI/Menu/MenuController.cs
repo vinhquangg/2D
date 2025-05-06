@@ -67,10 +67,15 @@ public class MenuController : MonoBehaviour
             File.Delete(path);
             Debug.Log("Deleted old save file: " + path);
         }
-        SceneLoader.instance.LoadScene(SceneName.SampleScene); // Hoặc tên scene đầu game bạn chọn
-        //SceneManager.LoadScene("SampleScene"); // Hoặc tên scene đầu game bạn chọn
+
+
+        if (PlayerManager.Instance != null)
+        {
+            PlayerManager.Instance.ResetPlayer();
+        }
+
+        SceneLoader.instance.LoadScene(SceneName.SampleScene);
         Time.timeScale = 1;
-        GameManager.instance.ShowPlayerUI();
     }
 
     private string GetSavePath()

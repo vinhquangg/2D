@@ -63,6 +63,24 @@ public class PlayerManager : MonoBehaviour
         return playerObj.GetComponent<PlayerStateMachine>()?.GetPlayerSaveData();
     }
 
+    public PlayerSaveData GetDefaultPlayer()
+    {
+        if (playerObj == null)
+        {
+            InitializePlayer(Vector3.zero);  // Spawn player tại vị trí mặc định nếu chưa có
+        }
+
+        // Đảm bảo PlayerStateMachine đã được gán cho player
+        PlayerStateMachine stateMachine = playerObj.GetComponent<PlayerStateMachine>();
+        if (stateMachine == null)
+        {
+            Debug.LogError("PlayerStateMachine is missing on the player object.");
+            return null;
+        }
+
+        return stateMachine.GetDefaultPlayerData();  // Trả về dữ liệu mặc định của player
+    }
+
 
     // Hàm này được gọi từ SaveLoadManager để load dữ liệu player
     public void LoadPlayerData(PlayerSaveData saveData)
@@ -70,6 +88,20 @@ public class PlayerManager : MonoBehaviour
         SpawnPlayer(saveData.position); // Tạo nếu chưa có
         var stateMachine = playerObj.GetComponent<PlayerStateMachine>();
         stateMachine?.LoadFromData(saveData);
+    }
+
+    public void ResetPlayer()
+    {
+        if (playerObj != null)
+        {
+            Destroy(playerObj);
+            playerObj = null;
+            playerHealth = null;
+            playerEnergy = null;
+        }
+
+        // Xoá dữ liệu tạm nếu có
+        PlayerSaveTemp.tempData = null;
     }
 
 }

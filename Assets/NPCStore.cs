@@ -6,16 +6,27 @@ public class NPCStore : BaseNPC
 {
     protected override void Start()
     {
-        base.Start();  // Gọi phương thức Start từ BaseNPC
+        base.Start(); 
     }
 
     protected override void Update()
     {
-        base.Update();  // Gọi phương thức Update từ BaseNPC
+        base.Update(); 
+        OpenShopUI();  
     }
 
-    protected override void OpenShopUI()
+    private void OpenShopUI()
     {
-        base.OpenShopUI();
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))  
+        {
+            base.Interact(); 
+        }
+    }
+
+    public new void OnYesButtonClicked()  
+    {
+        base.OnYesButtonClicked();  
+        ShopUIController.instance.OpenShopUI();
     }
 }
+

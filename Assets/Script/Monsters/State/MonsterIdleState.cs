@@ -24,7 +24,7 @@ public class MonsterIdleState : IMonsterState
             case EnemyType.Assassin:
                 enemy.animMonster.Play("Idle");
                 break;
-            case EnemyType.Ranged:
+            case EnemyType.Mage:
                 enemy.animMonster.Play("Idle_Mage");
                 break;
 
@@ -42,7 +42,7 @@ public class MonsterIdleState : IMonsterState
                     enemy.SwitchState(new MonsterChaseState(enemy));
                     break;
 
-                case EnemyType.Ranged:
+                case EnemyType.Mage:
                     enemy.SwitchState(new MonsterAttackState(enemy));
                     break;
             }

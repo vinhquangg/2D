@@ -36,21 +36,16 @@ public class AssasinEnemy : BaseEnemy
 
     public override void Flip(Transform player)
     {
-        if (player == null) return;
-
-        Vector3 scale = transform.localScale;
-
-        if (player.position.x < transform.position.x)
-        {
-            scale.x = Mathf.Abs(scale.x) * -1; 
-        }
-        else
-        {
-            scale.x = Mathf.Abs(scale.x); 
-        }
-
-        transform.localScale = scale;
+        base.Flip(player);
+        //if (monsterName != null)
+        //{
+        //    // Kiểm tra và sửa localScale.x của tên quái để không bị flip
+        //    Vector3 currentScale = monsterName.transform.localScale;
+        //    monsterName.transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
+        //}
     }
+
+
 
     public override object SaveData()
     {

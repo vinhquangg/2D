@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using TMPro;
 
 public abstract class BaseEnemy : MonoBehaviour,ISaveable
 {
@@ -12,6 +13,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public Transform textPoint;
     public SpriteRenderer spriteRenderer;
     public GameObject floatingDamage;
+    public TextMeshProUGUI monsterName;
     public MonsterSideHealthBar healthBar;
     public GameObject pointA;
     public GameObject pointB;
@@ -24,6 +26,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public float detectRange;
     public float attackRange;
     public float moveSpeed;
+    public float nameVisibleDistance = 3f;
     public SpawnZone assignedZone;
     public int currentDamage { get; set; }
     public float currentAttackMonsterRange { get; set; }
@@ -34,6 +37,8 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public bool isDead = false;
     public bool isLoad = false;
     public Transform currentPoint { get; set; }
+
+
     protected virtual void Start()
     {
         monsterState = GetComponent<MonstersStateMachine>();
@@ -66,6 +71,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         {
             originalColor = spriteRenderer.color;
         }
+        SetMonsterNameByType();
     }
     public virtual bool CanSeePlayer() 
     {
@@ -83,21 +89,26 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     {
         if (targetPoint == null) return;
 
-        Vector3 scale = transform.localScale;
+        //Vector3 scale = transform.localScale;
 
         if (targetPoint.position.x < transform.position.x)
         {
-            scale.x = Mathf.Abs(scale.x) * -1;
+            spriteRenderer.flipX = true;
         }
         else
         {
-            scale.x = Mathf.Abs(scale.x);
+            spriteRenderer.flipX = false;
         }
 
-        transform.localScale = scale;
+        //transform.localScale = scale;
+
     }
 
-
+    protected virtual void SetMonsterNameByType()
+    {
+        if (monsterName == null) return;
+        monsterName.text = enemyType.ToString();
+    }
 
     public virtual void TakeDamage(int damage, Vector2 attackerPosition)
     {
