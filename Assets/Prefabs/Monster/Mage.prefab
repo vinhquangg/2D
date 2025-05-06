@@ -358,7 +358,7 @@ MonoBehaviour:
   firePoint: {fileID: 6105161983120652940}
   projectileSpeed: 3
   maxShots: 2
-  projectilePrefab: {fileID: 5281918326050025416, guid: f87f7869b23adfd4c98b90b9bb684b6b, type: 3}
+  projectilePrefab: {fileID: 5281918326050025416, guid: 6267a33cd62d5b4449589f64151ca112, type: 3}
 --- !u!114 &8547862032432962522
 MonoBehaviour:
   m_ObjectHideFlags: 0
