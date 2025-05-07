@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     private PlayerStateMachine player;
     private PlayerCombat playerCombat;
 
-    private void Awake()
+    private void Start()
     {
         player = GetComponent<PlayerStateMachine>();
         playerCombat = GetComponent<PlayerCombat>();
@@ -29,8 +29,6 @@ public class PlayerHealth : MonoBehaviour
             yield return null;
         }
 
-
-
         if (playerUI != null)
         {
             Transform sliderTransform = playerUI.transform.Find("HealthContainer/Slider");
@@ -41,14 +39,15 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Không tìm thấy Slider trong HealContainer.");
+                Debug.LogError("Không tìm thấy Slider trong HealthContainer.");
             }
         }
         else
         {
-            Debug.LogError("Không tìm thấy PlayerUI có tag PlayerUI.");
+            Debug.LogError("PlayerUI không xuất hiện sau 1 giây.");
         }
     }
+
 
     public void UpdateHealthBarPlayer(float currentHealth, float maxHealth)
     {

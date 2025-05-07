@@ -30,18 +30,18 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        sfxSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
-    }
+    //private void Start()
+    //{
+    //    sfxSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
+    //}
 
-    public static void SetVolume(float volume)
-    {
-        audioSource.volume = volume;
-    }
+    //public static void SetVolume(float volume)
+    //{
+    //    audioSource.volume = volume;
+    //}
 
-    public void OnValueChanged()
-    {
-        SetVolume(sfxSlider.value);
-    }
+    //public void OnValueChanged()
+    //{
+    //    SetVolume(sfxSlider.value);
+    //}
 }

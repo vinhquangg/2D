@@ -68,6 +68,7 @@ public class SceneLoader : MonoBehaviour
                     }
                 }
             }
+            GameManager.instance?.ShowPlayerUI();
         }
     }
 
@@ -79,7 +80,7 @@ public class SceneLoader : MonoBehaviour
         GameManager.instance?.TogglePause();
 
         PlayerManager.Instance.SpawnPlayer(playerData.position);
-        PlayerManager.Instance.LoadPlayerData(playerData,true);
+        PlayerManager.Instance.LoadPlayerData(playerData);
 
         SaveLoadManager.instance?.LoadAfterSceneLoaded();
     }
