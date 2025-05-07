@@ -42,7 +42,7 @@ public class MonstersStateMachine : MonoBehaviour
             case EnemyType.Assassin:
                 SwitchState(new MonsterPatrolState(this));
                 break;
-            case EnemyType.Mage:
+            case EnemyType.Ranged:
                 SwitchState(new MonsterPatrolState(this));
                 break;
         }

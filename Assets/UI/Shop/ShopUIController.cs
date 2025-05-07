@@ -57,6 +57,7 @@ public class ShopUIController : MonoBehaviour
     public void OpenShopUI()
     {
         GameManager.instance.OpenShopUI();
+        Time.timeScale = 0;
     }
 
     public void CloseShopUI()

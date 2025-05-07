@@ -68,7 +68,6 @@ public class SceneLoader : MonoBehaviour
                     }
                 }
             }
-            GameManager.instance?.ShowPlayerUI();
         }
     }
 

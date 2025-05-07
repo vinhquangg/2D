@@ -33,7 +33,20 @@ public class RangedEnemy : BaseEnemy
 
     public override void Flip(Transform player)
     {
-        base.Flip(player);
+        if (player == null) return;
+
+        Vector3 scale = transform.localScale;
+
+        if (player.position.x < transform.position.x)
+        {
+            scale.x = Mathf.Abs(scale.x) * -1;
+        }
+        else
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+
+        transform.localScale = scale;
     }
 
     public override void ResetEnemy()

@@ -49,7 +49,7 @@ public class MonsterAttackState : IMonsterState
                 case EnemyType.Assassin:
                     enemy.SwitchState(new MonsterIdleState(enemy));
                     break;
-                case EnemyType.Mage:
+                case EnemyType.Ranged:
                     enemy.SwitchState(new MonsterIdleState(enemy));
                     break;
 
@@ -63,7 +63,7 @@ public class MonsterAttackState : IMonsterState
                 case EnemyType.Assassin:
                     enemy.SwitchState(new MonsterChaseState(enemy));
                     break;
-                case EnemyType.Mage:
+                case EnemyType.Ranged:
                     enemy.SwitchState(new MonsterAttackState(enemy));
 
                     break;
@@ -94,7 +94,7 @@ public class MonsterAttackState : IMonsterState
             case EnemyType.Assassin:
                 enemy.animMonster.Play("Attack1");
                 break;
-            case EnemyType.Mage:
+            case EnemyType.Ranged:
                 enemy.animMonster.Play("Attack_Mage");
                 break;
 
@@ -107,7 +107,7 @@ public class MonsterAttackState : IMonsterState
     {
         switch (enemy.enemy.enemyType)
         {
-            case EnemyType.Mage:
+            case EnemyType.Ranged:
                 enemy.enemy.Flip(enemy.enemy.player);
                 break;
         }

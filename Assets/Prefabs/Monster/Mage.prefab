@@ -325,7 +325,6 @@ MonoBehaviour:
   textPoint: {fileID: 5829735094817310180}
   spriteRenderer: {fileID: 6527994876032861668}
   floatingDamage: {fileID: 5864257040299190316, guid: 0d822561e54228b44b6d5f3e26b9b4b1, type: 3}
-  monsterName: {fileID: 8096301201930910752}
   healthBar: {fileID: 8547862032432962522}
   pointA: {fileID: 0}
   pointB: {fileID: 0}
@@ -337,7 +336,6 @@ MonoBehaviour:
   detectRange: 4
   attackRange: 6
   moveSpeed: 2
-  nameVisibleDistance: 3
   assignedZone: {fileID: 0}
   knockbackForce: 2.5
   patrolSpeed: 1
@@ -360,7 +358,7 @@ MonoBehaviour:
   firePoint: {fileID: 6105161983120652940}
   projectileSpeed: 3
   maxShots: 2
-  projectilePrefab: {fileID: 5281918326050025416, guid: f87f7869b23adfd4c98b90b9bb684b6b, type: 3}
+  projectilePrefab: {fileID: 5281918326050025416, guid: 6267a33cd62d5b4449589f64151ca112, type: 3}
 --- !u!114 &8547862032432962522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +397,7 @@ Transform:
   m_GameObject: {fileID: 8758651343283344924}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.32, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -424,10 +422,6 @@ PrefabInstance:
     - target: {fileID: 1607306337842831880, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1607306337842831880, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2024594280807310894, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
       propertyPath: m_AnchorMax.x
@@ -517,30 +511,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6506994355555467084, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 6506994355555467084, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 139.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7526457550111104333, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
-      propertyPath: m_fontSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7526457550111104333, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7526457550111104333, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 7526457550111104333, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -562,14 +532,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4072140063476923100, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
   m_PrefabInstance: {fileID: 1740797729636163949}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8096301201930910752 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7526457550111104333, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
-  m_PrefabInstance: {fileID: 1740797729636163949}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
