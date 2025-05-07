@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -10,7 +11,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-<<<<<<< HEAD
         player = GetComponent<PlayerStateMachine>();
         playerCombat = GetComponent<PlayerCombat>();
         StartCoroutine(WaitForPlayerUI());
@@ -28,9 +28,8 @@ public class PlayerHealth : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-=======
-        GameObject playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
->>>>>>> 908abd4085243b70d8b93f5cfa633115f6e4ff13
+
+
 
         if (playerUI != null)
         {
