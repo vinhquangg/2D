@@ -22,6 +22,13 @@ public class SpawnZone : MonoBehaviour
     private bool playerInsideZone = false;
     private bool isZoneCleared = false;
 
+    private void Start()
+    {
+        Debug.Log($"Zone {zoneID} - entry points count: {entryPointOutsideZone.Count}");
+        foreach (var ep in entryPointOutsideZone)
+            Debug.Log($"Entry Point: {ep?.name}");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
@@ -32,6 +39,18 @@ public class SpawnZone : MonoBehaviour
         {
             SpawnInitialEnemies();
             hasSpawned = true;
+        }
+
+        var playerObj = PlayerManager.Instance.GetCurrentPlayer();
+        if (playerObj != null)
+        {
+            var stateMachine = playerObj.GetComponent<PlayerStateMachine>();
+            if (stateMachine != null && stateMachine.currentState is ReviveState reviveState)
+            {
+
+                var reviveStateInstance = reviveState;
+                Vector3 spawnPosition = reviveStateInstance.spawnPositionOutsideZone;
+            }
         }
     }
 
@@ -87,6 +106,7 @@ public class SpawnZone : MonoBehaviour
 
         GameObject go = ObjectPooling.Instance.Spawn(zoneEnemyType, pos, Quaternion.identity);
         var enemy = go.GetComponent<BaseEnemy>();
+        enemy.ResetEnemy();
         enemy.zoneID = zoneID;
         enemy.enemyID = enemyIDCount++;
         enemy.assignedZone = this;
