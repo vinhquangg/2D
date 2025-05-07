@@ -37,12 +37,11 @@ public class AssasinEnemy : BaseEnemy
     public override void Flip(Transform player)
     {
         base.Flip(player);
-        //if (monsterName != null)
-        //{
-        //    // Kiểm tra và sửa localScale.x của tên quái để không bị flip
-        //    Vector3 currentScale = monsterName.transform.localScale;
-        //    monsterName.transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
-        //}
+    }
+
+    public override void ResetEnemy()
+    {
+        base.ResetEnemy();
     }
 
 

@@ -179,6 +179,25 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         }
     }
 
+    public virtual void ResetEnemy()
+    {
+        if (monsterState == null)
+            monsterState = GetComponent<MonstersStateMachine>();
+
+        if (monsterState == null || monsterState.monsterData == null)
+        {
+            return;
+        }
+
+        isDead = false;
+        currentHealth = monsterState.monsterData.maxHealth;
+        if(healthBar !=null)
+        {
+            healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+        }
+        monsterState.SwitchState(new MonsterIdleState(monsterState));
+    }
+
     public virtual object SaveData()
     {
         return new EnemySaveData(

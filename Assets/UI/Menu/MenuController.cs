@@ -61,21 +61,19 @@ public class MenuController : MonoBehaviour
     public void NewGame()
     {
         string path = GetSavePath();
-
         if (File.Exists(path))
         {
             File.Delete(path);
             Debug.Log("Deleted old save file: " + path);
         }
 
+        PlayerSaveTemp.tempData = null;
 
-        if (PlayerManager.Instance != null)
-        {
-            PlayerManager.Instance.ResetPlayer();
-        }
+        SaveLoadManager.instance.NewGame();
 
         SceneLoader.instance.LoadScene(SceneName.SampleScene);
-        Time.timeScale = 1;
+
+        //GameManager.instance.ShowPlayerUI();
     }
 
     private string GetSavePath()

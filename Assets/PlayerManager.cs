@@ -23,8 +23,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-
-    // Hàm này được gọi để instantiate player
     public void SpawnPlayer(Vector3 spawnPos)
     {
         if (playerObj == null)
@@ -67,10 +65,9 @@ public class PlayerManager : MonoBehaviour
     {
         if (playerObj == null)
         {
-            InitializePlayer(Vector3.zero);  // Spawn player tại vị trí mặc định nếu chưa có
+            InitializePlayer(Vector3.zero);  
         }
 
-        // Đảm bảo PlayerStateMachine đã được gán cho player
         PlayerStateMachine stateMachine = playerObj.GetComponent<PlayerStateMachine>();
         if (stateMachine == null)
         {
@@ -78,30 +75,17 @@ public class PlayerManager : MonoBehaviour
             return null;
         }
 
-        return stateMachine.GetDefaultPlayerData();  // Trả về dữ liệu mặc định của player
+        return stateMachine.GetDefaultPlayerData();  
     }
 
-
-    // Hàm này được gọi từ SaveLoadManager để load dữ liệu player
-    public void LoadPlayerData(PlayerSaveData saveData)
+    public void LoadPlayerData(PlayerSaveData saveData, bool overridePosition = true)
     {
-        SpawnPlayer(saveData.position); // Tạo nếu chưa có
+        if (overridePosition)
+        {
+            SpawnPlayer(saveData.position);
+        }
         var stateMachine = playerObj.GetComponent<PlayerStateMachine>();
         stateMachine?.LoadFromData(saveData);
-    }
-
-    public void ResetPlayer()
-    {
-        if (playerObj != null)
-        {
-            Destroy(playerObj);
-            playerObj = null;
-            playerHealth = null;
-            playerEnergy = null;
-        }
-
-        // Xoá dữ liệu tạm nếu có
-        PlayerSaveTemp.tempData = null;
     }
 
 }

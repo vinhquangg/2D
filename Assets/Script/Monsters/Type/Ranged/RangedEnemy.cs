@@ -35,4 +35,21 @@ public class RangedEnemy : BaseEnemy
     {
         base.Flip(player);
     }
+
+    public override void ResetEnemy()
+    {
+        base.ResetEnemy();
+    }
+
+    public override object SaveData()
+    {
+        var baseData = base.SaveData() as EnemySaveData;
+        return baseData;
+    }
+
+    public override void LoadData(object data)
+    {
+        base.LoadData(data);
+        var enemyData = data as EnemySaveData;
+    }
 }

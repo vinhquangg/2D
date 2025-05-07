@@ -9,8 +9,9 @@ public class PlayerStateMachine : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
     public PlayerCombat playerCombat { get; private set; }
-    public bool isAttackPressed { get; private set; }
+    public bool isAttackPressed { get; set; }
 
+    public string currentZoneID;
     public Dictionary<string, System.Func<IPlayerState>> stateFactory { get; private set; }
     public string currentStateName => currentState?.GetType().Name;
     // Start is called before the first frame update
@@ -98,6 +99,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public PlayerSaveData GetDefaultPlayerData()
     {
+        InitializeNull();
         //Đảm bảo sử dụng vị trí khởi tạo chính xác
         Vector3 startPos = Vector3.zero;
         return new PlayerSaveData(

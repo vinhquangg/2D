@@ -20,7 +20,7 @@ public class SaveLoadManager : MonoBehaviour
         }
         instance = this;
 
-        GameObject playerObj = PlayerManager.Instance.GetCurrentPlayer();
+        //GameObject playerObj = PlayerManager.Instance.GetCurrentPlayer();
 
         //if (playerObj != null)
         //{
@@ -34,23 +34,24 @@ public class SaveLoadManager : MonoBehaviour
 
 
 
-    private void Start()
-    {
-        string path = GetSavePath();
-        if (!File.Exists(path))
-        {
-            NewGame();
-        }
-        else
-        {
-            LoadGame();
-        }
-    }
+    //private void Start()
+    //{
+    //    string path = GetSavePath();
+    //    if (!File.Exists(path))
+    //    {
+    //        NewGame();
+    //    }
+    //    else
+    //    {
+    //        LoadGame();
+    //    }
+    //}
 
     public void NewGame()
     {
         PlayerSaveData playerData = new PlayerSaveData(); // hoặc dùng default
         PlayerManager.Instance.SpawnPlayer(playerData.position); // Gọi spawn
+        //PlayerManager.Instance.LoadPlayerData(playerData);
 
         //PlayerManager.Instance.LoadPlayerData(playerData);
         //GameObject playerObj = PlayerManager.Instance.GetCurrentPlayer();
@@ -222,7 +223,7 @@ public class SaveLoadManager : MonoBehaviour
     private void ApplyLoadedData(SaveData saveData)
     {
         // Load Player
-        PlayerManager.Instance.LoadPlayerData(saveData.player);
+        PlayerManager.Instance.LoadPlayerData(saveData.player,true);
 
         // Load Enemies
         var allEnemies = FindObjectsOfType<BaseEnemy>();

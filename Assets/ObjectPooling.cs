@@ -52,7 +52,6 @@ public class ObjectPooling : MonoBehaviour
     {
         if (!pools.ContainsKey(type))
         {
-            //Debug.LogError($"[ObjectPooling] No pool for {type}");
             return null;
         }
 
@@ -92,7 +91,6 @@ public class ObjectPooling : MonoBehaviour
     {
         foreach (var cfg in poolConfigs)
             if (cfg.type == type) return cfg.prefab;
-        //Debug.LogError($"[ObjectPooling] Prefab for {type} not found");
         return null;
     }
 }

@@ -36,51 +36,41 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator LoadSceneRoutine(SceneName sceneName)
     {
-        // Nếu là Menu, tạm dừng game và ẩn UI
         if (sceneName == SceneName.Menu)
         {
-            Debug.Log("[SceneLoader] MainMenu detected - hiding UI and pausing game.");
             GameManager.instance.TogglePause();
         }
 
-        Debug.Log($"[SceneLoader] Loading scene: {sceneName}");
         yield return SceneManager.LoadSceneAsync(sceneName.ToString());
-        yield return null; // Đợi 1 frame để đảm bảo scene đã load xong
-
-        // Spawn player sau khi scene đã load
-        Vector3 spawnPos = Vector3.zero;
+        yield return null;
 
         if (sceneName != SceneName.Menu)
         {
-            // Nếu có dữ liệu tạm, spawn đúng vị trí đã lưu
-            if (PlayerSaveTemp.tempData != null)
-            {
-                spawnPos = PlayerSaveTemp.tempData.position;
-            }
-            else
-            {
-                spawnPos = PlayerManager.Instance.GetDefaultPlayer().position;
-            }
+            Vector3 spawnPos = (PlayerSaveTemp.tempData != null) ? PlayerSaveTemp.tempData.position : Vector3.zero;
 
+            // Chỉ cần spawn player và không cần thêm bước load dữ liệu lại nếu PlayerSaveTemp có dữ liệu
             PlayerManager.Instance.SpawnPlayer(spawnPos);
 
-            // Nếu có dữ liệu tạm thì load lại
-            if (PlayerSaveTemp.tempData != null)
+            yield return null;
+
+            // Nếu không có dữ liệu lưu, lấy dữ liệu mặc định và load vào player
+            if (PlayerSaveTemp.tempData == null)
             {
-                var stateMachine = PlayerManager.Instance.GetCurrentPlayer().GetComponent<PlayerStateMachine>();
+                var playerObj = PlayerManager.Instance.GetCurrentPlayer();
+                var stateMachine = playerObj?.GetComponent<PlayerStateMachine>();
                 if (stateMachine != null)
                 {
-                    stateMachine.LoadFromData(PlayerSaveTemp.tempData);
-                }
-                else
-                {
-                    Debug.LogError("PlayerStateMachine is missing after spawning player.");
+                    var defaultData = stateMachine.GetDefaultPlayerData();
+                    if (defaultData != null)
+                    {
+                        PlayerSaveTemp.tempData = defaultData;
+                        stateMachine.LoadFromData(defaultData);
+                    }
                 }
             }
             GameManager.instance?.ShowPlayerUI();
         }
     }
-
 
     private IEnumerator LoadSceneFromSaveRoutine(SceneName sceneName, PlayerSaveData playerData)
     {
@@ -90,9 +80,8 @@ public class SceneLoader : MonoBehaviour
         GameManager.instance?.TogglePause();
 
         PlayerManager.Instance.SpawnPlayer(playerData.position);
-        PlayerManager.Instance.LoadPlayerData(playerData);
+        PlayerManager.Instance.LoadPlayerData(playerData,true);
 
-        
         SaveLoadManager.instance?.LoadAfterSceneLoaded();
     }
 
