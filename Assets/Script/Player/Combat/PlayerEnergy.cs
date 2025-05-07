@@ -83,6 +83,7 @@ public class PlayerEnergy : MonoBehaviour
 
     public void UpdateEnergySlider()
     {
+        GetMaxEnergy();
         if (energySlider != null)
         {
             energySlider.value = playerCombat.currentEnergy / maxEnergy;

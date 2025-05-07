@@ -6,9 +6,13 @@ public class PlayerHealth : MonoBehaviour
 {
     private Slider slider;
     private float currentHealth;
+    private PlayerStateMachine player;
+    private PlayerCombat playerCombat;
 
     private void Start()
     {
+        player = GetComponent<PlayerStateMachine>();
+        playerCombat = GetComponent<PlayerCombat>();
         StartCoroutine(WaitForPlayerUI());
     }
 
@@ -51,8 +55,16 @@ public class PlayerHealth : MonoBehaviour
             slider.value = currentHealth / maxHealth;
     }
 
-    public void SetCurrentHealth(float currentHealth)
+    public void FullRestore(float maxHealth)
     {
-        this.currentHealth = currentHealth;
+        currentHealth = maxHealth;
+        if (playerCombat != null)
+        {
+            playerCombat.currentHealth = maxHealth;
+        }
+
+        UpdateHealthBarPlayer(currentHealth, maxHealth);
     }
+
+
 }

@@ -31,8 +31,12 @@ public class ReviveState : IPlayerState
 
         player.SwitchState(new IdleState(player));
 
-        PlayerSaveData defaultData = PlayerManager.Instance.GetDefaultPlayer();
-        PlayerManager.Instance.LoadPlayerData(defaultData, false);
+        player.GetComponent<PlayerHealth>()?.FullRestore(player.playerData.maxHealth);
+        //player.GetComponent<PlayerEnergy>()?.GetMaxEnergy();
+        player.GetComponent<PlayerEnergy>()?.UpdateEnergySlider();
+
+        //PlayerSaveData defaultData = PlayerManager.Instance.GetDefaultPlayer();
+        //PlayerManager.Instance.LoadPlayerData(defaultData, false);
     }
 
 

@@ -40,18 +40,6 @@ public class SpawnZone : MonoBehaviour
             SpawnInitialEnemies();
             hasSpawned = true;
         }
-
-        var playerObj = PlayerManager.Instance.GetCurrentPlayer();
-        if (playerObj != null)
-        {
-            var stateMachine = playerObj.GetComponent<PlayerStateMachine>();
-            if (stateMachine != null && stateMachine.currentState is ReviveState reviveState)
-            {
-
-                var reviveStateInstance = reviveState;
-                Vector3 spawnPosition = reviveStateInstance.spawnPositionOutsideZone;
-            }
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
