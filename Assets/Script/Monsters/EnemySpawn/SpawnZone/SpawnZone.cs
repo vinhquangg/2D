@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿// (Các using như cũ)
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -104,20 +104,15 @@ public class SpawnZone : MonoBehaviour
         Transform b = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
         enemy.pointA = a.gameObject; enemy.pointB = b.gameObject; enemy.currentPoint = a;
 
-        spawnedCount++; 
+        spawnedCount++;
         currentAlive++;
     }
-
 
     public void OnEnemyDied(BaseEnemy enemy)
     {
         if (enemy.enemyType != zoneEnemyType) return;
         currentAlive--;
         deadCount++;
-        //if (enemy.gameObject.activeSelf) 
-        //{
-        //    StartCoroutine(WaitAndReturnToPool(enemy));
-        //}
 
         if (IsZoneCleared())
         {
@@ -125,17 +120,6 @@ public class SpawnZone : MonoBehaviour
             Debug.Log($"[SpawnZone] Zone {zoneID} has been cleared (enemy dead).");
         }
     }
-    //private IEnumerator WaitAndReturnToPool(BaseEnemy enemy)
-    //{
-    //    Animator animator = enemy.GetComponent<Animator>();
-    //    if (animator != null)
-    //    {
-
-    //        yield return new WaitForSeconds(0.5f);
-    //    }
-    //    ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
-    //}
-
 
     private Vector3 GetRandomPositionInZone()
     {
@@ -180,8 +164,7 @@ public class SpawnZone : MonoBehaviour
 
     private Vector3 GetDefaultStartPosition()
     {
-      
-        return new Vector3(0, 0, 0); 
+        return new Vector3(0, 0, 0);
     }
 
     public SpawnZoneSaveData SaveData()
@@ -220,11 +203,25 @@ public class SpawnZone : MonoBehaviour
             enemyIDCount = 0;
             allowSpawnCheck = true;
             hasSpawned = false;
+
+            DespawnEnemiesInZone();
         }
         else
         {
             allowSpawnCheck = false;
             hasSpawned = true;
+        }
+    }
+
+    private void DespawnEnemiesInZone() 
+    {
+        BaseEnemy[] allEnemies = FindObjectsOfType<BaseEnemy>();
+        foreach (BaseEnemy enemy in allEnemies)
+        {
+            if (enemy.zoneID == zoneID)
+            {
+                ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
+            }
         }
     }
 }

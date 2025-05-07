@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   itemName: HealthBottle
+  itemDesc: This is a health potion, it restores 20 health. Useful item during combat.
   itemIcon: {fileID: 21300000, guid: d55ac3557aad82846aedd9a25734fabd, type: 3}
   itemPrice: 20

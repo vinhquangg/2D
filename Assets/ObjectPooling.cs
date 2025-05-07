@@ -76,15 +76,19 @@ public class ObjectPooling : MonoBehaviour
 
     private IEnumerator ReturnToPoolWithDelay(GameObject enemy)
     {
-        var animator = enemy.GetComponent<Animator>();
-        if (animator != null)
-        {
-            yield return new WaitForSeconds(0.5f);
-        }
+        enemy.SetActive(false); 
 
-        enemy.SetActive(false);
-        pools[enemy.GetComponent<BaseEnemy>().enemyType].Enqueue(enemy);
+        yield return new WaitForSeconds(2f); 
+
+        foreach (var pool in pools)
+        {
+            if (pool.Value.Contains(enemy)) continue;
+
+            pool.Value.Enqueue(enemy);
+            break;
+        }
     }
+
 
 
     private GameObject GetPrefab(EnemyType type)
