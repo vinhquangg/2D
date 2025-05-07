@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections;
 
 public class PlayerSkill : MonoBehaviour
 {
@@ -16,29 +15,16 @@ public class PlayerSkill : MonoBehaviour
     private float skillCooldown = 5f;
     private bool isCooldownActive = false;
 
-    private void Start()
+    private void Awake()
     {
         playerEnergy = GetComponent<PlayerEnergy>();
-        StartCoroutine(WaitForPlayerUI());
-    }
 
-    private IEnumerator WaitForPlayerUI()
-    {
-        GameObject playerUIInstance = null;
-
-        // Đợi tối đa 1 giây (có thể chỉnh) cho tới khi tìm thấy PlayerUI
-        float timeout = 1f;
-        float timer = 0f;
-
-        while (playerUIInstance == null && timer < timeout)
-        {
-            playerUIInstance = GameObject.FindGameObjectWithTag("PlayerUI");
-            timer += Time.deltaTime;
-            yield return null;
-        }
+        // Tìm PlayerUI theo tag (gán tag "PlayerUI" cho prefab PlayerUI)
+        GameObject playerUIInstance = GameObject.FindGameObjectWithTag("PlayerUI");
 
         if (playerUIInstance != null)
         {
+            // Tìm Skill1 trong PlayerUI -> SkillContainer -> Skill1
             Transform skill1 = playerUIInstance.transform.Find("SkillContainer/Skill 1");
 
             if (skill1 != null)
@@ -57,10 +43,9 @@ public class PlayerSkill : MonoBehaviour
         }
         else
         {
-            Debug.LogError("PlayerUI không xuất hiện sau 1 giây.");
+            Debug.LogError("Không tìm thấy PlayerUI (tag PlayerUI).");
         }
     }
-
 
 
     void Update()

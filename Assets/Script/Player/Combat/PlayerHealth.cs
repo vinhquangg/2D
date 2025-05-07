@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -7,23 +6,9 @@ public class PlayerHealth : MonoBehaviour
     private Slider slider;
     private float currentHealth;
 
-    private void Start()
+    private void Awake()
     {
-        StartCoroutine(WaitForPlayerUI());
-    }
-
-    private IEnumerator WaitForPlayerUI()
-    {
-        GameObject playerUI = null;
-        float timeout = 1f;
-        float timer = 0f;
-
-        while (playerUI == null && timer < timeout)
-        {
-            playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
-            timer += Time.deltaTime;
-            yield return null;
-        }
+        GameObject playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
 
         if (playerUI != null)
         {
@@ -35,15 +20,14 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Không tìm thấy Slider trong HealthContainer.");
+                Debug.LogError("Không tìm thấy Slider trong HealContainer.");
             }
         }
         else
         {
-            Debug.LogError("PlayerUI không xuất hiện sau 1 giây.");
+            Debug.LogError("Không tìm thấy PlayerUI có tag PlayerUI.");
         }
     }
-
 
     public void UpdateHealthBarPlayer(float currentHealth, float maxHealth)
     {

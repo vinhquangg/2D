@@ -21,8 +21,8 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText, nameText;
     public Image portraitImage;
-    public TextMeshProUGUI yesText;
-    public Button yesButton;
+    public TextMeshProUGUI yesText;  
+    public Button yesButton;  
 
     private int dialogueIndex;
     private bool isTyping, isDialogueActive;
@@ -41,9 +41,9 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         currentPoint = pointA.transform;
 
         dialoguePanel.SetActive(false);
-        yesText.gameObject.SetActive(false);
-        yesButton.gameObject.SetActive(false);
-        yesButton.onClick.AddListener(OnYesButtonClicked);
+        yesText.gameObject.SetActive(false);  
+        yesButton.gameObject.SetActive(false); 
+        yesButton.onClick.AddListener(OnYesButtonClicked); 
     }
 
     protected virtual void Update()
@@ -52,6 +52,8 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         {
             npcStateMachine.Update();
         }
+
+        OpenShopUI();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -67,6 +69,14 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
+        }
+    }
+
+    protected virtual void OpenShopUI()
+    {
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            Interact();
         }
     }
 
@@ -100,12 +110,12 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
             return;
         }
 
-        StartDialogue();
+        StartDialogue();  
     }
 
     public bool CanInteract()
     {
-        return !isDialogueActive;
+        return !isDialogueActive;  
     }
 
     void StartDialogue()
@@ -113,14 +123,12 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        nameText.SetText(dialogueData.npcName);
-        portraitImage.sprite = dialogueData.npcPortrait;
+        nameText.SetText(dialogueData.npcName);  
+        portraitImage.sprite = dialogueData.npcPortrait;  
 
         dialoguePanel.SetActive(true);
-        StartCoroutine(TypeLine());
-        SoundManager.Play("Dialogue");
+        StartCoroutine(TypeLine());  
         Time.timeScale = 0f;
-        npcStateMachine.SwitchState(new NPCIdleState(npcStateMachine));
     }
 
     void NextLine()
@@ -144,8 +152,9 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
     IEnumerator TypeLine()
     {
         isTyping = true;
-        dialogueText.SetText("");
+        dialogueText.SetText(""); 
 
+        // Gõ từng chữ trong mỗi dòng hội thoại
         foreach (char letter in dialogueData.dialogueLines[dialogueIndex])
         {
             dialogueText.text += letter;
@@ -154,42 +163,45 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
 
         isTyping = false;
 
+        // Kiểm tra nếu dòng hội thoại đã hoàn tất và tự động chuyển sang dòng tiếp theo nếu được cài đặt
         if (dialogueData.autoProgressLines.Length > dialogueIndex && dialogueData.autoProgressLines[dialogueIndex])
         {
-            yield return new WaitForSecondsRealtime(dialogueData.autoProgressDelay);
+            yield return new WaitForSecondsRealtime(dialogueData.autoProgressDelay); 
             NextLine();
         }
         else
         {
-            if (dialogueIndex < dialogueData.dialogueLines.Length)
-            {
-                ShowYesText();
-            }
+
+            ShowYesText();
+            
         }
     }
 
     public void ShowYesText()
     {
-        yesText.gameObject.SetActive(true);
-        yesButton.gameObject.SetActive(true);
-        yesText.SetText("Yes");
+        yesText.gameObject.SetActive(true);  
+        yesButton.gameObject.SetActive(true);  
+        yesText.SetText("Yes");  
     }
 
-    protected void OnYesButtonClicked()
+    // Sự kiện khi người chơi nhấn "Yes"
+    private void OnYesButtonClicked()
     {
-        EndDialogue();
-        yesText.gameObject.SetActive(false);
-        yesButton.gameObject.SetActive(false);
-        Time.timeScale = 0f;
+        EndDialogue();  
+        ShopUIController.instance.OpenShopUI();  
+        yesText.gameObject.SetActive(false); 
+        yesButton.gameObject.SetActive(false); 
     }
 
+    // Kết thúc hội thoại và quay lại trạng thái ban đầu
     public void EndDialogue()
     {
-        StopAllCoroutines();
-        isDialogueActive = false;
-        dialogueText.SetText("");
-        dialoguePanel.SetActive(false);
+        StopAllCoroutines(); 
+        isDialogueActive = false;  
+        dialogueText.SetText("");  
+        dialoguePanel.SetActive(false);  
+        npcStateMachine.SwitchState(new NPCIdleState(npcStateMachine));  
         Time.timeScale = 1f;
     }
-}
 
+}

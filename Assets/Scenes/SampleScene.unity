@@ -205,8 +205,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 758728472}
-        m_TargetAssemblyTypeName: NPCStore, Assembly-CSharp
-        m_MethodName: OnYesButtonClicked
+        m_TargetAssemblyTypeName: BaseNPC, Assembly-CSharp
+        m_MethodName: Interact
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -76540,7 +76540,7 @@ MonoBehaviour:
   soundEffectGroups:
   - name: Dialogue
     soundEffects:
-    - {fileID: 8300000, guid: 1ea7f7c326325ce41b2dad5acfd90083, type: 3}
+    - {fileID: 8300000, guid: 0f78b202025def943b8f4f1c234b7e9e, type: 3}
 --- !u!82 &1322985308
 AudioSource:
   m_ObjectHideFlags: 0

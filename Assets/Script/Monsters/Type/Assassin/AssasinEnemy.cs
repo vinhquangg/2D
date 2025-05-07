@@ -44,8 +44,6 @@ public class AssasinEnemy : BaseEnemy
         base.ResetEnemy();
     }
 
-
-
     public override object SaveData()
     {
         var baseData = base.SaveData() as EnemySaveData;
