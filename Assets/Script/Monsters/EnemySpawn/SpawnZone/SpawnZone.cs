@@ -94,7 +94,6 @@ public class SpawnZone : MonoBehaviour
 
         GameObject go = ObjectPooling.Instance.Spawn(zoneEnemyType, pos, Quaternion.identity);
         var enemy = go.GetComponent<BaseEnemy>();
-        enemy.ResetEnemy();
         enemy.zoneID = zoneID;
         enemy.enemyID = enemyIDCount++;
         enemy.assignedZone = this;
@@ -210,6 +209,7 @@ public class SpawnZone : MonoBehaviour
         {
             allowSpawnCheck = false;
             hasSpawned = true;
+            DespawnEnemiesInZone();
         }
     }
 

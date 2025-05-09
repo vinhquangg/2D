@@ -37,8 +37,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public bool isDead = false;
     public bool isLoad = false;
     public Transform currentPoint { get; set; }
-
-
     protected virtual void Start()
     {
         monsterState = GetComponent<MonstersStateMachine>();
@@ -52,27 +50,48 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         InitEnemy();
     }
 
-    private void InitEnemy()
+    private void SetupStats()
     {
-        if (!isLoad)
-        {
-            currentHealth = monsterState.monsterData.maxHealth;
-        }
+        if (monsterState == null)
+            monsterState = GetComponent<MonstersStateMachine>();
+
+        if (monsterState == null || monsterState.monsterData == null)
+            return;
+
+        currentHealth = monsterState.monsterData.maxHealth;
+        currentDamage = monsterState.monsterData.attackDamageToPlayer;
+        currentAttackMonsterRange = monsterState.monsterData.attackMonsterRange;
 
         if (healthBar != null)
         {
             healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
         }
 
-        currentDamage = monsterState.monsterData.attackDamageToPlayer;
-        currentAttackMonsterRange = monsterState.monsterData.attackMonsterRange;
-
         if (spriteRenderer != null)
         {
             originalColor = spriteRenderer.color;
         }
+
         SetMonsterNameByType();
     }
+
+
+    private void InitEnemy()
+    {
+        if (!isLoad)
+        {
+            SetupStats(); 
+        }
+        else
+        {
+            if (healthBar != null)
+            {
+                healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+            }
+        }
+    }
+
+
     public virtual bool CanSeePlayer() 
     {
         if (player == null) return false;
@@ -181,20 +200,8 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
 
     public virtual void ResetEnemy()
     {
-        if (monsterState == null)
-            monsterState = GetComponent<MonstersStateMachine>();
-
-        if (monsterState == null || monsterState.monsterData == null)
-        {
-            return;
-        }
-
         isDead = false;
-        currentHealth = monsterState.monsterData.maxHealth;
-        if(healthBar !=null)
-        {
-            healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
-        }
+        SetupStats();
         monsterState.SwitchState(new MonsterIdleState(monsterState));
     }
 
@@ -246,6 +253,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         {
             monsterState.SwitchState(createState());
         }
+
         else
         {
             monsterState.SwitchState(new MonsterPatrolState(monsterState));

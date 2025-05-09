@@ -17,14 +17,14 @@ public class MonstersStateMachine : MonoBehaviour
 
 
 
-    void Awake()
+    protected virtual void Awake()
     {
         rbMonter = GetComponent<Rigidbody2D>();
         animMonster = GetComponent<Animator>();
         enemy = GetComponent<BaseEnemy>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         stateFactory = new Dictionary<string, System.Func<IMonsterState>>()
         {
@@ -63,7 +63,7 @@ public class MonstersStateMachine : MonoBehaviour
         monsterCurrentState.EnterState();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (monsterCurrentState != null)
         {
@@ -71,7 +71,7 @@ public class MonstersStateMachine : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         monsterCurrentState?.PhysicsUpdate();
     }
