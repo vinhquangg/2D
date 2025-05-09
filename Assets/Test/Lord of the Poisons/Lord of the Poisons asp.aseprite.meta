@@ -32,7 +32,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 0
+    spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 16
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638823120954720607
+  platformSettingsDirtyTick: 638824003002679316
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Lord of the Poisons asp_Frame_32
     originalName: 
-    pivot: {x: 0.95270264, y: -0.062499996}
+    pivot: {x: 0.47972974, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 903
       width: 74
       height: 32
-    spriteID: 71880b248cae02a4cae5b42702baeac8
+    spriteID: 528a01a558d4af7498a11362edcc2bea
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -143,7 +143,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 903}
   - name: Lord of the Poisons asp_Frame_33
     originalName: 
-    pivot: {x: 0.93999994, y: -0.060606055}
+    pivot: {x: 0.47333333, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 824
       width: 75
       height: 33
-    spriteID: 21664138096fbd34e87382ebc94f0cb7
+    spriteID: 1f5d6409b0d403d478482eb00714d795
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 824}
   - name: Lord of the Poisons asp_Frame_34
     originalName: 
-    pivot: {x: 0.9285714, y: -0.06666667}
+    pivot: {x: 0.47402593, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 982
       width: 77
       height: 30
-    spriteID: 9ffb0fd1ae013a64ea4621d7cb2905c4
+    spriteID: 577b778b4d3e8e7428ceec60b1863e61
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 982}
   - name: Lord of the Poisons asp_Frame_35
     originalName: 
-    pivot: {x: 0.91447365, y: -0.06666667}
+    pivot: {x: 0.4539474, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 134
       width: 76
       height: 30
-    spriteID: 82ccae2fe3dcb0c4c81e6e2c769cf0f7
+    spriteID: de39950dd58252d428412f580addbbdb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 134}
   - name: Lord of the Poisons asp_Frame_36
     originalName: 
-    pivot: {x: 0.92763156, y: -0.06451613}
+    pivot: {x: 0.4671053, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -212,7 +212,7 @@ ScriptedImporter:
       y: 943
       width: 76
       height: 31
-    spriteID: 138b653996e3f074bace2ece02cc73e8
+    spriteID: a30e6c8fbdbab4746b676d762925e560
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 943}
   - name: Lord of the Poisons asp_Frame_37
     originalName: 
-    pivot: {x: 1.1370968, y: -0.06451613}
+    pivot: {x: 0.57258064, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -232,7 +232,7 @@ ScriptedImporter:
       y: 172
       width: 62
       height: 31
-    spriteID: 226d0763ed1f8364f941c837b63bd28a
+    spriteID: 29fcee8207bb27541b61154b769f4bed
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 172}
   - name: Lord of the Poisons asp_Frame_39
     originalName: 
-    pivot: {x: 0.83125, y: -0.05882353}
+    pivot: {x: 0.39374998, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -252,7 +252,7 @@ ScriptedImporter:
       y: 704
       width: 80
       height: 34
-    spriteID: feb11f329ee5249418936e22e6369237
+    spriteID: 8621d19db5c9ea746841d245fa82351d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -263,7 +263,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 704}
   - name: Lord of the Poisons asp_Frame_40
     originalName: 
-    pivot: {x: 0.7443182, y: -0.057142854}
+    pivot: {x: 0.3465909, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -272,7 +272,7 @@ ScriptedImporter:
       y: 313
       width: 88
       height: 35
-    spriteID: 8c18687d07c60de4aa3f311d7a4bbf89
+    spriteID: b3d00c7c1c438d147a993515c96ed6fa
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -283,7 +283,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 313}
   - name: Lord of the Poisons asp_Frame_41
     originalName: 
-    pivot: {x: 0.67525774, y: -0.057142854}
+    pivot: {x: 0.31443298, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -292,7 +292,7 @@ ScriptedImporter:
       y: 228
       width: 97
       height: 35
-    spriteID: 70ffea1da5789584b9af7eeeda182bf5
+    spriteID: 634e6f0f35c22d74dbaaa99368f54ff4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -303,7 +303,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 228}
   - name: Lord of the Poisons asp_Frame_42
     originalName: 
-    pivot: {x: 0.65816325, y: -0.05882353}
+    pivot: {x: 0.30102038, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -312,7 +312,7 @@ ScriptedImporter:
       y: 271
       width: 98
       height: 34
-    spriteID: 3483cc7aac772c34d961c5ef67f439a2
+    spriteID: 5f01f43e14b9f7c47917771aebed90d6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -323,7 +323,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 271}
   - name: Lord of the Poisons asp_Frame_43
     originalName: 
-    pivot: {x: 0.60752684, y: -0.060606055}
+    pivot: {x: 0.23118277, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -332,7 +332,7 @@ ScriptedImporter:
       y: 356
       width: 93
       height: 33
-    spriteID: 7301b1a4bcb5a6c468efdd5f9cfd9027
+    spriteID: 11f01a3599a54c94a9ea508c2c13bc36
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -343,7 +343,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 356}
   - name: Lord of the Poisons asp_Frame_44
     originalName: 
-    pivot: {x: 0.5923913, y: -0.062499996}
+    pivot: {x: 0.21195655, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -352,7 +352,7 @@ ScriptedImporter:
       y: 472
       width: 92
       height: 32
-    spriteID: e1cb004465f2bf14180852fe0ad6b29d
+    spriteID: 142769a7ef3074e4e9e2894167b9d65e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -363,7 +363,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 472}
   - name: Lord of the Poisons asp_Frame_45
     originalName: 
-    pivot: {x: 0.5416667, y: -0.06666667}
+    pivot: {x: 0.12500001, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -372,7 +372,7 @@ ScriptedImporter:
       y: 746
       width: 84
       height: 30
-    spriteID: ba29b37e0dab25147bc5652b273b8171
+    spriteID: 1478eb0d4a364e54e8c8042ba8eb95b9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -383,7 +383,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 746}
   - name: Lord of the Poisons asp_Frame_99
     originalName: 
-    pivot: {x: 1.4342105, y: -0.05263158}
+    pivot: {x: 0.51315796, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -392,7 +392,7 @@ ScriptedImporter:
       y: 255
       width: 38
       height: 38
-    spriteID: 0e25e80a602d44d43b69d3843d4d3b95
+    spriteID: dbb88f59d669119419e68f8caa4790b8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -403,7 +403,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 255}
   - name: Lord of the Poisons asp_Frame_100
     originalName: 
-    pivot: {x: 1.3875, y: -0.05882353}
+    pivot: {x: 0.5124999, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -412,7 +412,7 @@ ScriptedImporter:
       y: 40
       width: 40
       height: 34
-    spriteID: a1950e0e7d7d5b84fb2b46599932769e
+    spriteID: 265ae9fc342869749968dd17e459dfc1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -423,7 +423,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 40}
   - name: Lord of the Poisons asp_Frame_101
     originalName: 
-    pivot: {x: 1.3372093, y: -0.05263158}
+    pivot: {x: 0.52325577, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -432,7 +432,7 @@ ScriptedImporter:
       y: 982
       width: 43
       height: 38
-    spriteID: ed79433f801cab04ea583feb0ffd4a2a
+    spriteID: f224a26da1c40834bbfec74dffd1bb11
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -443,7 +443,7 @@ ScriptedImporter:
     uvTransform: {x: 211, y: 982}
   - name: Lord of the Poisons asp_Frame_102
     originalName: 
-    pivot: {x: 1.3974359, y: -0.049999997}
+    pivot: {x: 0.50000006, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -452,7 +452,7 @@ ScriptedImporter:
       y: 756
       width: 39
       height: 40
-    spriteID: 2209f713eef7e2948894510d868024b4
+    spriteID: 9d09b3e75c61e72418f9f1b4cd6bec91
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -463,7 +463,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 756}
   - name: Lord of the Poisons asp_Frame_103
     originalName: 
-    pivot: {x: 1.3875, y: -0.048780486}
+    pivot: {x: 0.5124999, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -472,7 +472,7 @@ ScriptedImporter:
       y: 574
       width: 40
       height: 41
-    spriteID: c84b5dd9d951d9741a1c48d81a0c996a
+    spriteID: bd32df85f703c96479b24cc21875b487
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -483,7 +483,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 574}
   - name: Lord of the Poisons asp_Frame_104
     originalName: 
-    pivot: {x: 1.3875, y: -0.04761905}
+    pivot: {x: 0.5124999, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -492,7 +492,7 @@ ScriptedImporter:
       y: 524
       width: 40
       height: 42
-    spriteID: e3f1a24c1be746747b7994d6493a2a43
+    spriteID: 8e75756f2eb9f224aa9e2920186c7e76
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -503,7 +503,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 524}
   - name: Lord of the Poisons asp_Frame_105
     originalName: 
-    pivot: {x: 1.3780488, y: -0.046511628}
+    pivot: {x: 0.5243902, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -512,7 +512,7 @@ ScriptedImporter:
       y: 395
       width: 41
       height: 43
-    spriteID: 1ff172a549983d44d82884d6fef64b61
+    spriteID: 61c86f40b6303544d95ac58abf1a0c37
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -523,7 +523,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 395}
   - name: Lord of the Poisons asp_Frame_106
     originalName: 
-    pivot: {x: 1.3780488, y: -0.045454547}
+    pivot: {x: 0.5243902, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -532,7 +532,7 @@ ScriptedImporter:
       y: 304
       width: 41
       height: 44
-    spriteID: 1f4551c837aaf304480cbaa64628a433
+    spriteID: bec8e15b49054ed488277ea96602a038
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -543,7 +543,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 304}
   - name: Lord of the Poisons asp_Frame_107
     originalName: 
-    pivot: {x: 1.3780488, y: -0.04444444}
+    pivot: {x: 0.5243902, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -552,7 +552,7 @@ ScriptedImporter:
       y: 251
       width: 41
       height: 45
-    spriteID: d76779bd75348ac448acc28340c93ec0
+    spriteID: 94d13cbb1277ae541965db5d93726e06
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -563,7 +563,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 251}
   - name: Lord of the Poisons asp_Frame_108
     originalName: 
-    pivot: {x: 1.4078947, y: -0.046511628}
+    pivot: {x: 0.48684213, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -572,7 +572,7 @@ ScriptedImporter:
       y: 623
       width: 38
       height: 43
-    spriteID: 194a09863508db74188e779dafa78b49
+    spriteID: 293894e153121c644820d0dd7aa298aa
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -583,7 +583,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 623}
   - name: Lord of the Poisons asp_Frame_109
     originalName: 
-    pivot: {x: 1.4078947, y: -0.05882353}
+    pivot: {x: 0.48684213, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -592,7 +592,7 @@ ScriptedImporter:
       y: 554
       width: 38
       height: 34
-    spriteID: f0959344fe860004bbc7418068da52ce
+    spriteID: 941720366d2431e4b98f971369accb98
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -603,7 +603,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 554}
   - name: Lord of the Poisons asp_Frame_0
     originalName: 
-    pivot: {x: 1.3461537, y: -0.06451613}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -612,7 +612,7 @@ ScriptedImporter:
       y: 82
       width: 39
       height: 31
-    spriteID: ba60519cd19f55546af221c4f5d28a25
+    spriteID: 8b786f37caeccce40b243efa83d735c1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -623,7 +623,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 82}
   - name: Lord of the Poisons asp_Frame_1
     originalName: 
-    pivot: {x: 1.3461537, y: -0.057142854}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -632,7 +632,7 @@ ScriptedImporter:
       y: 966
       width: 39
       height: 35
-    spriteID: 19bb53c6a0f7e1b41a59b2f665695e23
+    spriteID: c8b75150a01d47740b81282685c216e3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -643,7 +643,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 966}
   - name: Lord of the Poisons asp_Frame_2
     originalName: 
-    pivot: {x: 1.3461537, y: -0.057142854}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -652,7 +652,7 @@ ScriptedImporter:
       y: 40
       width: 39
       height: 35
-    spriteID: d8e99c6faab60ab4b871053bcb3961b6
+    spriteID: 5a3c18ff301c9f84a8e32365e53bb13c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -663,7 +663,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 40}
   - name: Lord of the Poisons asp_Frame_3
     originalName: 
-    pivot: {x: 1.3461537, y: -0.055555556}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -672,7 +672,7 @@ ScriptedImporter:
       y: 703
       width: 39
       height: 36
-    spriteID: fe26fa9d03b69e144af3d85f4ad24836
+    spriteID: 4d97829853ac4c2488bbd440be8c309c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -683,7 +683,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 703}
   - name: Lord of the Poisons asp_Frame_4
     originalName: 
-    pivot: {x: 1.3461537, y: -0.05405405}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -692,7 +692,7 @@ ScriptedImporter:
       y: 347
       width: 39
       height: 37
-    spriteID: a3488e60d9817034596cea5eca843ec5
+    spriteID: 99fc1a8685783c54aad903c2746189e0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -703,7 +703,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 347}
   - name: Lord of the Poisons asp_Frame_5
     originalName: 
-    pivot: {x: 1.3461537, y: -0.05263158}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -712,7 +712,7 @@ ScriptedImporter:
       y: 804
       width: 39
       height: 38
-    spriteID: 0a90c4948fd301042a7ac7e9c1c20239
+    spriteID: f64a94d577726784f8d7c0d246034ea8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -723,7 +723,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 804}
   - name: Lord of the Poisons asp_Frame_6
     originalName: 
-    pivot: {x: 1.3461537, y: -0.055555556}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -732,7 +732,7 @@ ScriptedImporter:
       y: 747
       width: 39
       height: 36
-    spriteID: 706b0b531d41a714d86285c1cdfd3576
+    spriteID: a196de6565f2edc43b107b4476e0b322
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -743,7 +743,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 747}
   - name: Lord of the Poisons asp_Frame_7
     originalName: 
-    pivot: {x: 1.3461537, y: -0.05405405}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -752,7 +752,7 @@ ScriptedImporter:
       y: 392
       width: 39
       height: 37
-    spriteID: 077995a4f36d09743bf4dc27dc6084b9
+    spriteID: 1b2522383911edb42a465e7312726028
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -763,7 +763,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 392}
   - name: Lord of the Poisons asp_Frame_8
     originalName: 
-    pivot: {x: 1.3461537, y: -0.05882353}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -772,7 +772,7 @@ ScriptedImporter:
       y: 341
       width: 39
       height: 34
-    spriteID: 1ed9fd0e1534fa343b94d9a73f174c13
+    spriteID: 55278ca30f22c334e810347ca79b4f2a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -783,7 +783,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 341}
   - name: Lord of the Poisons asp_Frame_9
     originalName: 
-    pivot: {x: 1.3461537, y: -0.057142854}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -792,7 +792,7 @@ ScriptedImporter:
       y: 83
       width: 39
       height: 35
-    spriteID: aee806a2880b8064f90b8d9af31c2e8f
+    spriteID: cf43f6db50e063848ae1808495a7082a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -803,7 +803,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 83}
   - name: Lord of the Poisons asp_Frame_10
     originalName: 
-    pivot: {x: 1.3461537, y: -0.055555556}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -812,7 +812,7 @@ ScriptedImporter:
       y: 791
       width: 39
       height: 36
-    spriteID: e98901af5d6aee84493c591ef234dd46
+    spriteID: dd23393cf8a0d014193d2c880c59e436
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -823,7 +823,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 791}
   - name: Lord of the Poisons asp_Frame_11
     originalName: 
-    pivot: {x: 1.3461537, y: -0.05405405}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -832,7 +832,7 @@ ScriptedImporter:
       y: 437
       width: 39
       height: 37
-    spriteID: 552f2edf1c642684fabf165a951f8efc
+    spriteID: ec79be9c886869945b961f0730acdb70
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -843,7 +843,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 437}
   - name: Lord of the Poisons asp_Frame_12
     originalName: 
-    pivot: {x: 1.3461537, y: -0.05405405}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -852,7 +852,7 @@ ScriptedImporter:
       y: 482
       width: 39
       height: 37
-    spriteID: 2a294f10b40547f469800dab8e21a644
+    spriteID: ac1f703f80eca9240be62ec6eb2bc6e5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -863,7 +863,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 482}
   - name: Lord of the Poisons asp_Frame_13
     originalName: 
-    pivot: {x: 1.3552631, y: -0.05263158}
+    pivot: {x: 0.43421054, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -872,7 +872,7 @@ ScriptedImporter:
       y: 301
       width: 38
       height: 38
-    spriteID: f06cfc2973833de41acde9c1b89f4f7f
+    spriteID: 4a9e4ecc795d41a44a22829efbc7a4cc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -883,7 +883,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 301}
   - name: Lord of the Poisons asp_Frame_14
     originalName: 
-    pivot: {x: 1.3375, y: -0.055555556}
+    pivot: {x: 0.46250004, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -892,7 +892,7 @@ ScriptedImporter:
       y: 527
       width: 40
       height: 36
-    spriteID: 5eb1382de7c7f66408e4c0742824290a
+    spriteID: 36584781581e20a4d9648c5bd8076562
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -903,7 +903,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 527}
   - name: Lord of the Poisons asp_Frame_15
     originalName: 
-    pivot: {x: 1.3375, y: -0.055555556}
+    pivot: {x: 0.46250004, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -912,7 +912,7 @@ ScriptedImporter:
       y: 571
       width: 40
       height: 36
-    spriteID: 4defa2a361d7c1848ab7d7a72de412f3
+    spriteID: e38d791319cc6cd4481c850b612b5ced
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -923,7 +923,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 571}
   - name: Lord of the Poisons asp_Frame_16
     originalName: 
-    pivot: {x: 1.3375, y: -0.057142854}
+    pivot: {x: 0.46250004, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -932,7 +932,7 @@ ScriptedImporter:
       y: 879
       width: 40
       height: 35
-    spriteID: 97382d883ce7f484b80a8dbd3711746c
+    spriteID: 7de9db463427a214d9045d0e5c89f777
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -943,7 +943,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 879}
   - name: Lord of the Poisons asp_Frame_17
     originalName: 
-    pivot: {x: 1.3461537, y: -0.055555556}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -952,7 +952,7 @@ ScriptedImporter:
       y: 835
       width: 39
       height: 36
-    spriteID: 732a41e1f2be4e14c833cf11a02893e6
+    spriteID: a5e172420f8e663469d8392a2cb826c3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -963,8 +963,8 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 835}
   - name: Lord of the Poisons asp_Frame_18
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.46250004, y: 0}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -972,7 +972,7 @@ ScriptedImporter:
       y: 988
       width: 40
       height: 32
-    spriteID: 8eb87d62f1b66b2499fc693572dfe3c7
+    spriteID: e5ec3b0e945c0ac4f8d174eb0df04c1e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -983,7 +983,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 988}
   - name: Lord of the Poisons asp_Frame_19
     originalName: 
-    pivot: {x: 1.3461537, y: -0.060606055}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -992,7 +992,7 @@ ScriptedImporter:
       y: 722
       width: 39
       height: 33
-    spriteID: f3d678a57663fcf4c90c277dca4c4c12
+    spriteID: d44f8c6554c57f84880e1040b8fc10b3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1003,7 +1003,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 722}
   - name: Lord of the Poisons asp_Frame_20
     originalName: 
-    pivot: {x: 1.3461537, y: -0.05882353}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1012,7 +1012,7 @@ ScriptedImporter:
       y: 383
       width: 39
       height: 34
-    spriteID: 61df2602b55548047a61c71b74ca226b
+    spriteID: 3fca32a8556694c46840d0cb2b8a5634
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1023,7 +1023,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 383}
   - name: Lord of the Poisons asp_Frame_21
     originalName: 
-    pivot: {x: 1.3461537, y: -0.057142854}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1032,7 +1032,7 @@ ScriptedImporter:
       y: 126
       width: 39
       height: 35
-    spriteID: a0d0b59bc737a2741b53d72b8b9de6de
+    spriteID: 767db5e31a9e240439b250034626c7b1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1043,7 +1043,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 126}
   - name: Lord of the Poisons asp_Frame_22
     originalName: 
-    pivot: {x: 1.3292682, y: -0.05882353}
+    pivot: {x: 0.4756098, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1052,7 +1052,7 @@ ScriptedImporter:
       y: 704
       width: 41
       height: 34
-    spriteID: 2b41b449589bd3d4d836630a32d81711
+    spriteID: c936af775c1bd994586e8d744118909d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1063,7 +1063,7 @@ ScriptedImporter:
     uvTransform: {x: 214, y: 704}
   - name: Lord of the Poisons asp_Frame_23
     originalName: 
-    pivot: {x: 1.3292682, y: -0.057142854}
+    pivot: {x: 0.4756098, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1072,7 +1072,7 @@ ScriptedImporter:
       y: 615
       width: 41
       height: 35
-    spriteID: 00f34c461e38b574787033950e51a9ad
+    spriteID: 1409c22badb089e4dae3a93711db4659
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1083,7 +1083,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 615}
   - name: Lord of the Poisons asp_Frame_24
     originalName: 
-    pivot: {x: 1.3292682, y: -0.055555556}
+    pivot: {x: 0.4756098, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1092,7 +1092,7 @@ ScriptedImporter:
       y: 211
       width: 41
       height: 36
-    spriteID: 829970aa9b63cb34ca339b6dbf7e085f
+    spriteID: 9737be8f06d255e4583c61eb3d34ee75
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1103,7 +1103,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 211}
   - name: Lord of the Poisons asp_Frame_25
     originalName: 
-    pivot: {x: 1.3375, y: -0.05405405}
+    pivot: {x: 0.46250004, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1112,7 +1112,7 @@ ScriptedImporter:
       y: 943
       width: 40
       height: 37
-    spriteID: b5da27cd3a5848946816b19aec542a0d
+    spriteID: 178ddd2aaa50bec419b817d1f6052b98
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1123,7 +1123,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 943}
   - name: Lord of the Poisons asp_Frame_26
     originalName: 
-    pivot: {x: 1.3461537, y: -0.05882353}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1132,7 +1132,7 @@ ScriptedImporter:
       y: 425
       width: 39
       height: 34
-    spriteID: abcd40efdb2f1884eb3e37ca27ea7f3e
+    spriteID: fae5d917a77ef61469efc9f42cfa1343
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1143,7 +1143,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 425}
   - name: Lord of the Poisons asp_Frame_27
     originalName: 
-    pivot: {x: 1.3461537, y: -0.057142854}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1152,7 +1152,7 @@ ScriptedImporter:
       y: 169
       width: 39
       height: 35
-    spriteID: 345d06551b01fc341917918568e416a6
+    spriteID: 995ea2b52f40d9c48a83f8d3ef9e82ff
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1163,7 +1163,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 169}
   - name: Lord of the Poisons asp_Frame_28
     originalName: 
-    pivot: {x: 1.3461537, y: -0.060606055}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1172,7 +1172,7 @@ ScriptedImporter:
       y: 763
       width: 39
       height: 33
-    spriteID: 785918d440593074a972b991877727ec
+    spriteID: 32a0b4a5900fe94458b5e4330fc16fdd
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1183,7 +1183,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 763}
   - name: Lord of the Poisons asp_Frame_29
     originalName: 
-    pivot: {x: 1.3461537, y: -0.05263158}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1192,7 +1192,7 @@ ScriptedImporter:
       y: 850
       width: 39
       height: 38
-    spriteID: fdabd944e66091e4ab03114b25b673e4
+    spriteID: 6e99d6000f94bdf439673fad5ac9b50e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1203,7 +1203,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 850}
   - name: Lord of the Poisons asp_Frame_30
     originalName: 
-    pivot: {x: 1.3815789, y: -0.05128205}
+    pivot: {x: 0.46052635, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1212,7 +1212,7 @@ ScriptedImporter:
       y: 896
       width: 38
       height: 39
-    spriteID: 3512fe68ae0081e41bcc68320a16f37c
+    spriteID: 07ad0e52cb83d084db09b096d453e23d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1223,7 +1223,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 896}
   - name: Lord of the Poisons asp_Frame_31
     originalName: 
-    pivot: {x: 1.671875, y: -0.05405405}
+    pivot: {x: 0.57812506, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1232,7 +1232,7 @@ ScriptedImporter:
       y: 340
       width: 32
       height: 37
-    spriteID: 5dba7b4a009704343926ee38240de06f
+    spriteID: 4efc6c2492556f14ab7edb75c3201a3b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1243,7 +1243,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 340}
   - name: Lord of the Poisons asp_Frame_38
     originalName: 
-    pivot: {x: 1.4673914, y: -0.06896552}
+    pivot: {x: 0.70652175, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1252,7 +1252,7 @@ ScriptedImporter:
       y: 824
       width: 46
       height: 29
-    spriteID: ef19d6f076699734e8307ec99c0e6801
+    spriteID: bbdbaadf0fe3d1246919e662a295e634
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1263,7 +1263,7 @@ ScriptedImporter:
     uvTransform: {x: 209, y: 824}
   - name: Lord of the Poisons asp_Frame_46
     originalName: 
-    pivot: {x: 0.5511364, y: -0.06451613}
+    pivot: {x: 0.15340908, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1272,7 +1272,7 @@ ScriptedImporter:
       y: 665
       width: 88
       height: 31
-    spriteID: d2d9f202867356a459a4d85bb4b7e581
+    spriteID: d3af87f2b29d38b468036e2e437db17c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1283,7 +1283,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 665}
   - name: Lord of the Poisons asp_Frame_47
     originalName: 
-    pivot: {x: 0.5597826, y: -0.06451613}
+    pivot: {x: 0.17934783, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1292,7 +1292,7 @@ ScriptedImporter:
       y: 512
       width: 92
       height: 31
-    spriteID: 169c01d6954ea6a41930ac98312b2aae
+    spriteID: 7ad605d27a23d754f860fa8006b5da03
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1303,7 +1303,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 512}
   - name: Lord of the Poisons asp_Frame_48
     originalName: 
-    pivot: {x: 1.3461537, y: -0.06451613}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1312,7 +1312,7 @@ ScriptedImporter:
       y: 121
       width: 39
       height: 31
-    spriteID: 3d0e5ab47523fd748b8af2284fd2c68f
+    spriteID: 41e4021fe0684594681067755759d491
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1323,7 +1323,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 121}
   - name: Lord of the Poisons asp_Frame_49
     originalName: 
-    pivot: {x: 1.4078947, y: -0.05882353}
+    pivot: {x: 0.48684213, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1332,7 +1332,7 @@ ScriptedImporter:
       y: 596
       width: 38
       height: 34
-    spriteID: 57f15cffabc392b469bccf99cd105d20
+    spriteID: a0908cee5ae18eb45afb23bb5b7cdcee
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1343,7 +1343,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 596}
   - name: Lord of the Poisons asp_Frame_50
     originalName: 
-    pivot: {x: 1.4459459, y: -0.057142854}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1352,7 +1352,7 @@ ScriptedImporter:
       y: 511
       width: 37
       height: 35
-    spriteID: 20ef3e462c5da0541871b35b99e710ae
+    spriteID: c56705a1cba2bce43acab7d9dedb7bd1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1363,7 +1363,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 511}
   - name: Lord of the Poisons asp_Frame_51
     originalName: 
-    pivot: {x: 1.486111, y: -0.055555556}
+    pivot: {x: 0.5138889, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1372,7 +1372,7 @@ ScriptedImporter:
       y: 467
       width: 36
       height: 36
-    spriteID: 2d8a51b307447fe4691031c449bc044d
+    spriteID: 4609a2cf252596649bd39f9c4f50f04d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1383,7 +1383,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 467}
   - name: Lord of the Poisons asp_Frame_52
     originalName: 
-    pivot: {x: 1.3152175, y: -0.057142854}
+    pivot: {x: 0.5543479, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1392,7 +1392,7 @@ ScriptedImporter:
       y: 674
       width: 46
       height: 35
-    spriteID: 78e5fb2123beae941bc516c049c1df92
+    spriteID: 2943328b37083e44682a4acd72842a2d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1403,7 +1403,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 674}
   - name: Lord of the Poisons asp_Frame_53
     originalName: 
-    pivot: {x: 1.375, y: -0.074074075}
+    pivot: {x: 0.57954544, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1412,7 +1412,7 @@ ScriptedImporter:
       y: 270
       width: 44
       height: 27
-    spriteID: d3c603ee97587ef4e8b962aed6fac789
+    spriteID: 347da5509a0eefe409f7b839c1e4b1d6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1423,7 +1423,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 270}
   - name: Lord of the Poisons asp_Frame_54
     originalName: 
-    pivot: {x: 1.3522727, y: -0.07692307}
+    pivot: {x: 0.5568182, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1432,7 +1432,7 @@ ScriptedImporter:
       y: 463
       width: 44
       height: 26
-    spriteID: d1111c74b21a0c446971a5f703634b5e
+    spriteID: 9e3ad0b738a4b0949bceeb5d01099b22
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1443,7 +1443,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 463}
   - name: Lord of the Poisons asp_Frame_55
     originalName: 
-    pivot: {x: 1.3604652, y: -0.07692307}
+    pivot: {x: 0.5465116, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1452,7 +1452,7 @@ ScriptedImporter:
       y: 497
       width: 43
       height: 26
-    spriteID: 3cf9ecec1663b7545ab7e399adc550b2
+    spriteID: 20d20ed0796b25749b1c8cd4bb54106c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1463,7 +1463,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 497}
   - name: Lord of the Poisons asp_Frame_56
     originalName: 
-    pivot: {x: 1.3522727, y: -0.074074075}
+    pivot: {x: 0.5568182, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1472,7 +1472,7 @@ ScriptedImporter:
       y: 305
       width: 44
       height: 27
-    spriteID: 5d71fa4bd0284be47a71778bb66c8187
+    spriteID: ac00e301c1e58ff41a35cf30e80e8752
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1483,7 +1483,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 305}
   - name: Lord of the Poisons asp_Frame_57
     originalName: 
-    pivot: {x: 1.21, y: -0.083333336}
+    pivot: {x: 0.51000005, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1492,7 +1492,7 @@ ScriptedImporter:
       y: 238
       width: 50
       height: 24
-    spriteID: d26cc0ef03e08cf408b20e4e69fb06b6
+    spriteID: 113b4a8ba3987834c91b97d6de68fb71
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1503,7 +1503,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 238}
   - name: Lord of the Poisons asp_Frame_58
     originalName: 
-    pivot: {x: 1.3666667, y: -0.083333336}
+    pivot: {x: 0.58888894, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1512,7 +1512,7 @@ ScriptedImporter:
       y: 4
       width: 45
       height: 24
-    spriteID: 8015557c9ba347c4db6950fadafe1a1a
+    spriteID: 9f721eb01ba45c945987f5e818192b91
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1523,7 +1523,7 @@ ScriptedImporter:
     uvTransform: {x: 402, y: 4}
   - name: Lord of the Poisons asp_Frame_59
     originalName: 
-    pivot: {x: 1.4204545, y: -0.083333336}
+    pivot: {x: 0.62500006, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1532,7 +1532,7 @@ ScriptedImporter:
       y: 531
       width: 44
       height: 24
-    spriteID: ce024a7ae75f5be4a8581910bfb284fa
+    spriteID: 85d6b3b659158514488cf06badac0fbd
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1543,7 +1543,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 531}
   - name: Lord of the Poisons asp_Frame_60
     originalName: 
-    pivot: {x: 1.5285714, y: -0.083333336}
+    pivot: {x: 0.5285714, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1552,7 +1552,7 @@ ScriptedImporter:
       y: 746
       width: 35
       height: 24
-    spriteID: dc91b7fd094c2544cb29146ee8d418db
+    spriteID: c616406dd8082b5419be037128d5e118
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1563,7 +1563,7 @@ ScriptedImporter:
     uvTransform: {x: 218, y: 746}
   - name: Lord of the Poisons asp_Frame_61
     originalName: 
-    pivot: {x: 1.3552631, y: -0.06451613}
+    pivot: {x: 0.43421054, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1572,7 +1572,7 @@ ScriptedImporter:
       y: 385
       width: 38
       height: 31
-    spriteID: c0fec82f9c8a5994590354e2f7245ee6
+    spriteID: af7949b8ec4b24f4c89befcca0487c4c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1583,7 +1583,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 385}
   - name: Lord of the Poisons asp_Frame_62
     originalName: 
-    pivot: {x: 1.5735292, y: -0.06451613}
+    pivot: {x: 0.5441176, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1592,7 +1592,7 @@ ScriptedImporter:
       y: 82
       width: 34
       height: 31
-    spriteID: 5018a419eb0c2b14ca5c02cd3e960433
+    spriteID: df95780490c9f4e4d9e16efc123e44c7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1603,7 +1603,7 @@ ScriptedImporter:
     uvTransform: {x: 357, y: 82}
   - name: Lord of the Poisons asp_Frame_63
     originalName: 
-    pivot: {x: 1.6818182, y: -0.06451613}
+    pivot: {x: 0.62121207, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1612,7 +1612,7 @@ ScriptedImporter:
       y: 665
       width: 33
       height: 31
-    spriteID: 5dba71c3541b2bc4cbc0573c5cbeac8a
+    spriteID: ba492c3919bff3147b4ff80250143216
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1623,7 +1623,7 @@ ScriptedImporter:
     uvTransform: {x: 222, y: 665}
   - name: Lord of the Poisons asp_Frame_64
     originalName: 
-    pivot: {x: 1.6818182, y: -0.062499996}
+    pivot: {x: 0.62121207, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1632,7 +1632,7 @@ ScriptedImporter:
       y: 313
       width: 33
       height: 32
-    spriteID: ffd86402f30000f48a775a959f6da0e3
+    spriteID: be5e8abd0e619554c9be0974573f85a7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1643,7 +1643,7 @@ ScriptedImporter:
     uvTransform: {x: 222, y: 313}
   - name: Lord of the Poisons asp_Frame_65
     originalName: 
-    pivot: {x: 1.734375, y: -0.060606055}
+    pivot: {x: 0.64062494, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1652,7 +1652,7 @@ ScriptedImporter:
       y: 40
       width: 32
       height: 33
-    spriteID: feaabe03104eafd46baebd1ef637dfae
+    spriteID: ef774997398f65441b2dfa6cc2e361c7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1663,7 +1663,7 @@ ScriptedImporter:
     uvTransform: {x: 358, y: 40}
   - name: Lord of the Poisons asp_Frame_66
     originalName: 
-    pivot: {x: 0.42792794, y: -0.028571427}
+    pivot: {x: 0.1126126, y: 0.028571427}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1672,7 +1672,7 @@ ScriptedImporter:
       y: 91
       width: 111
       height: 35
-    spriteID: d648a2c5bc92eee4f8a2bab670a3f390
+    spriteID: 724c4639de59c0f4a8ecd2b6ab75225e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1683,7 +1683,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 91}
   - name: Lord of the Poisons asp_Frame_67
     originalName: 
-    pivot: {x: 0.39912283, y: -0.057142854}
+    pivot: {x: 0.09210528, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1692,7 +1692,7 @@ ScriptedImporter:
       y: 4
       width: 114
       height: 35
-    spriteID: ccbd92e643dbea9428b35b4b8f068861
+    spriteID: f458a93370aabf141bf203df140f1229
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1703,7 +1703,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Lord of the Poisons asp_Frame_68
     originalName: 
-    pivot: {x: 0.36574075, y: -0.055555556}
+    pivot: {x: 0.04166665, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1712,7 +1712,7 @@ ScriptedImporter:
       y: 47
       width: 108
       height: 36
-    spriteID: a83ee1020fc3d7e45899f5616b6b8cd2
+    spriteID: 25e0ec879d8f83b4380bc550e04c08d7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1723,7 +1723,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 47}
   - name: Lord of the Poisons asp_Frame_69
     originalName: 
-    pivot: {x: 0.33823532, y: -0.06896552}
+    pivot: {x: -0.004901921, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1732,7 +1732,7 @@ ScriptedImporter:
       y: 435
       width: 102
       height: 29
-    spriteID: 2e83392aefbfdc841a737ca186ee8048
+    spriteID: 25dea04cf3c30124d9946c74ef84f87f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1743,7 +1743,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 435}
   - name: Lord of the Poisons asp_Frame_70
     originalName: 
-    pivot: {x: 0.33157894, y: -0.06666667}
+    pivot: {x: -0.03684208, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1752,7 +1752,7 @@ ScriptedImporter:
       y: 551
       width: 95
       height: 30
-    spriteID: 18e7d6b7358a15a4fbde2630cfe0060c
+    spriteID: 1cc175ab4f94cdd45a80db018c88dab8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1763,7 +1763,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 551}
   - name: Lord of the Poisons asp_Frame_71
     originalName: 
-    pivot: {x: 0.32795697, y: -0.06666667}
+    pivot: {x: -0.048387073, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1772,7 +1772,7 @@ ScriptedImporter:
       y: 627
       width: 93
       height: 30
-    spriteID: 7e39a975bd62187488fb3e23b8286eea
+    spriteID: 328ebdc2889a43841b0e984f93cf8bbd
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1783,7 +1783,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 627}
   - name: Lord of the Poisons asp_Frame_72
     originalName: 
-    pivot: {x: 0.33157894, y: -0.06666667}
+    pivot: {x: -0.03684208, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1792,7 +1792,7 @@ ScriptedImporter:
       y: 589
       width: 95
       height: 30
-    spriteID: e704ec8c53ef45043b49fc179e446702
+    spriteID: d5e56eb13eec0d64bbad1d4e97568624
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1803,7 +1803,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 589}
   - name: Lord of the Poisons asp_Frame_73
     originalName: 
-    pivot: {x: 0.3888889, y: -0.06666667}
+    pivot: {x: -0.043209847, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1812,7 +1812,7 @@ ScriptedImporter:
       y: 865
       width: 81
       height: 30
-    spriteID: 96af693c0c43eeb4aa0bc2f612d7b0d9
+    spriteID: a826194e178f5f740b829861308a96de
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1823,7 +1823,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 865}
   - name: Lord of the Poisons asp_Frame_74
     originalName: 
-    pivot: {x: 0.40384614, y: -0.062499996}
+    pivot: {x: -0.044871762, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1832,7 +1832,7 @@ ScriptedImporter:
       y: 784
       width: 78
       height: 32
-    spriteID: fe961d594e7381b45bce4ad67157f043
+    spriteID: 3f77b08d4c0cf2040bb78c00950f6a95
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1843,7 +1843,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 784}
   - name: Lord of the Poisons asp_Frame_75
     originalName: 
-    pivot: {x: -0.19736841, y: -0.060606055}
+    pivot: {x: -1.1184211, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1852,7 +1852,7 @@ ScriptedImporter:
       y: 804
       width: 38
       height: 33
-    spriteID: 4da65d4da4747e245ba4b495d9ef0ec9
+    spriteID: 233333ed28d516040b7719f8b4974e15
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1863,7 +1863,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 804}
   - name: Lord of the Poisons asp_Frame_76
     originalName: 
-    pivot: {x: 1.3552631, y: -0.06451613}
+    pivot: {x: 0.43421054, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1872,7 +1872,7 @@ ScriptedImporter:
       y: 424
       width: 38
       height: 31
-    spriteID: 2543d02ee3b83bf4f9c49928087f5013
+    spriteID: 61418b05ad8a61b46900f3f13b06e987
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1883,7 +1883,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 424}
   - name: Lord of the Poisons asp_Frame_77
     originalName: 
-    pivot: {x: 1.5735292, y: -0.06451613}
+    pivot: {x: 0.5441176, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1892,7 +1892,7 @@ ScriptedImporter:
       y: 121
       width: 34
       height: 31
-    spriteID: 6c980b6e9e479854584f310354917a9e
+    spriteID: e8e34a0022113ac429c59253d41c8bfc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1903,7 +1903,7 @@ ScriptedImporter:
     uvTransform: {x: 357, y: 121}
   - name: Lord of the Poisons asp_Frame_78
     originalName: 
-    pivot: {x: 1.6818182, y: -0.06451613}
+    pivot: {x: 0.62121207, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1912,7 +1912,7 @@ ScriptedImporter:
       y: 160
       width: 33
       height: 31
-    spriteID: fbc8dddcf08122445b1cc64e299eac74
+    spriteID: 2d99d7bff03bd9445bc47aea224ab89d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1923,7 +1923,7 @@ ScriptedImporter:
     uvTransform: {x: 357, y: 160}
   - name: Lord of the Poisons asp_Frame_79
     originalName: 
-    pivot: {x: 1.6818182, y: -0.062499996}
+    pivot: {x: 0.62121207, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1932,7 +1932,7 @@ ScriptedImporter:
       y: 563
       width: 33
       height: 32
-    spriteID: 93fbe8dd3c3e9ca49ab48c0664c57ff8
+    spriteID: 32e9debdbe521c6478790aa3cf2c37e8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1943,7 +1943,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 563}
   - name: Lord of the Poisons asp_Frame_80
     originalName: 
-    pivot: {x: 1.734375, y: -0.060606055}
+    pivot: {x: 0.64062494, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1952,7 +1952,7 @@ ScriptedImporter:
       y: 603
       width: 32
       height: 33
-    spriteID: cf2cb44146568c141997c5e371499c70
+    spriteID: ed0d76b52dcd498438b521fb37749862
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1963,7 +1963,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 603}
   - name: Lord of the Poisons asp_Frame_81
     originalName: 
-    pivot: {x: 0.47222224, y: -0.035714284}
+    pivot: {x: 0.19444445, y: 0.035714284}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1972,7 +1972,7 @@ ScriptedImporter:
       y: 192
       width: 126
       height: 28
-    spriteID: 9b4bc1bc711bf8548bc6363ce9d5ceee
+    spriteID: 4bcba6c96c137234ba64f3ee8a624071
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1983,7 +1983,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 192}
   - name: Lord of the Poisons asp_Frame_82
     originalName: 
-    pivot: {x: 0.45419845, y: -0.07142857}
+    pivot: {x: 0.1870229, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -1992,7 +1992,7 @@ ScriptedImporter:
       y: 4
       width: 131
       height: 28
-    spriteID: d79bf58817d275a4982a8ef4434cf77a
+    spriteID: c5d9ee2d2f562e049932e8177bb8fa6c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2003,7 +2003,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 4}
   - name: Lord of the Poisons asp_Frame_83
     originalName: 
-    pivot: {x: 0.44573647, y: -0.06896552}
+    pivot: {x: 0.17441861, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2012,7 +2012,7 @@ ScriptedImporter:
       y: 4
       width: 129
       height: 29
-    spriteID: 382d97dd53b2bfb498ac69681a2a7897
+    spriteID: e9137d59f9029de42bd701589194fcb3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2023,7 +2023,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 4}
   - name: Lord of the Poisons asp_Frame_84
     originalName: 
-    pivot: {x: 0.44921875, y: -0.06896552}
+    pivot: {x: 0.17578125, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2032,7 +2032,7 @@ ScriptedImporter:
       y: 41
       width: 128
       height: 29
-    spriteID: fded787256be2ca4b935f1593f90768a
+    spriteID: 379578cda814a044d8fca55aafba0292
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2043,7 +2043,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 41}
   - name: Lord of the Poisons asp_Frame_85
     originalName: 
-    pivot: {x: 0.45934957, y: -0.06666667}
+    pivot: {x: 0.17479673, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2052,7 +2052,7 @@ ScriptedImporter:
       y: 78
       width: 123
       height: 30
-    spriteID: ceef6ad9c48e6e24db1923b6aaa00087
+    spriteID: 0ef3f5521d68ee3438d931138e6f9641
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2063,7 +2063,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 78}
   - name: Lord of the Poisons asp_Frame_86
     originalName: 
-    pivot: {x: 0.47033897, y: -0.06666667}
+    pivot: {x: 0.1737288, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2072,7 +2072,7 @@ ScriptedImporter:
       y: 154
       width: 118
       height: 30
-    spriteID: 67174516a2899e64a9b8647ff42c4ab1
+    spriteID: 81898b9c54c0a5d4593a1902be1fd29a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2083,7 +2083,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 154}
   - name: Lord of the Poisons asp_Frame_87
     originalName: 
-    pivot: {x: 0.46638656, y: -0.06666667}
+    pivot: {x: 0.17226888, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2092,7 +2092,7 @@ ScriptedImporter:
       y: 116
       width: 119
       height: 30
-    spriteID: 09bf7d9003028754b86a09eb7f8d0461
+    spriteID: ac4104ffb84af454997ced11174c495d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2103,7 +2103,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 116}
   - name: Lord of the Poisons asp_Frame_88
     originalName: 
-    pivot: {x: 0.56060606, y: -0.06666667}
+    pivot: {x: 0.2070707, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2112,7 +2112,7 @@ ScriptedImporter:
       y: 397
       width: 99
       height: 30
-    spriteID: a15cf6e5f7434e141b4d72b9f531a863
+    spriteID: 8d5c877ffe43b10449e73312da0b9041
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2123,7 +2123,7 @@ ScriptedImporter:
     uvTransform: {x: 126, y: 397}
   - name: Lord of the Poisons asp_Frame_89
     originalName: 
-    pivot: {x: 1.2692307, y: -0.062499996}
+    pivot: {x: 0.37179485, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2132,7 +2132,7 @@ ScriptedImporter:
       y: 927
       width: 39
       height: 32
-    spriteID: 7be17b4db546a574abe5e9e9a0004674
+    spriteID: caf2a4120a5963c44917fafa65692249
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2143,7 +2143,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 927}
   - name: Lord of the Poisons asp_Frame_90
     originalName: 
-    pivot: {x: 1.3026316, y: -0.060606055}
+    pivot: {x: 0.38157892, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2152,7 +2152,7 @@ ScriptedImporter:
       y: 845
       width: 38
       height: 33
-    spriteID: 4b50aee34d891dd46983588631d52263
+    spriteID: 217bdceb664299b48863f0314580ae6a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2163,7 +2163,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 845}
   - name: Lord of the Poisons asp_Frame_91
     originalName: 
-    pivot: {x: 1.3461537, y: -0.06451613}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2172,7 +2172,7 @@ ScriptedImporter:
       y: 160
       width: 39
       height: 31
-    spriteID: 67e2e6296ee384647a3c079585471b2d
+    spriteID: 3292080f1d86369488d6c4526b9d849b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2183,7 +2183,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 160}
   - name: Lord of the Poisons asp_Frame_92
     originalName: 
-    pivot: {x: 1.3815789, y: -0.062499996}
+    pivot: {x: 0.46052635, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2192,7 +2192,7 @@ ScriptedImporter:
       y: 967
       width: 38
       height: 32
-    spriteID: 7f78b168897d85f45930247530acc8c2
+    spriteID: 7b94585d86a64344994a3bb53eed66c9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2203,7 +2203,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 967}
   - name: Lord of the Poisons asp_Frame_93
     originalName: 
-    pivot: {x: 1.3815789, y: -0.060606055}
+    pivot: {x: 0.46052635, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2212,7 +2212,7 @@ ScriptedImporter:
       y: 886
       width: 38
       height: 33
-    spriteID: dace89fb1b9e3504faddba2302c8b2b1
+    spriteID: 9e375d615b901a34cac5be89314dc6c4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2223,7 +2223,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 886}
   - name: Lord of the Poisons asp_Frame_94
     originalName: 
-    pivot: {x: 1.3815789, y: -0.05882353}
+    pivot: {x: 0.46052635, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2232,7 +2232,7 @@ ScriptedImporter:
       y: 638
       width: 38
       height: 34
-    spriteID: 525ea076e2545e6409c9f7371117272d
+    spriteID: 00a316074a8359e42bffb6e20b5ff3a9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2243,7 +2243,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 638}
   - name: Lord of the Poisons asp_Frame_95
     originalName: 
-    pivot: {x: 1.3815789, y: -0.057142854}
+    pivot: {x: 0.46052635, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2252,7 +2252,7 @@ ScriptedImporter:
       y: 212
       width: 38
       height: 35
-    spriteID: 898d628057e7a754eafd0b0f9f805202
+    spriteID: 61dcb09e8b34a394291f1ad0cf9563e7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2263,7 +2263,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 212}
   - name: Lord of the Poisons asp_Frame_96
     originalName: 
-    pivot: {x: 1.3815789, y: -0.057142854}
+    pivot: {x: 0.46052635, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2272,7 +2272,7 @@ ScriptedImporter:
       y: 255
       width: 38
       height: 35
-    spriteID: ca4e23e75021aaf46b0c4c6f7c739f52
+    spriteID: 89578601aa4c4d84fa384a38a636e747
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2283,7 +2283,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 255}
   - name: Lord of the Poisons asp_Frame_97
     originalName: 
-    pivot: {x: 1.3815789, y: -0.055555556}
+    pivot: {x: 0.46052635, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2292,7 +2292,7 @@ ScriptedImporter:
       y: 922
       width: 38
       height: 36
-    spriteID: cc45145b6e6b2484483cb570b9094f1b
+    spriteID: 12b409af0102e914b8b6c3978b4d4b4b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2303,7 +2303,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 922}
   - name: Lord of the Poisons asp_Frame_98
     originalName: 
-    pivot: {x: 1.3815789, y: -0.05405405}
+    pivot: {x: 0.46052635, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2312,7 +2312,7 @@ ScriptedImporter:
       y: 658
       width: 38
       height: 37
-    spriteID: bbe6561c31d15574083c636bcbc4e4a4
+    spriteID: aae01c9993da7ce499463671bb909bae
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2323,7 +2323,7 @@ ScriptedImporter:
     uvTransform: {x: 72, y: 658}
   - name: Lord of the Poisons asp_Frame_110
     originalName: 
-    pivot: {x: 1.4078947, y: -0.05882353}
+    pivot: {x: 0.48684213, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2332,7 +2332,7 @@ ScriptedImporter:
       y: 680
       width: 38
       height: 34
-    spriteID: f76a410c855a02542909bbce61a8524e
+    spriteID: 9d13edb915fe2bf4c98a9f759f120d9f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2343,7 +2343,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 680}
   - name: Lord of the Poisons asp_Frame_111
     originalName: 
-    pivot: {x: 1.4078947, y: -0.057142854}
+    pivot: {x: 0.48684213, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2352,7 +2352,7 @@ ScriptedImporter:
       y: 298
       width: 38
       height: 35
-    spriteID: 92c71e57fcc3e314cad745d9e0a5be1e
+    spriteID: da044e4990ee93f44909d410f106376b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2363,7 +2363,7 @@ ScriptedImporter:
     uvTransform: {x: 263, y: 298}
   - name: Lord of the Poisons asp_Frame_112
     originalName: 
-    pivot: {x: 1.3461537, y: -0.06451613}
+    pivot: {x: 0.44871795, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2372,7 +2372,7 @@ ScriptedImporter:
       y: 199
       width: 39
       height: 31
-    spriteID: 7671b4d593eac9c4a810554e38ad8945
+    spriteID: 58b9079a1bd0c694eb9babfd726aad77
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2383,7 +2383,7 @@ ScriptedImporter:
     uvTransform: {x: 310, y: 199}
   - name: Lord of the Poisons asp_Frame_113
     originalName: 
-    pivot: {x: 1.2874999, y: -0.06666667}
+    pivot: {x: 0.4125, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2392,7 +2392,7 @@ ScriptedImporter:
       y: 865
       width: 40
       height: 30
-    spriteID: 17442977ca25ace49b242b938ee4ba10
+    spriteID: a091eb8536025e144be9a803cef721da
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2403,7 +2403,7 @@ ScriptedImporter:
     uvTransform: {x: 215, y: 865}
   - name: Lord of the Poisons asp_Frame_114
     originalName: 
-    pivot: {x: 1.1976744, y: -0.06666667}
+    pivot: {x: 0.38372093, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2412,7 +2412,7 @@ ScriptedImporter:
       y: 784
       width: 43
       height: 30
-    spriteID: 233dfc894bd8b5c428293ae60fd07dbe
+    spriteID: d1e663929b33062428bb4022df962769
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2423,7 +2423,7 @@ ScriptedImporter:
     uvTransform: {x: 212, y: 784}
   - name: Lord of the Poisons asp_Frame_115
     originalName: 
-    pivot: {x: 1.1744186, y: -0.06451613}
+    pivot: {x: 0.3604651, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2432,7 +2432,7 @@ ScriptedImporter:
       y: 172
       width: 43
       height: 31
-    spriteID: 78dd4975a81c8c443befb28e89544add
+    spriteID: ac2ff90e8583e2448bba1cc02b4f1308
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2443,7 +2443,7 @@ ScriptedImporter:
     uvTransform: {x: 74, y: 172}
   - name: Lord of the Poisons asp_Frame_116
     originalName: 
-    pivot: {x: 1.1477271, y: -0.06666667}
+    pivot: {x: 0.35227272, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2452,7 +2452,7 @@ ScriptedImporter:
       y: 943
       width: 44
       height: 30
-    spriteID: 7f3229e23a64c7c48be22b5802ffc6bb
+    spriteID: 48dbbd84d224b7e499c1467698686c4f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2463,7 +2463,7 @@ ScriptedImporter:
     uvTransform: {x: 210, y: 943}
   - name: Lord of the Poisons asp_Frame_117
     originalName: 
-    pivot: {x: 1.1195652, y: -0.06666667}
+    pivot: {x: 0.35869566, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2472,7 +2472,7 @@ ScriptedImporter:
       y: 903
       width: 46
       height: 30
-    spriteID: 919954e6556dd91448027cb6fc500528
+    spriteID: 7d286334e8ed5d247a9358b7fd336c2e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2483,7 +2483,7 @@ ScriptedImporter:
     uvTransform: {x: 208, y: 903}
   - name: Lord of the Poisons asp_Frame_118
     originalName: 
-    pivot: {x: 1.0294117, y: -0.06451613}
+    pivot: {x: 0.34313726, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2492,7 +2492,7 @@ ScriptedImporter:
       y: 717
       width: 51
       height: 31
-    spriteID: 18e90b645997d1946a1269f276c90a8e
+    spriteID: 4fde0c1c60ffaf5489b134a17c730330
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2503,7 +2503,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 717}
   - name: Lord of the Poisons asp_Frame_119
     originalName: 
-    pivot: {x: 0.9727273, y: -0.062499996}
+    pivot: {x: 0.33636367, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2512,7 +2512,7 @@ ScriptedImporter:
       y: 446
       width: 55
       height: 32
-    spriteID: 96977b8782556334894547f0d3c11ab6
+    spriteID: 98e23669c7438344ba22c391a1e69bdf
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2523,7 +2523,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 446}
   - name: Lord of the Poisons asp_Frame_120
     originalName: 
-    pivot: {x: 0.95689654, y: -0.06666667}
+    pivot: {x: 0.35344824, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2532,7 +2532,7 @@ ScriptedImporter:
       y: 486
       width: 58
       height: 30
-    spriteID: 8dea7d947eaf2b346ad050a5292dbbcf
+    spriteID: 1782fde7f180d2c479dca4ce07d95613
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2543,7 +2543,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 486}
   - name: Lord of the Poisons asp_Frame_121
     originalName: 
-    pivot: {x: 0.9396552, y: -0.06451613}
+    pivot: {x: 0.3362069, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2552,7 +2552,7 @@ ScriptedImporter:
       y: 356
       width: 58
       height: 31
-    spriteID: 045917eae79bddf448e3ac8291e13ba8
+    spriteID: 3be5a1a8581a0d844ae6fb7c2f2dcdfe
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2563,7 +2563,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 356}
   - name: Lord of the Poisons asp_Frame_122
     originalName: 
-    pivot: {x: 0.925, y: -0.062499996}
+    pivot: {x: 0.34166664, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2572,7 +2572,7 @@ ScriptedImporter:
       y: 211
       width: 60
       height: 32
-    spriteID: 391d4c401aeff2e4dae459c4ed342335
+    spriteID: c3c80e5bd0e4f6a488f241f1b3d6f87c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2583,7 +2583,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 211}
   - name: Lord of the Poisons asp_Frame_123
     originalName: 
-    pivot: {x: 2.3181818, y: -2.25}
+    pivot: {x: -0.86363643, y: -1.75}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -2592,7 +2592,7 @@ ScriptedImporter:
       y: 238
       width: 11
       height: 4
-    spriteID: 0fe4ab7415fd4ad4a870b10228370980
+    spriteID: baca4747240f1a5418d04a876d851658
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -2614,1118 +2614,1118 @@ ScriptedImporter:
       frameIndex: 32
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 2
+        x: 37
+        y: 0
         width: 74
         height: 32
-      spriteId: 71880b248cae02a4cae5b42702baeac8
+      spriteId: 528a01a558d4af7498a11362edcc2bea
     - name: Lord of the Poisons asp_Frame_33
       frameIndex: 33
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 2
+        x: 37
+        y: 0
         width: 75
         height: 33
-      spriteId: 21664138096fbd34e87382ebc94f0cb7
+      spriteId: 1f5d6409b0d403d478482eb00714d795
     - name: Lord of the Poisons asp_Frame_34
       frameIndex: 34
       additiveSortOrder: 0
       cellRect:
-        x: 1
-        y: 2
+        x: 36
+        y: 0
         width: 77
         height: 30
-      spriteId: 9ffb0fd1ae013a64ea4621d7cb2905c4
+      spriteId: 577b778b4d3e8e7428ceec60b1863e61
     - name: Lord of the Poisons asp_Frame_35
       frameIndex: 35
       additiveSortOrder: 0
       cellRect:
-        x: 3
-        y: 2
+        x: 38
+        y: 0
         width: 76
         height: 30
-      spriteId: 82ccae2fe3dcb0c4c81e6e2c769cf0f7
+      spriteId: de39950dd58252d428412f580addbbdb
     - name: Lord of the Poisons asp_Frame_36
       frameIndex: 36
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 2
+        x: 37
+        y: 0
         width: 76
         height: 31
-      spriteId: 138b653996e3f074bace2ece02cc73e8
+      spriteId: a30e6c8fbdbab4746b676d762925e560
     - name: Lord of the Poisons asp_Frame_37
       frameIndex: 37
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 2
+        x: 37
+        y: 0
         width: 62
         height: 31
-      spriteId: 226d0763ed1f8364f941c837b63bd28a
+      spriteId: 29fcee8207bb27541b61154b769f4bed
     - name: Lord of the Poisons asp_Frame_39
       frameIndex: 39
       additiveSortOrder: 0
       cellRect:
-        x: 6
-        y: 2
+        x: 41
+        y: 0
         width: 80
         height: 34
-      spriteId: feb11f329ee5249418936e22e6369237
+      spriteId: 8621d19db5c9ea746841d245fa82351d
     - name: Lord of the Poisons asp_Frame_40
       frameIndex: 40
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 2
+        x: 42
+        y: 0
         width: 88
         height: 35
-      spriteId: 8c18687d07c60de4aa3f311d7a4bbf89
+      spriteId: b3d00c7c1c438d147a993515c96ed6fa
     - name: Lord of the Poisons asp_Frame_41
       frameIndex: 41
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 2
+        x: 42
+        y: 0
         width: 97
         height: 35
-      spriteId: 70ffea1da5789584b9af7eeeda182bf5
+      spriteId: 634e6f0f35c22d74dbaaa99368f54ff4
     - name: Lord of the Poisons asp_Frame_42
       frameIndex: 42
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 2
+        x: 43
+        y: 0
         width: 98
         height: 34
-      spriteId: 3483cc7aac772c34d961c5ef67f439a2
+      spriteId: 5f01f43e14b9f7c47917771aebed90d6
     - name: Lord of the Poisons asp_Frame_43
       frameIndex: 43
       additiveSortOrder: 0
       cellRect:
-        x: 16
-        y: 2
+        x: 51
+        y: 0
         width: 93
         height: 33
-      spriteId: 7301b1a4bcb5a6c468efdd5f9cfd9027
+      spriteId: 11f01a3599a54c94a9ea508c2c13bc36
     - name: Lord of the Poisons asp_Frame_44
       frameIndex: 44
       additiveSortOrder: 0
       cellRect:
-        x: 18
-        y: 2
+        x: 53
+        y: 0
         width: 92
         height: 32
-      spriteId: e1cb004465f2bf14180852fe0ad6b29d
+      spriteId: 142769a7ef3074e4e9e2894167b9d65e
     - name: Lord of the Poisons asp_Frame_45
       frameIndex: 45
       additiveSortOrder: 0
       cellRect:
-        x: 27
-        y: 2
+        x: 62
+        y: 0
         width: 84
         height: 30
-      spriteId: ba29b37e0dab25147bc5652b273b8171
+      spriteId: 1478eb0d4a364e54e8c8042ba8eb95b9
     - name: Lord of the Poisons asp_Frame_99
       frameIndex: 99
       additiveSortOrder: 0
       cellRect:
-        x: 18
-        y: 2
+        x: 53
+        y: 0
         width: 38
         height: 38
-      spriteId: 0e25e80a602d44d43b69d3843d4d3b95
+      spriteId: dbb88f59d669119419e68f8caa4790b8
     - name: Lord of the Poisons asp_Frame_100
       frameIndex: 100
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 40
         height: 34
-      spriteId: a1950e0e7d7d5b84fb2b46599932769e
+      spriteId: 265ae9fc342869749968dd17e459dfc1
     - name: Lord of the Poisons asp_Frame_101
       frameIndex: 101
       additiveSortOrder: 0
       cellRect:
-        x: 15
-        y: 2
+        x: 50
+        y: 0
         width: 43
         height: 38
-      spriteId: ed79433f801cab04ea583feb0ffd4a2a
+      spriteId: f224a26da1c40834bbfec74dffd1bb11
     - name: Lord of the Poisons asp_Frame_102
       frameIndex: 102
       additiveSortOrder: 0
       cellRect:
-        x: 18
-        y: 2
+        x: 53
+        y: 0
         width: 39
         height: 40
-      spriteId: 2209f713eef7e2948894510d868024b4
+      spriteId: 9d09b3e75c61e72418f9f1b4cd6bec91
     - name: Lord of the Poisons asp_Frame_103
       frameIndex: 103
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 40
         height: 41
-      spriteId: c84b5dd9d951d9741a1c48d81a0c996a
+      spriteId: bd32df85f703c96479b24cc21875b487
     - name: Lord of the Poisons asp_Frame_104
       frameIndex: 104
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 40
         height: 42
-      spriteId: e3f1a24c1be746747b7994d6493a2a43
+      spriteId: 8e75756f2eb9f224aa9e2920186c7e76
     - name: Lord of the Poisons asp_Frame_105
       frameIndex: 105
       additiveSortOrder: 0
       cellRect:
-        x: 16
-        y: 2
+        x: 51
+        y: 0
         width: 41
         height: 43
-      spriteId: 1ff172a549983d44d82884d6fef64b61
+      spriteId: 61c86f40b6303544d95ac58abf1a0c37
     - name: Lord of the Poisons asp_Frame_106
       frameIndex: 106
       additiveSortOrder: 0
       cellRect:
-        x: 16
-        y: 2
+        x: 51
+        y: 0
         width: 41
         height: 44
-      spriteId: 1f4551c837aaf304480cbaa64628a433
+      spriteId: bec8e15b49054ed488277ea96602a038
     - name: Lord of the Poisons asp_Frame_107
       frameIndex: 107
       additiveSortOrder: 0
       cellRect:
-        x: 16
-        y: 2
+        x: 51
+        y: 0
         width: 41
         height: 45
-      spriteId: d76779bd75348ac448acc28340c93ec0
+      spriteId: 94d13cbb1277ae541965db5d93726e06
     - name: Lord of the Poisons asp_Frame_108
       frameIndex: 108
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 38
         height: 43
-      spriteId: 194a09863508db74188e779dafa78b49
+      spriteId: 293894e153121c644820d0dd7aa298aa
     - name: Lord of the Poisons asp_Frame_109
       frameIndex: 109
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 38
         height: 34
-      spriteId: f0959344fe860004bbc7418068da52ce
+      spriteId: 941720366d2431e4b98f971369accb98
     - name: Lord of the Poisons asp_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 31
-      spriteId: ba60519cd19f55546af221c4f5d28a25
+      spriteId: 8b786f37caeccce40b243efa83d735c1
     - name: Lord of the Poisons asp_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 35
-      spriteId: 19bb53c6a0f7e1b41a59b2f665695e23
+      spriteId: c8b75150a01d47740b81282685c216e3
     - name: Lord of the Poisons asp_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 35
-      spriteId: d8e99c6faab60ab4b871053bcb3961b6
+      spriteId: 5a3c18ff301c9f84a8e32365e53bb13c
     - name: Lord of the Poisons asp_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 36
-      spriteId: fe26fa9d03b69e144af3d85f4ad24836
+      spriteId: 4d97829853ac4c2488bbd440be8c309c
     - name: Lord of the Poisons asp_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 37
-      spriteId: a3488e60d9817034596cea5eca843ec5
+      spriteId: 99fc1a8685783c54aad903c2746189e0
     - name: Lord of the Poisons asp_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 38
-      spriteId: 0a90c4948fd301042a7ac7e9c1c20239
+      spriteId: f64a94d577726784f8d7c0d246034ea8
     - name: Lord of the Poisons asp_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 36
-      spriteId: 706b0b531d41a714d86285c1cdfd3576
+      spriteId: a196de6565f2edc43b107b4476e0b322
     - name: Lord of the Poisons asp_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 37
-      spriteId: 077995a4f36d09743bf4dc27dc6084b9
+      spriteId: 1b2522383911edb42a465e7312726028
     - name: Lord of the Poisons asp_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 34
-      spriteId: 1ed9fd0e1534fa343b94d9a73f174c13
+      spriteId: 55278ca30f22c334e810347ca79b4f2a
     - name: Lord of the Poisons asp_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 35
-      spriteId: aee806a2880b8064f90b8d9af31c2e8f
+      spriteId: cf43f6db50e063848ae1808495a7082a
     - name: Lord of the Poisons asp_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 36
-      spriteId: e98901af5d6aee84493c591ef234dd46
+      spriteId: dd23393cf8a0d014193d2c880c59e436
     - name: Lord of the Poisons asp_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 37
-      spriteId: 552f2edf1c642684fabf165a951f8efc
+      spriteId: ec79be9c886869945b961f0730acdb70
     - name: Lord of the Poisons asp_Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 37
-      spriteId: 2a294f10b40547f469800dab8e21a644
+      spriteId: ac1f703f80eca9240be62ec6eb2bc6e5
     - name: Lord of the Poisons asp_Frame_13
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:
-        x: 21
-        y: 2
+        x: 56
+        y: 0
         width: 38
         height: 38
-      spriteId: f06cfc2973833de41acde9c1b89f4f7f
+      spriteId: 4a9e4ecc795d41a44a22829efbc7a4cc
     - name: Lord of the Poisons asp_Frame_14
       frameIndex: 14
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 40
         height: 36
-      spriteId: 5eb1382de7c7f66408e4c0742824290a
+      spriteId: 36584781581e20a4d9648c5bd8076562
     - name: Lord of the Poisons asp_Frame_15
       frameIndex: 15
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 40
         height: 36
-      spriteId: 4defa2a361d7c1848ab7d7a72de412f3
+      spriteId: e38d791319cc6cd4481c850b612b5ced
     - name: Lord of the Poisons asp_Frame_16
       frameIndex: 16
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 40
         height: 35
-      spriteId: 97382d883ce7f484b80a8dbd3711746c
+      spriteId: 7de9db463427a214d9045d0e5c89f777
     - name: Lord of the Poisons asp_Frame_17
       frameIndex: 17
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 36
-      spriteId: 732a41e1f2be4e14c833cf11a02893e6
+      spriteId: a5e172420f8e663469d8392a2cb826c3
     - name: Lord of the Poisons asp_Frame_18
       frameIndex: 18
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 40
         height: 32
-      spriteId: 8eb87d62f1b66b2499fc693572dfe3c7
+      spriteId: e5ec3b0e945c0ac4f8d174eb0df04c1e
     - name: Lord of the Poisons asp_Frame_19
       frameIndex: 19
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 33
-      spriteId: f3d678a57663fcf4c90c277dca4c4c12
+      spriteId: d44f8c6554c57f84880e1040b8fc10b3
     - name: Lord of the Poisons asp_Frame_20
       frameIndex: 20
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 34
-      spriteId: 61df2602b55548047a61c71b74ca226b
+      spriteId: 3fca32a8556694c46840d0cb2b8a5634
     - name: Lord of the Poisons asp_Frame_21
       frameIndex: 21
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 35
-      spriteId: a0d0b59bc737a2741b53d72b8b9de6de
+      spriteId: 767db5e31a9e240439b250034626c7b1
     - name: Lord of the Poisons asp_Frame_22
       frameIndex: 22
       additiveSortOrder: 0
       cellRect:
-        x: 18
-        y: 2
+        x: 53
+        y: 0
         width: 41
         height: 34
-      spriteId: 2b41b449589bd3d4d836630a32d81711
+      spriteId: c936af775c1bd994586e8d744118909d
     - name: Lord of the Poisons asp_Frame_23
       frameIndex: 23
       additiveSortOrder: 0
       cellRect:
-        x: 18
-        y: 2
+        x: 53
+        y: 0
         width: 41
         height: 35
-      spriteId: 00f34c461e38b574787033950e51a9ad
+      spriteId: 1409c22badb089e4dae3a93711db4659
     - name: Lord of the Poisons asp_Frame_24
       frameIndex: 24
       additiveSortOrder: 0
       cellRect:
-        x: 18
-        y: 2
+        x: 53
+        y: 0
         width: 41
         height: 36
-      spriteId: 829970aa9b63cb34ca339b6dbf7e085f
+      spriteId: 9737be8f06d255e4583c61eb3d34ee75
     - name: Lord of the Poisons asp_Frame_25
       frameIndex: 25
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 40
         height: 37
-      spriteId: b5da27cd3a5848946816b19aec542a0d
+      spriteId: 178ddd2aaa50bec419b817d1f6052b98
     - name: Lord of the Poisons asp_Frame_26
       frameIndex: 26
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 34
-      spriteId: abcd40efdb2f1884eb3e37ca27ea7f3e
+      spriteId: fae5d917a77ef61469efc9f42cfa1343
     - name: Lord of the Poisons asp_Frame_27
       frameIndex: 27
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 35
-      spriteId: 345d06551b01fc341917918568e416a6
+      spriteId: 995ea2b52f40d9c48a83f8d3ef9e82ff
     - name: Lord of the Poisons asp_Frame_28
       frameIndex: 28
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 33
-      spriteId: 785918d440593074a972b991877727ec
+      spriteId: 32a0b4a5900fe94458b5e4330fc16fdd
     - name: Lord of the Poisons asp_Frame_29
       frameIndex: 29
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 38
-      spriteId: fdabd944e66091e4ab03114b25b673e4
+      spriteId: 6e99d6000f94bdf439673fad5ac9b50e
     - name: Lord of the Poisons asp_Frame_30
       frameIndex: 30
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 38
         height: 39
-      spriteId: 3512fe68ae0081e41bcc68320a16f37c
+      spriteId: 07ad0e52cb83d084db09b096d453e23d
     - name: Lord of the Poisons asp_Frame_31
       frameIndex: 31
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 32
         height: 37
-      spriteId: 5dba7b4a009704343926ee38240de06f
+      spriteId: 4efc6c2492556f14ab7edb75c3201a3b
     - name: Lord of the Poisons asp_Frame_38
       frameIndex: 38
       additiveSortOrder: 0
       cellRect:
-        x: 5
-        y: 2
+        x: 40
+        y: 0
         width: 46
         height: 29
-      spriteId: ef19d6f076699734e8307ec99c0e6801
+      spriteId: bbdbaadf0fe3d1246919e662a295e634
     - name: Lord of the Poisons asp_Frame_46
       frameIndex: 46
       additiveSortOrder: 0
       cellRect:
-        x: 24
-        y: 2
+        x: 59
+        y: 0
         width: 88
         height: 31
-      spriteId: d2d9f202867356a459a4d85bb4b7e581
+      spriteId: d3af87f2b29d38b468036e2e437db17c
     - name: Lord of the Poisons asp_Frame_47
       frameIndex: 47
       additiveSortOrder: 0
       cellRect:
-        x: 21
-        y: 2
+        x: 56
+        y: 0
         width: 92
         height: 31
-      spriteId: 169c01d6954ea6a41930ac98312b2aae
+      spriteId: 7ad605d27a23d754f860fa8006b5da03
     - name: Lord of the Poisons asp_Frame_48
       frameIndex: 48
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 31
-      spriteId: 3d0e5ab47523fd748b8af2284fd2c68f
+      spriteId: 41e4021fe0684594681067755759d491
     - name: Lord of the Poisons asp_Frame_49
       frameIndex: 49
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 38
         height: 34
-      spriteId: 57f15cffabc392b469bccf99cd105d20
+      spriteId: a0908cee5ae18eb45afb23bb5b7cdcee
     - name: Lord of the Poisons asp_Frame_50
       frameIndex: 50
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 37
         height: 35
-      spriteId: 20ef3e462c5da0541871b35b99e710ae
+      spriteId: c56705a1cba2bce43acab7d9dedb7bd1
     - name: Lord of the Poisons asp_Frame_51
       frameIndex: 51
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 36
         height: 36
-      spriteId: 2d8a51b307447fe4691031c449bc044d
+      spriteId: 4609a2cf252596649bd39f9c4f50f04d
     - name: Lord of the Poisons asp_Frame_52
       frameIndex: 52
       additiveSortOrder: 0
       cellRect:
-        x: 12
-        y: 2
+        x: 47
+        y: 0
         width: 46
         height: 35
-      spriteId: 78e5fb2123beae941bc516c049c1df92
+      spriteId: 2943328b37083e44682a4acd72842a2d
     - name: Lord of the Poisons asp_Frame_53
       frameIndex: 53
       additiveSortOrder: 0
       cellRect:
-        x: 12
-        y: 2
+        x: 47
+        y: 0
         width: 44
         height: 27
-      spriteId: d3c603ee97587ef4e8b962aed6fac789
+      spriteId: 347da5509a0eefe409f7b839c1e4b1d6
     - name: Lord of the Poisons asp_Frame_54
       frameIndex: 54
       additiveSortOrder: 0
       cellRect:
-        x: 13
-        y: 2
+        x: 48
+        y: 0
         width: 44
         height: 26
-      spriteId: d1111c74b21a0c446971a5f703634b5e
+      spriteId: 9e3ad0b738a4b0949bceeb5d01099b22
     - name: Lord of the Poisons asp_Frame_55
       frameIndex: 55
       additiveSortOrder: 0
       cellRect:
-        x: 14
-        y: 2
+        x: 49
+        y: 0
         width: 43
         height: 26
-      spriteId: 3cf9ecec1663b7545ab7e399adc550b2
+      spriteId: 20d20ed0796b25749b1c8cd4bb54106c
     - name: Lord of the Poisons asp_Frame_56
       frameIndex: 56
       additiveSortOrder: 0
       cellRect:
-        x: 13
-        y: 2
+        x: 48
+        y: 0
         width: 44
         height: 27
-      spriteId: 5d71fa4bd0284be47a71778bb66c8187
+      spriteId: ac00e301c1e58ff41a35cf30e80e8752
     - name: Lord of the Poisons asp_Frame_57
       frameIndex: 57
       additiveSortOrder: 0
       cellRect:
-        x: 12
-        y: 2
+        x: 47
+        y: 0
         width: 50
         height: 24
-      spriteId: d26cc0ef03e08cf408b20e4e69fb06b6
+      spriteId: 113b4a8ba3987834c91b97d6de68fb71
     - name: Lord of the Poisons asp_Frame_58
       frameIndex: 58
       additiveSortOrder: 0
       cellRect:
-        x: 11
-        y: 2
+        x: 46
+        y: 0
         width: 45
         height: 24
-      spriteId: 8015557c9ba347c4db6950fadafe1a1a
+      spriteId: 9f721eb01ba45c945987f5e818192b91
     - name: Lord of the Poisons asp_Frame_59
       frameIndex: 59
       additiveSortOrder: 0
       cellRect:
-        x: 10
-        y: 2
+        x: 45
+        y: 0
         width: 44
         height: 24
-      spriteId: ce024a7ae75f5be4a8581910bfb284fa
+      spriteId: 85d6b3b659158514488cf06badac0fbd
     - name: Lord of the Poisons asp_Frame_60
       frameIndex: 60
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 35
         height: 24
-      spriteId: dc91b7fd094c2544cb29146ee8d418db
+      spriteId: c616406dd8082b5419be037128d5e118
     - name: Lord of the Poisons asp_Frame_61
       frameIndex: 61
       additiveSortOrder: 0
       cellRect:
-        x: 21
-        y: 2
+        x: 56
+        y: 0
         width: 38
         height: 31
-      spriteId: c0fec82f9c8a5994590354e2f7245ee6
+      spriteId: af7949b8ec4b24f4c89befcca0487c4c
     - name: Lord of the Poisons asp_Frame_62
       frameIndex: 62
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 34
         height: 31
-      spriteId: 5018a419eb0c2b14ca5c02cd3e960433
+      spriteId: df95780490c9f4e4d9e16efc123e44c7
     - name: Lord of the Poisons asp_Frame_63
       frameIndex: 63
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 33
         height: 31
-      spriteId: 5dba71c3541b2bc4cbc0573c5cbeac8a
+      spriteId: ba492c3919bff3147b4ff80250143216
     - name: Lord of the Poisons asp_Frame_64
       frameIndex: 64
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 33
         height: 32
-      spriteId: ffd86402f30000f48a775a959f6da0e3
+      spriteId: be5e8abd0e619554c9be0974573f85a7
     - name: Lord of the Poisons asp_Frame_65
       frameIndex: 65
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 32
         height: 33
-      spriteId: feaabe03104eafd46baebd1ef637dfae
+      spriteId: ef774997398f65441b2dfa6cc2e361c7
     - name: Lord of the Poisons asp_Frame_66
       frameIndex: 66
       additiveSortOrder: 0
       cellRect:
-        x: 25
-        y: 1
+        x: 60
+        y: -1
         width: 111
         height: 35
-      spriteId: d648a2c5bc92eee4f8a2bab670a3f390
+      spriteId: 724c4639de59c0f4a8ecd2b6ab75225e
     - name: Lord of the Poisons asp_Frame_67
       frameIndex: 67
       additiveSortOrder: 0
       cellRect:
-        x: 27
-        y: 2
+        x: 62
+        y: 0
         width: 114
         height: 35
-      spriteId: ccbd92e643dbea9428b35b4b8f068861
+      spriteId: f458a93370aabf141bf203df140f1229
     - name: Lord of the Poisons asp_Frame_68
       frameIndex: 68
       additiveSortOrder: 0
       cellRect:
-        x: 33
-        y: 2
+        x: 68
+        y: 0
         width: 108
         height: 36
-      spriteId: a83ee1020fc3d7e45899f5616b6b8cd2
+      spriteId: 25e0ec879d8f83b4380bc550e04c08d7
     - name: Lord of the Poisons asp_Frame_69
       frameIndex: 69
       additiveSortOrder: 0
       cellRect:
-        x: 38
-        y: 2
+        x: 73
+        y: 0
         width: 102
         height: 29
-      spriteId: 2e83392aefbfdc841a737ca186ee8048
+      spriteId: 25dea04cf3c30124d9946c74ef84f87f
     - name: Lord of the Poisons asp_Frame_70
       frameIndex: 70
       additiveSortOrder: 0
       cellRect:
-        x: 41
-        y: 2
+        x: 76
+        y: 0
         width: 95
         height: 30
-      spriteId: 18e7d6b7358a15a4fbde2630cfe0060c
+      spriteId: 1cc175ab4f94cdd45a80db018c88dab8
     - name: Lord of the Poisons asp_Frame_71
       frameIndex: 71
       additiveSortOrder: 0
       cellRect:
-        x: 42
-        y: 2
+        x: 77
+        y: 0
         width: 93
         height: 30
-      spriteId: 7e39a975bd62187488fb3e23b8286eea
+      spriteId: 328ebdc2889a43841b0e984f93cf8bbd
     - name: Lord of the Poisons asp_Frame_72
       frameIndex: 72
       additiveSortOrder: 0
       cellRect:
-        x: 41
-        y: 2
+        x: 76
+        y: 0
         width: 95
         height: 30
-      spriteId: e704ec8c53ef45043b49fc179e446702
+      spriteId: d5e56eb13eec0d64bbad1d4e97568624
     - name: Lord of the Poisons asp_Frame_73
       frameIndex: 73
       additiveSortOrder: 0
       cellRect:
-        x: 41
-        y: 2
+        x: 76
+        y: 0
         width: 81
         height: 30
-      spriteId: 96af693c0c43eeb4aa0bc2f612d7b0d9
+      spriteId: a826194e178f5f740b829861308a96de
     - name: Lord of the Poisons asp_Frame_74
       frameIndex: 74
       additiveSortOrder: 0
       cellRect:
-        x: 41
-        y: 2
+        x: 76
+        y: 0
         width: 78
         height: 32
-      spriteId: fe961d594e7381b45bce4ad67157f043
+      spriteId: 3f77b08d4c0cf2040bb78c00950f6a95
     - name: Lord of the Poisons asp_Frame_75
       frameIndex: 75
       additiveSortOrder: 0
       cellRect:
-        x: 80
-        y: 2
+        x: 115
+        y: 0
         width: 38
         height: 33
-      spriteId: 4da65d4da4747e245ba4b495d9ef0ec9
+      spriteId: 233333ed28d516040b7719f8b4974e15
     - name: Lord of the Poisons asp_Frame_76
       frameIndex: 76
       additiveSortOrder: 0
       cellRect:
-        x: 21
-        y: 2
+        x: 56
+        y: 0
         width: 38
         height: 31
-      spriteId: 2543d02ee3b83bf4f9c49928087f5013
+      spriteId: 61418b05ad8a61b46900f3f13b06e987
     - name: Lord of the Poisons asp_Frame_77
       frameIndex: 77
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 34
         height: 31
-      spriteId: 6c980b6e9e479854584f310354917a9e
+      spriteId: e8e34a0022113ac429c59253d41c8bfc
     - name: Lord of the Poisons asp_Frame_78
       frameIndex: 78
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 33
         height: 31
-      spriteId: fbc8dddcf08122445b1cc64e299eac74
+      spriteId: 2d99d7bff03bd9445bc47aea224ab89d
     - name: Lord of the Poisons asp_Frame_79
       frameIndex: 79
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 33
         height: 32
-      spriteId: 93fbe8dd3c3e9ca49ab48c0664c57ff8
+      spriteId: 32e9debdbe521c6478790aa3cf2c37e8
     - name: Lord of the Poisons asp_Frame_80
       frameIndex: 80
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 32
         height: 33
-      spriteId: cf2cb44146568c141997c5e371499c70
+      spriteId: ed0d76b52dcd498438b521fb37749862
     - name: Lord of the Poisons asp_Frame_81
       frameIndex: 81
       additiveSortOrder: 0
       cellRect:
-        x: 13
-        y: 1
+        x: 48
+        y: -1
         width: 126
         height: 28
-      spriteId: 9b4bc1bc711bf8548bc6363ce9d5ceee
+      spriteId: 4bcba6c96c137234ba64f3ee8a624071
     - name: Lord of the Poisons asp_Frame_82
       frameIndex: 82
       additiveSortOrder: 0
       cellRect:
-        x: 13
-        y: 2
+        x: 48
+        y: 0
         width: 131
         height: 28
-      spriteId: d79bf58817d275a4982a8ef4434cf77a
+      spriteId: c5d9ee2d2f562e049932e8177bb8fa6c
     - name: Lord of the Poisons asp_Frame_83
       frameIndex: 83
       additiveSortOrder: 0
       cellRect:
-        x: 15
-        y: 2
+        x: 50
+        y: 0
         width: 129
         height: 29
-      spriteId: 382d97dd53b2bfb498ac69681a2a7897
+      spriteId: e9137d59f9029de42bd701589194fcb3
     - name: Lord of the Poisons asp_Frame_84
       frameIndex: 84
       additiveSortOrder: 0
       cellRect:
-        x: 15
-        y: 2
+        x: 50
+        y: 0
         width: 128
         height: 29
-      spriteId: fded787256be2ca4b935f1593f90768a
+      spriteId: 379578cda814a044d8fca55aafba0292
     - name: Lord of the Poisons asp_Frame_85
       frameIndex: 85
       additiveSortOrder: 0
       cellRect:
-        x: 16
-        y: 2
+        x: 51
+        y: 0
         width: 123
         height: 30
-      spriteId: ceef6ad9c48e6e24db1923b6aaa00087
+      spriteId: 0ef3f5521d68ee3438d931138e6f9641
     - name: Lord of the Poisons asp_Frame_86
       frameIndex: 86
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 118
         height: 30
-      spriteId: 67174516a2899e64a9b8647ff42c4ab1
+      spriteId: 81898b9c54c0a5d4593a1902be1fd29a
     - name: Lord of the Poisons asp_Frame_87
       frameIndex: 87
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 119
         height: 30
-      spriteId: 09bf7d9003028754b86a09eb7f8d0461
+      spriteId: ac4104ffb84af454997ced11174c495d
     - name: Lord of the Poisons asp_Frame_88
       frameIndex: 88
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 99
         height: 30
-      spriteId: a15cf6e5f7434e141b4d72b9f531a863
+      spriteId: 8d5c877ffe43b10449e73312da0b9041
     - name: Lord of the Poisons asp_Frame_89
       frameIndex: 89
       additiveSortOrder: 0
       cellRect:
-        x: 23
-        y: 2
+        x: 58
+        y: 0
         width: 39
         height: 32
-      spriteId: 7be17b4db546a574abe5e9e9a0004674
+      spriteId: caf2a4120a5963c44917fafa65692249
     - name: Lord of the Poisons asp_Frame_90
       frameIndex: 90
       additiveSortOrder: 0
       cellRect:
-        x: 23
-        y: 2
+        x: 58
+        y: 0
         width: 38
         height: 33
-      spriteId: 4b50aee34d891dd46983588631d52263
+      spriteId: 217bdceb664299b48863f0314580ae6a
     - name: Lord of the Poisons asp_Frame_91
       frameIndex: 91
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 31
-      spriteId: 67e2e6296ee384647a3c079585471b2d
+      spriteId: 3292080f1d86369488d6c4526b9d849b
     - name: Lord of the Poisons asp_Frame_92
       frameIndex: 92
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 38
         height: 32
-      spriteId: 7f78b168897d85f45930247530acc8c2
+      spriteId: 7b94585d86a64344994a3bb53eed66c9
     - name: Lord of the Poisons asp_Frame_93
       frameIndex: 93
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 38
         height: 33
-      spriteId: dace89fb1b9e3504faddba2302c8b2b1
+      spriteId: 9e375d615b901a34cac5be89314dc6c4
     - name: Lord of the Poisons asp_Frame_94
       frameIndex: 94
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 38
         height: 34
-      spriteId: 525ea076e2545e6409c9f7371117272d
+      spriteId: 00a316074a8359e42bffb6e20b5ff3a9
     - name: Lord of the Poisons asp_Frame_95
       frameIndex: 95
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 38
         height: 35
-      spriteId: 898d628057e7a754eafd0b0f9f805202
+      spriteId: 61dcb09e8b34a394291f1ad0cf9563e7
     - name: Lord of the Poisons asp_Frame_96
       frameIndex: 96
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 38
         height: 35
-      spriteId: ca4e23e75021aaf46b0c4c6f7c739f52
+      spriteId: 89578601aa4c4d84fa384a38a636e747
     - name: Lord of the Poisons asp_Frame_97
       frameIndex: 97
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 38
         height: 36
-      spriteId: cc45145b6e6b2484483cb570b9094f1b
+      spriteId: 12b409af0102e914b8b6c3978b4d4b4b
     - name: Lord of the Poisons asp_Frame_98
       frameIndex: 98
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 38
         height: 37
-      spriteId: bbe6561c31d15574083c636bcbc4e4a4
+      spriteId: aae01c9993da7ce499463671bb909bae
     - name: Lord of the Poisons asp_Frame_110
       frameIndex: 110
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 38
         height: 34
-      spriteId: f76a410c855a02542909bbce61a8524e
+      spriteId: 9d13edb915fe2bf4c98a9f759f120d9f
     - name: Lord of the Poisons asp_Frame_111
       frameIndex: 111
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 38
         height: 35
-      spriteId: 92c71e57fcc3e314cad745d9e0a5be1e
+      spriteId: da044e4990ee93f44909d410f106376b
     - name: Lord of the Poisons asp_Frame_112
       frameIndex: 112
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 39
         height: 31
-      spriteId: 7671b4d593eac9c4a810554e38ad8945
+      spriteId: 58b9079a1bd0c694eb9babfd726aad77
     - name: Lord of the Poisons asp_Frame_113
       frameIndex: 113
       additiveSortOrder: 0
       cellRect:
-        x: 21
-        y: 2
+        x: 56
+        y: 0
         width: 40
         height: 30
-      spriteId: 17442977ca25ace49b242b938ee4ba10
+      spriteId: a091eb8536025e144be9a803cef721da
     - name: Lord of the Poisons asp_Frame_114
       frameIndex: 114
       additiveSortOrder: 0
       cellRect:
-        x: 21
-        y: 2
+        x: 56
+        y: 0
         width: 43
         height: 30
-      spriteId: 233dfc894bd8b5c428293ae60fd07dbe
+      spriteId: d1e663929b33062428bb4022df962769
     - name: Lord of the Poisons asp_Frame_115
       frameIndex: 115
       additiveSortOrder: 0
       cellRect:
-        x: 22
-        y: 2
+        x: 57
+        y: 0
         width: 43
         height: 31
-      spriteId: 78dd4975a81c8c443befb28e89544add
+      spriteId: ac2ff90e8583e2448bba1cc02b4f1308
     - name: Lord of the Poisons asp_Frame_116
       frameIndex: 116
       additiveSortOrder: 0
       cellRect:
-        x: 22
-        y: 2
+        x: 57
+        y: 0
         width: 44
         height: 30
-      spriteId: 7f3229e23a64c7c48be22b5802ffc6bb
+      spriteId: 48dbbd84d224b7e499c1467698686c4f
     - name: Lord of the Poisons asp_Frame_117
       frameIndex: 117
       additiveSortOrder: 0
       cellRect:
-        x: 21
-        y: 2
+        x: 56
+        y: 0
         width: 46
         height: 30
-      spriteId: 919954e6556dd91448027cb6fc500528
+      spriteId: 7d286334e8ed5d247a9358b7fd336c2e
     - name: Lord of the Poisons asp_Frame_118
       frameIndex: 118
       additiveSortOrder: 0
       cellRect:
-        x: 20
-        y: 2
+        x: 55
+        y: 0
         width: 51
         height: 31
-      spriteId: 18e90b645997d1946a1269f276c90a8e
+      spriteId: 4fde0c1c60ffaf5489b134a17c730330
     - name: Lord of the Poisons asp_Frame_119
       frameIndex: 119
       additiveSortOrder: 0
       cellRect:
-        x: 19
-        y: 2
+        x: 54
+        y: 0
         width: 55
         height: 32
-      spriteId: 96977b8782556334894547f0d3c11ab6
+      spriteId: 98e23669c7438344ba22c391a1e69bdf
     - name: Lord of the Poisons asp_Frame_120
       frameIndex: 120
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 58
         height: 30
-      spriteId: 8dea7d947eaf2b346ad050a5292dbbcf
+      spriteId: 1782fde7f180d2c479dca4ce07d95613
     - name: Lord of the Poisons asp_Frame_121
       frameIndex: 121
       additiveSortOrder: 0
       cellRect:
-        x: 18
-        y: 2
+        x: 53
+        y: 0
         width: 58
         height: 31
-      spriteId: 045917eae79bddf448e3ac8291e13ba8
+      spriteId: 3be5a1a8581a0d844ae6fb7c2f2dcdfe
     - name: Lord of the Poisons asp_Frame_122
       frameIndex: 122
       additiveSortOrder: 0
       cellRect:
-        x: 17
-        y: 2
+        x: 52
+        y: 0
         width: 60
         height: 32
-      spriteId: 391d4c401aeff2e4dae459c4ed342335
+      spriteId: c3c80e5bd0e4f6a488f241f1b3d6f87c
     - name: Lord of the Poisons asp_Frame_123
       frameIndex: 123
       additiveSortOrder: 0
       cellRect:
-        x: 47
-        y: 9
+        x: 82
+        y: 7
         width: 11
         height: 4
-      spriteId: 0fe4ab7415fd4ad4a870b10228370980
+      spriteId: baca4747240f1a5418d04a876d851658
     linkedCells: []
     parentIndex: -1
   platformSettings:

@@ -31,7 +31,7 @@ public abstract class BaseBoss : BaseEnemy
 
         if (currentHealth <= bossState.bossData.maxHealth * 0.5f && !isPhaseTwoActive)
         {
-            ActivatePhaseTwo(); // Kích hoạt phase 2 nếu máu dưới 50%
+            //ActivatePhaseTwo(); // Kích hoạt phase 2 nếu máu dưới 50%
         }
     }
 }

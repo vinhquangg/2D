@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 73
       width: 25
       height: 12
-    spriteID: 9aa1ebfcf56a689439796eebacfdffee
+    spriteID: 3f35feb3f68aa7349926913e40b0d8e9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 4
       width: 39
       height: 22
-    spriteID: fd7fbe3cda1f52a468a8a59a96bbf104
+    spriteID: ad74138f6c0aa084987c76b4b1d634d1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 73
       width: 35
       height: 26
-    spriteID: d9c398ec539084d44a8069e60d1a25a0
+    spriteID: 187e4afc382ab964cb8a8feb29dfcfa2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 37
       width: 37
       height: 27
-    spriteID: 9c5df629fccd2fe4182d129f170a4391
+    spriteID: 351ae9ea09fd87a45af7e0f9e15bfaca
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -212,7 +212,7 @@ ScriptedImporter:
       y: 37
       width: 38
       height: 28
-    spriteID: 410aed3d10662ac40b7a22d47892db4c
+    spriteID: 250c86225d554db4cae67f9886d5b389
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -232,7 +232,7 @@ ScriptedImporter:
       y: 4
       width: 43
       height: 25
-    spriteID: 944b4b5fec4e4c3479d7d117fa567fe2
+    spriteID: 235653783979bad49aca3817f2397522
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -252,7 +252,7 @@ ScriptedImporter:
       y: 37
       width: 28
       height: 20
-    spriteID: 197fdb5eef7b77d4aa780db190dd74c0
+    spriteID: 1d53dbf613ea9374d805fdd3ee0c2726
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -272,7 +272,7 @@ ScriptedImporter:
       y: 4
       width: 18
       height: 4
-    spriteID: 8cd16d65a8a0f0d408b35efaea5a8a36
+    spriteID: ee8f130e2d0e1244b82ffe466238a1a2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -292,7 +292,7 @@ ScriptedImporter:
       y: 16
       width: 3
       height: 3
-    spriteID: 05bff0e8d1d9a1045a0b526c6f55a43e
+    spriteID: e8077c4e0e774874eb1ae0c9a23b8145
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -318,7 +318,7 @@ ScriptedImporter:
         y: 0
         width: 25
         height: 12
-      spriteId: 9aa1ebfcf56a689439796eebacfdffee
+      spriteId: 3f35feb3f68aa7349926913e40b0d8e9
     - name: Range Poison_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
@@ -327,7 +327,7 @@ ScriptedImporter:
         y: 3
         width: 39
         height: 22
-      spriteId: fd7fbe3cda1f52a468a8a59a96bbf104
+      spriteId: ad74138f6c0aa084987c76b4b1d634d1
     - name: Range Poison_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
@@ -336,7 +336,7 @@ ScriptedImporter:
         y: 0
         width: 35
         height: 26
-      spriteId: d9c398ec539084d44a8069e60d1a25a0
+      spriteId: 187e4afc382ab964cb8a8feb29dfcfa2
     - name: Range Poison_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
@@ -345,7 +345,7 @@ ScriptedImporter:
         y: 0
         width: 37
         height: 27
-      spriteId: 9c5df629fccd2fe4182d129f170a4391
+      spriteId: 351ae9ea09fd87a45af7e0f9e15bfaca
     - name: Range Poison_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
@@ -354,7 +354,7 @@ ScriptedImporter:
         y: 0
         width: 38
         height: 28
-      spriteId: 410aed3d10662ac40b7a22d47892db4c
+      spriteId: 250c86225d554db4cae67f9886d5b389
     - name: Range Poison_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
@@ -363,7 +363,7 @@ ScriptedImporter:
         y: 1
         width: 43
         height: 25
-      spriteId: 944b4b5fec4e4c3479d7d117fa567fe2
+      spriteId: 235653783979bad49aca3817f2397522
     - name: Range Poison_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
@@ -372,7 +372,7 @@ ScriptedImporter:
         y: 1
         width: 28
         height: 20
-      spriteId: 197fdb5eef7b77d4aa780db190dd74c0
+      spriteId: 1d53dbf613ea9374d805fdd3ee0c2726
     - name: Range Poison_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
@@ -381,7 +381,7 @@ ScriptedImporter:
         y: 5
         width: 18
         height: 4
-      spriteId: 8cd16d65a8a0f0d408b35efaea5a8a36
+      spriteId: ee8f130e2d0e1244b82ffe466238a1a2
     - name: Range Poison_Frame_12
       frameIndex: 12
       additiveSortOrder: 0
@@ -390,7 +390,7 @@ ScriptedImporter:
         y: 5
         width: 3
         height: 3
-      spriteId: 05bff0e8d1d9a1045a0b526c6f55a43e
+      spriteId: e8077c4e0e774874eb1ae0c9a23b8145
     linkedCells: []
     parentIndex: -1
   platformSettings: []
