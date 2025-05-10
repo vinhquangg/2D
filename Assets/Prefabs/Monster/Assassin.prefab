@@ -233,6 +233,7 @@ MonoBehaviour:
   knockbackForce: 3
   patrolSpeed: 1
   isKnockback: 0
+  isBoss: 0
   isDead: 0
   isLoad: 0
 --- !u!114 &685273806069933094

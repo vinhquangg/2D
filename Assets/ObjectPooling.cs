@@ -78,7 +78,7 @@ public class ObjectPooling : MonoBehaviour
     {
         enemy.SetActive(false); 
 
-        yield return new WaitForSeconds(2f); 
+        yield return new WaitForSeconds(1f); 
 
         foreach (var pool in pools)
         {

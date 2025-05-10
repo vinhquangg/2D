@@ -89,7 +89,11 @@ public class SaveLoadManager : MonoBehaviour
                 var monsterData = saveable.SaveData();
                 if (monsterData is EnemySaveData e)
                 {
-                    e.currentState = enemy.monsterState.monsterCurrentStateName;
+                    //e.currentState = enemy.monsterState.monsterCurrentStateName;
+                    e.currentState = enemy.isBoss
+                        ? enemy.bossState?.bossCurrentStateName
+                        : enemy.monsterState?.monsterCurrentStateName;
+
                     enemyList.Add(e);
                 }
             }

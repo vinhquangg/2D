@@ -142,7 +142,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -43.16, y: 15.17, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: -5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3661157322501013351}
@@ -280,7 +280,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.055, y: 0.14}
@@ -342,6 +342,7 @@ MonoBehaviour:
   knockbackForce: 2.5
   patrolSpeed: 1
   isKnockback: 0
+  isBoss: 0
   isDead: 0
   isLoad: 0
 --- !u!114 &5902827139954001604
@@ -413,6 +414,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4617111231869867217}
     m_Modifications:
+    - target: {fileID: 99814077047354299, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 888234028145796871, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
       propertyPath: m_Name
       value: Health
@@ -470,6 +475,10 @@ PrefabInstance:
       value: 26.1417
       objectReference: {fileID: 0}
     - target: {fileID: 4072140063476923100, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072140063476923100, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -516,6 +525,14 @@ PrefabInstance:
     - target: {fileID: 4072140063476923100, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756434893526483429, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506994355555467084, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6506994355555467084, guid: 2ad20f94cc8c0ba4b814221868011c50, type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -12,6 +12,8 @@ public class SpawnZone : MonoBehaviour
     public List<Transform> entryPointOutsideZone;
     public List<Tilemap> obstacleTilemaps;
     public GameObject patrolPointPrefab;
+    private Transform bossPointA;
+    private Transform bossPointB;
 
     private int spawnedCount = 0;
     private int deadCount = 0;
@@ -27,7 +29,21 @@ public class SpawnZone : MonoBehaviour
         Debug.Log($"Zone {zoneID} - entry points count: {entryPointOutsideZone.Count}");
         foreach (var ep in entryPointOutsideZone)
             Debug.Log($"Entry Point: {ep?.name}");
+
+        GameObject a = GameObject.Find("BossPatrolA");
+        GameObject b = GameObject.Find("BossPatrolB");
+
+        if (a != null && b != null)
+        {
+            bossPointA = a.transform;
+            bossPointB = b.transform;
+        }
+        else
+        {
+            Debug.LogWarning($"[SpawnZone] BossPointA hoặc BossPointB không tìm thấy trong scene.");
+        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -87,10 +103,20 @@ public class SpawnZone : MonoBehaviour
         if (isZoneCleared || spawnedCount >= maxSpawnCount) return;
 
         Vector3 pos;
-        int attempts = 0;
-        do { pos = GetRandomPositionInZone(); attempts++; }
-        while (!IsTileWalkable(pos) && attempts < 10);
-        if (attempts >= 10) { Debug.LogWarning("No valid spawn pos."); return; }
+        if (zoneEnemyType == EnemyType.Boss)
+        {
+            BoxCollider2D box = GetComponent<BoxCollider2D>();
+            Vector2 center = (Vector2)transform.position + box.offset;
+            pos = center;
+        }
+        else
+        {
+            int attempts = 0;
+            do { pos = GetRandomPositionInZone(); attempts++; }
+            while (!IsTileWalkable(pos) && attempts < 10);
+            if (attempts >= 10) { Debug.LogWarning("No valid spawn pos."); return; }
+        }
+
 
         GameObject go = ObjectPooling.Instance.Spawn(zoneEnemyType, pos, Quaternion.identity);
         var enemy = go.GetComponent<BaseEnemy>();
@@ -98,10 +124,27 @@ public class SpawnZone : MonoBehaviour
         enemy.enemyID = enemyIDCount++;
         enemy.assignedZone = this;
         EnemySpawnerManager.Instance.AddZone(enemy, this);
-
-        Transform a = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
-        Transform b = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
-        enemy.pointA = a.gameObject; enemy.pointB = b.gameObject; enemy.currentPoint = a;
+        if (zoneEnemyType == EnemyType.Boss)
+        {
+            if (bossPointA != null && bossPointB != null)
+            {
+                enemy.pointA = bossPointA.gameObject;
+                enemy.pointB = bossPointB.gameObject;
+                enemy.currentPoint = bossPointA;
+            }
+            else
+            {
+                Debug.LogWarning($"[SpawnZone] Boss patrol points not set in zone {zoneID}");
+            }
+        }
+        else
+        {
+            Transform a = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
+            Transform b = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
+            enemy.pointA = a.gameObject;
+            enemy.pointB = b.gameObject;
+            enemy.currentPoint = a;
+        }
 
         spawnedCount++;
         currentAlive++;
@@ -166,6 +209,15 @@ public class SpawnZone : MonoBehaviour
         return new Vector3(0, 0, 0);
     }
 
+    public Transform GetBossPointA()
+    {
+        return bossPointA;
+    }
+
+    public Transform GetBossPointB()
+    {
+        return bossPointB;
+    }
     public SpawnZoneSaveData SaveData()
     {
         return new SpawnZoneSaveData

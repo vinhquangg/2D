@@ -8,6 +8,7 @@ public class NPCStateMachine : MonoBehaviour
     public BaseNPC npc { get; private set; }
     public Animator animNPC { get; private set; }
     public Rigidbody2D rbNPC { get; private set; }
+
     public Dictionary<string, System.Func<INPCState>> stateFactory;
 
 

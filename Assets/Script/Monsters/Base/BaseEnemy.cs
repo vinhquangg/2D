@@ -6,7 +6,8 @@ using TMPro;
 public abstract class BaseEnemy : MonoBehaviour,ISaveable
 {
     protected Animator anim;
-    public MonstersStateMachine monsterState { get; private set; }
+    public MonstersStateMachine monsterState { get; protected set; }
+    public BossStateMachine bossState { get; protected set; }
     //public MonsterData monsterData;
     public Rigidbody2D rb { get; private set; } 
     public Transform player;
@@ -28,25 +29,33 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public float moveSpeed;
     public float nameVisibleDistance = 3f;
     public SpawnZone assignedZone;
-    public int currentDamage { get; set; }
+    public float currentDamage { get; set; }
     public float currentAttackMonsterRange { get; set; }
     public float currentHealth { get;  set; }
     public float knockbackForce = 5f;
     public float patrolSpeed = 1f;
     public bool isKnockback = false;
+    public bool isBoss = false;
     public bool isDead = false;
     public bool isLoad = false;
     public Transform currentPoint { get; set; }
     protected virtual void Start()
     {
-        monsterState = GetComponent<MonstersStateMachine>();
+        if (isBoss)
+        {
+            bossState = GetComponent<BossStateMachine>();
+        }
+        else
+        {
+            monsterState = GetComponent<MonstersStateMachine>();
+        }
+        //monsterState = GetComponent<MonstersStateMachine>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         healthBar = GetComponentInChildren<MonsterSideHealthBar>();
-        currentPoint = pointA.transform;
-
+        currentPoint = pointA != null ? pointA.transform : transform;
         InitEnemy();
     }
 
@@ -75,12 +84,39 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         SetMonsterNameByType();
     }
 
+    private void SetupBoss()
+    {
+        if (bossState == null)
+            bossState = GetComponent<BossStateMachine>();
+
+        if (bossState == null || bossState.bossData == null)
+            return;
+
+        if (bossState != null && bossState.bossData != null)
+        {
+            currentHealth = bossState.bossData.maxHealth;
+            currentDamage = bossState.bossData.attackDamage;
+            currentAttackMonsterRange = bossState.bossData.attackRange;
+
+            if (healthBar != null)
+            {
+                healthBar.UpdateHealBar(currentHealth, bossState.bossData.maxHealth);
+            }
+        }
+    }
 
     private void InitEnemy()
     {
         if (!isLoad)
         {
-            SetupStats(); 
+            if (isBoss)
+            {
+                SetupBoss();  
+            }
+            else
+            {
+                SetupStats();
+            }
         }
         else
         {
@@ -89,7 +125,10 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
                 healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
             }
         }
+
+
     }
+
 
 
     public virtual bool CanSeePlayer() 
@@ -104,23 +143,41 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         return false;
     }
 
+    //public virtual void Flip(Transform targetPoint)
+    //{
+    //    if (targetPoint == null) return;
+
+    //    //Vector3 scale = transform.localScale;
+
+    //    if (targetPoint.position.x < transform.position.x)
+    //    {
+    //        spriteRenderer.flipX = true;
+    //    }
+    //    else
+    //    {
+    //        spriteRenderer.flipX = false;
+    //    }
+
+    //    //transform.localScale = scale;
+
+    //}
+
     public virtual void Flip(Transform targetPoint)
     {
         if (targetPoint == null) return;
 
-        //Vector3 scale = transform.localScale;
+        Vector3 scale = transform.localScale;
 
         if (targetPoint.position.x < transform.position.x)
         {
-            spriteRenderer.flipX = true;
+            scale.x = Mathf.Abs(scale.x) * -1;
         }
         else
         {
-            spriteRenderer.flipX = false;
+            scale.x = Mathf.Abs(scale.x);
         }
 
-        //transform.localScale = scale;
-
+        transform.localScale = scale;
     }
 
     protected virtual void SetMonsterNameByType()
@@ -131,19 +188,79 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
 
     public virtual void TakeDamage(int damage, Vector2 attackerPosition)
     {
+        //if (isDead) return;
+
+        //currentHealth -= damage;
+        //healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+
+        //StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration, damage));
+        //StartCoroutine(Knockback(attackerPosition, knockbackForce));
+
+        //if (currentHealth <= 0)
+        //{
+        //    isDead = true; 
+
+        //    if(enemyType == EnemyType.Assassin || enemyType == EnemyType.Mage)
+        //    {
+        //        monsterState.SwitchState(new MonsterDeadState(monsterState));
+
+        //        if (pointA != null) Destroy(pointA);
+        //        if (pointB != null) Destroy(pointB);
+
+        //        if (EnemySpawnerManager.Instance != null)
+        //        {
+        //            EnemySpawnerManager.Instance.EnemyDied(this);
+        //        }
+
+        //        //Destroy(gameObject, 0.5f);
+        //    }
+        //    else
+        //    {
+
+        //        if (monsterState.monsterCurrentState is MonsterAttackState ||
+        //            monsterState.monsterCurrentState is MonsterChaseState ||
+        //            monsterState.monsterCurrentState is MonsterIdleState ||
+        //            monsterState.monsterCurrentState is MonsterPatrolState)
+        //        {
+        //            monsterState.SwitchState(new MonsterHurtState(monsterState));
+        //        }
+        //    }
+        //}
+
         if (isDead) return;
 
         currentHealth -= damage;
         healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
-
         StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration, damage));
         StartCoroutine(Knockback(attackerPosition, knockbackForce));
 
         if (currentHealth <= 0)
         {
-            isDead = true; 
+            isDead = true;
 
+            
+            if (isBoss)
+            {
+                HandleBossDeath();
+            }
+            else
+            {
+                HandleEnemyDeath();
+            }
+        }
 
+    }
+
+    private void HandleBossDeath()
+    {
+        //monsterState.SwitchState(new BossDeadState(monsterState)); 
+        Debug.Log("Boss is dead!");
+    }
+
+    private void HandleEnemyDeath()
+    {
+        if (enemyType == EnemyType.Assassin || enemyType == EnemyType.Mage)
+        {
             monsterState.SwitchState(new MonsterDeadState(monsterState));
 
             if (pointA != null) Destroy(pointA);
@@ -153,12 +270,9 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
             {
                 EnemySpawnerManager.Instance.EnemyDied(this);
             }
-
-            //Destroy(gameObject, 0.5f);
         }
         else
         {
-
             if (monsterState.monsterCurrentState is MonsterAttackState ||
                 monsterState.monsterCurrentState is MonsterChaseState ||
                 monsterState.monsterCurrentState is MonsterIdleState ||
@@ -168,7 +282,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
             }
         }
     }
-
 
     public virtual IEnumerator Knockback(Vector2 attackerPosition, float knockbackForce)
     {

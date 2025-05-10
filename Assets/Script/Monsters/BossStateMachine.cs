@@ -1,37 +1,65 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class BossStateMachine : MonstersStateMachine
+public class BossStateMachine : MonoBehaviour
 {
-    [Header("Boss Data")]
+    public IMonsterState bossCurrentState { get; private set; }
     public BossData bossData;
+    public Animator animBoss { get; private set; }
+    public Rigidbody2D rbBoss { get; private set; }
+    public BaseBoss boss { get; private set; }
 
-    protected override void Awake()
+    public Dictionary<string, System.Func<IMonsterState>> stateFactory;
+    public string bossCurrentStateName => bossCurrentState?.GetType().Name;
+    public void Awake()
     {
-        base.Awake();
-        if (bossData == null)
-        {
-            Debug.LogError("BossData is not assigned.");
-        }
+        rbBoss = GetComponent<Rigidbody2D>();
+        animBoss = GetComponent<Animator>();
+        boss = GetComponent<BaseBoss>();
     }
 
-    protected override void Start()
+    public void Start()
     {
         stateFactory = new Dictionary<string, System.Func<IMonsterState>>()
         {
-            //{ "BossIdleState", () => new BossIdleState(this) },
-            //{ "BossChaseState", () => new BossChaseState(this) },
-            //{ "BossAttackState", () => new BossAttackState(this) },
+            { "BossIdleState", () => new BossIdleState(this) },
+            { "BossChaseState", () => new BossChaseState(this) },
+            { "BossAttackState", () => new BossAttackState(this) },
             //{ "BossSummonState", () => new BossSummonState(this) },
             //{ "BossPhase2State", () => new BossPhase2State(this) },
         };
 
-        SwitchState(stateFactory["BossIdleState"]());
+        SwitchState(new BossIdleState(this));
     }
 
-    protected override void Update()
+    public void SwitchState(IMonsterState newState)
     {
-        base.Update(); 
+        if (bossCurrentState != null && bossCurrentState.GetType() == newState.GetType())
+            return;
 
+        if (bossCurrentState != null)
+        {
+            bossCurrentState.ExitState();
+        }
+
+        bossCurrentState = newState;
+        bossCurrentState.EnterState();
+    }
+
+    protected virtual void Update()
+    {
+        if (bossCurrentState != null)
+        {
+            bossCurrentState.UpdateState();
+        }
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        if (bossCurrentState != null)
+        {
+            bossCurrentState.PhysicsUpdate();
+        }
     }
 }
+

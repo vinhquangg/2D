@@ -4,20 +4,19 @@ public class DontFlipText : MonoBehaviour
 {
     private Vector3 initialScale;
 
-    private void Start()
+    void Start()
     {
-        // Lưu giá trị scale ban đầu
         initialScale = transform.localScale;
     }
 
-    void LateUpdate()
+    void Update()
     {
-        // Luôn giữ hướng quay của text đúng (không bị flip)
         transform.rotation = Quaternion.identity;
 
-        // Giữ lại scale gốc để tránh bị ảnh hưởng bởi flip cha
+        float parentScaleX = transform.parent.lossyScale.x > 0 ? 1f : -1f;
+
         transform.localScale = new Vector3(
-            Mathf.Abs(initialScale.x),
+            Mathf.Abs(initialScale.x) * parentScaleX,
             initialScale.y,
             initialScale.z
         );
