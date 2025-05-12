@@ -336,6 +336,8 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     {
         EnemySaveData save = data as EnemySaveData;
         if (save == null) return;
+
+        // Gán các giá trị cơ bản
         this.enemyID = save.enemyID;
         this.enemyType = save.type;
         zoneID = save.zoneID;
@@ -343,11 +345,15 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         currentHealth = save.health;
         isLoad = true;
 
+        // Gán zone
+        assignedZone = EnemySpawnerManager.Instance.GetZoneByID(zoneID);
+
+        // Cập nhật máu
         if (healthBar != null)
         {
-            healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+            healthBar.UpdateHealBar(currentHealth,
+                isBoss ? bossState.bossData.maxHealth : monsterState.monsterData.maxHealth);
         }
-        assignedZone = EnemySpawnerManager.Instance.GetZoneByID(zoneID);
 
         if (pointA != null) pointA.transform.position = save.patrolA;
         if (pointB != null) pointB.transform.position = save.patrolB;
@@ -355,23 +361,26 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         if (currentHealth <= 0)
         {
             isDead = true;
-            monsterState.SwitchState(new MonsterDeadState(monsterState));
-            if (pointA != null) Destroy(pointA);
-            if (pointB != null) Destroy(pointB);
-            Destroy(gameObject, 0.5f);
+            if (enemyType != EnemyType.Boss)
+            {
+                if (pointA != null) Destroy(pointA);
+                if (pointB != null) Destroy(pointB);
+            }
+            ObjectPooling.Instance.ReturnToPool(enemyType, gameObject);
             return;
         }
 
-        if (monsterState.stateFactory.TryGetValue(save.currentState, out var createState))
+        // Gán state
+        if (monsterState != null && monsterState.stateFactory.TryGetValue(save.currentState, out var createState))
         {
             monsterState.SwitchState(createState());
         }
-
         else
         {
-            monsterState.SwitchState(new MonsterPatrolState(monsterState));
+            monsterState?.SwitchState(new MonsterPatrolState(monsterState));
         }
 
-        InitEnemy(); 
+        InitEnemy();
     }
+
 }

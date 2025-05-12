@@ -139,6 +139,7 @@ public class SpawnZone : MonoBehaviour
         }
         else
         {
+            enemy.ResetEnemy();
             Transform a = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
             Transform b = Instantiate(patrolPointPrefab, pos + (Vector3)Random.insideUnitCircle * 2f, Quaternion.identity).transform;
             enemy.pointA = a.gameObject;
