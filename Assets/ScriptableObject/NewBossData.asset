@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: NewBossData
   m_EditorClassIdentifier: 
   bossName: PoinsonLord
+  hitDuration: 0
   maxHealth: 200
   attackDamage: 20
   attackRange: 3
   moveSpeed: 10
+  knockbackForce: 2
   specialAbilityCD: 3.5
   phaseTwoSpecialAbilityName: Summon assassin or mage

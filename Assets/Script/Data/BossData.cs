@@ -5,10 +5,12 @@ using UnityEngine;
 public class BossData : ScriptableObject
 {
     public string bossName;
+    public float hitDuration;
     public float maxHealth;
     public float attackDamage;
     public float attackRange;
     public float moveSpeed;
+    public float knockbackForce;
     public float specialAbilityCD;
     public string phaseTwoSpecialAbilityName;
 }

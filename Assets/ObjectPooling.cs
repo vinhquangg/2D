@@ -119,8 +119,29 @@ public class ObjectPooling : MonoBehaviour
 
     private IEnumerator ReturnToPoolWithDelay(GameObject enemy, EnemyType type)
     {
-        enemy.SetActive(false);
+
+        if (enemy.TryGetComponent<BaseEnemy>(out var baseEnemy))
+        {
+            if (baseEnemy.isLoad)
+            {
+
+                enemy.SetActive(false);
+
+                if (!pools[type].Contains(enemy))
+                {
+                    pools[type].Enqueue(enemy);
+                }
+
+                if (activeObjects[type].Contains(enemy))
+                {
+                    activeObjects[type].Remove(enemy);
+                }
+
+                yield break; 
+            }
+        }
         yield return new WaitForSeconds(1f);
+        enemy.SetActive(false);
 
         if (!pools[type].Contains(enemy))
         {
@@ -132,6 +153,7 @@ public class ObjectPooling : MonoBehaviour
             activeObjects[type].Remove(enemy);
         }
     }
+
 
     private GameObject GetPrefab(EnemyType type)
     {

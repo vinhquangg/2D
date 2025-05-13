@@ -196,45 +196,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
 
     public virtual void TakeDamage(int damage, Vector2 attackerPosition)
     {
-        //if (isDead) return;
-
-        //currentHealth -= damage;
-        //healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
-
-        //StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration, damage));
-        //StartCoroutine(Knockback(attackerPosition, knockbackForce));
-
-        //if (currentHealth <= 0)
-        //{
-        //    isDead = true; 
-
-        //    if(enemyType == EnemyType.Assassin || enemyType == EnemyType.Mage)
-        //    {
-        //        monsterState.SwitchState(new MonsterDeadState(monsterState));
-
-        //        if (pointA != null) Destroy(pointA);
-        //        if (pointB != null) Destroy(pointB);
-
-        //        if (EnemySpawnerManager.Instance != null)
-        //        {
-        //            EnemySpawnerManager.Instance.EnemyDied(this);
-        //        }
-
-        //        //Destroy(gameObject, 0.5f);
-        //    }
-        //    else
-        //    {
-
-        //        if (monsterState.monsterCurrentState is MonsterAttackState ||
-        //            monsterState.monsterCurrentState is MonsterChaseState ||
-        //            monsterState.monsterCurrentState is MonsterIdleState ||
-        //            monsterState.monsterCurrentState is MonsterPatrolState)
-        //        {
-        //            monsterState.SwitchState(new MonsterHurtState(monsterState));
-        //        }
-        //    }
-        //}
-
         if (isDead) return;
 
         currentHealth -= damage;
@@ -251,7 +212,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         {
             isDead = true;
 
-            
+
             if (isBoss)
             {
                 HandleBossDeath();
@@ -261,40 +222,71 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
                 HandleEnemyDeath();
             }
         }
-
-    }
-
-    private void HandleBossDeath()
-    {
-        //monsterState.SwitchState(new BossDeadState(monsterState)); 
-        Debug.Log("Boss is dead!");
-    }
-
-    private void HandleEnemyDeath()
-    {
-        if (enemyType == EnemyType.Assassin || enemyType == EnemyType.Mage)
-        {
-            monsterState.SwitchState(new MonsterDeadState(monsterState));
-
-            if (pointA != null) Destroy(pointA);
-            if (pointB != null) Destroy(pointB);
-
-            if (EnemySpawnerManager.Instance != null)
-            {
-                EnemySpawnerManager.Instance.EnemyDied(this);
-            }
-        }
         else
         {
-            if (monsterState.monsterCurrentState is MonsterAttackState ||
-                monsterState.monsterCurrentState is MonsterChaseState ||
-                monsterState.monsterCurrentState is MonsterIdleState ||
-                monsterState.monsterCurrentState is MonsterPatrolState)
+            if (isBoss)
+            {
+                bossState.SwitchState(new BossHurtState(bossState));
+            }
+            else
             {
                 monsterState.SwitchState(new MonsterHurtState(monsterState));
             }
         }
     }
+
+    private void HandleBossDeath()
+    {
+     bossState.SwitchState(new BossDeadState(bossState));
+    if (EnemySpawnerManager.Instance != null)
+    {
+        EnemySpawnerManager.Instance.EnemyDied(this);
+    }
+
+        Debug.Log("Boss is dead!");
+    }
+
+    protected virtual void HandleEnemyDeath()
+    {
+        monsterState.SwitchState(new MonsterDeadState(monsterState));
+
+        if (pointA != null) Destroy(pointA);
+        if (pointB != null) Destroy(pointB);
+
+        if (EnemySpawnerManager.Instance != null)
+        {
+            EnemySpawnerManager.Instance.EnemyDied(this);
+        }
+
+        Debug.Log($"{enemyType} is dead!");
+    }
+
+
+    //private void HandleEnemyDeath()
+    //{
+    //    if (enemyType == EnemyType.Assassin || enemyType == EnemyType.Mage)
+    //    {
+    //        monsterState.SwitchState(new MonsterDeadState(monsterState));
+
+    //        if (pointA != null) Destroy(pointA);
+    //        if (pointB != null) Destroy(pointB);
+
+    //        if (EnemySpawnerManager.Instance != null)
+    //        {
+    //            EnemySpawnerManager.Instance.EnemyDied(this);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (monsterState.monsterCurrentState is MonsterAttackState ||
+    //            monsterState.monsterCurrentState is MonsterChaseState ||
+    //            monsterState.monsterCurrentState is MonsterIdleState ||
+    //            monsterState.monsterCurrentState is MonsterPatrolState)
+    //        {
+    //            monsterState.SwitchState(new MonsterHurtState(monsterState));
+    //        }
+    //    }
+    //}
 
     public virtual IEnumerator Knockback(Vector2 attackerPosition, float knockbackForce)
     {

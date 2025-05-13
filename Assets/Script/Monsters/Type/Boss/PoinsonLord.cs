@@ -14,4 +14,17 @@ public class PoinsonLord : BaseBoss
     {
         base.TakeDamage(damage, attackerPosition);
     }
+
+    public override bool CanSeePlayer()
+    {
+        return base.CanSeePlayer();
+    }
+
+    public override void Flip(Transform targetPoint)
+    {
+        base.Flip(targetPoint);
+    }
+
+
 }
+
