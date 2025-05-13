@@ -41,21 +41,25 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public Transform currentPoint { get; set; }
     protected virtual void Start()
     {
-        if (isBoss)
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        healthBar = GetComponentInChildren<MonsterSideHealthBar>();
+        currentPoint = pointA != null ? pointA.transform : transform;
+
+        if (enemyType == EnemyType.Boss)
         {
+            isBoss = true;
             bossState = GetComponent<BossStateMachine>();
+            SetupBoss();
         }
         else
         {
+            isBoss = false;
             monsterState = GetComponent<MonstersStateMachine>();
+            SetupStats();
         }
-        //monsterState = GetComponent<MonstersStateMachine>();
-        anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        healthBar = GetComponentInChildren<MonsterSideHealthBar>();
-        currentPoint = pointA != null ? pointA.transform : transform;
         InitEnemy();
     }
 
@@ -102,6 +106,10 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
             {
                 healthBar.UpdateHealBar(currentHealth, bossState.bossData.maxHealth);
             }
+            if (spriteRenderer != null)
+            {
+                originalColor = spriteRenderer.color;
+            }
         }
     }
 
@@ -118,13 +126,13 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
                 SetupStats();
             }
         }
-        else
-        {
-            if (healthBar != null)
-            {
-                healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
-            }
-        }
+        //else
+        //{
+        //    if (healthBar != null)
+        //    {
+        //        healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+        //    }
+        //}
 
 
     }
@@ -230,7 +238,12 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         if (isDead) return;
 
         currentHealth -= damage;
-        healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
+        if (healthBar != null)
+        {
+            float maxHealth = isBoss ? bossState.bossData.maxHealth : monsterState.monsterData.maxHealth;
+            healthBar.UpdateHealBar(currentHealth, maxHealth);
+        }
+
         StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration, damage));
         StartCoroutine(Knockback(attackerPosition, knockbackForce));
 
@@ -314,8 +327,17 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public virtual void ResetEnemy()
     {
         isDead = false;
-        SetupStats();
-        monsterState.SwitchState(new MonsterIdleState(monsterState));
+
+        if (enemyType == EnemyType.Boss)
+        {
+            SetupBoss();
+            bossState?.SwitchState(new BossIdleState(bossState));
+        }
+        else
+        {
+            SetupStats();
+            monsterState?.SwitchState(new MonsterIdleState(monsterState));
+        }
     }
 
     public virtual object SaveData()

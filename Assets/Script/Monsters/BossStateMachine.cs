@@ -25,11 +25,12 @@ public class BossStateMachine : MonoBehaviour
             { "BossIdleState", () => new BossIdleState(this) },
             { "BossChaseState", () => new BossChaseState(this) },
             { "BossAttackState", () => new BossAttackState(this) },
+            { "BossPatrolState", () => new BossPatrolState(this) },
             //{ "BossSummonState", () => new BossSummonState(this) },
             //{ "BossPhase2State", () => new BossPhase2State(this) },
         };
 
-        SwitchState(new BossIdleState(this));
+        SwitchState(new BossPatrolState(this));
     }
 
     public void SwitchState(IMonsterState newState)

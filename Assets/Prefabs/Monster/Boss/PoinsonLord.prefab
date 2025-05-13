@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 8059010093175271093}
   - component: {fileID: 3465255022140106180}
   - component: {fileID: 625920886549475302}
+  - component: {fileID: 2226426251291038369}
   m_Layer: 9
   m_Name: PoinsonLord
   m_TagString: Untagged
@@ -181,7 +182,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 3353597924584442673, guid: 29372fa74aedd244fb504a6ffe506f74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -248,7 +249,7 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   enemyType: 3
-  patrolPointPrefab: {fileID: 0}
+  patrolPointPrefab: {fileID: 4684223294616517440, guid: d81141e572101bb4489eb0371fc5cb68, type: 3}
   enemyID: 0
   zoneID: 
   hitDuration: 1
@@ -336,6 +337,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4375, y: 2.1875}
   m_EdgeRadius: 0
+--- !u!114 &2226426251291038369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463251998968825796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5a929773c70244d9640a48262fff5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 5333159449936525472}
 --- !u!1 &3188335013817114379
 GameObject:
   m_ObjectHideFlags: 0

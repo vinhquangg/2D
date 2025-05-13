@@ -9,14 +9,16 @@ public class ObjectPooling : MonoBehaviour
     [System.Serializable]
     public struct PoolConfig
     {
-        public EnemyType type;   
+        public EnemyType type;
         public GameObject prefab;
-        public int initialSize;  
+        public int initialSize;
     }
 
     public PoolConfig[] poolConfigs;
 
     private Dictionary<EnemyType, Queue<GameObject>> pools;
+    private Dictionary<EnemyType, List<GameObject>> activeObjects;
+    private Dictionary<EnemyType, int> reuseIndex;
 
     private void Awake()
     {
@@ -34,6 +36,8 @@ public class ObjectPooling : MonoBehaviour
     private void InitializePools()
     {
         pools = new Dictionary<EnemyType, Queue<GameObject>>();
+        activeObjects = new Dictionary<EnemyType, List<GameObject>>();
+        reuseIndex = new Dictionary<EnemyType, int>();
 
         foreach (var cfg in poolConfigs)
         {
@@ -45,23 +49,61 @@ public class ObjectPooling : MonoBehaviour
                 q.Enqueue(go);
             }
             pools[cfg.type] = q;
+            activeObjects[cfg.type] = new List<GameObject>();
+            reuseIndex[cfg.type] = 0;
         }
     }
 
     public GameObject Spawn(EnemyType type, Vector3 pos, Quaternion rot)
     {
-        if (!pools.ContainsKey(type))
+        if (!pools.ContainsKey(type)) return null;
+
+        GameObject go = null;
+
+        if (pools[type].Count > 0)
         {
-            return null;
+            go = pools[type].Dequeue();
+        }
+        else
+        {
+            go = ReuseFromActiveList(type);
+            if (go == null)
+            {
+                Debug.LogWarning($"[Pooling] No available enemy to reuse for type {type}");
+                return null;
+            }
         }
 
-        var q = pools[type];
-        GameObject go = q.Count > 0
-            ? q.Dequeue()
-            : Instantiate(GetPrefab(type)); 
         go.transform.SetPositionAndRotation(pos, rot);
         go.SetActive(true);
+
+        if (!activeObjects[type].Contains(go))
+        {
+            activeObjects[type].Add(go);
+        }
+
         return go;
+    }
+
+    private GameObject ReuseFromActiveList(EnemyType type)
+    {
+        var list = activeObjects[type];
+        if (list.Count == 0) return null;
+
+        int startIndex = reuseIndex[type];
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            int index = (startIndex + i) % list.Count;
+            GameObject candidate = list[index];
+            if (candidate != null && candidate.TryGetComponent<BaseEnemy>(out var enemy) && enemy.isDead)
+            {
+                reuseIndex[type] = (index + 1) % list.Count;
+                return candidate;
+            }
+        }
+
+        return null;
     }
 
     public void ReturnToPool(EnemyType type, GameObject enemy)
@@ -71,25 +113,25 @@ public class ObjectPooling : MonoBehaviour
             Destroy(enemy);
             return;
         }
-        StartCoroutine(ReturnToPoolWithDelay(enemy));
+
+        StartCoroutine(ReturnToPoolWithDelay(enemy, type));
     }
 
-    private IEnumerator ReturnToPoolWithDelay(GameObject enemy)
+    private IEnumerator ReturnToPoolWithDelay(GameObject enemy, EnemyType type)
     {
-        enemy.SetActive(false); 
+        enemy.SetActive(false);
+        yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(1f); 
-
-        foreach (var pool in pools)
+        if (!pools[type].Contains(enemy))
         {
-            if (pool.Value.Contains(enemy)) continue;
+            pools[type].Enqueue(enemy);
+        }
 
-            pool.Value.Enqueue(enemy);
-            break;
+        if (activeObjects[type].Contains(enemy))
+        {
+            activeObjects[type].Remove(enemy);
         }
     }
-
-
 
     private GameObject GetPrefab(EnemyType type)
     {

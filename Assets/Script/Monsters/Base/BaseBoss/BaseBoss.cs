@@ -22,13 +22,13 @@ public abstract class BaseBoss : BaseEnemy
 
 
     // Override các phương thức không cần thiết
-    public override void TakeDamage(int damage, Vector2 attackerPosition)
-    {
-        base.TakeDamage(damage, attackerPosition);
+    //public override void TakeDamage(int damage, Vector2 attackerPosition)
+    //{
+    //    base.TakeDamage(damage, attackerPosition);
 
-        if (currentHealth <= bossState.bossData.maxHealth * 0.5f && !isPhaseTwoActive)
-        {
-            // Kích hoạt phase 2 nếu máu dưới 50%
-        }
-    }
+    //    if (currentHealth <= bossState.bossData.maxHealth * 0.5f && !isPhaseTwoActive)
+    //    {
+    //        // Kích hoạt phase 2 nếu máu dưới 50%
+    //    }
+    //}
 }

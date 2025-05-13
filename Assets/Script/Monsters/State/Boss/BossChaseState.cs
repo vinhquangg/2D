@@ -14,14 +14,14 @@ public class BossChaseState : IMonsterState
     }
     public void EnterState()
     {
-        boss.animBoss.SetBool("isChase", true);
+        boss.animBoss.SetBool("isMove", true);
         boss.animBoss.Play("PoinsonsLord_Move");
         Debug.Log("Chasing");
     }
 
     public void ExitState()
     {
-        boss.animBoss.SetBool("isChase", false);
+        boss.animBoss.SetBool("isMove", false);
         Debug.Log("Exit Chase State");
     }
 

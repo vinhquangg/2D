@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossIdleState : IMonsterState
 {
     private BossStateMachine boss;
-    //private float idleDuration = 3f;
+    private float idleDuration = 3f;
     private float idleTimer;
 
     public BossIdleState(BossStateMachine boss)
@@ -24,6 +24,14 @@ public class BossIdleState : IMonsterState
         if(boss.boss.CanSeePlayer())
         {
             boss.SwitchState(new BossChaseState(boss));
+        }
+        idleTimer += Time.deltaTime;
+        if (idleTimer >= idleDuration)
+        {
+            boss.boss.currentPoint = (boss.boss.currentPoint == boss.boss.pointA.transform) ?
+                                        boss.boss.pointB.transform :
+                                        boss.boss.pointA.transform;
+            boss.SwitchState(new BossPatrolState(boss));
         }
     }
 

@@ -4901,6 +4901,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7dfb1667f4bbf44a155ef032e51f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 640
   damage: 10
   radius: 3
   lightningPrefab: {fileID: 1853303267310392249, guid: 0304c3ad12ed8794991e6593b09a06e3, type: 3}

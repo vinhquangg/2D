@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class BlastWave : MonoBehaviour
 {
+    public LayerMask enemyLayers;
     public int damage = 10; 
     public float radius = 5f;  
     public GameObject lightningPrefab; 
@@ -13,7 +14,7 @@ public class BlastWave : MonoBehaviour
     void Start()
     {
 
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, radius, LayerMask.GetMask("Enemy"));
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, radius, enemyLayers);
         foreach (Collider2D enemy in enemies)
         {
             enemy.GetComponent<BaseEnemy>()?.TakeDamage(damage, transform.position);

@@ -119,6 +119,15 @@ public class SpawnZone : MonoBehaviour
 
 
         GameObject go = ObjectPooling.Instance.Spawn(zoneEnemyType, pos, Quaternion.identity);
+        if (go == null)
+        {
+            return;
+        }
+        else
+        {
+
+        }
+
         var enemy = go.GetComponent<BaseEnemy>();
         enemy.zoneID = zoneID;
         enemy.enemyID = enemyIDCount++;
