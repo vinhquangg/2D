@@ -14,10 +14,15 @@ public class DeadState : IPlayerState
     public void EnterState()
     {
         // Phát animation Dead
-        var currentZone = GameObject.FindObjectOfType<SpawnZone>();
-        if (currentZone != null)
+        var allZones = GameObject.FindObjectsOfType<SpawnZone>();
+        foreach (var zone in allZones)
         {
-            player.currentZoneID = currentZone.zoneID; // Lưu zoneID vào PlayerStateMachine
+            var box = zone.GetComponent<BoxCollider2D>();
+            if (box != null && box.OverlapPoint(player.transform.position))
+            {
+                player.currentZoneID = zone.zoneID;
+                break;
+            }
         }
 
         player.anim.SetTrigger("isDead");

@@ -98,7 +98,7 @@ public class SpawnZone : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
+    public void SpawnEnemy()
     {
         if (isZoneCleared || spawnedCount >= maxSpawnCount) return;
 
@@ -228,6 +228,7 @@ public class SpawnZone : MonoBehaviour
     {
         return bossPointB;
     }
+
     public SpawnZoneSaveData SaveData()
     {
         return new SpawnZoneSaveData

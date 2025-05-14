@@ -15,10 +15,21 @@ public class ReviveState : IPlayerState
     {
         if (hasRevived) return;
 
-        var currentZone = GameObject.FindObjectOfType<SpawnZone>();
-        if (currentZone != null && currentZone.zoneID == player.currentZoneID)
+        // ✅ Tìm đúng zone theo ID
+        var allZones = GameObject.FindObjectsOfType<SpawnZone>();
+        foreach (var zone in allZones)
         {
-            spawnPositionOutsideZone = currentZone.GetEntryPointOutsideZone(); 
+            if (zone.zoneID == player.currentZoneID)
+            {
+                spawnPositionOutsideZone = zone.GetEntryPointOutsideZone();
+                break;
+            }
+        }
+
+        // Nếu không tìm thấy zone (safety)
+        if (spawnPositionOutsideZone == Vector3.zero)
+        {
+            Debug.LogWarning($"[ReviveState] Không tìm thấy zone với ID {player.currentZoneID}. Dùng (0,0,0)");
         }
 
         player.rb.velocity = Vector2.zero;
@@ -27,17 +38,14 @@ public class ReviveState : IPlayerState
         hasRevived = true;
 
         player.gameObject.SetActive(true);
-        player.transform.position = spawnPositionOutsideZone; 
+        player.transform.position = spawnPositionOutsideZone;
 
         player.SwitchState(new IdleState(player));
 
         player.GetComponent<PlayerHealth>()?.FullRestore(player.playerData.maxHealth);
-        //player.GetComponent<PlayerEnergy>()?.GetMaxEnergy();
         player.GetComponent<PlayerEnergy>()?.UpdateEnergySlider();
-
-        //PlayerSaveData defaultData = PlayerManager.Instance.GetDefaultPlayer();
-        //PlayerManager.Instance.LoadPlayerData(defaultData, false);
     }
+
 
 
     public void ExitState()

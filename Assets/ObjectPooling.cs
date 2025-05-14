@@ -67,10 +67,21 @@ public class ObjectPooling : MonoBehaviour
         else
         {
             go = ReuseFromActiveList(type);
+
             if (go == null)
             {
-                Debug.LogWarning($"[Pooling] No available enemy to reuse for type {type}");
-                return null;
+                GameObject prefab = GetPrefab(type);
+                if (prefab != null)
+                {
+                    go = Instantiate(prefab);
+                    go.SetActive(false);
+                    Debug.LogWarning($"[Pooling] Auto-instantiated new enemy for type {type} (pool expanded).");
+                }
+                else
+                {
+                    Debug.LogError($"[Pooling] Prefab for enemy type {type} not found.");
+                    return null;
+                }
             }
         }
 
@@ -117,43 +128,76 @@ public class ObjectPooling : MonoBehaviour
         StartCoroutine(ReturnToPoolWithDelay(enemy, type));
     }
 
+    //private IEnumerator ReturnToPoolWithDelay(GameObject enemy, EnemyType type)
+    //{
+    //    if (enemy.TryGetComponent<BaseEnemy>(out var baseEnemy))
+    //    {
+    //        if (baseEnemy.isLoad)
+    //        {
+    //            // Nếu đang trong trạng thái load, tắt ngay
+    //            enemy.SetActive(false);
+
+    //            if (!pools[type].Contains(enemy))
+    //                pools[type].Enqueue(enemy);
+
+    //            if (activeObjects[type].Contains(enemy))
+    //                activeObjects[type].Remove(enemy);
+
+    //            yield break;
+    //        }
+    //    }
+
+    //    // Nếu không load → delay 1s rồi tắt
+    //    yield return new WaitForSeconds(1f);
+    //    enemy.SetActive(false);
+
+    //    if (!pools[type].Contains(enemy))
+    //        pools[type].Enqueue(enemy);
+
+    //    if (activeObjects[type].Contains(enemy))
+    //        activeObjects[type].Remove(enemy);
+    //}
+
     private IEnumerator ReturnToPoolWithDelay(GameObject enemy, EnemyType type)
     {
+        if (SaveLoadManager.IsLoading)
+        {
+            enemy.SetActive(false);
+
+            if (!pools[type].Contains(enemy))
+                pools[type].Enqueue(enemy);
+
+            if (activeObjects[type].Contains(enemy))
+                activeObjects[type].Remove(enemy);
+
+            yield break;
+        }
 
         if (enemy.TryGetComponent<BaseEnemy>(out var baseEnemy))
         {
             if (baseEnemy.isLoad)
             {
-
                 enemy.SetActive(false);
 
                 if (!pools[type].Contains(enemy))
-                {
                     pools[type].Enqueue(enemy);
-                }
 
                 if (activeObjects[type].Contains(enemy))
-                {
                     activeObjects[type].Remove(enemy);
-                }
 
-                yield break; 
+                yield break;
             }
         }
-        yield return new WaitForSeconds(1f);
+
+        yield return new WaitForSeconds(0.8f);
         enemy.SetActive(false);
 
         if (!pools[type].Contains(enemy))
-        {
             pools[type].Enqueue(enemy);
-        }
 
         if (activeObjects[type].Contains(enemy))
-        {
             activeObjects[type].Remove(enemy);
-        }
     }
-
 
     private GameObject GetPrefab(EnemyType type)
     {

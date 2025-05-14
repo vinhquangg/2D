@@ -211,7 +211,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -377,8 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd421fc05f2398744ab541aa3b0a4350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  summonRadius: 0
-  summonCount: 0
+  summonRadius: 2
 --- !u!1 &3188335013817114379
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +425,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
