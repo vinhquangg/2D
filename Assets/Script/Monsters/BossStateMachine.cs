@@ -28,6 +28,8 @@ public class BossStateMachine : MonoBehaviour
             { "BossPatrolState", () => new BossPatrolState(this) },
             { "BossHurtState", () => new BossHurtState(this) },
             { "BossDeadState", () => new BossDeadState(this) },
+            { "BossCastSkillState", () => new BossCastSkillState(this) },
+            { "BossBuffState", () => new BossBuffState(this) },
             //{ "BossSummonState", () => new BossSummonState(this) },
             //{ "BossPhase2State", () => new BossPhase2State(this) },
         };

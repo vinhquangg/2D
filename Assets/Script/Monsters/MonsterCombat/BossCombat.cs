@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossCombat : MonsterCombat
 {
     private BaseBoss boss;
-    private BossSummoner summoner;
+    private BossSkillManager bossSkillManager;
     private bool summonActivated = false;
     private void Start()
     {
@@ -15,10 +15,10 @@ public class BossCombat : MonsterCombat
             Debug.LogError("BaseBoss component not found on this GameObject.");
             return;
         }
-        summoner = GetComponent<BossSummoner>();
-        if (summoner == null)
+        bossSkillManager = GetComponent<BossSkillManager>();
+        if (bossSkillManager == null)
         {
-            Debug.LogError("BossSummoner component not found on this GameObject.");
+            Debug.LogError("SkillManager component not found on this GameObject.");
             return;
         }
     }
@@ -30,8 +30,9 @@ public class BossCombat : MonsterCombat
         {
             if (!summonActivated)
             {
-                summoner?.SummonEnemies();
-                summonActivated = true;  
+                boss.bossState.SwitchState(new BossCastSkillState(boss.bossState));
+                summonActivated = true;
+                InvincibleCooldown();
             }
         }
         else

@@ -10,6 +10,7 @@ public class MageCombat : MonsterCombat
     private PlayerCombat playerCombat;
     private RangedEnemy rangedEnemy;
     public GameObject projectilePrefab;
+    public bool IsInvincible => isInvincible;
     //private float lastShootTime = 0f;
     //private int currentShots = 0;
     private void Start()

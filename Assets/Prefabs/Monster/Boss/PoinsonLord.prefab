@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 2226426251291038369}
   - component: {fileID: 1277398162249157373}
   - component: {fileID: -5183684451543654633}
+  - component: {fileID: 452925428236134903}
   m_Layer: 9
   m_Name: PoinsonLord
   m_TagString: Untagged
@@ -364,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9488c14c509a3ef4dbeec1a50828bcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibleTime: 1
+  invincibleTime: 3
 --- !u!114 &-5183684451543654633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +379,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   summonRadius: 2
+--- !u!114 &452925428236134903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463251998968825796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa285cef5c1e724ead7b5ea03a7e17a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3188335013817114379
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6208296726577908037}
   - component: {fileID: 5333159449936525472}
+  - component: {fileID: 312546204860786358}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -619,6 +633,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &312546204860786358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051953045530801199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95967448f5b36b8419b965c0f2d2d63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8908162091357317033
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NewBossData
   m_EditorClassIdentifier: 
   bossName: PoinsonLord
-  hitDuration: 0
+  hitDuration: 1
   maxHealth: 200
   attackDamage: 20
   attackRange: 3

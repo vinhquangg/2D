@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
 {
     protected MonstersStateMachine monsterState;
+    protected BossStateMachine bossState;
     public BaseEnemy baseEnemy { get; private set; }
     protected SpriteRenderer spriteRenderer;
     public float invincibleTime;
@@ -19,6 +20,7 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
         monsterState = GetComponent<MonstersStateMachine>();
         baseEnemy = GetComponent<BaseEnemy>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        bossState = GetComponent<BossStateMachine>();
     }
 
     protected void AttackHit(Vector2 attackPosition, float attackRange)
