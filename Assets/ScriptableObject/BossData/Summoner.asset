@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Summoner
   m_EditorClassIdentifier: 
   animationName: PoinsonsLord_CastSkill
-  skillName: Summoner_Minions
-  castTime: 3.5
+  skillName: Summoner
+  castTime: 1

@@ -12,8 +12,6 @@ public class BossData : ScriptableObject
     public float moveSpeed;
     public float knockbackForce;
     public float specialAbilityCD;
-    //public float castSkillDuration;
-
 
     public List<BossSkillSO> skills;
 }

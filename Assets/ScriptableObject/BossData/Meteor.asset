@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Meteor
   m_EditorClassIdentifier: 
   animationName: PoinsonsLord_CastSkill
-  skillName: 
-  castTime: 0
+  skillName: CastMeteor
+  castTime: 1
