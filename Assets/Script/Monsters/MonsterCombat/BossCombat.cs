@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossCombat : MonsterCombat
+public abstract class BossCombat : MonsterCombat
 {
-    private BaseBoss boss;
-    private BossSkillManager bossSkillManager;
-    private bool summonActivated = false;
-    private void Start()
+    protected BaseBoss boss;
+    protected BossSkillManager bossSkillManager;
+    protected bool summonActivated = false;
+    public bool IsCastingSkill = false;
+    protected virtual void Start()
     {
         boss = GetComponent<BaseBoss>();
         if (boss == null)
@@ -25,21 +26,6 @@ public class BossCombat : MonsterCombat
     public override void Attack()
     {
         isAttacking = true;
-
-        if (boss.isPhaseTwoActive)
-        {
-            if (!summonActivated)
-            {
-                boss.bossState.SwitchState(new BossCastSkillState(boss.bossState));
-                summonActivated = true;
-                InvincibleCooldown();
-            }
-        }
-        else
-        {
-            Debug.Log("Boss phase 1 attack!");
-        }
-
         AttackHit(transform.position, 2.5f);
     }
 
@@ -53,4 +39,8 @@ public class BossCombat : MonsterCombat
         summonActivated = false;
     }
 
+    public override void ReceiveDamage(float damage, Vector2 attackerPosition)
+    {
+        base.ReceiveDamage(damage, attackerPosition);
+    }
 }

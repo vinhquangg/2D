@@ -1,0 +1,278 @@
+fileFormatVersion: 2
+guid: 307ccc13f65c8fb4b835addb0bcfc3c5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: stages-burning-falling-pixel-meteorite-260nw-1987834073_5
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 8
+        width: 113
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981215e9df806aa46a366f9ae0fb2b57
+      internalID: -728534024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stages-burning-falling-pixel-meteorite-260nw-1987834073_2
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 8
+        width: 129
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06dbc3af6cf80eb43841943053c23409
+      internalID: -1764285124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stages-burning-falling-pixel-meteorite-260nw-1987834073_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 13
+        width: 73
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ffe6abb38ae7442b4042bb8cb3f277
+      internalID: 1388178265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stages-burning-falling-pixel-meteorite-260nw-1987834073_3
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 8
+        width: 113
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c7c272ee9559046b225c38ba8ed885
+      internalID: -1527371714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stages-burning-falling-pixel-meteorite-260nw-1987834073_4
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 8
+        width: 113
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d925f71667404d24e90eb060717f8065
+      internalID: -1534552658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stages-burning-falling-pixel-meteorite-260nw-1987834073_6
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 8
+        width: 72
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a64a53e00b153034c8192715afd91157
+      internalID: -567700460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stages-burning-falling-pixel-meteorite-260nw-1987834073_7
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 7
+        width: 72
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff1f520be783b04fa10aa61e2c5f665
+      internalID: 570780609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_1: 1388178265
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_10: 1984188874
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_11: -821412276
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_12: -813801987
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_14: -1576423403
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_17: -1318359416
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_18: 1972530342
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_19: -961799078
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_2: -1764285124
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_21: -1974941653
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_3: -1527371714
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_4: -1534552658
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_5: -728534024
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_6: -567700460
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_7: 570780609
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_8: 832424666
+      stages-burning-falling-pixel-meteorite-260nw-1987834073_9: -1354200600
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

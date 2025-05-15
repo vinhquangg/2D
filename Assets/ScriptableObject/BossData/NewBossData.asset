@@ -19,5 +19,7 @@ MonoBehaviour:
   attackRange: 3
   moveSpeed: 10
   knockbackForce: 2
-  specialAbilityCD: 3.5
-  phaseTwoSpecialAbilityName: Summon assassin or mage
+  specialAbilityCD: 60
+  castSkillDuration: 3.5
+  skills:
+  - {fileID: 11400000, guid: 269a442278f10d7419191a42bff74808, type: 2}

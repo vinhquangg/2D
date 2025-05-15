@@ -118,9 +118,9 @@ GameObject:
   - component: {fileID: 3005496570104516014}
   - component: {fileID: 8059010093175271093}
   - component: {fileID: 2226426251291038369}
-  - component: {fileID: 1277398162249157373}
   - component: {fileID: -5183684451543654633}
   - component: {fileID: 452925428236134903}
+  - component: {fileID: -463587148680830990}
   m_Layer: 9
   m_Name: PoinsonLord
   m_TagString: Untagged
@@ -353,19 +353,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 5333159449936525472}
---- !u!114 &1277398162249157373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2463251998968825796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9488c14c509a3ef4dbeec1a50828bcff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invincibleTime: 3
 --- !u!114 &-5183684451543654633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +378,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa285cef5c1e724ead7b5ea03a7e17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 11400000, guid: 3026f944d425467409e173c7ba2693f7, type: 2}
+  - {fileID: 11400000, guid: 269a442278f10d7419191a42bff74808, type: 2}
+  meteorPrefab: {fileID: 7053044253152403061, guid: 9a789e19789a256488d62a33e42f2842, type: 3}
+  bossZoneCollider: {fileID: 0}
+--- !u!114 &-463587148680830990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463251998968825796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cd744990a6e27479f772cc8a381025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invincibleTime: 0.25
+  IsCastingSkill: 0
 --- !u!1 &3188335013817114379
 GameObject:
   m_ObjectHideFlags: 0

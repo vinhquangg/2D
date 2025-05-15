@@ -40,10 +40,10 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
 
-            BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
+            MonsterCombat enemyScript = enemy.GetComponent<MonsterCombat>();
             if (enemyScript != null)
             {
-                enemyScript.TakeDamage(playerState.playerData.attackDamage, transform.position);
+                enemyScript.ReceiveDamage(playerState.playerData.attackDamage, transform.position);
                 playerEnergy.AddEnergy(playerState.playerData.energyPerHit);
                 playerEnergy.UpdateEnergySlider();
             }

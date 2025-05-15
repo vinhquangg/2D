@@ -77477,7 +77477,7 @@ GameObject:
   - component: {fileID: 1406035151}
   m_Layer: 0
   m_Name: BossSpawner
-  m_TagString: Untagged
+  m_TagString: BossZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

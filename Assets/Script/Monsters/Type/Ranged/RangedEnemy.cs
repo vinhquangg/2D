@@ -16,17 +16,12 @@ public class RangedEnemy : BaseEnemy
         return base.CanSeePlayer();
     }
 
-    public override void TakeDamage(int damage, Vector2 attackerPosition)
-    {
-        base.TakeDamage(damage, attackerPosition);
-    }
-
     public override IEnumerator Knockback(Vector2 attackerPosition, float knockbackForce)
     {
         return base.Knockback(attackerPosition, knockbackForce);
     }
 
-    public override IEnumerator ChangeColorTemporarily(Color newColor, float duration, int damage)
+    public override IEnumerator ChangeColorTemporarily(Color newColor, float duration, float damage)
     {
         return base.ChangeColorTemporarily(newColor, duration, damage);
     }

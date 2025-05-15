@@ -11,7 +11,6 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
     public float invincibleTime;
     protected bool isInvincible = false;
     protected bool isAttacking = false;
-
     private string playerTag = "Player";
     public bool IsAttacking => isAttacking;
 
@@ -38,7 +37,7 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
                 {
                     playerCombat.TakeDamage(baseEnemy.currentDamage);
                 }
-            }
+            }   
         }
     }
     protected IEnumerator InvincibleCooldown()
@@ -46,7 +45,17 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
         isInvincible = true;
         yield return new WaitForSeconds(invincibleTime);
         isInvincible = false;
+
     }
+
+    public virtual void ReceiveDamage(float damage, Vector2 attackerPosition)
+    {
+        if (isInvincible) return;
+
+        baseEnemy.TakeDamage(damage, attackerPosition);
+        StartCoroutine(InvincibleCooldown());
+    }
+
 
     public abstract void Attack();
 

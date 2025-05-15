@@ -194,10 +194,15 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         monsterName.text = enemyType.ToString();
     }
 
-    public virtual void TakeDamage(int damage, Vector2 attackerPosition)
+    public virtual void TakeDamage(float damage, Vector2 attackerPosition)
     {
         if (isDead) return;
 
+        if (isBoss)
+        {
+            if (bossState.bossCurrentState is BossCastSkillState)
+                return;
+        }
         currentHealth -= damage;
         if (healthBar != null)
         {
@@ -211,7 +216,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         if (currentHealth <= 0)
         {
             isDead = true;
-
 
             if (isBoss)
             {
@@ -234,6 +238,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
             }
         }
     }
+
 
     private void HandleBossDeath()
     {
@@ -302,7 +307,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         isKnockback = false; 
         rb.velocity = Vector2.zero; 
     }
-    public virtual IEnumerator ChangeColorTemporarily(Color newColor, float duration, int damage)
+    public virtual IEnumerator ChangeColorTemporarily(Color newColor, float duration, float damage)
     {
         spriteRenderer.color = newColor;
         yield return new WaitForSeconds(duration);

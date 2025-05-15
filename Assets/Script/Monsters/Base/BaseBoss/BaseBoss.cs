@@ -45,11 +45,4 @@ public abstract class BaseBoss : BaseEnemy
 
     }
 
-    // Override các phương thức không cần thiết
-    public override void TakeDamage(int damage, Vector2 attackerPosition)
-    {
-        base.TakeDamage(damage, attackerPosition);
-
-        ActivatePhaseTwo();
-    }
 }

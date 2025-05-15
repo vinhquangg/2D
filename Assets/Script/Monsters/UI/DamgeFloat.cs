@@ -13,7 +13,7 @@ public class DamageFloat : MonoBehaviour
 
     private Vector3 originalPosition;
 
-    public void SetText(int damage)
+    public void SetText(float damage)
     {
         textMesh.text = damage.ToString(); // Hiển thị số damage
         originalPosition = transform.position; // Lưu vị trí ban đầu

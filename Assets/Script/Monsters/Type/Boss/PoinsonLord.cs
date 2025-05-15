@@ -10,11 +10,6 @@ public class PoinsonLord : BaseBoss
         isBoss = true;
     }
 
-    public override void TakeDamage(int damage, Vector2 attackerPosition)
-    {
-        base.TakeDamage(damage, attackerPosition);
-    }
-
     public override bool CanSeePlayer()
     {
         return base.CanSeePlayer();

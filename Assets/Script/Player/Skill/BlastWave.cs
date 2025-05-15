@@ -17,7 +17,7 @@ public class BlastWave : MonoBehaviour
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, radius, enemyLayers);
         foreach (Collider2D enemy in enemies)
         {
-            enemy.GetComponent<BaseEnemy>()?.TakeDamage(damage, transform.position);
+            enemy.GetComponent<MonsterCombat>()?.ReceiveDamage(damage, transform.position);
 
             enemiesInRange.Add(enemy.transform);
         }
