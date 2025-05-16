@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BossSummoner : MonoBehaviour
@@ -7,33 +8,57 @@ public class BossSummoner : MonoBehaviour
     [Header("Summon Settings")]
     [SerializeField] private float summonRadius = 3f;
     [SerializeField] private BoxCollider2D bossZoneCollider;
+    [SerializeField] private float minionsKillTime;
+    [SerializeField] private TextMeshProUGUI countdownText;
     private BaseBoss boss;
     private SpawnZone[] spawnZones;
-
+    private List<BaseEnemy> summonedEnemies = new List<BaseEnemy>();
     private void Awake()
     {
         boss = GetComponent<BaseBoss>();
         if (boss == null)
         {
-            Debug.LogError("BossSummoner requires BaseBoss on the same GameObject!");
             enabled = false;
             return;
         }
+
+    }
+
+    private void Start()
+    {
         GameObject zoneObj = GameObject.FindWithTag("BossZone");
         if (zoneObj != null)
         {
             bossZoneCollider = zoneObj.GetComponent<BoxCollider2D>();
         }
         spawnZones = FindObjectsOfType<SpawnZone>();
+
+        GameObject canvas = GameObject.Find("Canvas");
+        if (canvas != null)
+        {
+            Transform summonTransform = canvas.transform.Find("SummonTime");
+            if (summonTransform != null)
+            {
+                countdownText = summonTransform.GetComponent<TMPro.TextMeshProUGUI>();
+            }
+        }
     }
 
     public void SummonEnemies()
     {
         if (!boss.isPhaseTwoActive)
-        {
-            Debug.Log("[BossSummoner] Boss chưa chuyển sang Phase 2 → không triệu hồi.");
             return;
+
+        foreach (var enemy in summonedEnemies)
+        {
+            if (enemy != null && !enemy.isDead && enemy.gameObject.activeInHierarchy)
+            {
+                Debug.Log("Cannot summon: previous summoned enemies still alive or not returned to pool.");
+                return;
+            }
         }
+
+        summonedEnemies.Clear();
 
         int totalSummoned = 0;
 
@@ -64,10 +89,7 @@ public class BossSummoner : MonoBehaviour
                 }
 
                 if (!validPosFound)
-                {
-                    Debug.LogWarning("Không tìm được vị trí hợp lệ trong bossZoneCollider để triệu hồi quái.");
                     continue;
-                }
 
                 GameObject enemy = ObjectPooling.Instance.Spawn(zone.zoneEnemyType, summonPos, Quaternion.identity);
 
@@ -79,6 +101,7 @@ public class BossSummoner : MonoBehaviour
                         baseEnemy.zoneID = zone.zoneID;
                         baseEnemy.assignedZone = zone;
                         baseEnemy.ResetEnemy();
+                        summonedEnemies.Add(baseEnemy);
 
                         Transform a = Instantiate(zone.patrolPointPrefab, summonPos + Random.insideUnitCircle * 2f, Quaternion.identity).transform;
                         Transform b = Instantiate(zone.patrolPointPrefab, summonPos + Random.insideUnitCircle * 2f, Quaternion.identity).transform;
@@ -94,7 +117,70 @@ public class BossSummoner : MonoBehaviour
             }
         }
 
-        Debug.Log($"[BossSummoner] Tổng cộng đã triệu hồi {totalSummoned} quái xung quanh boss.");
+        StartCoroutine(CheckMinionsKillTime());
     }
+
+
+    private IEnumerator CheckMinionsKillTime()
+    {
+        float timeLeft = minionsKillTime;
+        countdownText.gameObject.SetActive(true);
+
+        while (timeLeft > 0f)
+        {
+            countdownText.text = $"{Mathf.CeilToInt(timeLeft)}s";
+            yield return new WaitForSeconds(1f);
+            timeLeft--;
+
+            if (timeLeft <= minionsKillTime / 3f)
+                countdownText.color = Color.red;
+            else
+                countdownText.color = Color.white;
+
+            bool allDead = true;
+            foreach (var enemy in summonedEnemies)
+            {
+                if (enemy != null && !enemy.isDead)
+                {
+                    allDead = false;
+                    break;
+                }
+            }
+
+            if (allDead)
+            {
+                countdownText.gameObject.SetActive(false);
+                summonedEnemies.Clear();
+                yield break;
+            }
+        }
+
+
+        int aliveCount = 0;
+        foreach (var enemy in summonedEnemies)
+        {
+            if (enemy != null && !enemy.isDead)
+            {
+                aliveCount++;
+            }
+        }
+
+        float healAmount = aliveCount * 100f;
+        boss.Heal(healAmount);
+
+        foreach (var enemy in summonedEnemies)
+        {
+            if (enemy != null && !enemy.isDead)
+            {
+                enemy.isDead = true; 
+                ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
+            }
+        }
+
+        countdownText.gameObject.SetActive(false);
+
+    }
+
+
 
 }

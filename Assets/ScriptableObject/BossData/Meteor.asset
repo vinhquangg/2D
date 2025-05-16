@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationName: PoinsonsLord_CastSkill
   skillName: CastMeteor
-  castTime: 1
+  castTime: 2
   skillPhase: 1
   specialAbilityCD: 20

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationName: PoinsonsLord_CastSkill
   skillName: Summoner
-  castTime: 1
+  castTime: 2
   skillPhase: 2
   specialAbilityCD: 30

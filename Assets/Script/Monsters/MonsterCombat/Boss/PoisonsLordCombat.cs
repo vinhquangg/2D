@@ -20,14 +20,14 @@ public class PoisonsLordCombat : BossCombat
     {
         while (true)
         {
+            boss.ActivatePhaseTwo();
+
             if (canCastSpecial && !IsCastingSkill)
             {
                 int currentPhase = boss.isPhaseTwoActive ? 2 : 1;
 
                 var skillsThisPhase = bossSkillManager.skills.FindAll(s =>
                     boss.isPhaseTwoActive ? (s.skillPhase == 1 || s.skillPhase == 2) : s.skillPhase == 1
-                                    
-
                 );
 
                 if (skillsThisPhase.Count > 0)
@@ -35,10 +35,10 @@ public class PoisonsLordCombat : BossCombat
                     var skill = skillsThisPhase[Random.Range(0, skillsThisPhase.Count)];
 
                     IsCastingSkill = true;
+                    canCastSpecial = false;
                     isInvincible = true;
 
                     boss.bossState.SwitchState(new BossCastSkillState(boss.bossState));
-
                     yield return bossSkillManager.StartCoroutine(bossSkillManager.CastSkill(skill));
 
                     yield return new WaitForSeconds(skill.specialAbilityCD);
@@ -48,9 +48,11 @@ public class PoisonsLordCombat : BossCombat
                     canCastSpecial = true;
                 }
             }
-            yield return null;
+
+            yield return new WaitForSeconds(0.1f); 
         }
     }
+
 
     public override void ReceiveDamage(float damage, Vector2 attackerPosition)
     {

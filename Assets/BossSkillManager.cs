@@ -8,10 +8,10 @@ public class BossSkillManager : MonoBehaviour
     public List<BossSkillSO> skills = new List<BossSkillSO>();  
     private Animator animator;
     private BossSummoner bossSummoner;
-
+    private bool isCastingSkill = false;
     [SerializeField] private GameObject meteorPrefab;
     [SerializeField] private BoxCollider2D bossZoneCollider;
-
+    [SerializeField] private GameObject buffRingEffectPrefab;
     public BossSkillSO CurrentSkill { get; private set; }
 
     public static BossSkillManager Instance { get; private set; }
@@ -48,7 +48,7 @@ public class BossSkillManager : MonoBehaviour
 
     public void UseNextSkill()
     {
-        if (skills.Count == 0 || bossStateMachine == null || bossStateMachine.boss == null)
+        if (isCastingSkill || skills.Count == 0 || bossStateMachine == null || bossStateMachine.boss == null)
             return;
 
         bool isPhaseTwo = bossStateMachine.boss.isPhaseTwoActive;
@@ -66,12 +66,18 @@ public class BossSkillManager : MonoBehaviour
         }
     }
 
+
     public IEnumerator CastSkill(BossSkillSO skill)
     {
+        isCastingSkill = true;
+
         animator.Play(skill.animationName);
-        yield return new WaitForSeconds(skill.castTime);
         ExecuteSkillEffect(skill);
+
+        yield return new WaitForSeconds(skill.castTime);
+        isCastingSkill = false;
     }
+
 
     private void ExecuteSkillEffect(BossSkillSO skill)
     {
@@ -86,6 +92,10 @@ public class BossSkillManager : MonoBehaviour
         if (skill.skillName == "Hook") 
         {
             StartHook(); 
+        }
+        if (skill.skillName == "BuffRing")
+        {
+            Instantiate(buffRingEffectPrefab, transform.position, Quaternion.identity);
         }
     }
 
@@ -125,7 +135,6 @@ public class BossSkillManager : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         Vector3 bossPos = transform.position;
 
-        float hookDistance = 5f; 
         Vector3 direction = (bossPos - playerPos).normalized;
 
         Vector3 hookTargetPos = bossPos + (-direction * 1.5f); 

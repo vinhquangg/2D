@@ -42,7 +42,12 @@ public abstract class BaseBoss : BaseEnemy
         {
             isPhaseTwoActive = true;
         }
+    }
 
+    public void Heal(float amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, bossState.bossData.maxHealth);
+        healthBar.UpdateHealBar(currentHealth, bossState.bossData.maxHealth);
     }
 
 }

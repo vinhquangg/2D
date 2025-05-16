@@ -18,6 +18,7 @@ public class BossCastSkillState : IMonsterState
     {
         if (!isCooldown)
         {
+            bossState.boss.Flip(bossState.boss.player.transform);
             bossSkillManager.UseNextSkill();
             skillCooldownTimer = bossSkillManager.CurrentSkill.castTime ;
             isCooldown = true;

@@ -37,15 +37,14 @@ public class BossChaseState : IMonsterState
 
         float distanceToPlayer = Vector2.Distance(boss.transform.position, boss.boss.player.position);
 
-        if (distanceToPlayer > boss.bossData.attackRange)
+        if (distanceToPlayer > boss.boss.detectRange)
         {
             Vector2 direction = (boss.boss.player.position - boss.transform.position).normalized;
-
+            boss.SwitchState(new BossIdleState(boss));
         }
         else if (distanceToPlayer < boss.bossData.attackRange)
         {
             boss.SwitchState(new BossAttackState(boss));
-            Debug.Log("Attack State");
             return;
         }
         ChasePlayer();

@@ -4,7 +4,7 @@ using UnityEngine;
 public class DeadState : IPlayerState
 {
     private PlayerStateMachine player;
-    private bool hasDisappeared = false;
+    //private bool hasDisappeared = false;
 
     public DeadState(PlayerStateMachine player)
     {
@@ -32,29 +32,28 @@ public class DeadState : IPlayerState
         player.rb.bodyType = RigidbodyType2D.Static;
         //player.input.Disable(); 
 
-        // Không vô hiệu hóa player ngay lập tức, để coroutine có thể chạy
         player.StartCoroutine(ReviveCoroutine());
     }
 
     public void ExitState()
     {
         player.rb.bodyType = RigidbodyType2D.Dynamic;
-        //player.input.Enable(); 
+
     }
 
     public void HandleInput()
     {
-        // Không xử lý input trong trạng thái chết
+
     }
 
     public void PhysicsUpdate()
     {
-        // Không cần xử lý physics update trong trạng thái chết
+
     }
 
     public void UpdateState()
     {
-        // Cập nhật khi ở trạng thái Dead (nếu cần)
+
     }
 
     private IEnumerator ReviveCoroutine()
