@@ -7,6 +7,7 @@ public class MeteorScript : MonoBehaviour
     public Vector3 startScale = new Vector3(0.2f, 0.2f, 1f);
     public Vector3 endScale = new Vector3(1f, 1f, 1f);
 
+    [SerializeField] private GameObject poisonAreaPrefab;
     private bool hasImpacted = false;
     private Vector3 targetPosition;
 
@@ -24,17 +25,30 @@ public class MeteorScript : MonoBehaviour
         Debug.Log($"Meteor initialized at {transform.position}, falling to Y={impactY}");
     }
 
-
     void Update()
     {
         if (hasImpacted) return;
 
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPosition.x, impactY, 0), fallSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            new Vector3(targetPosition.x, impactY, 0),
+            fallSpeed * Time.deltaTime
+        );
 
         if (transform.position.y <= impactY + 0.1f)
         {
             Debug.Log("Meteor has impacted!");
             hasImpacted = true;
+
+            if (poisonAreaPrefab != null)
+            {
+                Instantiate(poisonAreaPrefab, new Vector3(targetPosition.x, impactY, 0), Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogWarning("PoisonAreaPrefab chưa được gắn!");
+            }
+
             Destroy(gameObject, 0.5f);
         }
     }

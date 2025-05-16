@@ -33,4 +33,14 @@ public class PlayerInputHandler : MonoBehaviour
     {
         InputActions.Disable();
     }
+
+    public void DisablePlayerInput()
+    {
+        playerAction.Disable();
+    }
+
+    public void EnablePlayerInput()
+    {
+        playerAction.Enable();
+    }
 }

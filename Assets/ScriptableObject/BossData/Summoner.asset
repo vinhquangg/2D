@@ -15,3 +15,5 @@ MonoBehaviour:
   animationName: PoinsonsLord_CastSkill
   skillName: Summoner
   castTime: 1
+  skillPhase: 2
+  specialAbilityCD: 30

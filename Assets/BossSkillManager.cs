@@ -5,13 +5,15 @@ using UnityEngine;
 public class BossSkillManager : MonoBehaviour
 {
     private BossStateMachine bossStateMachine;
-    public List<BossSkillSO> skills = new List<BossSkillSO>();  // sửa thành ScriptableObject
-    private int currentSkillIndex = 0;
+    public List<BossSkillSO> skills = new List<BossSkillSO>();  
     private Animator animator;
     private BossSummoner bossSummoner;
+
     [SerializeField] private GameObject meteorPrefab;
     [SerializeField] private BoxCollider2D bossZoneCollider;
+
     public BossSkillSO CurrentSkill { get; private set; }
+
     public static BossSkillManager Instance { get; private set; }
 
     private void Awake()
@@ -37,28 +39,42 @@ public class BossSkillManager : MonoBehaviour
         {
             bossZoneCollider = zoneObj.GetComponent<BoxCollider2D>();
         }
+
+        if (bossStateMachine?.boss == null)
+        {
+            Debug.LogWarning("Boss or BossStateMachine not found on BossSkillManager.");
+        }
     }
 
     public void UseNextSkill()
     {
-        if (skills.Count > 0)
+        if (skills.Count == 0 || bossStateMachine == null || bossStateMachine.boss == null)
+            return;
+
+        bool isPhaseTwo = bossStateMachine.boss.isPhaseTwoActive;
+
+        List<BossSkillSO> validSkills = skills.FindAll(skill =>
+            (isPhaseTwo && (skill.skillPhase == 1 || skill.skillPhase == 2)) ||
+            (!isPhaseTwo && skill.skillPhase == 1)
+        );
+
+        if (validSkills.Count > 0)
         {
-            int randomIndex = Random.Range(0, skills.Count);
-            CurrentSkill = skills[randomIndex];
+            int randomIndex = Random.Range(0, validSkills.Count);
+            CurrentSkill = validSkills[randomIndex];
             StartCoroutine(CastSkill(CurrentSkill));
         }
     }
 
-    private IEnumerator CastSkill(BossSkillSO skill)
+    public IEnumerator CastSkill(BossSkillSO skill)
     {
         animator.Play(skill.animationName);
-        yield return new WaitForSeconds(skill.castTime);  
+        yield return new WaitForSeconds(skill.castTime);
         ExecuteSkillEffect(skill);
     }
 
     private void ExecuteSkillEffect(BossSkillSO skill)
     {
-
         if (skill.skillName == "CastMeteor")
         {
             CastMeteor();
@@ -67,7 +83,10 @@ public class BossSkillManager : MonoBehaviour
         {
             SummonEnemies();
         }
-
+        if (skill.skillName == "Hook") 
+        {
+            StartHook(); 
+        }
     }
 
     private void SummonEnemies()
@@ -97,4 +116,37 @@ public class BossSkillManager : MonoBehaviour
             maxAttempts--;
         }
     }
+
+    private void StartHook()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
+        Vector3 playerPos = player.transform.position;
+        Vector3 bossPos = transform.position;
+
+        float hookDistance = 5f; 
+        Vector3 direction = (bossPos - playerPos).normalized;
+
+        Vector3 hookTargetPos = bossPos + (-direction * 1.5f); 
+
+        StartCoroutine(MovePlayerToPosition(player, hookTargetPos, 0.3f));
+    }
+
+
+    private IEnumerator MovePlayerToPosition(GameObject player, Vector3 targetPos, float duration)
+    {
+        float elapsed = 0f;
+        Vector3 startPos = player.transform.position;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            player.transform.position = Vector3.Lerp(startPos, targetPos, elapsed / duration);
+            yield return null;
+        }
+
+        player.transform.position = targetPos;
+    }
+
 }

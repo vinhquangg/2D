@@ -123,3 +123,4 @@ MonoBehaviour:
   impactY: 0
   startScale: {x: 0.2, y: 0.2, z: 1}
   endScale: {x: 1, y: 1, z: 1}
+  poisonAreaPrefab: {fileID: 4819062480715665768, guid: 7b17f8501a000e34d9ce036d663bf8cb, type: 3}

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PoisonsLordCombat : BossCombat
@@ -7,36 +6,49 @@ public class PoisonsLordCombat : BossCombat
     private Coroutine invincibleCoroutine;
     private float defaultInvincibleTime;
 
-    private float specialAbilityCooldownTimer = 0f;
     private bool canCastSpecial = true;
+    private Coroutine cooldownCoroutine;
+
     protected override void Start()
     {
         base.Start();
         defaultInvincibleTime = invincibleTime;
+        StartCoroutine(UseSkillsLoop());
     }
-    public override void Attack()
+
+    private IEnumerator UseSkillsLoop()
     {
-        base.Attack();
-        boss.ActivatePhaseTwo();
-
-        if (boss.isPhaseTwoActive)
+        while (true)
         {
-            if (!summonActivated && canCastSpecial)
+            if (canCastSpecial && !IsCastingSkill)
             {
-                isInvincible = true;
-                boss.bossState.SwitchState(new BossCastSkillState(boss.bossState));
-                summonActivated = true;
-                IsCastingSkill = true;
-                canCastSpecial = false;
-                specialAbilityCooldownTimer = boss.bossState.bossData.specialAbilityCD;
+                int currentPhase = boss.isPhaseTwoActive ? 2 : 1;
 
-                StartCoroutine(ResetCastSkillAfterDelay(bossSkillManager.CurrentSkill.castTime));
-                StartSpecialCooldown();
+                var skillsThisPhase = bossSkillManager.skills.FindAll(s =>
+                    boss.isPhaseTwoActive ? (s.skillPhase == 1 || s.skillPhase == 2) : s.skillPhase == 1
+                                    
+
+                );
+
+                if (skillsThisPhase.Count > 0)
+                {
+                    var skill = skillsThisPhase[Random.Range(0, skillsThisPhase.Count)];
+
+                    IsCastingSkill = true;
+                    isInvincible = true;
+
+                    boss.bossState.SwitchState(new BossCastSkillState(boss.bossState));
+
+                    yield return bossSkillManager.StartCoroutine(bossSkillManager.CastSkill(skill));
+
+                    yield return new WaitForSeconds(skill.specialAbilityCD);
+
+                    IsCastingSkill = false;
+                    isInvincible = false;
+                    canCastSpecial = true;
+                }
             }
-        }
-        else
-        {
-            Debug.Log("Boss phase 1 attack!");
+            yield return null;
         }
     }
 
@@ -44,13 +56,11 @@ public class PoisonsLordCombat : BossCombat
     {
         if (boss.bossState != null && bossState.bossCurrentState is BossCastSkillState)
         {
-            invincibleTime += 0.5f;  
-            Debug.Log("Invincible Time extended: " + invincibleTime);
+            invincibleTime += 0.5f;
         }
         else
         {
-            invincibleTime = defaultInvincibleTime;  
-            Debug.Log("Invincible Time reset to default: " + invincibleTime);
+            invincibleTime = defaultInvincibleTime;
         }
 
         base.ReceiveDamage(damage, attackerPosition);
@@ -62,45 +72,10 @@ public class PoisonsLordCombat : BossCombat
         invincibleCoroutine = StartCoroutine(InvincibleCooldown());
     }
 
-    private void StartSpecialCooldown()
-    {
-        if (cooldownCoroutine != null)
-        {
-            StopCoroutine(cooldownCoroutine);
-        }
-        cooldownCoroutine = StartCoroutine(SpecialCooldownCoroutine());
-    }
-
-    private Coroutine cooldownCoroutine;
-
-    private IEnumerator SpecialCooldownCoroutine()
-    {
-        canCastSpecial = false;
-        yield return new WaitForSeconds(boss.bossState.bossData.specialAbilityCD);
-        canCastSpecial = true;
-    }
-
-    private IEnumerator ResetCastSkillAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        IsCastingSkill = false;
-        summonActivated = false; 
-    }
-
-    //private void UsePoisonSkill()
-    //{
-    //    // Ví dụ: gọi skill độc từ BossSkillManager
-    //    if (bossSkillManager != null)
-    //    {
-    //        bossSkillManager.CastPoisonCloud();
-    //        Debug.Log("PoisonsLord sử dụng skill Poison Cloud!");
-    //    }
-    //}
-
     public override void StopAttack()
     {
         base.StopAttack();
-
-        // Thêm logic dừng tấn công nếu cần
+        canCastSpecial = false;
+        StopAllCoroutines();
     }
 }

@@ -11,7 +11,6 @@ public class BossData : ScriptableObject
     public float attackRange;
     public float moveSpeed;
     public float knockbackForce;
-    public float specialAbilityCD;
 
     public List<BossSkillSO> skills;
 }
