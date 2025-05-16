@@ -7,7 +7,7 @@ public abstract class BossCombat : MonsterCombat
     protected BaseBoss boss;
     protected BossSkillManager bossSkillManager;
     protected bool summonActivated = false;
-    public bool IsCastingSkill = false;
+    public bool IsCastingSkill => bossSkillManager != null && bossSkillManager.isCastingSkill;
     protected virtual void Start()
     {
         boss = GetComponent<BaseBoss>();

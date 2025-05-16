@@ -15,5 +15,5 @@ MonoBehaviour:
   animationName: PoinsonsLord_Buff
   skillName: BulletRing
   castTime: 2
-  skillPhase: 2
-  specialAbilityCD: 20
+  skillPhase: 1
+  specialAbilityCD: 5

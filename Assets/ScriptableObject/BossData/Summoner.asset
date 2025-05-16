@@ -16,4 +16,4 @@ MonoBehaviour:
   skillName: Summoner
   castTime: 2
   skillPhase: 2
-  specialAbilityCD: 30
+  specialAbilityCD: 20

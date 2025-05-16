@@ -16,4 +16,4 @@ MonoBehaviour:
   skillName: CastMeteor
   castTime: 2
   skillPhase: 1
-  specialAbilityCD: 20
+  specialAbilityCD: 8

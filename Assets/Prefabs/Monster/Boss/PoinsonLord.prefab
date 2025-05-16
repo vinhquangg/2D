@@ -388,7 +388,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5f4cc2b88c40284194b6ea01f3c1020, type: 2}
   meteorPrefab: {fileID: 7053044253152403061, guid: 9a789e19789a256488d62a33e42f2842, type: 3}
   bossZoneCollider: {fileID: 0}
-  buffRingEffectPrefab: {fileID: 5336173375519430891, guid: b8fa8bd200db9454fa1470f16efa44b3, type: 3}
+  bulletCirclePrefab: {fileID: 5336173375519430891, guid: b8fa8bd200db9454fa1470f16efa44b3, type: 3}
 --- !u!114 &-463587148680830990
 MonoBehaviour:
   m_ObjectHideFlags: 0

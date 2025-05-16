@@ -3,44 +3,51 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage = 10f;
-    public float blinkInterval = 0.2f;
+    private float growSpeed = 1.5f;
+    private float maxScale = 1.5f;
+    private float blinkSpeed = 6f;
+    private float damage = 10f;
+    private float moveSpeed = 1.2f;
 
-    private SpriteRenderer spriteRenderer;
-    private bool isActive = true;
+    private SpriteRenderer sr;
+    private Vector3 moveDir;
 
-    private void Start()
+    public void Initialize(Vector3 direction, float _maxScale, float _blinkSpeed, float _damage, float _moveSpeed)
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        StartCoroutine(Blink());
+        moveDir = direction.normalized;
+        maxScale = _maxScale;
+        blinkSpeed = _blinkSpeed;
+        damage = _damage;
+        moveSpeed = _moveSpeed;
+        transform.localScale = Vector3.zero;
+
+        Destroy(gameObject, 10f);
     }
 
-    private IEnumerator Blink()
+    private void Awake()
     {
-        while (isActive)
-        {
-            spriteRenderer.enabled = !spriteRenderer.enabled;
-            yield return new WaitForSeconds(blinkInterval);
-        }
+        sr = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        transform.position += moveDir * moveSpeed * Time.deltaTime;
+
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * maxScale, Time.deltaTime * growSpeed);
+
+        float alpha = Mathf.Abs(Mathf.Sin(Time.time * blinkSpeed));
+        Color c = sr.color;
+        c.a = alpha;
+        sr.color = c;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!isActive) return;
-
         if (other.CompareTag("Player"))
         {
-            var playercomabt = other.GetComponent<PlayerCombat>();
-            if (playercomabt != null)
-            {
-                playercomabt.TakeDamage(damage);
-            }
-             Destroy(gameObject);
+            PlayerCombat pc = other.GetComponent<PlayerCombat>();
+            if (pc != null)
+                pc.TakeDamage(damage);
         }
-    }
-
-    private void OnDisable()
-    {
-        isActive = false;
     }
 }

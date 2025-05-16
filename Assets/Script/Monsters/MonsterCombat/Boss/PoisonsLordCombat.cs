@@ -5,9 +5,9 @@ public class PoisonsLordCombat : BossCombat
 {
     private Coroutine invincibleCoroutine;
     private float defaultInvincibleTime;
-
+    private bool hasForcedSummon = false;
     private bool canCastSpecial = true;
-    private Coroutine cooldownCoroutine;
+    private Coroutine currentCastCoroutine;
 
     protected override void Start()
     {
@@ -22,10 +22,20 @@ public class PoisonsLordCombat : BossCombat
         {
             boss.ActivatePhaseTwo();
 
+            if (!hasForcedSummon && boss.currentHealth <= boss.bossState.bossData.maxHealth * 0.3f)
+            {
+                if (currentCastCoroutine != null)
+                {
+                    StopCoroutine(currentCastCoroutine);
+                    currentCastCoroutine = null;
+                }
+                yield return StartCoroutine(ForceSummon());
+                hasForcedSummon = true;
+            }
+
             if (canCastSpecial && !IsCastingSkill)
             {
                 int currentPhase = boss.isPhaseTwoActive ? 2 : 1;
-
                 var skillsThisPhase = bossSkillManager.skills.FindAll(s =>
                     boss.isPhaseTwoActive ? (s.skillPhase == 1 || s.skillPhase == 2) : s.skillPhase == 1
                 );
@@ -34,23 +44,54 @@ public class PoisonsLordCombat : BossCombat
                 {
                     var skill = skillsThisPhase[Random.Range(0, skillsThisPhase.Count)];
 
-                    IsCastingSkill = true;
                     canCastSpecial = false;
                     isInvincible = true;
 
                     boss.bossState.SwitchState(new BossCastSkillState(boss.bossState));
-                    yield return bossSkillManager.StartCoroutine(bossSkillManager.CastSkill(skill));
+
+                    if (currentCastCoroutine != null)
+                    {
+                        StopCoroutine(currentCastCoroutine);
+                    }
+                    currentCastCoroutine = StartCoroutine(bossSkillManager.CastSkill(skill));
+                    yield return currentCastCoroutine;
 
                     yield return new WaitForSeconds(skill.specialAbilityCD);
 
-                    IsCastingSkill = false;
-                    isInvincible = false;
                     canCastSpecial = true;
+                    isInvincible = false;
                 }
             }
 
-            yield return new WaitForSeconds(0.1f); 
+            yield return new WaitForSeconds(0.1f);
         }
+    }
+
+
+    private IEnumerator ForceSummon()
+    {
+        isInvincible = true;
+        canCastSpecial = false;
+
+        boss.bossState.SwitchState(new BossCastSkillState(boss.bossState));
+
+        // Tìm skill Summoner
+        var summonSkill = bossSkillManager.skills.Find(s => s.skillName == "Summoner");
+
+        if (summonSkill != null)
+        {
+            bossSkillManager.CurrentSkill = summonSkill;
+            yield return bossSkillManager.StartCoroutine(bossSkillManager.CastSkill(summonSkill));
+        }
+        else
+        {
+            Debug.LogWarning("Không tìm thấy skill 'Summoner' trong danh sách!");
+        }
+
+        yield return new WaitForSeconds(1f); 
+        isInvincible = false;
+        canCastSpecial = true;
+        hasForcedSummon = true; 
     }
 
 
@@ -78,6 +119,12 @@ public class PoisonsLordCombat : BossCombat
     {
         base.StopAttack();
         canCastSpecial = false;
-        StopAllCoroutines();
+
+        if (currentCastCoroutine != null)
+        {
+            StopCoroutine(currentCastCoroutine);
+            currentCastCoroutine = null;
+        }
     }
+
 }
