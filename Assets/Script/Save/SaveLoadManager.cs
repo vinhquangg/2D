@@ -23,8 +23,8 @@ public class SaveLoadManager : MonoBehaviour
 
     public void NewGame()
     {
-        PlayerSaveData playerData = new PlayerSaveData(); // hoặc dùng default
-        PlayerManager.Instance.SpawnPlayer(playerData.position); // Gọi spawn
+        PlayerSaveData playerData = new PlayerSaveData(); 
+        PlayerManager.Instance.SpawnPlayer(playerData.position); 
     }
 
     public void SaveGame()
@@ -40,7 +40,7 @@ public class SaveLoadManager : MonoBehaviour
                 var monsterData = saveable.SaveData();
                 if (monsterData is EnemySaveData e)
                 {
-                    //e.currentState = enemy.monsterState.monsterCurrentStateName;
+
                     e.currentState = enemy.isBoss
                         ? enemy.bossState?.bossCurrentStateName
                         : enemy.monsterState?.monsterCurrentStateName;
@@ -57,7 +57,7 @@ public class SaveLoadManager : MonoBehaviour
         {
             SpawnZoneSaveData zoneData = zone.SaveData();
             zoneSaveDataList.Add(zoneData);
-            //Debug.Log($"Saving SpawnZone: {zoneData.zoneID}, SpawnInfos Count: {zoneData.spawnInfos.Count}");
+
         }
 
         SaveData saveData = new SaveData

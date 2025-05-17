@@ -53,7 +53,6 @@ public class BossSummoner : MonoBehaviour
         {
             if (enemy != null && !enemy.isDead && enemy.gameObject.activeInHierarchy)
             {
-                Debug.Log("Cannot summon: previous summoned enemies still alive or not returned to pool.");
                 return;
             }
         }
@@ -64,7 +63,7 @@ public class BossSummoner : MonoBehaviour
 
         foreach (var zone in spawnZones)
         {
-            int summonCount = Mathf.FloorToInt(zone.maxSpawnCount * 0.5f);
+            int summonCount = zone.maxSpawnCount;
 
             for (int i = 0; i < summonCount / 2; i++)
             {

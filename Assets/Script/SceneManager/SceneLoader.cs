@@ -39,6 +39,7 @@ public class SceneLoader : MonoBehaviour
         if (sceneName == SceneName.Menu)
         {
             GameManager.instance.TogglePause();
+            SoundManager.Play("Menu");
         }
 
         yield return SceneManager.LoadSceneAsync(sceneName.ToString());
@@ -46,14 +47,14 @@ public class SceneLoader : MonoBehaviour
 
         if (sceneName != SceneName.Menu)
         {
+            SoundManager.Play("Play");
             Vector3 spawnPos = (PlayerSaveTemp.tempData != null) ? PlayerSaveTemp.tempData.position : Vector3.zero;
 
-            // Chỉ cần spawn player và không cần thêm bước load dữ liệu lại nếu PlayerSaveTemp có dữ liệu
+
             PlayerManager.Instance.SpawnPlayer(spawnPos);
 
             yield return null;
 
-            // Nếu không có dữ liệu lưu, lấy dữ liệu mặc định và load vào player
             if (PlayerSaveTemp.tempData == null)
             {
                 var playerObj = PlayerManager.Instance.GetCurrentPlayer();

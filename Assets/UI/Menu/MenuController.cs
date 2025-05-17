@@ -2,11 +2,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+    [SerializeField] private Slider soundSlider;
+    //[SerializeField] private Slider sfxSlider;
+    //[SerializeField] private Slider sfxSlider;
     private string saveFileName = "save_game.json";
-
+    private void Start()
+    {
+        if(soundSlider != null)
+        {
+            SoundManager.SetSFXSlider(soundSlider);
+        }
+        
+    }
     public void LoadGame()
     {
         string path = GetSavePath();
@@ -67,11 +78,11 @@ public class MenuController : MonoBehaviour
             Debug.Log("Deleted old save file: " + path);
         }
 
+
         PlayerSaveTemp.tempData = null;
-
-        SaveLoadManager.instance.NewGame();
-
         SceneLoader.instance.LoadScene(SceneName.SampleScene);
+        //SaveLoadManager.instance.NewGame();
+
 
         //GameManager.instance.ShowPlayerUI();
     }
