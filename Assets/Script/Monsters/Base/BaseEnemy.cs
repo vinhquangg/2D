@@ -20,6 +20,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public GameObject pointB;
     public EnemyType enemyType;
     public GameObject patrolPointPrefab;
+    public GameObject soulPrefab;
     public int enemyID;
     public string zoneID;
     public Color originalColor { get; private set; }
@@ -39,6 +40,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public bool isDead = false;
     public bool isLoad = false;
     public Transform currentPoint { get; set; }
+    private Transform soulSpawnPoint;
     protected virtual void Start()
     {
         anim = GetComponent<Animator>();
@@ -60,6 +62,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
             monsterState = GetComponent<MonstersStateMachine>();
             SetupStats();
         }
+        soulSpawnPoint = this.transform;
         InitEnemy();
     }
 
@@ -126,15 +129,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
                 SetupStats();
             }
         }
-        //else
-        //{
-        //    if (healthBar != null)
-        //    {
-        //        healthBar.UpdateHealBar(currentHealth, monsterState.monsterData.maxHealth);
-        //    }
-        //}
-
-
     }
 
 
@@ -150,25 +144,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
 
         return false;
     }
-
-    //public virtual void Flip(Transform targetPoint)
-    //{
-    //    if (targetPoint == null) return;
-
-    //    //Vector3 scale = transform.localScale;
-
-    //    if (targetPoint.position.x < transform.position.x)
-    //    {
-    //        spriteRenderer.flipX = true;
-    //    }
-    //    else
-    //    {
-    //        spriteRenderer.flipX = false;
-    //    }
-
-    //    //transform.localScale = scale;
-
-    //}
 
     public virtual void Flip(Transform targetPoint)
     {
@@ -258,6 +233,16 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         if (pointA != null) Destroy(pointA);
         if (pointB != null) Destroy(pointB);
 
+        if (soulPrefab != null)
+        {
+            GameObject soulInstance = Instantiate(soulPrefab, soulSpawnPoint.position, Quaternion.identity);
+            SoulDrop soulDrop = soulInstance.GetComponent<SoulDrop>();
+            if (soulDrop != null)
+            {
+                soulDrop.SetSoulAmount(monsterState.monsterData.soulDrop);
+            }
+        }
+
         if (EnemySpawnerManager.Instance != null)
         {
             EnemySpawnerManager.Instance.EnemyDied(this);
@@ -265,33 +250,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
 
         Debug.Log($"{enemyType} is dead!");
     }
-
-
-    //private void HandleEnemyDeath()
-    //{
-    //    if (enemyType == EnemyType.Assassin || enemyType == EnemyType.Mage)
-    //    {
-    //        monsterState.SwitchState(new MonsterDeadState(monsterState));
-
-    //        if (pointA != null) Destroy(pointA);
-    //        if (pointB != null) Destroy(pointB);
-
-    //        if (EnemySpawnerManager.Instance != null)
-    //        {
-    //            EnemySpawnerManager.Instance.EnemyDied(this);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        if (monsterState.monsterCurrentState is MonsterAttackState ||
-    //            monsterState.monsterCurrentState is MonsterChaseState ||
-    //            monsterState.monsterCurrentState is MonsterIdleState ||
-    //            monsterState.monsterCurrentState is MonsterPatrolState)
-    //        {
-    //            monsterState.SwitchState(new MonsterHurtState(monsterState));
-    //        }
-    //    }
-    //}
 
     public virtual IEnumerator Knockback(Vector2 attackerPosition, float knockbackForce)
     {
@@ -356,7 +314,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         EnemySaveData save = data as EnemySaveData;
         if (save == null) return;
 
-        // Gán các giá trị cơ bản
         this.enemyID = save.enemyID;
         this.enemyType = save.type;
         zoneID = save.zoneID;
@@ -364,10 +321,10 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         currentHealth = save.health;
         isLoad = true;
 
-        // Gán zone
+
         assignedZone = EnemySpawnerManager.Instance.GetZoneByID(zoneID);
 
-        // Cập nhật máu
+
         if (healthBar != null)
         {
             healthBar.UpdateHealBar(currentHealth,
@@ -389,7 +346,6 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
             return;
         }
 
-        // Gán state
         if (monsterState != null && monsterState.stateFactory.TryGetValue(save.currentState, out var createState))
         {
             monsterState.SwitchState(createState());

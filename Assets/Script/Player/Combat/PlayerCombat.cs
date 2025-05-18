@@ -9,9 +9,11 @@ public class PlayerCombat : MonoBehaviour
     public float invincibleTime = 0.25f;
     public float currentHealth { get; set; }
     public float currentEnergy { get; set; }
+    public int currentSoul { get; set; }
     private PlayerHealth playerHealth;
     public PlayerEnergy playerEnergy { get; private set; }
-    private PlayerStateMachine playerState;
+    private PlayerSoul playerSoul;
+    public PlayerStateMachine playerState { get; set; }
     private bool isInvincible = false;
 
     private void Start()
@@ -19,9 +21,11 @@ public class PlayerCombat : MonoBehaviour
         playerState = GetComponent<PlayerStateMachine>();
         playerHealth = GetComponent<PlayerHealth>();
         playerEnergy = GetComponent<PlayerEnergy>();
+        playerSoul = GetComponent<PlayerSoul>();
         currentHealth = playerState.playerData.maxHealth;
         playerHealth.UpdateHealthBarPlayer(currentHealth, playerState.playerData.maxHealth);
         currentEnergy = playerEnergy.GetMaxEnergy();
+        currentSoul = playerSoul.GetSoul();
         //playerEnergy.UpdateEnergySlider();
     }
 

@@ -36,6 +36,7 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
                 if (playerCombat != null)
                 {
                     playerCombat.TakeDamage(baseEnemy.currentDamage);
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.hit);
                 }
             }   
         }
@@ -47,14 +48,15 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
         isInvincible = false;
 
     }
-
     public virtual void ReceiveDamage(float damage, Vector2 attackerPosition)
     {
-        if (isInvincible) return;
+        if (!gameObject.activeInHierarchy || isInvincible || baseEnemy.isDead) return;
 
-        baseEnemy.TakeDamage(damage, attackerPosition);
         StartCoroutine(InvincibleCooldown());
+        baseEnemy.TakeDamage(damage, attackerPosition);
+
     }
+
 
 
     public abstract void Attack();

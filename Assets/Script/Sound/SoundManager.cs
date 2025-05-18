@@ -16,8 +16,8 @@ public class SoundManager : MonoBehaviour
             soundEffectLibrary = GetComponent<SoundEffectLibrary>();
             DontDestroyOnLoad(gameObject);
 
-            audioSource.volume = VolumeSettings.Volume;
-            VolumeSettings.OnVolumeChanged += OnVolumeChanged;
+
+
         }
     }
 
@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
     {
         if (instance == this)
         {
-            VolumeSettings.OnVolumeChanged -= OnVolumeChanged;
+
         }
     }
 
@@ -47,12 +47,12 @@ public class SoundManager : MonoBehaviour
     {
         if (slider == null || instance == null) return;
 
-        slider.value = VolumeSettings.Volume;
+
 
         slider.onValueChanged.RemoveAllListeners();
         slider.onValueChanged.AddListener(value =>
         {
-            VolumeSettings.Volume = value;
+
         });
     }
 }

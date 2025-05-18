@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 4227877050755013167}
   - component: {fileID: 845132854180800111}
   - component: {fileID: -4418162832482799502}
+  - component: {fileID: -8982733026366}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -230,7 +231,7 @@ MonoBehaviour:
     m_Bits: 640
   spriteRenderer: {fileID: 6381905456997655975}
   hitDuration: 0.2
-  invincibleTime: 1
+  invincibleTime: 0.25
 --- !u!114 &8046837243532607771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,5 +281,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc0459a4de9a48149ac64d3d5c349e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8982733026366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980675432936059014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a1dfa9004ad114285653caf848f4c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

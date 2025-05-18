@@ -32,6 +32,7 @@ public class PoisonArea : MonoBehaviour
                 if (player != null)
                 {
                     player.GetComponent<PlayerCombat>().TakeDamage(damagePerTick);
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.hit);
                 }
             }
         }

@@ -118,7 +118,7 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
 
         dialoguePanel.SetActive(true);
         StartCoroutine(TypeLine());
-        SoundManager.Play("Dialogue");
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.dialogue);
         Time.timeScale = 0f;
         npcStateMachine.SwitchState(new NPCIdleState(npcStateMachine));
     }
@@ -190,6 +190,7 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
         Time.timeScale = 1f;
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.play);
     }
 }
 

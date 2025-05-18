@@ -222,6 +222,7 @@ MonoBehaviour:
   pointB: {fileID: 0}
   enemyType: 2
   patrolPointPrefab: {fileID: 4684223294616517440, guid: d81141e572101bb4489eb0371fc5cb68, type: 3}
+  soulPrefab: {fileID: 3908041274138531740, guid: c6edf0586c930604ba5ac2bc0ace508d, type: 3}
   enemyID: 0
   zoneID: 
   hitDuration: 0.2
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63c9140ba75b4347983719d6eb65018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibleTime: 0.25
+  invincibleTime: 0.5
   playerInRange: 0
 --- !u!114 &573031696873822133
 MonoBehaviour:

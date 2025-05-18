@@ -48,6 +48,7 @@ public class Bullet : MonoBehaviour
             PlayerCombat pc = other.GetComponent<PlayerCombat>();
             if (pc != null)
                 pc.TakeDamage(damage);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.hit);
         }
     }
 }

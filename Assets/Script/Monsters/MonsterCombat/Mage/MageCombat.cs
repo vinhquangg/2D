@@ -81,7 +81,6 @@ public class MageCombat : MonsterCombat
         {
             sr.flipX = direction.x < 0;
         }
-        // projectile.transform.right = direction;
     }
 
 }

@@ -18,6 +18,7 @@ public class ProjectileScript : MonoBehaviour
             if (playerCombat != null)
             {
                 playerCombat.TakeDamage(damage);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.hit);
                 Destroy(gameObject);
             }
         }

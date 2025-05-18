@@ -12,15 +12,9 @@ public class ShopUIController : MonoBehaviour
     private int maxSlots = 10;
     [SerializeField] private ItemDetailUI itemDetailUI;
     public static ShopUIController instance { get; private set; }
-    //[System.Serializable]
-    //public class ShopItem
-    //{
-    //    public Sprite itemIcon;
-    //    public int itemPrice;
-    //}
     [Tooltip("List of item will apear in shop")]
     public List<ItemData> shopItems;
-
+    private PlayerSoul playerSoul;
     private void Awake()
     {
         if (instance == null)
@@ -37,6 +31,7 @@ public class ShopUIController : MonoBehaviour
     {
         itemDetailUI.Hide();
         InitializedSlot();
+        playerSoul = FindObjectOfType<PlayerSoul>();
     }
     public void InitializedSlot()
     {
@@ -53,7 +48,7 @@ public class ShopUIController : MonoBehaviour
             GameObject slot = Instantiate(slotPrefab, gridContainer);
 
             slot.transform.Find("ItemIcon").GetComponent<UnityEngine.UI.Image>().sprite = item.itemIcon;
-            slot.transform.Find("ItemPrice").GetComponent<TextMeshProUGUI>().text = item.itemPrice.ToString() + " Coins";
+            slot.transform.Find("ItemPrice").GetComponent<TextMeshProUGUI>().text = item.itemPrice.ToString() + " Soul";
 
             Button button = slot.GetComponent<Button>();
             if (button != null)
@@ -75,4 +70,26 @@ public class ShopUIController : MonoBehaviour
         GameManager.instance.CloseShopUI();
         Time.timeScale = 1;
     }
+
+    public void BuySelectedItem(ItemData item)
+    {
+        if (playerSoul == null)
+        {
+            Debug.LogError("PlayerSoul không tìm thấy!");
+            return;
+        }
+
+        bool success = playerSoul.SpendSoul(item.itemPrice);
+        if (success)
+        {
+            Debug.Log($"Mua thành công item {item.itemName} với giá {item.itemPrice} Soul");
+            itemDetailUI.Hide();
+            InitializedSlot(); 
+        }
+        else
+        {
+            Debug.Log("Không đủ Soul để mua item này!");
+        }
+    }
+
 }

@@ -1,30 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] AudioSource SoundSource;
-    [SerializeField] AudioSource EffectSource;
-
+    public static AudioManager Instance { get; private set; }
+    public AudioMixer audioMixer;
+    [Header("Audio Source")]
+    public AudioSource Background;
+    public AudioSource EffectSource;
+    [Header("Audio Clip")]
     public AudioClip background;
-    public AudioClip death;
     public AudioClip shockWave;
     public AudioClip thunder;
     public AudioClip dialogue;
-    public AudioClip hit;
+    [Header("Player")]
+    public AudioClip hit; 
+    [Header("Audio Source")]
+    public AudioClip death;
+    [Header("Audio Source")]
+    public AudioClip play;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     private void Start()
     {
-        SoundSource.clip = background;
-        SoundSource.Play();
+        VolumeSettings.ApplySavedVolumes(audioMixer);
+        Background.clip = background;
+        Background.Play();
     }
 
-    private void PlaySFX(AudioClip clip)
+    public void PlaySFX(AudioClip clip)
     {
         if (clip != null)
         {
             EffectSource.PlayOneShot(clip);
         }
     }
+
+    public void PlayMusic(AudioClip clip, bool loop = true)
+    {
+        if (clip != null && Background.clip != clip)
+        {
+            Background.clip = clip;
+            Background.loop = loop;
+            Background.Play();
+        }
+    }
+
+    public void StopMusic()
+    {
+        Background.Stop();
+    }
+
 }

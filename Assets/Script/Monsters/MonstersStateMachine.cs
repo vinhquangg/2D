@@ -47,7 +47,6 @@ public class MonstersStateMachine : MonoBehaviour
                 break;
         }
 
-        //SwitchState(new MonsterPatrolState(this));
     }
     public void SwitchState(IMonsterState newState)
     {

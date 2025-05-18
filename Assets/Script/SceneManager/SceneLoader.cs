@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
@@ -26,6 +27,7 @@ public class SceneLoader : MonoBehaviour
     {
         currentSceneName = sceneName;
         StartCoroutine(LoadSceneRoutine(sceneName));
+
     }
 
     public void LoadSceneFromSave(PlayerSaveData playerData)
@@ -39,44 +41,71 @@ public class SceneLoader : MonoBehaviour
         if (sceneName == SceneName.Menu)
         {
             GameManager.instance.TogglePause();
-            SoundManager.Play("Menu");
-        }
-
-        yield return SceneManager.LoadSceneAsync(sceneName.ToString());
-        yield return null;
-
-        if (sceneName != SceneName.Menu)
-        {
-            SoundManager.Play("Play");
-            Vector3 spawnPos = (PlayerSaveTemp.tempData != null) ? PlayerSaveTemp.tempData.position : Vector3.zero;
-
-
-            PlayerManager.Instance.SpawnPlayer(spawnPos);
-
+            yield return SceneManager.LoadSceneAsync(sceneName.ToString());
             yield return null;
 
-            if (PlayerSaveTemp.tempData == null)
+            if (AudioManager.Instance != null && AudioManager.Instance.background != null)
             {
-                var playerObj = PlayerManager.Instance.GetCurrentPlayer();
-                var stateMachine = playerObj?.GetComponent<PlayerStateMachine>();
-                if (stateMachine != null)
+                AudioManager.Instance.PlayMusic(AudioManager.Instance.background);
+                VolumeSettings.ApplySavedVolumes(AudioManager.Instance.audioMixer);
+            }
+        }
+        else
+        {
+            yield return SceneManager.LoadSceneAsync(sceneName.ToString());
+            yield return null;
+
+            Volume volume = FindObjectOfType<Volume>();
+            if (volume != null)
+            {
+                BrightnessSettings.ApplyToVolume(volume);
+            }
+
+            if (AudioManager.Instance != null && AudioManager.Instance.play != null)
+            {
+                AudioManager.Instance.PlayMusic(AudioManager.Instance.play);
+                VolumeSettings.ApplySavedVolumes(AudioManager.Instance.audioMixer);
+            }
+            Vector3 spawnPos = (PlayerSaveTemp.tempData != null) ? PlayerSaveTemp.tempData.position : Vector3.zero;
+
+            PlayerManager.Instance.SpawnPlayer(spawnPos);
+            yield return null;
+
+            var playerObj = PlayerManager.Instance.GetCurrentPlayer();
+            var stateMachine = playerObj?.GetComponent<PlayerStateMachine>();
+
+            if (PlayerSaveTemp.tempData != null)
+            {
+
+                stateMachine?.LoadFromData(PlayerSaveTemp.tempData);
+            }
+            else if (stateMachine != null)
+            {
+
+                var defaultData = PlayerManager.Instance.GetDefaultPlayer();
+                if (defaultData != null)
                 {
-                    var defaultData = stateMachine.GetDefaultPlayerData();
-                    if (defaultData != null)
-                    {
-                        PlayerSaveTemp.tempData = defaultData;
-                        stateMachine.LoadFromData(defaultData);
-                    }
+                    PlayerSaveTemp.tempData = defaultData;
+                    stateMachine.LoadFromData(defaultData);
                 }
             }
+
             GameManager.instance?.ShowPlayerUI();
         }
     }
+
+
 
     private IEnumerator LoadSceneFromSaveRoutine(SceneName sceneName, PlayerSaveData playerData)
     {
         yield return SceneManager.LoadSceneAsync(sceneName.ToString());
         yield return null;
+
+        Volume volume = FindObjectOfType<Volume>();
+        if (volume != null)
+        {
+            BrightnessSettings.ApplyToVolume(volume);
+        }
 
         GameManager.instance?.TogglePause();
 

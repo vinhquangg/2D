@@ -8,7 +8,8 @@ public class PlayerManager : MonoBehaviour
 
     private GameObject playerObj;  
     private PlayerHealth playerHealth;  
-    private PlayerEnergy playerEnergy;  
+    private PlayerEnergy playerEnergy;
+    private PlayerSoul playerSoul;
 
     private void Awake()
     {
@@ -44,6 +45,7 @@ public class PlayerManager : MonoBehaviour
 
             playerHealth = playerObj.GetComponent<PlayerHealth>();
             playerEnergy = playerObj.GetComponent<PlayerEnergy>();
+            playerSoul= playerObj.GetComponent<PlayerSoul>();
         }
         else
         {

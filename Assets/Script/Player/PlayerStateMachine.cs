@@ -19,9 +19,6 @@ public class PlayerStateMachine : MonoBehaviour
     void Awake()
     {
         InitializeNull();
-        //if (rb == null) rb = GetComponent<Rigidbody2D>();
-        //if (anim == null) anim = GetComponent<Animator>();
-        //if (playerCombat == null) playerCombat = GetComponent<PlayerCombat>();
     }
 
     private void InitializeNull()
@@ -107,7 +104,8 @@ public class PlayerStateMachine : MonoBehaviour
             playerData.maxHealth,
             "IdleState",
             playerCombat.playerEnergy.GetMaxEnergy(),
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
+            playerData.soul
         );
     }
 
@@ -119,7 +117,8 @@ public class PlayerStateMachine : MonoBehaviour
             playerCombat.currentHealth,
             currentStateName,
             playerCombat.currentEnergy,
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
+            playerCombat.currentSoul
         );
     }
 
@@ -133,12 +132,14 @@ public class PlayerStateMachine : MonoBehaviour
         {
             playerCombat.currentHealth = data.health;
             playerCombat.currentEnergy = data.energy;
-
+            playerCombat.currentSoul= data.soul;
             var health = playerCombat.GetComponent<PlayerHealth>();
             var energy = playerCombat.GetComponent<PlayerEnergy>();
-
+            var soul = playerCombat.GetComponent<PlayerSoul>();
+            
             health?.UpdateHealthBarPlayer(data.health, playerData.maxHealth);
             energy?.UpdateEnergySlider();
+            soul?.UpdateSoulUI();
         }
 
         if (stateFactory != null && stateFactory.TryGetValue(data.currentState, out var createState))

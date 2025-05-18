@@ -8,10 +8,17 @@ public class ItemDetailUI : MonoBehaviour
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemDescriptionText;
     public GameObject panel;
+    public Button buyButton;
+    private ItemData currentItem;
 
+    private void Start()
+    {
+        buyButton.onClick.AddListener(OnBuyButtonClicked);
+    }
 
     public void ShowItem(ItemData item)
     {
+        currentItem = item; 
         iconImage.sprite = item.itemIcon; 
         itemNameText.text = item.itemName; 
         itemDescriptionText.text = item.itemDesc; 
@@ -21,5 +28,13 @@ public class ItemDetailUI : MonoBehaviour
     public void Hide()
     {
         panel.SetActive(false);
+    }
+
+    private void OnBuyButtonClicked()
+    {
+        if (currentItem != null)
+        {
+            ShopUIController.instance.BuySelectedItem(currentItem);
+        }
     }
 }
