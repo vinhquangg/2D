@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 24475264}
   - component: {fileID: 24475263}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78431,7 +78431,7 @@ GameObject:
   - component: {fileID: 1717013056}
   - component: {fileID: 1717013055}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -40,6 +40,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (sceneName == SceneName.Menu)
         {
+            PlayerInputHandler.instance?.DisablePlayerInput();
             GameManager.instance.TogglePause();
             yield return SceneManager.LoadSceneAsync(sceneName.ToString());
             yield return null;
@@ -52,6 +53,7 @@ public class SceneLoader : MonoBehaviour
         }
         else
         {
+            PlayerInputHandler.instance?.EnablePlayerInput();
             yield return SceneManager.LoadSceneAsync(sceneName.ToString());
             yield return null;
 

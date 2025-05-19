@@ -23,10 +23,8 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        // Ẩn cả hai panel ban đầu
         if (loadingPanel != null) loadingPanel.SetActive(false);
         if (noSavePanel != null) noSavePanel.SetActive(false);
-        //BrightnessSettings.LoadBrightness();
         BrightnessSettings.ApplyToVolume(postProcessingVolume);
     }
 
@@ -115,10 +113,12 @@ public class MenuController : MonoBehaviour
             Debug.Log("Deleted old save file: " + path);
         }
 
-        PlayerSaveTemp.tempData = null;
+        //PlayerSaveTemp.tempData = null;
+        //SceneManager.sceneLoaded += OnSceneLoadedAfterNewGame;
 
-        SceneManager.sceneLoaded += OnSceneLoadedAfterNewGame;
-        SceneLoader.instance.LoadScene(SceneName.SampleScene);
+        // Load sang scene Gameplay (ví dụ "SampleScene" hoặc "Gameplay")
+        CutsceneController.Instance.PlayCutscene();
+        //SceneLoader.instance.LoadScene(SceneName.SampleScene);
     }
 
     private void OnSceneLoadedAfterNewGame(Scene scene, LoadSceneMode mode)

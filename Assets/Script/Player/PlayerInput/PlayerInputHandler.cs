@@ -12,7 +12,6 @@ public class PlayerInputHandler : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -37,10 +36,12 @@ public class PlayerInputHandler : MonoBehaviour
     public void DisablePlayerInput()
     {
         playerAction.Disable();
+        uiAction.Disable();
     }
 
     public void EnablePlayerInput()
     {
         playerAction.Enable();
+        uiAction.Enable();
     }
 }

@@ -63,11 +63,14 @@ public class ShopUIController : MonoBehaviour
     public void OpenShopUI()
     {
         GameManager.instance.OpenShopUI();
+        PlayerInputHandler.instance?.DisablePlayerInput();
+        Time.timeScale= 0f;
     }
 
     public void CloseShopUI()
     {
         GameManager.instance.CloseShopUI();
+        PlayerInputHandler.instance?.EnablePlayerInput();
         Time.timeScale = 1;
     }
 

@@ -43,7 +43,7 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         dialoguePanel.SetActive(false);
         yesText.gameObject.SetActive(false);
         yesButton.gameObject.SetActive(false);
-        yesButton.onClick.AddListener(OnYesButtonClicked);
+        //yesButton.onClick.AddListener(OnYesButtonClicked);
     }
 
     protected virtual void Update()
@@ -101,6 +101,7 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         }
 
         StartDialogue();
+
     }
 
     public bool CanInteract()
@@ -112,16 +113,25 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
     {
         isDialogueActive = true;
         dialogueIndex = 0;
-
+        UpdateButtonLabel();
         nameText.SetText(dialogueData.npcName);
         portraitImage.sprite = dialogueData.npcPortrait;
 
         dialoguePanel.SetActive(true);
+        yesText.gameObject.SetActive(true);
+        yesButton.gameObject.SetActive(true);
+
+        yesButton.onClick.RemoveAllListeners();
+        yesButton.onClick.AddListener(OnDialogueButtonClicked); 
+
         StartCoroutine(TypeLine());
+
         AudioManager.Instance.PlaySFX(AudioManager.Instance.dialogue);
         Time.timeScale = 0f;
         npcStateMachine.SwitchState(new NPCIdleState(npcStateMachine));
+        PlayerInputHandler.instance?.DisablePlayerInput();
     }
+
 
     void NextLine()
     {
@@ -154,34 +164,74 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
 
         isTyping = false;
 
-        if (dialogueData.autoProgressLines.Length > dialogueIndex && dialogueData.autoProgressLines[dialogueIndex])
+        UpdateButtonLabel(); 
+
+        if (dialogueData.autoProgressLines.Length > dialogueIndex &&
+            dialogueData.autoProgressLines[dialogueIndex])
         {
             yield return new WaitForSecondsRealtime(dialogueData.autoProgressDelay);
             NextLine();
         }
-        else
-        {
-            if (dialogueIndex < dialogueData.dialogueLines.Length)
-            {
-                ShowYesText();
-            }
-        }
     }
 
-    public void ShowYesText()
+    private void UpdateButtonLabel()
     {
         yesText.gameObject.SetActive(true);
         yesButton.gameObject.SetActive(true);
-        yesText.SetText("Yes");
+
+        if (dialogueIndex >= dialogueData.dialogueLines.Length - 1)
+        {
+            yesText.SetText("Yes");
+        }
+        else
+        {
+            yesText.SetText("Skip");
+        }
     }
 
-    protected void OnYesButtonClicked()
+    //public void ShowYesText()
+    //{
+    //    yesText.gameObject.SetActive(true);
+    //    yesButton.gameObject.SetActive(true);
+    //    yesText.SetText("Yes");
+    //}
+
+    void OnDialogueButtonClicked()
     {
-        EndDialogue();
-        yesText.gameObject.SetActive(false);
-        yesButton.gameObject.SetActive(false);
-        Time.timeScale = 0f;
+        if (isTyping)
+        {
+            StopAllCoroutines();
+            dialogueText.SetText(dialogueData.dialogueLines[dialogueIndex]);
+            isTyping = false;
+
+            UpdateButtonLabel();
+            return;
+        }
+        if (dialogueIndex >= dialogueData.dialogueLines.Length - 1)
+        {
+            EndDialogue();
+            OnDialogueComplete();
+            return;
+        }
+
+        StopAllCoroutines();
+        dialogueIndex = dialogueData.dialogueLines.Length - 1;
+        dialogueText.SetText(dialogueData.dialogueLines[dialogueIndex]);
+        isTyping = false;
+        UpdateButtonLabel(); 
     }
+
+
+
+
+    //protected void OnYesButtonClicked()
+    //{
+    //    EndDialogue();
+    //    yesText.gameObject.SetActive(false);
+    //    yesButton.gameObject.SetActive(false);
+    //    Time.timeScale = 0f;
+    //    PlayerInputHandler.instance?.DisablePlayerInput();
+    //}
 
     public void EndDialogue()
     {
@@ -189,8 +239,16 @@ public abstract class BaseNPC : MonoBehaviour, IInteractable
         isDialogueActive = false;
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
+        yesText.gameObject.SetActive(false);
+        yesButton.gameObject.SetActive(false);
+
         Time.timeScale = 1f;
         AudioManager.Instance.PlayMusic(AudioManager.Instance.play);
+        PlayerInputHandler.instance?.EnablePlayerInput();
+    }
+    protected virtual void OnDialogueComplete()
+    {
+
     }
 }
 

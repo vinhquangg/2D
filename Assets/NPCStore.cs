@@ -23,9 +23,10 @@ public class NPCStore : BaseNPC
         }
     }
 
-    public new void OnYesButtonClicked()  
+    protected override void OnDialogueComplete()  
     {
-        base.OnYesButtonClicked();  
+        base.OnDialogueComplete();
+
         ShopUIController.instance.OpenShopUI();
     }
 }

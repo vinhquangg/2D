@@ -18,7 +18,7 @@ MonoBehaviour:
   - Hello there warrior!
   - You seem capable of great things
   - Would you buy something...!
-  autoProgressLines: 010100
+  autoProgressLines: 010101
   autoProgressDelay: 1
   typingSpeed: 0.05
   voiceSound: {fileID: 8300000, guid: 1ea7f7c326325ce41b2dad5acfd90083, type: 3}

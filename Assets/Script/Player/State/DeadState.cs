@@ -4,7 +4,7 @@ using UnityEngine;
 public class DeadState : IPlayerState
 {
     private PlayerStateMachine player;
-    //private bool hasDisappeared = false;
+
 
     public DeadState(PlayerStateMachine player)
     {
@@ -13,7 +13,7 @@ public class DeadState : IPlayerState
 
     public void EnterState()
     {
-        // Phát animation Dead
+
         var allZones = GameObject.FindObjectsOfType<SpawnZone>();
         foreach (var zone in allZones)
         {
@@ -30,7 +30,6 @@ public class DeadState : IPlayerState
 
         player.rb.velocity = Vector2.zero;
         player.rb.bodyType = RigidbodyType2D.Static;
-        //player.input.Disable(); 
 
         player.StartCoroutine(ReviveCoroutine());
     }
@@ -58,20 +57,18 @@ public class DeadState : IPlayerState
 
     private IEnumerator ReviveCoroutine()
     {
-        // Chờ đến khi animation Dead kết thúc
         while (!player.anim.GetCurrentAnimatorStateInfo(0).IsName("Dead") || player.anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.7f)
         {
             yield return null;
         }
 
-        // Bắt đầu quá trình hồi sinh
         if (player != null)
         {
             player.SwitchState(new ReviveState(player));
         }
-        else
-        {
-            Debug.LogError("Player is null during revive coroutine.");
-        }
+        //else
+        //{
+        //    Debug.LogError("Player is null during revive coroutine.");
+        //}
     }
 }

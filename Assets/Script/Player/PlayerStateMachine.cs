@@ -35,13 +35,12 @@ public class PlayerStateMachine : MonoBehaviour
             { "IdleState", () => new IdleState(this) },
             { "MoveState", () => new MoveState(this) },
             { "AttackState", () => new AttackState(this) },
-            //{ "DeadState", () => new DeadState(this) } 
+            { "DeadState", () => new DeadState(this) } 
         };
 
         SwitchState(new IdleState(this));
     }
 
-    // Update is called once per frame
     public void SwitchState(IPlayerState newState)
     {
         if (currentState != null && currentState.GetType() == newState.GetType())
@@ -97,7 +96,6 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerSaveData GetDefaultPlayerData()
     {
         InitializeNull();
-        //Đảm bảo sử dụng vị trí khởi tạo chính xác
         Vector3 startPos = Vector3.zero;
         return new PlayerSaveData(
             startPos, 
