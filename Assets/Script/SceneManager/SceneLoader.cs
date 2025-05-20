@@ -53,10 +53,10 @@ public class SceneLoader : MonoBehaviour
         }
         else
         {
-            PlayerInputHandler.instance?.EnablePlayerInput();
-            yield return SceneManager.LoadSceneAsync(sceneName.ToString());
-            yield return null;
 
+            yield return SceneManager.LoadSceneAsync(sceneName.ToString());
+            PlayerInputHandler.instance?.EnablePlayerInput();
+            yield return null;
             Volume volume = FindObjectOfType<Volume>();
             if (volume != null)
             {

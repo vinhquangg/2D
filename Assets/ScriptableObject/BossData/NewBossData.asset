@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossName: PoinsonLord
   hitDuration: 1
-  maxHealth: 100
+  maxHealth: 500
   attackDamage: 10
   attackRange: 2
   moveSpeed: 10

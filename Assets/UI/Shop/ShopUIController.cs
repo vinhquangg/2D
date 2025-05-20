@@ -85,7 +85,8 @@ public class ShopUIController : MonoBehaviour
         bool success = playerSoul.SpendSoul(item.itemPrice);
         if (success)
         {
-            Debug.Log($"Mua thành công item {item.itemName} với giá {item.itemPrice} Soul");
+            InventoryManager.Instance.AddItem(item, 1);
+
             itemDetailUI.Hide();
             InitializedSlot(); 
         }

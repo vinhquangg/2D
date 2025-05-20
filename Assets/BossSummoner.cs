@@ -161,25 +161,20 @@ public class BossSummoner : MonoBehaviour
             if (enemy != null && !enemy.isDead)
             {
                 aliveCount++;
+                enemy.isDead = true;
+                ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
             }
         }
 
         float healAmount = aliveCount * 100f;
         boss.Heal(healAmount);
-
-        foreach (var enemy in summonedEnemies)
-        {
-            if (enemy != null && !enemy.isDead)
-            {
-                enemy.isDead = true; 
-                ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
-            }
-        }
-
         countdownText.gameObject.SetActive(false);
 
+        if (boss.currentHealth > boss.bossState.bossData.maxHealth * 0.5f)
+        {
+            boss.isPhaseTwoActive = false;
+        }
+
     }
-
-
 
 }

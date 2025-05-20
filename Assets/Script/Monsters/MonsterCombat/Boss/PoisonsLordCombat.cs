@@ -75,7 +75,6 @@ public class PoisonsLordCombat : BossCombat
 
         boss.bossState.SwitchState(new BossCastSkillState(boss.bossState));
 
-        // Tìm skill Summoner
         var summonSkill = bossSkillManager.skills.Find(s => s.skillName == "Summoner");
 
         if (summonSkill != null)
@@ -91,7 +90,8 @@ public class PoisonsLordCombat : BossCombat
         yield return new WaitForSeconds(1f); 
         isInvincible = false;
         canCastSpecial = true;
-        hasForcedSummon = true; 
+        hasForcedSummon = true;
+        //boss.isPhaseTwoActive = false;
     }
 
 

@@ -30,6 +30,9 @@ public class SaveLoadManager : MonoBehaviour
     public void SaveGame()
     {
         PlayerSaveData playerData = PlayerManager.Instance.GetPlayerSaveData();
+
+        InventoryData inventoryData = InventoryManager.Instance.GetInventoryData();
+
         // Lưu Enemy
         List<EnemySaveData> enemyList = new();
         var allEnemies = FindObjectsOfType<BaseEnemy>();
@@ -64,7 +67,8 @@ public class SaveLoadManager : MonoBehaviour
         {
             player = playerData,
             enemies = enemyList,
-            spawnZones = zoneSaveDataList
+            spawnZones = zoneSaveDataList,
+            inventory = inventoryData
         };
 
         string json = JsonUtility.ToJson(saveData, true);
@@ -158,6 +162,16 @@ public class SaveLoadManager : MonoBehaviour
 
         // Set vị trí cuối cùng
         PlayerManager.Instance.GetCurrentPlayer().transform.position = spawnPosition;
+
+        if (saveData.inventory != null)
+        {
+            InventoryManager.Instance.LoadInventoryData(saveData.inventory);
+            Debug.Log("[LOAD] Inventory đã được nạp.");
+        }
+        else
+        {
+            Debug.LogWarning("Không có InventoryData trong save.");
+        }
     }
 
     private string GetSavePath()

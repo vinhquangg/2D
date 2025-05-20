@@ -15,7 +15,7 @@ public class ObjectPooling : MonoBehaviour
     }
 
     public PoolConfig[] poolConfigs;
-
+    private HashSet<GameObject> returningObjects = new HashSet<GameObject>();
     private Dictionary<EnemyType, Queue<GameObject>> pools;
     private Dictionary<EnemyType, List<GameObject>> activeObjects;
     private Dictionary<EnemyType, int> reuseIndex;
@@ -160,6 +160,11 @@ public class ObjectPooling : MonoBehaviour
 
     private IEnumerator ReturnToPoolWithDelay(GameObject enemy, EnemyType type)
     {
+        if (returningObjects.Contains(enemy))
+            yield break; // Đang được xử lý, không xử lý lại
+
+        returningObjects.Add(enemy);
+
         if (SaveLoadManager.IsLoading)
         {
             enemy.SetActive(false);
@@ -197,6 +202,8 @@ public class ObjectPooling : MonoBehaviour
 
         if (activeObjects[type].Contains(enemy))
             activeObjects[type].Remove(enemy);
+
+        returningObjects.Remove(enemy);
     }
 
     private GameObject GetPrefab(EnemyType type)

@@ -23,16 +23,6 @@ public class PlayerInputHandler : MonoBehaviour
         uiAction = InputActions.UI;
     }
     
-    private void OnEnable()
-    {
-        InputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        InputActions.Disable();
-    }
-
     public void DisablePlayerInput()
     {
         playerAction.Disable();

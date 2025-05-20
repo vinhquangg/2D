@@ -12,7 +12,7 @@ public class PlayerCombat : MonoBehaviour
     public int currentSoul { get; set; }
     private PlayerHealth playerHealth;
     public PlayerEnergy playerEnergy { get; private set; }
-    private PlayerSoul playerSoul;
+    public PlayerSoul playerSoul { get; set; }
     public PlayerStateMachine playerState { get; set; }
     private bool isInvincible = false;
 

@@ -113,11 +113,11 @@ public class MenuController : MonoBehaviour
             Debug.Log("Deleted old save file: " + path);
         }
 
-        //PlayerSaveTemp.tempData = null;
-        //SceneManager.sceneLoaded += OnSceneLoadedAfterNewGame;
-
+        PlayerSaveTemp.tempData = null;
         // Load sang scene Gameplay (ví dụ "SampleScene" hoặc "Gameplay")
         CutsceneController.Instance.PlayCutscene();
+        SceneManager.sceneLoaded += OnSceneLoadedAfterNewGame;
+
         //SceneLoader.instance.LoadScene(SceneName.SampleScene);
     }
 
@@ -136,9 +136,6 @@ public class MenuController : MonoBehaviour
     public void LoadGame()
     {
         string path = GetSavePath();
-
-
-
         if (!File.Exists(path))
         {
             Debug.LogWarning("No save file found.");
@@ -159,9 +156,8 @@ public class MenuController : MonoBehaviour
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
         SceneManager.sceneLoaded += OnSceneLoadedAfterLoadGame;
-        SceneManager.LoadScene(saveData.player.currentSceneName);
+        SceneLoader.instance.LoadSceneFromSave(saveData.player);
         Time.timeScale = 1;
-        GameManager.instance.ShowPlayerUI();
     }
 
 
@@ -177,6 +173,12 @@ public class MenuController : MonoBehaviour
         {
             Debug.LogError("SaveLoadManager is null in loaded scene");
         }
+
+        if (GameManager.instance != null)
+            GameManager.instance.ShowPlayerUI();
+
+        if (PlayerInputHandler.instance != null)
+            PlayerInputHandler.instance.EnablePlayerInput();
     }
 
     public void SaveGame()
