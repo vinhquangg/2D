@@ -27,13 +27,12 @@ public class SceneLoader : MonoBehaviour
     {
         currentSceneName = sceneName;
         StartCoroutine(LoadSceneRoutine(sceneName));
-
     }
 
     public void LoadSceneFromSave(PlayerSaveData playerData)
     {
         currentSceneName = (SceneName)System.Enum.Parse(typeof(SceneName), playerData.currentSceneName);
-        StartCoroutine(LoadSceneFromSaveRoutine(currentSceneName, playerData));
+        StartCoroutine(LoadSceneFromSaveRoutine(currentSceneName));
     }
 
     private IEnumerator LoadSceneRoutine(SceneName sceneName)
@@ -45,7 +44,7 @@ public class SceneLoader : MonoBehaviour
             yield return SceneManager.LoadSceneAsync(sceneName.ToString());
             yield return null;
 
-            if (AudioManager.Instance != null && AudioManager.Instance.background != null)
+            if (AudioManager.Instance?.background != null)
             {
                 AudioManager.Instance.PlayMusic(AudioManager.Instance.background);
                 VolumeSettings.ApplySavedVolumes(AudioManager.Instance.audioMixer);
@@ -53,42 +52,39 @@ public class SceneLoader : MonoBehaviour
         }
         else
         {
-
             yield return SceneManager.LoadSceneAsync(sceneName.ToString());
             PlayerInputHandler.instance?.EnablePlayerInput();
             yield return null;
-            Volume volume = FindObjectOfType<Volume>();
-            if (volume != null)
-            {
-                BrightnessSettings.ApplyToVolume(volume);
-            }
 
-            if (AudioManager.Instance != null && AudioManager.Instance.play != null)
+            BrightnessSettings.ApplyToVolume(FindObjectOfType<Volume>());
+            if (AudioManager.Instance?.play != null)
             {
                 AudioManager.Instance.PlayMusic(AudioManager.Instance.play);
                 VolumeSettings.ApplySavedVolumes(AudioManager.Instance.audioMixer);
             }
-            Vector3 spawnPos = (PlayerSaveTemp.tempData != null) ? PlayerSaveTemp.tempData.position : Vector3.zero;
 
+            Vector3 spawnPos = (PlayerSaveTemp.tempData != null) ? PlayerSaveTemp.tempData.position : Vector3.zero;
             PlayerManager.Instance.SpawnPlayer(spawnPos);
+
             yield return null;
 
-            var playerObj = PlayerManager.Instance.GetCurrentPlayer();
-            var stateMachine = playerObj?.GetComponent<PlayerStateMachine>();
-
-            if (PlayerSaveTemp.tempData != null)
+            if (!SaveLoadManager.IsLoading)
             {
+                var playerObj = PlayerManager.Instance.GetCurrentPlayer();
+                var stateMachine = playerObj?.GetComponent<PlayerStateMachine>();
 
-                stateMachine?.LoadFromData(PlayerSaveTemp.tempData);
-            }
-            else if (stateMachine != null)
-            {
-
-                var defaultData = PlayerManager.Instance.GetDefaultPlayer();
-                if (defaultData != null)
+                if (PlayerSaveTemp.tempData != null)
                 {
-                    PlayerSaveTemp.tempData = defaultData;
-                    stateMachine.LoadFromData(defaultData);
+                    stateMachine?.LoadFromData(PlayerSaveTemp.tempData);
+                }
+                else if (stateMachine != null)
+                {
+                    var defaultData = PlayerManager.Instance.GetDefaultPlayer();
+                    if (defaultData != null)
+                    {
+                        PlayerSaveTemp.tempData = defaultData;
+                        stateMachine.LoadFromData(defaultData);
+                    }
                 }
             }
 
@@ -96,23 +92,13 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-
-
-    private IEnumerator LoadSceneFromSaveRoutine(SceneName sceneName, PlayerSaveData playerData)
+    private IEnumerator LoadSceneFromSaveRoutine(SceneName sceneName)
     {
         yield return SceneManager.LoadSceneAsync(sceneName.ToString());
         yield return null;
 
-        Volume volume = FindObjectOfType<Volume>();
-        if (volume != null)
-        {
-            BrightnessSettings.ApplyToVolume(volume);
-        }
-
-        GameManager.instance?.TogglePause();
-
-        PlayerManager.Instance.SpawnPlayer(playerData.position);
-        PlayerManager.Instance.LoadPlayerData(playerData);
+        BrightnessSettings.ApplyToVolume(FindObjectOfType<Volume>());
+        //GameManager.instance?.TogglePause();
 
         SaveLoadManager.instance?.LoadAfterSceneLoaded();
     }

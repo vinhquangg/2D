@@ -21,12 +21,13 @@ public class PlayerStateMachine : MonoBehaviour
         InitializeNull();
     }
 
-    private void InitializeNull()
+    private void InitializeNull(bool force = false)
     {
-        if (rb == null) rb = GetComponent<Rigidbody2D>();
-        if (anim == null) anim = GetComponent<Animator>();
-        if (playerCombat == null) playerCombat = GetComponent<PlayerCombat>();
+        if (force || rb == null) rb = GetComponent<Rigidbody2D>();
+        if (force || anim == null) anim = GetComponent<Animator>();
+        if (force || playerCombat == null) playerCombat = GetComponent<PlayerCombat>();
     }
+
 
     void Start()
     {
@@ -95,7 +96,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public PlayerSaveData GetDefaultPlayerData()
     {
-        InitializeNull();
+        InitializeNull(true);
         Vector3 startPos = Vector3.zero;
         return new PlayerSaveData(
             startPos, 
@@ -126,19 +127,32 @@ public class PlayerStateMachine : MonoBehaviour
 
         transform.position = data.position;
 
-        if(playerCombat != null)
+        if (playerCombat != null)
         {
             playerCombat.currentHealth = data.health;
             playerCombat.currentEnergy = data.energy;
-            playerCombat.currentSoul= data.soul;
+            playerCombat.currentSoul = data.soul;
+
             var health = playerCombat.GetComponent<PlayerHealth>();
             var energy = playerCombat.GetComponent<PlayerEnergy>();
             var soul = playerCombat.GetComponent<PlayerSoul>();
-            
-            health?.UpdateHealthBarPlayer(data.health, playerData.maxHealth);
-            energy?.UpdateEnergySlider();
-            soul?.UpdateSoulUI();
+
+            if (health != null)
+            {
+                health.UpdateHealthBarPlayer(playerCombat.currentHealth, playerData.maxHealth);
+            }
+
+            if (energy != null)
+            {
+                energy.UpdateEnergySlider(); 
+            }
+
+            if (soul != null)
+            {
+                soul.SetSoul(playerCombat.currentSoul); 
+            }
         }
+
 
         if (stateFactory != null && stateFactory.TryGetValue(data.currentState, out var createState))
         {
@@ -148,5 +162,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             SwitchState(new IdleState(this));
         }
+        Debug.Log($"[LOAD] Health = {data.health}, Energy = {data.energy}, Soul = {data.soul}, Pos = {data.position}");
+
     }
 }

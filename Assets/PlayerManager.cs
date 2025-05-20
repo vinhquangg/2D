@@ -4,10 +4,10 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
-    public GameObject playerPrefab;  
+    public GameObject playerPrefab;
 
-    private GameObject playerObj;  
-    private PlayerHealth playerHealth;  
+    private GameObject playerObj;
+    private PlayerHealth playerHealth;
     private PlayerEnergy playerEnergy;
     private PlayerSoul playerSoul;
 
@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
 
             playerHealth = playerObj.GetComponent<PlayerHealth>();
             playerEnergy = playerObj.GetComponent<PlayerEnergy>();
-            playerSoul= playerObj.GetComponent<PlayerSoul>();
+            playerSoul = playerObj.GetComponent<PlayerSoul>();
         }
         else
         {
@@ -67,17 +67,17 @@ public class PlayerManager : MonoBehaviour
     {
         if (playerObj == null)
         {
-            InitializePlayer(Vector3.zero);  
+            InitializePlayer(Vector3.zero);
         }
 
-        PlayerStateMachine stateMachine = playerObj.GetComponent<PlayerStateMachine>();
+        var stateMachine = playerObj.GetComponent<PlayerStateMachine>();
         if (stateMachine == null)
         {
             Debug.LogError("PlayerStateMachine is missing on the player object.");
             return null;
         }
 
-        return stateMachine.GetDefaultPlayerData();  
+        return stateMachine.GetDefaultPlayerData(); 
     }
 
     public void LoadPlayerData(PlayerSaveData saveData, bool overridePosition = true)
@@ -89,5 +89,4 @@ public class PlayerManager : MonoBehaviour
         var stateMachine = playerObj.GetComponent<PlayerStateMachine>();
         stateMachine?.LoadFromData(saveData);
     }
-
 }

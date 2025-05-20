@@ -17,7 +17,6 @@ public class PlayerEnergy : MonoBehaviour
     private IEnumerator WaitForPlayerUI()
     {
         GameObject playerUI = null;
-
         float timeout = 1f;
         float timer = 0f;
 
@@ -45,11 +44,8 @@ public class PlayerEnergy : MonoBehaviour
         {
             Debug.LogError("PlayerUI không xuất hiện sau 1 giây.");
         }
-
-        playerCombat.currentEnergy = maxEnergy;
         UpdateEnergySlider();
     }
-
 
     public void AddEnergy(float energy)
     {
@@ -83,7 +79,6 @@ public class PlayerEnergy : MonoBehaviour
 
     public void UpdateEnergySlider()
     {
-        GetMaxEnergy();
         if (energySlider != null)
         {
             energySlider.value = playerCombat.currentEnergy / maxEnergy;

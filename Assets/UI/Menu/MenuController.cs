@@ -139,26 +139,22 @@ public class MenuController : MonoBehaviour
         if (!File.Exists(path))
         {
             Debug.LogWarning("No save file found.");
-
-            if (noSavePanel != null)
-            {
-                noSavePanel.SetActive(true); 
-            }
-
+            noSavePanel?.SetActive(true);
             return;
         }
 
+        loadingPanel?.SetActive(true);
 
-        loadingPanel.SetActive(true);
-        
+        PlayerSaveTemp.tempData = null;
 
         string json = File.ReadAllText(path);
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
-        SceneManager.sceneLoaded += OnSceneLoadedAfterLoadGame;
         SceneLoader.instance.LoadSceneFromSave(saveData.player);
+        SceneManager.sceneLoaded += OnSceneLoadedAfterLoadGame;
         Time.timeScale = 1;
     }
+
 
 
     private void OnSceneLoadedAfterLoadGame(Scene scene, LoadSceneMode mode)

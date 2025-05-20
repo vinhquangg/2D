@@ -36,11 +36,13 @@ public class PlayerHealth : MonoBehaviour
             if (sliderTransform != null)
             {
                 slider = sliderTransform.GetComponent<Slider>();
+
+                if (playerCombat != null && player != null)
+                {
+                    UpdateHealthBarPlayer(playerCombat.currentHealth, player.playerData.maxHealth);
+                }
             }
-            else
-            {
-                Debug.LogError("Không tìm thấy Slider trong HealthContainer.");
-            }
+
         }
         else
         {

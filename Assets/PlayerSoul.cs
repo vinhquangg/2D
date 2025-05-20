@@ -52,7 +52,14 @@ public class PlayerSoul : MonoBehaviour
     public void AddSoul(int amount)
     {
         currentSoul += amount;
+        if (playerCombat == null)
+            playerCombat = GetComponent<PlayerCombat>();
+
+        if (playerCombat != null)
+            playerCombat.currentSoul = currentSoul;
+
         UpdateSoulUI();
+        //UpdateSoulUI();
     }
 
     public void SetSoul(int value)
