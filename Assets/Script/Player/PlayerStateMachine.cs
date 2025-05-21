@@ -162,7 +162,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             SwitchState(new IdleState(this));
         }
-        Debug.Log($"[LOAD] Health = {data.health}, Energy = {data.energy}, Soul = {data.soul}, Pos = {data.position}");
+       
 
     }
 }

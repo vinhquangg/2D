@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSoul : MonoBehaviour
 {
-    public TextMeshProUGUI soulText;
+    private TextMeshProUGUI soulText;
     private int currentSoul;
     private PlayerCombat playerCombat;
     private bool isUIReady = false;

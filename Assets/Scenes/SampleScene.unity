@@ -76022,10 +76022,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7122491bbd4e6d24f8aa3254b095a7c6, type: 2}
   - {fileID: 11400000, guid: f3a9cf71e22887f4e92d56b5aa359c0d, type: 2}
   inventorySlots:
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
+  - item: {fileID: 11400000, guid: 7122491bbd4e6d24f8aa3254b095a7c6, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: f3a9cf71e22887f4e92d56b5aa359c0d, type: 2}
+    amount: 2
 --- !u!4 &475604436
 Transform:
   m_ObjectHideFlags: 0

@@ -86,7 +86,9 @@ public class ShopUIController : MonoBehaviour
         if (success)
         {
             InventoryManager.Instance.AddItem(item, 1);
-
+            InventoryUI ui = FindObjectOfType<InventoryUI>();
+            if (ui != null)
+                ui.UpdateUI();
             itemDetailUI.Hide();
             InitializedSlot(); 
         }
