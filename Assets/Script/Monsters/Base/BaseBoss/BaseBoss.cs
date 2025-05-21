@@ -6,7 +6,6 @@ public abstract class BaseBoss : BaseEnemy
     public float specialAbilityCD { get; private set; }
     private float currentSpecialAbilityCD;
     public bool isPhaseTwoActive = false;
-
     protected override void Start()
     {
         base.Start();
@@ -20,9 +19,9 @@ public abstract class BaseBoss : BaseEnemy
         textPoint = null;
     }
 
-    protected override void HandleEnemyDeath()
+    protected override void HandleBossDeath()
     {
-        base.HandleEnemyDeath();
+        base.HandleBossDeath();
     }
 
     public override bool CanSeePlayer()

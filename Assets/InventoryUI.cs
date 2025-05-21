@@ -32,6 +32,24 @@ public class InventoryUI : MonoBehaviour
         UpdateUI();
     }
 
+    private void OnEnable()
+    {
+        if (InventoryManager.Instance != null)
+        {
+            InventoryManager.Instance.OnInventoryUpdated -= UpdateUI;
+            InventoryManager.Instance.OnInventoryUpdated += UpdateUI;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (InventoryManager.Instance != null)
+        {
+            InventoryManager.Instance.OnInventoryUpdated -= UpdateUI;
+        }
+    }
+
+
     public static void ForceUpdate()
     {
         var ui = FindObjectOfType<InventoryUI>();
@@ -39,17 +57,13 @@ public class InventoryUI : MonoBehaviour
             ui.UpdateUI();
     }
 
-    public SlotUI GetSlotUIBySlot(SlotClass slot)
+    public SlotUI GetSlotUI(int index)
     {
-        foreach (var ui in slotUIList)
-        {
-            if (ui.boundSlot == slot)
-                return ui;
-        }
-
-        Debug.LogWarning("Không tìm thấy SlotUI tương ứng với SlotClass");
+        if (index >= 0 && index < slotUIList.Count)
+            return slotUIList[index];
         return null;
     }
+
 
 
     public void UpdateUI()
@@ -61,20 +75,18 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < length; i++)
         {
             var slot = InventoryManager.Instance.inventorySlots[i];
-            slotUIList[i].boundSlot = slot; // ✅ Gán boundSlot TẠI ĐÂY
             slotUIList[i].UpdateSlot(slot);
-
             Debug.Log($"[UpdateUI] Slot {i}: {slot.item?.itemName} - {slot.amount}");
         }
 
         for (int i = length; i < slotUIList.Count; i++)
         {
-            Debug.Log($"[UpdateUI] Ẩn Slot {i}");
             slotUIList[i].icon.enabled = false;
             slotUIList[i].amountText.text = "";
-            slotUIList[i].boundSlot = null;
         }
     }
 
-
 }
+
+
+

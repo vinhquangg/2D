@@ -10,6 +10,7 @@ public class BossSummoner : MonoBehaviour
     [SerializeField] private BoxCollider2D bossZoneCollider;
     [SerializeField] private float minionsKillTime;
     [SerializeField] private TextMeshProUGUI countdownText;
+    private bool bossDeadHandled = false;
     private BaseBoss boss;
     private SpawnZone[] spawnZones;
     private List<BaseEnemy> summonedEnemies = new List<BaseEnemy>();
@@ -43,6 +44,35 @@ public class BossSummoner : MonoBehaviour
             }
         }
     }
+
+    private void Update()
+    {
+        if (boss != null && boss.currentHealth <= 0 && !bossDeadHandled)
+        {
+            bossDeadHandled = true;
+            ReturnAllSummonedToPool();
+        }
+    }
+
+    private void ReturnAllSummonedToPool()
+    {
+        foreach (var enemy in summonedEnemies)
+        {
+            if (enemy != null && enemy.gameObject.activeInHierarchy)
+            {
+                enemy.isDead = true;
+                ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
+            }
+        }
+
+        summonedEnemies.Clear();
+
+        if (countdownText != null)
+            countdownText.gameObject.SetActive(false);
+
+        Debug.Log("[BossSummoner] Boss chết - các quái triệu hồi đã bị thu hồi về pool.");
+    }
+
 
     public void SummonEnemies()
     {

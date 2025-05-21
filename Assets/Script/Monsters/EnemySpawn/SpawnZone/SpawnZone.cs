@@ -22,7 +22,7 @@ public class SpawnZone : MonoBehaviour
     private bool hasSpawned = false;
     private bool allowSpawnCheck = true;
     private bool playerInsideZone = false;
-    private bool isZoneCleared = false;
+    public bool isZoneCleared = false;
 
     private void Start()
     {
@@ -204,6 +204,22 @@ public class SpawnZone : MonoBehaviour
         return !IsZoneCleared();
     }
 
+    public void ForceClearZone()
+    {
+        isZoneCleared = true;
+        currentAlive = 0;
+        deadCount = maxSpawnCount;
+        hasSpawned = true;
+        spawnedCount = maxSpawnCount;
+        allowSpawnCheck = false;
+
+        DespawnEnemiesInZone();
+
+        Debug.Log($"[Cheat] Force-cleared zone {zoneID}");
+    }
+
+
+
     public Vector3 GetEntryPointOutsideZone()
     {
         if (entryPointOutsideZone != null && entryPointOutsideZone.Count > 0)
@@ -281,7 +297,7 @@ public class SpawnZone : MonoBehaviour
         BaseEnemy[] allEnemies = FindObjectsOfType<BaseEnemy>();
         foreach (BaseEnemy enemy in allEnemies)
         {
-            if (enemy.zoneID == zoneID)
+            if (enemy.zoneID == zoneID && enemy.enemyType != EnemyType.Boss)
             {
                 ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
             }

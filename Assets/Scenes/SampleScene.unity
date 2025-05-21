@@ -548,8 +548,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneID: Assassin
   zoneEnemyType: 2
-  maxSpawnCount: 4
-  initialSpawn: 2
+  maxSpawnCount: 2
+  initialSpawn: 1
   entryPointOutsideZone:
   - {fileID: 4559808335878576040, guid: 1169c59fd2078564ba5dc5981854da60, type: 3}
   - {fileID: 1042896977741118808, guid: abfe83d0be8eeb24abbcd712f6f40d91, type: 3}
@@ -76881,6 +76881,7 @@ GameObject:
   - component: {fileID: 1363533376}
   - component: {fileID: 1363533375}
   - component: {fileID: 1363533374}
+  - component: {fileID: 1363533379}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -77537,6 +77538,72 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1363533379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363533372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac216aa0628cfbb45866c591575cc542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zonesToCheck:
+  - {fileID: 198014215}
+  - {fileID: 1603501782}
+  barrierObject: {fileID: 1363533372}
+--- !u!1 &1384755903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1384755905}
+  - component: {fileID: 1384755904}
+  m_Layer: 0
+  m_Name: CheatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1384755904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384755903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39458d0d73c34aa429f1e7b4cba1dbc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPotion: {fileID: 11400000, guid: 7122491bbd4e6d24f8aa3254b095a7c6, type: 2}
+  energyPotion: {fileID: 11400000, guid: f3a9cf71e22887f4e92d56b5aa359c0d, type: 2}
+  boss: {fileID: 0}
+  allZones:
+  - {fileID: 198014215}
+  - {fileID: 1603501782}
+--- !u!4 &1384755905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384755903}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.410295, y: 25.671322, z: -0.14946197}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1406035149
 GameObject:
   m_ObjectHideFlags: 0
@@ -78432,8 +78499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneID: Mage
   zoneEnemyType: 1
-  maxSpawnCount: 8
-  initialSpawn: 2
+  maxSpawnCount: 2
+  initialSpawn: 1
   entryPointOutsideZone:
   - {fileID: 3712762900333685412, guid: ddca01c2f9bf1c647a935d3eb7885a1e, type: 3}
   obstacleTilemaps:
@@ -84875,3 +84942,4 @@ SceneRoots:
   - {fileID: 83809990}
   - {fileID: 182938139}
   - {fileID: 475604436}
+  - {fileID: 1384755905}

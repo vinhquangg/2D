@@ -8,7 +8,7 @@ public class SlotUI : MonoBehaviour
 {
     public Image icon;
     public TextMeshProUGUI amountText;
-    [HideInInspector] public SlotClass boundSlot;
+    //[HideInInspector] public SlotClass boundSlot;
     public void UpdateSlot(SlotClass slot)
     {
         if (slot.item != null)

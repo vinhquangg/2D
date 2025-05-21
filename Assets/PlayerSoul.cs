@@ -84,12 +84,16 @@ public class PlayerSoul : MonoBehaviour
         if (currentSoul >= amount)
         {
             currentSoul -= amount;
+
+            var combat = GetComponent<PlayerCombat>();
+            if (combat != null)
+                combat.currentSoul = currentSoul;
+
             UpdateSoulUI();
             return true;
         }
-        else
-        {
-            return false;
-        }
+
+        return false;
     }
+
 }

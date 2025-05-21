@@ -67,18 +67,21 @@ public class PlayerCombat : MonoBehaviour
 
             UseItemEffect(slot.item);
             slot.amount--;
+            InventoryUI ui = FindObjectOfType<InventoryUI>();
             if (slot.amount <= 0)
             {
-                Debug.Log($"{type} đã dùng hết, hiện còn {slot.amount}.");
+                if (ui != null)
+                {
+                    ui.UpdateUI(); 
+                }
             }
 
             itemCooldowns[type] = Time.time + slot.item.timeToUse;
             InventoryManager.Instance.OnInventoryUpdated?.Invoke();
 
-            InventoryUI ui = FindObjectOfType<InventoryUI>();
             if (ui != null)
             {
-                SlotUI slotUI = ui.GetSlotUIBySlot(slot);
+                SlotUI slotUI = ui.GetSlotUI(slotIndex);
                 if (slotUI != null)
                     slotUI.StartCooldown(slot.item.timeToUse);
             }

@@ -215,10 +215,14 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     }
 
 
-    private void HandleBossDeath()
+    protected virtual void HandleBossDeath()
     {
-     bossState.SwitchState(new BossDeadState(bossState));
-    if (EnemySpawnerManager.Instance != null)
+        bossState.SwitchState(new BossDeadState(bossState));
+
+        if (pointA != null) Destroy(pointA);
+        if (pointB != null) Destroy(pointB);
+
+        if (EnemySpawnerManager.Instance != null)
     {
         EnemySpawnerManager.Instance.EnemyDied(this);
     }
