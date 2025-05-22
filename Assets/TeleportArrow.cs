@@ -13,7 +13,6 @@ public class TeleportArrow : MonoBehaviour
 
     private void Start()
     {
-        // Tìm player bằng tag
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
