@@ -14,10 +14,11 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
     private string playerTag = "Player";
     public bool IsAttacking => isAttacking;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         monsterState = GetComponent<MonstersStateMachine>();
-        baseEnemy = GetComponent<BaseEnemy>();
+        baseEnemy = GetComponent<BaseBoss>() ?? GetComponent<BaseEnemy>();
+        //baseEnemy = GetComponent<BaseEnemy>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         bossState = GetComponent<BossStateMachine>();
     }
@@ -50,11 +51,51 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
     }
     public virtual void ReceiveDamage(float damage, Vector2 attackerPosition)
     {
-        if (!gameObject.activeInHierarchy || isInvincible || baseEnemy.isDead) return;
+        if (!gameObject.activeInHierarchy || isInvincible) return;
 
+        // Nếu chưa có baseEnemy, thử lấy lại
+        if (baseEnemy == null)
+        {
+            baseEnemy = GetComponent<BaseBoss>() ?? GetComponent<BaseEnemy>();
+            if (baseEnemy == null)
+            {
+                Debug.LogError($"{name} không có BaseEnemy hoặc BaseBoss để nhận damage.");
+                return;
+            }
+        }
+
+        if (baseEnemy.isDead) return;
+
+        // 🔍 Kiểm tra nếu scene chỉ có 1 enemy (boss riêng)
+        var allEnemies = FindObjectsOfType<BaseEnemy>();
+        bool isSoloBossScene = (baseEnemy.isBoss);
+
+        // ✅ Bắt đầu xử lý damage
         StartCoroutine(InvincibleCooldown());
-        baseEnemy.TakeDamage(damage, attackerPosition);
 
+        if (isSoloBossScene)
+        {
+            // 🎯 Boss riêng scene — xử lý cẩn thận hơn
+            try
+            {
+                bossState.boss.TakeDamage(damage, attackerPosition);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning($"{name} gặp lỗi khi nhận damage trong boss scene riêng: {ex.Message}");
+            }
+        }
+        else
+        {
+            // 🧟 Scene thường — xử lý bình thường
+            baseEnemy.TakeDamage(damage, attackerPosition);
+        }
+    }
+
+
+    public static MonsterCombat GetCombatFromTransform(Transform t)
+    {
+        return t.GetComponent<MonsterCombat>();
     }
 
 

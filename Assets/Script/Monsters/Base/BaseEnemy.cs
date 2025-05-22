@@ -41,6 +41,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public bool isLoad = false;
     public Transform currentPoint { get; set; }
     private Transform soulSpawnPoint;
+    private bool deathHandled = false;
     protected virtual void Start()
     {
         anim = GetComponent<Animator>();
@@ -171,14 +172,13 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
 
     public virtual void TakeDamage(float damage, Vector2 attackerPosition)
     {
-        if (isDead) return;
+        if (isDead || deathHandled) return;
 
-        if (isBoss)
-        {
-            if (bossState.bossCurrentState is BossCastSkillState)
-                return;
-        }
+        if (isBoss && bossState.bossCurrentState is BossCastSkillState)
+            return;
+
         currentHealth -= damage;
+
         if (healthBar != null)
         {
             float maxHealth = isBoss ? bossState.bossData.maxHealth : monsterState.monsterData.maxHealth;
@@ -191,6 +191,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         if (currentHealth <= 0)
         {
             isDead = true;
+            deathHandled = true; // ✅ ngăn gọi lặp
 
             if (isBoss)
             {
@@ -204,15 +205,12 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         else
         {
             if (isBoss)
-            {
                 bossState.SwitchState(new BossHurtState(bossState));
-            }
             else
-            {
                 monsterState.SwitchState(new MonsterHurtState(monsterState));
-            }
         }
     }
+
 
 
     protected virtual void HandleBossDeath()
@@ -286,7 +284,9 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
     public virtual void ResetEnemy()
     {
         isDead = false;
-
+        deathHandled = false;
+        if (spriteRenderer != null)
+            originalColor = spriteRenderer.color;
         if (enemyType == EnemyType.Boss)
         {
             SetupBoss();
@@ -362,4 +362,13 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         InitEnemy();
     }
 
+    public static BaseEnemy GetEnemyFromTransform(Transform t)
+    {
+        var enemy = t.GetComponent<BaseEnemy>();
+        if (enemy == null)
+        {
+            enemy = t.GetComponent<BaseBoss>(); 
+        }
+        return enemy;
+    }
 }

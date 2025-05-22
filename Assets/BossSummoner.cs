@@ -10,10 +10,11 @@ public class BossSummoner : MonoBehaviour
     [SerializeField] private BoxCollider2D bossZoneCollider;
     [SerializeField] private float minionsKillTime;
     [SerializeField] private TextMeshProUGUI countdownText;
+
     private bool bossDeadHandled = false;
     private BaseBoss boss;
-    private SpawnZone[] spawnZones;
     private List<BaseEnemy> summonedEnemies = new List<BaseEnemy>();
+
     private void Awake()
     {
         boss = GetComponent<BaseBoss>();
@@ -22,7 +23,6 @@ public class BossSummoner : MonoBehaviour
             enabled = false;
             return;
         }
-
     }
 
     private void Start()
@@ -32,7 +32,6 @@ public class BossSummoner : MonoBehaviour
         {
             bossZoneCollider = zoneObj.GetComponent<BoxCollider2D>();
         }
-        spawnZones = FindObjectsOfType<SpawnZone>();
 
         GameObject canvas = GameObject.Find("Canvas");
         if (canvas != null)
@@ -40,7 +39,7 @@ public class BossSummoner : MonoBehaviour
             Transform summonTransform = canvas.transform.Find("SummonTime");
             if (summonTransform != null)
             {
-                countdownText = summonTransform.GetComponent<TMPro.TextMeshProUGUI>();
+                countdownText = summonTransform.GetComponent<TextMeshProUGUI>();
             }
         }
     }
@@ -73,7 +72,6 @@ public class BossSummoner : MonoBehaviour
         Debug.Log("[BossSummoner] Boss chết - các quái triệu hồi đã bị thu hồi về pool.");
     }
 
-
     public void SummonEnemies()
     {
         if (!boss.isPhaseTwoActive)
@@ -82,73 +80,63 @@ public class BossSummoner : MonoBehaviour
         foreach (var enemy in summonedEnemies)
         {
             if (enemy != null && !enemy.isDead && enemy.gameObject.activeInHierarchy)
-            {
                 return;
-            }
         }
 
         summonedEnemies.Clear();
 
-        int totalSummoned = 0;
-
-        foreach (var zone in spawnZones)
-        {
-            int summonCount = zone.maxSpawnCount;
-
-            for (int i = 0; i < summonCount / 2; i++)
-            {
-                Vector2 summonPos = Vector2.zero;
-                int maxAttempts = 20;
-                bool validPosFound = false;
-
-                while (maxAttempts > 0 && !validPosFound)
-                {
-                    Vector2 randomOffset = Random.insideUnitCircle.normalized * summonRadius;
-                    Vector2 potentialPos = (Vector2)transform.position + randomOffset;
-
-                    if (bossZoneCollider != null && bossZoneCollider.OverlapPoint(potentialPos))
-                    {
-                        summonPos = potentialPos;
-                        validPosFound = true;
-                    }
-                    else
-                    {
-                        maxAttempts--;
-                    }
-                }
-
-                if (!validPosFound)
-                    continue;
-
-                GameObject enemy = ObjectPooling.Instance.Spawn(zone.zoneEnemyType, summonPos, Quaternion.identity);
-
-                if (enemy != null)
-                {
-                    var baseEnemy = enemy.GetComponent<BaseEnemy>();
-                    if (baseEnemy != null)
-                    {
-                        baseEnemy.zoneID = zone.zoneID;
-                        baseEnemy.assignedZone = zone;
-                        baseEnemy.ResetEnemy();
-                        summonedEnemies.Add(baseEnemy);
-
-                        Transform a = Instantiate(zone.patrolPointPrefab, summonPos + Random.insideUnitCircle * 2f, Quaternion.identity).transform;
-                        Transform b = Instantiate(zone.patrolPointPrefab, summonPos + Random.insideUnitCircle * 2f, Quaternion.identity).transform;
-
-                        baseEnemy.pointA = a.gameObject;
-                        baseEnemy.pointB = b.gameObject;
-                        baseEnemy.currentPoint = a;
-                    }
-
-                    EnemySpawnerManager.Instance.AddZone(baseEnemy, zone);
-                    totalSummoned++;
-                }
-            }
-        }
+        SpawnEnemiesOfType(EnemyType.Mage, 6);
+        SpawnEnemiesOfType(EnemyType.Assassin, 2);
 
         StartCoroutine(CheckMinionsKillTime());
     }
 
+    private void SpawnEnemiesOfType(EnemyType type, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Vector2 summonPos = Vector2.zero;
+            int maxAttempts = 20;
+            bool validPosFound = false;
+
+            while (maxAttempts > 0 && !validPosFound)
+            {
+                Vector2 randomOffset = Random.insideUnitCircle.normalized * summonRadius;
+                Vector2 potentialPos = (Vector2)transform.position + randomOffset;
+
+                if (bossZoneCollider != null && bossZoneCollider.OverlapPoint(potentialPos))
+                {
+                    summonPos = potentialPos;
+                    validPosFound = true;
+                }
+                else
+                {
+                    maxAttempts--;
+                }
+            }
+
+            if (!validPosFound)
+                continue;
+
+            GameObject enemyObj = ObjectPooling.Instance.Spawn(type, summonPos, Quaternion.identity);
+            if (enemyObj != null)
+            {
+                BaseEnemy baseEnemy = enemyObj.GetComponent<BaseEnemy>();
+                if (baseEnemy != null)
+                {
+                    baseEnemy.ResetEnemy();
+                    summonedEnemies.Add(baseEnemy);
+
+                    Transform a = Instantiate(baseEnemy.patrolPointPrefab, summonPos + Random.insideUnitCircle * 2f, Quaternion.identity).transform;
+                    Transform b = Instantiate(baseEnemy.patrolPointPrefab, summonPos + Random.insideUnitCircle * 2f, Quaternion.identity).transform;
+
+                    baseEnemy.pointA = a.gameObject;
+                    baseEnemy.pointB = b.gameObject;
+                    baseEnemy.currentPoint = a;
+                }
+            }
+        }
+    }
 
     private IEnumerator CheckMinionsKillTime()
     {
@@ -161,10 +149,7 @@ public class BossSummoner : MonoBehaviour
             yield return new WaitForSeconds(1f);
             timeLeft--;
 
-            if (timeLeft <= minionsKillTime / 3f)
-                countdownText.color = Color.red;
-            else
-                countdownText.color = Color.white;
+            countdownText.color = (timeLeft <= minionsKillTime / 3f) ? Color.red : Color.white;
 
             bool allDead = true;
             foreach (var enemy in summonedEnemies)
@@ -183,7 +168,6 @@ public class BossSummoner : MonoBehaviour
                 yield break;
             }
         }
-
 
         int aliveCount = 0;
         foreach (var enemy in summonedEnemies)
@@ -204,7 +188,5 @@ public class BossSummoner : MonoBehaviour
         {
             boss.isPhaseTwoActive = false;
         }
-
     }
-
 }

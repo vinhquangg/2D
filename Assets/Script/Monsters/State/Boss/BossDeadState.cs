@@ -12,7 +12,18 @@ public class BossDeadState : IMonsterState
     }
     public void EnterState()
     {
-        boss.animBoss.Play("PoinsonsLord_Death");
+        switch (boss.boss.enemyType)
+        {
+            case EnemyType.Boss:
+                //enemy.animMonster.Play("Idle");
+                boss.animBoss.Play("PoinsonsLord_Death");
+                break;
+            case EnemyType.Boss2:
+                //enemy.animMonster.Play("Idle_Mage");
+                boss.animBoss.Play("FlameLord_Death");
+                break;
+
+        }
     }
 
     public void ExitState()

@@ -16,9 +16,11 @@ public class SaveLoadManager : MonoBehaviour
         if (instance != null)
         {
             Debug.Log("Found more than one SaveLoadManager in the scene");
+            Destroy(gameObject);
             return;
         }
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void NewGame()

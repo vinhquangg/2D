@@ -15,7 +15,20 @@ public class BossIdleState : IMonsterState
 
     public void EnterState()
     {
-       boss.animBoss.Play("PoinsonsLord_Idle");
+
+        switch (boss.boss.enemyType)
+        {
+            case EnemyType.Boss:
+                //enemy.animMonster.Play("Idle");
+                boss.animBoss.Play("PoinsonsLord_Idle");
+                break;
+            case EnemyType.Boss2:
+                //enemy.animMonster.Play("Idle_Mage");
+                boss.animBoss.Play("FlameLord_Idle");
+                break;
+
+        }
+        //boss.animBoss.Play("PoinsonsLord_Idle");
        idleTimer = 0f;
     }
 

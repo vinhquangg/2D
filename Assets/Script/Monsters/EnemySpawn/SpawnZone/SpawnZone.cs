@@ -103,7 +103,7 @@ public class SpawnZone : MonoBehaviour
         if (isZoneCleared || spawnedCount >= maxSpawnCount) return;
 
         Vector3 pos;
-        if (zoneEnemyType == EnemyType.Boss)
+        if (zoneEnemyType == EnemyType.Boss || zoneEnemyType == EnemyType.Boss2)
         {
             BoxCollider2D box = GetComponent<BoxCollider2D>();
             Vector2 center = (Vector2)transform.position + box.offset;
@@ -117,24 +117,44 @@ public class SpawnZone : MonoBehaviour
             if (attempts >= 10) { Debug.LogWarning("No valid spawn pos."); return; }
         }
 
-
         GameObject go = ObjectPooling.Instance.Spawn(zoneEnemyType, pos, Quaternion.identity);
         if (go == null)
         {
+            Debug.LogError($"[SpawnZone] Spawn trả về NULL với type {zoneEnemyType}");
             return;
+        }
+
+        BaseEnemy enemy;
+
+        // Nếu là boss → lấy BaseBoss
+        if (zoneEnemyType == EnemyType.Boss || zoneEnemyType == EnemyType.Boss2)
+        {
+            var boss = go.GetComponent<BaseBoss>();
+            if (boss == null)
+            {
+                Debug.LogError($"[SpawnZone] Prefab {go.name} không có BaseBoss.");
+                return;
+            }
+            enemy = boss; // BaseBoss kế thừa BaseEnemy
         }
         else
         {
-
+            enemy = go.GetComponent<BaseEnemy>();
+            if (enemy == null)
+            {
+                Debug.LogError($"[SpawnZone] Prefab {go.name} không có BaseEnemy.");
+                return;
+            }
         }
 
-        var enemy = go.GetComponent<BaseEnemy>();
         enemy.zoneID = zoneID;
         enemy.enemyID = enemyIDCount++;
         enemy.assignedZone = this;
         EnemySpawnerManager.Instance.AddZone(enemy, this);
-        if (zoneEnemyType == EnemyType.Boss)
+
+        if (zoneEnemyType == EnemyType.Boss || zoneEnemyType == EnemyType.Boss2)
         {
+            Debug.Log($"[SpawnZone] Spawn boss tại {pos}");
             if (bossPointA != null && bossPointB != null)
             {
                 enemy.pointA = bossPointA.gameObject;
@@ -143,7 +163,7 @@ public class SpawnZone : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"[SpawnZone] Boss patrol points not set in zone {zoneID}");
+                Debug.LogWarning($"[SpawnZone] Boss patrol points chưa được thiết lập.");
             }
         }
         else
@@ -159,6 +179,8 @@ public class SpawnZone : MonoBehaviour
         spawnedCount++;
         currentAlive++;
     }
+
+
 
     public void OnEnemyDied(BaseEnemy enemy)
     {
@@ -297,10 +319,13 @@ public class SpawnZone : MonoBehaviour
         BaseEnemy[] allEnemies = FindObjectsOfType<BaseEnemy>();
         foreach (BaseEnemy enemy in allEnemies)
         {
-            if (enemy.zoneID == zoneID && enemy.enemyType != EnemyType.Boss)
+            if (enemy.zoneID == zoneID &&
+                enemy.enemyType != EnemyType.Boss &&
+                enemy.enemyType != EnemyType.Boss2)
             {
                 ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
             }
+
         }
     }
 }

@@ -49,4 +49,29 @@ public abstract class BaseBoss : BaseEnemy
         healthBar.UpdateHealBar(currentHealth, bossState.bossData.maxHealth);
     }
 
+    public override void TakeDamage(float damage, Vector2 attackerPosition)
+    {
+        if (isDead) return;
+
+        currentHealth -= damage;
+
+        if (healthBar != null && bossState?.bossData != null)
+        {
+            healthBar.UpdateHealBar(currentHealth, bossState.bossData.maxHealth);
+        }
+
+        StartCoroutine(ChangeColorTemporarily(Color.red, hitDuration, damage));
+        StartCoroutine(Knockback(attackerPosition, knockbackForce));
+
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+            HandleBossDeath();
+        }
+        else
+        {
+            bossState?.SwitchState(new BossHurtState(bossState));
+        }
+    }
+
 }

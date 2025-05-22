@@ -4,7 +4,8 @@ using UnityEngine;
 public class EnemySpawnerManager : MonoBehaviour
 {
     public static EnemySpawnerManager Instance { get; private set; }
-    private Dictionary<BaseEnemy, SpawnZone> spawnZones = new Dictionary<BaseEnemy, SpawnZone>();
+    private Dictionary<int, SpawnZone> spawnZones = new Dictionary<int, SpawnZone>();
+
 
     private void Awake()
     {
@@ -13,20 +14,21 @@ public class EnemySpawnerManager : MonoBehaviour
 
     public void AddZone(BaseEnemy enemy, SpawnZone zone)
     {
-        if (enemy != null && !spawnZones.ContainsKey(enemy))
-            spawnZones.Add(enemy, zone);
+        if (enemy != null && !spawnZones.ContainsKey(enemy.enemyID))
+            spawnZones.Add(enemy.enemyID, zone);
     }
 
     public void EnemyDied(BaseEnemy enemy)
     {
-        if (spawnZones.TryGetValue(enemy, out var zone))
+        if (spawnZones.TryGetValue(enemy.enemyID, out var zone))
         {
             zone.OnEnemyDied(enemy);
-            spawnZones.Remove(enemy);
+            spawnZones.Remove(enemy.enemyID);
         }
 
         ObjectPooling.Instance.ReturnToPool(enemy.enemyType, enemy.gameObject);
     }
+
 
 
     public SpawnZone GetZoneByID(string id)

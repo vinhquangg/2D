@@ -15,7 +15,21 @@ public class BossChaseState : IMonsterState
     public void EnterState()
     {
         boss.animBoss.SetBool("isMove", true);
-        boss.animBoss.Play("PoinsonsLord_Move");
+        switch (boss.boss.enemyType)
+        {
+            case EnemyType.Boss:
+                //enemy.animMonster.Play("Idle");
+                boss.animBoss.Play("PoinsonsLord_Move");
+                break;
+            case EnemyType.Boss2:
+                //enemy.animMonster.Play("Idle_Mage");
+                boss.animBoss.Play("FlameLord_Move");
+                break;
+
+        }
+
+        //boss.animBoss.SetBool("isMove", true);
+
         Debug.Log("Chasing");
     }
 

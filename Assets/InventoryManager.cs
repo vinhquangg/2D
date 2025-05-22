@@ -13,7 +13,17 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); 
+        }
+        else
+        {
+            Destroy(gameObject); 
+            return;
+        }
+
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             inventorySlots[i] = new SlotClass();
@@ -25,6 +35,7 @@ public class InventoryManager : MonoBehaviour
                 itemMap.Add(item.itemType, item);
         }
     }
+
 
     public void AddItem(ItemData item, int amount, bool invokeUpdate = true)
     {

@@ -8,6 +8,12 @@ public abstract class BossCombat : MonsterCombat
     protected BossSkillManager bossSkillManager;
     protected bool summonActivated = false;
     public bool IsCastingSkill => bossSkillManager != null && bossSkillManager.isCastingSkill;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     protected virtual void Start()
     {
         boss = GetComponent<BaseBoss>();
@@ -42,5 +48,10 @@ public abstract class BossCombat : MonsterCombat
     public override void ReceiveDamage(float damage, Vector2 attackerPosition)
     {
         base.ReceiveDamage(damage, attackerPosition);
+        if (!gameObject.activeInHierarchy || isInvincible || baseEnemy.isDead) return;
+
+        StartCoroutine(InvincibleCooldown());
+        boss.TakeDamage(damage, attackerPosition);
     }
+
 }

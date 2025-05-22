@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoinsonLord : BaseBoss
+public class FlameLord : BaseBoss
 {
     protected override void Start()
     {
@@ -20,4 +20,3 @@ public class PoinsonLord : BaseBoss
         base.Flip(targetPoint);
     }
 }
-

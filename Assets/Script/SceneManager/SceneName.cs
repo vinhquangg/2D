@@ -5,5 +5,5 @@ public enum SceneName
 {
     Menu,
     SampleScene,
-    ShopScene
+    BossFight2
 }

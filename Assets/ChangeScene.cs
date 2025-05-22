@@ -6,10 +6,8 @@ public class ChangeScene : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (CompareTag("ToShop"))
-                SceneLoader.instance.LoadScene(SceneName.ShopScene);
             if (CompareTag("Outside"))
-                SceneLoader.instance.LoadScene(SceneName.SampleScene);
+                SceneLoader.instance.LoadScene(SceneName.BossFight2);
         }
 
     }

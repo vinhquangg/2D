@@ -54,7 +54,18 @@ public class BossAttackState : IMonsterState
         if (boss.boss.player == null) return;
 
         FlipToPlayer();
-        boss.animBoss.Play("PoinsonsLord_Attack");
+        switch (boss.boss.enemyType)
+        {
+            case EnemyType.Boss:
+                //enemy.animMonster.Play("Idle");
+                boss.animBoss.Play("PoinsonsLord_Attack");
+                break;
+            case EnemyType.Boss2:
+                //enemy.animMonster.Play("Idle_Mage");
+                boss.animBoss.Play("FlameLord_Attack");
+                break;
+
+        }
     }
 
     private void FlipToPlayer()

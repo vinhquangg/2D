@@ -128,36 +128,6 @@ public class ObjectPooling : MonoBehaviour
         StartCoroutine(ReturnToPoolWithDelay(enemy, type));
     }
 
-    //private IEnumerator ReturnToPoolWithDelay(GameObject enemy, EnemyType type)
-    //{
-    //    if (enemy.TryGetComponent<BaseEnemy>(out var baseEnemy))
-    //    {
-    //        if (baseEnemy.isLoad)
-    //        {
-    //            // Nếu đang trong trạng thái load, tắt ngay
-    //            enemy.SetActive(false);
-
-    //            if (!pools[type].Contains(enemy))
-    //                pools[type].Enqueue(enemy);
-
-    //            if (activeObjects[type].Contains(enemy))
-    //                activeObjects[type].Remove(enemy);
-
-    //            yield break;
-    //        }
-    //    }
-
-    //    // Nếu không load → delay 1s rồi tắt
-    //    yield return new WaitForSeconds(1f);
-    //    enemy.SetActive(false);
-
-    //    if (!pools[type].Contains(enemy))
-    //        pools[type].Enqueue(enemy);
-
-    //    if (activeObjects[type].Contains(enemy))
-    //        activeObjects[type].Remove(enemy);
-    //}
-
     private IEnumerator ReturnToPoolWithDelay(GameObject enemy, EnemyType type)
     {
         if (returningObjects.Contains(enemy))
