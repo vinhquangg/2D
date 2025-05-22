@@ -3,8 +3,10 @@
 public class BarrierController : MonoBehaviour
 {
     public SpawnZone[] zonesToCheck;
-
     public GameObject barrierObject;
+
+    [Header("Tham chiếu Teleport")]
+    public TeleportManager teleportManager;  // kéo vào trong Inspector
 
     private bool isCleared = false;
 
@@ -18,6 +20,9 @@ public class BarrierController : MonoBehaviour
             if (barrierObject != null)
             {
                 barrierObject.SetActive(false);
+                // Khi barrier tắt, bật mũi tên
+                if (teleportManager != null)
+                    teleportManager.ShowArrow(true);
             }
         }
     }

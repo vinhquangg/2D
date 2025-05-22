@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 106727228}
   - component: {fileID: 106727230}
   - component: {fileID: 106727231}
+  - component: {fileID: 106727232}
   m_Layer: 0
   m_Name: TeleFlameBoss
   m_TagString: Untagged
@@ -560,6 +561,22 @@ MonoBehaviour:
   - {fileID: 198014215}
   - {fileID: 1603501782}
   barrierObject: {fileID: 1304881968}
+  teleportManager: {fileID: 106727232}
+--- !u!114 &106727232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106727227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22502d13ddc10a247a43fbbb9be4a79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  teleportTarget: {fileID: 106727229}
+  arrowPrefab: {fileID: 7375725440037955111, guid: e2711f2df6fd2474abc4744fe695425b, type: 3}
 --- !u!1 &182938137
 GameObject:
   m_ObjectHideFlags: 0
