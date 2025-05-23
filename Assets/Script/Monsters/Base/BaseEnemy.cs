@@ -191,7 +191,7 @@ public abstract class BaseEnemy : MonoBehaviour,ISaveable
         if (currentHealth <= 0)
         {
             isDead = true;
-            deathHandled = true; // ✅ ngăn gọi lặp
+            deathHandled = true; 
 
             if (isBoss)
             {

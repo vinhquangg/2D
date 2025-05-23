@@ -20,7 +20,8 @@ public class BlastWave : MonoBehaviour
 
             if (combat != null)
             {
-                combat.ReceiveDamage(damage, transform.position); 
+                combat.ReceiveDamage(damage, transform.position);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.shockWave);
             } 
             else
             {
@@ -28,6 +29,7 @@ public class BlastWave : MonoBehaviour
                 if (fallback != null && !fallback.isDead)
                 {
                     fallback.TakeDamage(damage, transform.position);
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.thunder);
                 }
             }
 

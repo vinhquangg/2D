@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class BaseBoss : BaseEnemy
 {
@@ -6,21 +9,21 @@ public abstract class BaseBoss : BaseEnemy
     public float specialAbilityCD { get; private set; }
     private float currentSpecialAbilityCD;
     public bool isPhaseTwoActive = false;
+
     protected override void Start()
     {
         base.Start();
-
         if (currentPoint == null && pointA != null)
         {
             currentPoint = pointA.transform;
         }
-
         floatingDamage = null;
         textPoint = null;
     }
 
     protected override void HandleBossDeath()
     {
+       
         base.HandleBossDeath();
     }
 

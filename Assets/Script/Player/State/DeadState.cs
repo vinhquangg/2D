@@ -30,7 +30,7 @@ public class DeadState : IPlayerState
 
         player.rb.velocity = Vector2.zero;
         player.rb.bodyType = RigidbodyType2D.Static;
-
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.death);
         player.StartCoroutine(ReviveCoroutine());
     }
 

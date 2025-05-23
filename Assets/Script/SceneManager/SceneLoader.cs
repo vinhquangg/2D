@@ -103,8 +103,8 @@ public class SceneLoader : MonoBehaviour
         SaveLoadManager.instance?.LoadAfterSceneLoaded();
     }
 
-    public SceneName GetCurrentScene()
-    {
-        return currentSceneName;
-    }
+    //public SceneName GetCurrentScene()
+    //{
+    //    return currentSceneName;
+    //}
 }

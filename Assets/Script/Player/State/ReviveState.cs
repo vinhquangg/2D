@@ -14,8 +14,7 @@ public class ReviveState : IPlayerState
     public void EnterState()
     {
         if (hasRevived) return;
-
-        // ✅ Tìm đúng zone theo ID
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.revive);
         var allZones = GameObject.FindObjectsOfType<SpawnZone>();
         foreach (var zone in allZones)
         {
@@ -26,7 +25,6 @@ public class ReviveState : IPlayerState
             }
         }
 
-        // Nếu không tìm thấy zone (safety)
         if (spawnPositionOutsideZone == Vector3.zero)
         {
             Debug.LogWarning($"[ReviveState] Không tìm thấy zone với ID {player.currentZoneID}. Dùng (0,0,0)");
@@ -41,7 +39,6 @@ public class ReviveState : IPlayerState
         player.transform.position = spawnPositionOutsideZone;
 
         player.SwitchState(new IdleState(player));
-
         player.GetComponent<PlayerHealth>()?.FullRestore(player.playerData.maxHealth);
         player.GetComponent<PlayerEnergy>()?.UpdateEnergySlider();
     }

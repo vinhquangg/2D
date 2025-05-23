@@ -10,10 +10,11 @@ public class LightningStrike : MonoBehaviour
         Collider2D enemy = Physics2D.OverlapCircle(transform.position, 0.5f, enemyLayers);
         if (enemy != null)
         {
-            MonsterCombat enemyScript = enemy.GetComponent<MonsterCombat>();
+            BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
             if (enemyScript != null)
             {
-                enemyScript.ReceiveDamage(damage, transform.position);
+                enemyScript.TakeDamage(damage, transform.position); 
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.thunder);
             }
         }
 

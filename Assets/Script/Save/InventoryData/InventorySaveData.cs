@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 [System.Serializable]
 public class InventorySaveData
@@ -19,4 +19,15 @@ public class InventoryData
     public List<InventorySaveData> slots = new List<InventorySaveData>();
 
     public InventoryData() { }
+
+    public static InventoryData GetDefaultInventory()
+    {
+        InventoryData defaultInventory = new InventoryData();
+
+        defaultInventory.slots.Add(new InventorySaveData(ItemType.HealthPotion, 3));
+        defaultInventory.slots.Add(new InventorySaveData(ItemType.EnergyPotion, 2));
+
+        return defaultInventory;
+    }
 }
+

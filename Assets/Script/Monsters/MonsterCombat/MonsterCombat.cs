@@ -53,7 +53,6 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
     {
         if (!gameObject.activeInHierarchy || isInvincible) return;
 
-        // Nếu chưa có baseEnemy, thử lấy lại
         if (baseEnemy == null)
         {
             baseEnemy = GetComponent<BaseBoss>() ?? GetComponent<BaseEnemy>();
@@ -66,16 +65,13 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
 
         if (baseEnemy.isDead) return;
 
-        // 🔍 Kiểm tra nếu scene chỉ có 1 enemy (boss riêng)
         var allEnemies = FindObjectsOfType<BaseEnemy>();
         bool isSoloBossScene = (baseEnemy.isBoss);
 
-        // ✅ Bắt đầu xử lý damage
         StartCoroutine(InvincibleCooldown());
 
         if (isSoloBossScene)
         {
-            // 🎯 Boss riêng scene — xử lý cẩn thận hơn
             try
             {
                 bossState.boss.TakeDamage(damage, attackerPosition);
@@ -87,7 +83,6 @@ public abstract class MonsterCombat: MonoBehaviour,IMonsterCombat
         }
         else
         {
-            // 🧟 Scene thường — xử lý bình thường
             baseEnemy.TakeDamage(damage, attackerPosition);
         }
     }

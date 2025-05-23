@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PoisonsLordCombat : BossCombat
 {
@@ -8,13 +9,14 @@ public class PoisonsLordCombat : BossCombat
     private bool hasForcedSummon = false;
     private bool canCastSpecial = true;
     private Coroutine currentCastCoroutine;
-
     protected override void Start()
     {
         base.Start();
         defaultInvincibleTime = invincibleTime;
+
         StartCoroutine(UseSkillsLoop());
     }
+
 
     private IEnumerator UseSkillsLoop()
     {
@@ -113,6 +115,7 @@ public class PoisonsLordCombat : BossCombat
             StopCoroutine(invincibleCoroutine);
         }
         invincibleCoroutine = StartCoroutine(InvincibleCooldown());
+
     }
 
     public override void StopAttack()
@@ -126,5 +129,4 @@ public class PoisonsLordCombat : BossCombat
             currentCastCoroutine = null;
         }
     }
-
 }
